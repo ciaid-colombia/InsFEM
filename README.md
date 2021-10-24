@@ -1,5 +1,4 @@
 # InsFEM
-# InspiraFEM
 Welcome to the world of data analysis and problem reduction by means of revolutionary techniques and code!
 
 ## INSTALL
