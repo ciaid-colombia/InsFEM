@@ -1,0 +1,48 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------ 
+PROBLEM_DEFINTION  
+TEMPORAL_DERIVATIVES: On  
+GRAVITY:              NORM: 0.0, GX: 0.0, GY: 0.0,  GZ: 0.0  
+END_PROBLEM_DEFINITION
+$------------------------------------------------------------
+PROPERTIES
+SLD_MODEL=        NEOHOOKEAN
+DENSITY=          10000  
+YOUNG=            1.4e6  
+POISSON=          0.4  
+DAMPING(%)        0.0
+END_PROPERTIES  
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM  
+$------------------------------------------------------------
+NUMERICAL_TREATMENT
+T2_SCHEME                 NEWMA $ {NEWMA}
+T2_EULER_STEPS            0 $ number of backward euler steps, 0 by default
+SAFETY_FACTOR:         1e24  
+STEADY_STATE_TOLER:    1e-8   
+NORM_OF_CONVERGENCE:   L2   
+CONVERGENCE_TOLERANCE: 1e-6
+CP_CONVERGENCE_TOLERANCE: 1e-2
+MAXIMUM_NUMBER_OF_IT:  100
+END_NUMERICAL_TREATMENT  
+$------------------------------------------------------------
+OUTPUT_&_POST-PROCESS  
+START_POSTPROCES_AT         STEP =1
+POSTPROCESS DISPLACEMENT,   STEPS=1
+POSTPROCESS STRAIN,         STEPS=1
+POSTPROCESS STRESS,         STEPS=1
+POSTPROCESS VELOCITY,       STEPS=1
+POSTPROCESS INTTRACTIONS,   STEPS=1
+POSTPROCESS EXTTRACTIONS,   STEPS=1
+POSTPROCESS FLDTRACTIONS,   STEPS=1
+TRACKING
+POINT        1 0.598 0.2 0.0 
+END_TRACKING
+END_OUTPUT_&_POST_PROCESS  
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS, \
+CONSTANT_BOUNDARY_CONDITIONS
+INCLUDE  turek_nl.sld.fix
+END_BOUNDARY_CONDITIONS  
+$------------------------------------------------------------

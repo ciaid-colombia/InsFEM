@@ -1,0 +1,3 @@
+cd tempe5.gid
+../../../Executables/Unix/InspiraFEM.sh tempe5 -np 3 -nomerge -postprocessfolder . -restartfolder data
+

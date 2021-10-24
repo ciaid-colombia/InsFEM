@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+<Collection>
+<DataSet timestep="0.05" group="" part="0" file="post/Fluid/fsi_bar_0.pvtu"/>
+<DataSet timestep="0.1" group="" part="1" file="post/Fluid/fsi_bar_1.pvtu"/>
+<DataSet timestep="0.15" group="" part="2" file="post/Fluid/fsi_bar_2.pvtu"/>
+<DataSet timestep="0.15" group="" part="0" file="post/Solid/fsi_bar_0.pvtu"/>
+<DataSet timestep="0.2" group="" part="3" file="post/Fluid/fsi_bar_3.pvtu"/>
+<DataSet timestep="0.2" group="" part="1" file="post/Solid/fsi_bar_1.pvtu"/>
+<DataSet timestep="0.25" group="" part="4" file="post/Fluid/fsi_bar_4.pvtu"/>
+<DataSet timestep="0.25" group="" part="2" file="post/Solid/fsi_bar_2.pvtu"/>
+<DataSet timestep="0.3" group="" part="5" file="post/Fluid/fsi_bar_5.pvtu"/>
+<DataSet timestep="0.3" group="" part="3" file="post/Solid/fsi_bar_3.pvtu"/>
+<DataSet timestep="0.35" group="" part="6" file="post/Fluid/fsi_bar_6.pvtu"/>
+<DataSet timestep="0.35" group="" part="4" file="post/Solid/fsi_bar_4.pvtu"/>
+<DataSet timestep="0.4" group="" part="7" file="post/Fluid/fsi_bar_7.pvtu"/>
+<DataSet timestep="0.4" group="" part="5" file="post/Solid/fsi_bar_5.pvtu"/>
+<DataSet timestep="0.45" group="" part="8" file="post/Fluid/fsi_bar_8.pvtu"/>
+<DataSet timestep="0.45" group="" part="6" file="post/Solid/fsi_bar_6.pvtu"/>
+<DataSet timestep="0.5" group="" part="9" file="post/Fluid/fsi_bar_9.pvtu"/>
+<DataSet timestep="0.5" group="" part="7" file="post/Solid/fsi_bar_7.pvtu"/>
+<DataSet timestep="0.5" group="" part="10" file="post/Fluid/fsi_bar_10.pvtu"/>
+</Collection>
+</VTKFile>
+<DataSet timestep="0.5" group="" part="8" file="post/Solid/fsi_bar_8.pvtu"/>
+</Collection>
+</VTKFile>

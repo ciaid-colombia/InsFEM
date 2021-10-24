@@ -1,0 +1,85 @@
+
+
+
+     *******
+     CASE: INJEC
+     *******
+
+          CURRENT TIME STEP dt = 0.100000E+00
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.100000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.336499E+00
+          - Ratio dt/dtc:           0.297178E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.196576E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.166E+00  0.203E-01  0.461E-04  0.968E-05  0.145E+00  0.475E-01  0.658E-01  0.321E-01  0.138E-04  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E+00
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.200000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.240360E+00
+          - Ratio dt/dtc:           0.416042E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.339248E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.308E+00  0.203E-01  0.768E-04  0.142E-04  0.288E+00  0.936E-01  0.131E+00  0.634E-01  0.264E-04  0.110E-03  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 31.83 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   31.83 Mbytes (100.00 %)
+          LMACH  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      31.89 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:     78.30 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.34
+          STARTING OPERATIONS         :        0.03 (  9.13 % )
+               Initialize MPI         :           0.00 (  8.75 % )
+               Reapro                 :           0.00 (  8.75 % )
+               Initialize Par. Lib.   :           0.00 (  8.75 % )
+               Domain Operations      :           0.03 (  8.75 % )
+               Output Domain          :           0.00 (  0.07 % )
+          LMACH  MODULE               :        0.31 ( 90.12 % )
+               Turnon                 :           0.02 (  6.57 % )
+               Getste                 :           0.00 (  0.02 % )
+               Begste                 :           0.00 (  0.00 % )
+               Doiter                 :           0.29 ( 93.30 % )
+                 Build Linear System  :               0.09 ( 30.34 % )
+                 Solve Linear System  :               0.13 ( 42.38 % )
+                 Endite               :               0.06 ( 20.54 % )
+               Endste                 :           0.00 (  0.01 % )
+               Output                 :           0.00 (  0.48 % )
+               Turnof                 :           0.00 (  0.09 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.00 (  0.34 % )
+          OTHER OPERATIONS            :        0.00 (  0.49 % )
+
+
+     * * * END OF ANALYSIS * * *
+

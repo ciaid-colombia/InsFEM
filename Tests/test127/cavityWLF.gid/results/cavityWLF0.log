@@ -1,0 +1,124 @@
+
+
+
+     *******
+     CASE: NAME
+     *******
+
+          CURRENT TIME STEP dt = 0.100000E-02
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.100000E-02
+          sigmau:
+          - Critical Time step dtc: 0.265466E-03
+          - Ratio dt/dtc:           0.376696E+01
+          TEMPER:
+          - Critical Time step dtc: 0.101801E+00
+          - Ratio dt/dtc:           0.982313E-02
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.140898E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          sigmau:  0.492E-01  0.363E-01  0.217E-04  0.210E-04  0.128E-01  0.110E-01  0.168E-02  0.780E-04  0.112E-04  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          TEMPER:  0.309E-01  0.303E-01  0.138E-04  0.310E-05  0.598E-03  0.128E-03  0.341E-03  0.165E-04  0.381E-05  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E-02
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.200000E-02
+          sigmau:
+          - Critical Time step dtc: 0.265466E-03
+          - Ratio dt/dtc:           0.376696E+01
+          TEMPER:
+          - Critical Time step dtc: 0.899261E-01
+          - Ratio dt/dtc:           0.111202E-01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.153913E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          sigmau:  0.606E-01  0.363E-01  0.355E-04  0.300E-04  0.241E-01  0.214E-01  0.257E-02  0.131E-03  0.191E-04  0.134E-02  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          TEMPER:  0.312E-01  0.303E-01  0.267E-04  0.572E-05  0.843E-03  0.236E-03  0.432E-03  0.217E-04  0.691E-05  0.238E-05  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E-02
+
+     >>>  TIME STEP NUMBER:     3     STARTED AT t = 0.300000E-02
+          sigmau:
+          - Critical Time step dtc: 0.265466E-03
+          - Ratio dt/dtc:           0.376696E+01
+          TEMPER:
+          - Critical Time step dtc: 0.875299E-01
+          - Ratio dt/dtc:           0.114247E-01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.165155E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          sigmau:  0.708E-01  0.363E-01  0.484E-04  0.377E-04  0.343E-01  0.307E-01  0.339E-02  0.179E-03  0.265E-04  0.208E-02  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          TEMPER:  0.314E-01  0.303E-01  0.381E-04  0.811E-05  0.106E-02  0.338E-03  0.516E-03  0.269E-04  0.100E-04  0.477E-05  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 47.70 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   47.70 Mbytes (100.00 %)
+          NSTIN  MODULE:                 0.00 Mbytes (  0.00 %)
+          TEMPE  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      47.77 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:    103.38 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.27
+          STARTING OPERATIONS         :        0.06 ( 22.96 % )
+               Initialize MPI         :           0.00 ( 22.28 % )
+               Reapro                 :           0.00 ( 22.28 % )
+               Initialize Par. Lib.   :           0.00 ( 22.28 % )
+               Domain Operations      :           0.06 ( 22.28 % )
+               Output Domain          :           0.00 (  0.10 % )
+          NSTIN  MODULE               :        0.07 ( 26.96 % )
+               Turnon                 :           0.04 ( 50.57 % )
+               Getste                 :           0.00 (  0.07 % )
+               Begste                 :           0.00 (  0.05 % )
+               Doiter                 :           0.03 ( 47.75 % )
+                 Build Linear System  :               0.03 ( 42.75 % )
+                 Solve Linear System  :               0.00 (  4.72 % )
+                 Endite               :               0.00 (  0.25 % )
+               Endste                 :           0.00 (  0.04 % )
+               Output                 :           0.00 (  3.85 % )
+               Turnof                 :           0.00 (  1.49 % )
+               Restar                 :           0.00 (  0.03 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          TEMPE  MODULE               :        0.03 ( 12.06 % )
+               Turnon                 :           0.03 ( 94.23 % )
+               Getste                 :           0.00 (  0.12 % )
+               Begste                 :           0.00 (  0.03 % )
+               Doiter                 :           0.00 (  3.29 % )
+                 Build Linear System  :               0.00 (  1.05 % )
+                 Solve Linear System  :               0.00 (  1.61 % )
+                 Endite               :               0.00 (  0.08 % )
+               Endste                 :           0.00 (  0.03 % )
+               Output                 :           0.00 (  0.12 % )
+               Turnof                 :           0.00 (  2.24 % )
+               Restar                 :           0.00 (  0.06 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.05 ( 20.38 % )
+          OTHER OPERATIONS            :        0.05 ( 17.73 % )
+
+
+     * * * END OF ANALYSIS * * *
+

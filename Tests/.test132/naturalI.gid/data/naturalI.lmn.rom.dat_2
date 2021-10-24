@@ -1,0 +1,14 @@
+REDUCED_ORDER_PROBLEM
+$------------------------------------------------------------ 
+STAGE:                         FOM snaps old
+MASS_PROJECTION:               On
+STYPE_OF_ROM:                  SVD
+NSNAPSHOTS:                    10
+INTERVAL_BETWEEN_SNAPSHOTS:    1
+NON_LINEAR_ITERATIONS:         1
+CONVERGENCE_TOLERANCE:         1e-8
+ENERGY_RETAINED:               1
+PROJECTION_SPACE:              Petrov-Galerkin
+MEAN_SUBSTRACTION:             On
+$------------------------------------------------------------ 
+END_REDUCED_ORDER_PROBLEM

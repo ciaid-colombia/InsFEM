@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+<Collection>
+<DataSet timestep="0.147434" group="" part="0" file=".//reflected_residual_0.pvtu"/>
+<DataSet timestep="0.22099" group="" part="1" file=".//reflected_residual_1.pvtu"/>
+<DataSet timestep="0.294475" group="" part="2" file=".//reflected_residual_2.pvtu"/>
+<DataSet timestep="0.367919" group="" part="3" file=".//reflected_residual_3.pvtu"/>
+<DataSet timestep="0.441279" group="" part="4" file=".//reflected_residual_4.pvtu"/>
+<DataSet timestep="0.514567" group="" part="5" file=".//reflected_residual_5.pvtu"/>
+<DataSet timestep="0.587691" group="" part="6" file=".//reflected_residual_6.pvtu"/>
+<DataSet timestep="0.660635" group="" part="7" file=".//reflected_residual_7.pvtu"/>
+<DataSet timestep="0.733391" group="" part="8" file=".//reflected_residual_8.pvtu"/>
+<DataSet timestep="0.733391" group="" part="9" file=".//reflected_residual_9.pvtu"/>
+</Collection>
+</VTKFile>

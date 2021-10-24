@@ -1,0 +1,24 @@
+$------------------------------------------------------------
+DIMENSIONS
+  NODAL_POINTS=           88
+  ELEMENTS=              239
+  SPACE_DIMENSIONS=        3
+  NODES_PER_ELEMENT=       4
+  BOUNDARIES=         AUTOMATIC
+  SKEW_SYSTEMS=            0
+END_DIMENSIONS
+$------------------------------------------------------------
+STRATEGY
+  INTEGRATION_RULE:          Open  
+  DOMAIN_INTEGRATION_POINTS: 0  
+  OUTPUT MESH_DATA:          Off    
+  PERIODIC_BC=               Off 0 1 0
+  TEST_COMMUNICATIONS=       Off
+END_STRATEGY
+$-------------------------------------------------------------
+GEOMETRY, GID
+ INCLUDE  cupula3d1.geo.dat
+END_GEOMETRY  
+$-------------------------------------------------------------
+
+ 

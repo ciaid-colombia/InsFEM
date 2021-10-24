@@ -1,0 +1,640 @@
+#!/usr/bin/perl
+use File::Basename;
+use Getopt::Long;
+use Digest::MD5 qw(md5 md5_hex md5_base64);
+use File::Basename;
+
+
+my ($name,$main,$srcdir,$entry,$objdir,$file,$dirs,$i,$j,$k,$ncf,$imf,$verbose,$l,$help,$objvar) ;
+my (@entries,@otherfiles,@comfiles,@usedirs,@alldirs,@nodirs,@fnddirs,@macros);
+
+our @suffixes77 = qw(.f .for .F .FOR);
+our @suffixes90 = qw(.f90 .f95 .f03 .f08 .F90 .F95 .F03 .F08);
+our @suffixes = (@suffixes77,@suffixes90);
+
+#-------------------------------------------------------------------------------------
+#List of directories and files
+@alldirs="../../Sources";
+$i=0;
+$j=0;
+foreach $dir (@alldirs) {
+  $usedirs[$j]=0;
+  if (grep(/^$dir$/,@nodirs)) { # --> verify if exist $dir on @nodirs
+#    if($verbose){ print "Excluded directory : $dir\n"; }
+  } else {
+    opendir(SDIR,$dir);
+    @entries=readdir(SDIR);
+    foreach (@entries) {
+      $file = $dir."/".$_;
+      if( -d $file ){
+        if( ! (($_=~/^\./) || ($_=~/CVS/)) ) { push(@alldirs,$file)};
+      }
+      if( -f $file ) {
+        if( ! ($_=~/\#/) ) {
+          if ( &IsSourceFile($_) ) {
+            $i++;
+            push(@comfiles,$file);
+            $usedirs[$j]=1;
+          }
+          else {
+            push(@otherfiles,$file);
+          }
+        }
+      }
+    }
+    closedir(SDIR);
+  }
+  $j++;
+}
+$ncf=$i-1;
+#-------------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------------
+#Loop over files
+$passed_subroutine = 0;
+foreach $file (@comfiles) {
+   $Mod_name = $file;
+   $Mod_name =~ s/.*\///s;  #remove everything before last /
+   $Mod_name =~ s/\..*//;   #remove .f90
+   chomp $Mod_name;
+   
+   @Intelnames = ();
+   my ($NCONCAT,$TYPE,$PROCEDURE);
+   $aux2 = substr($Mod_name, 0, 4); #aux2 contains the first 4 characters
+   if ($aux2 eq "Mod_") {
+      $incontains = 0;
+      $uselist = ();
+      open(IN,"$file");
+      $subroutine_text = ();       #text from the subroutines is set to ();
+      $passed_interface = 0;       #we still didn't find an interface
+      while ($stringin =<IN>) {    #read lines
+         $stringaux = $stringin;
+         $stringaux =~ s/^\s+//; #remove leading spaces
+         @words = (split(/ {1,}/, $stringaux )) ; # words in the line, space separator
+         #@cellMessage = split(/ {2,}/, $message);
+         if (@words[0]  =~ /!#\$COMPOSEPROCEDURES/i) {     
+            $TYPE = @words[1];
+            $PROCEDURE = @words[2];
+            $NCONCAT = int(@words[3]);
+            
+            $file2 = dirname($file);
+            $file2 = "$file2\/COMPOSEPROCEDURES_POINTERS_$TYPE\.i90";
+            open(OUT,">>$file2.aux");
+               print OUT "
+               integer :: nconcat$TYPE\_XFG23 = $NCONCAT  
+               integer :: iconcat$TYPE\_XFG23 = 0  
+               ";
+               for ($count = 1; $count <= $NCONCAT; $count++) {
+                  print OUT "
+               procedure($PROCEDURE), pointer :: CP\_$TYPE\_XFG23_$PROCEDURE\_1\_$count 
+               procedure($PROCEDURE), pointer :: CP\_$TYPE\_XFG23_$PROCEDURE\_2\_$count 
+               ";
+               }
+            close OUT;
+            $file2aux = "$file2\.aux";
+            $kflag = md5check($file2aux,$file2);
+            if ($kflag == 1) {system ("cp $file2aux $file2");}
+            unlink($file2aux);
+            
+            $file2 = dirname($file);
+            $file2 = "$file2\/COMPOSEPROCEDURES_TYPEBOUND_$TYPE\.i90";
+            open(OUT,">>$file2.aux");
+               print OUT "
+               procedure :: ComposeProcedures => CP\_$TYPE\_XFG23
+               procedure :: ConcatenateProcedures => CONCP\_$TYPE\_XFG23
+               procedure :: AssignProcedure => ASSP\_$TYPE\_XFG23
+               procedure :: ResetProcedureComposition => RPC\_$TYPE\_XFG23
+               ";
+            close OUT;
+            $file2aux = "$file2\.aux";
+            $kflag = md5check($file2aux,$file2);
+            if ($kflag == 1) {system ("cp $file2aux $file2");}
+            unlink($file2aux);
+            
+            $file2 = dirname($file);
+            $file2 = "$file2\/COMPOSEPROCEDURES_SUBROUTINES_$TYPE\.i90";
+           open(OUT,">>$file2.aux");
+               print OUT "
+                
+                subroutine RPC\_$TYPE\_XFG23(a)
+                  implicit none
+                  class($TYPE) :: a
+                  
+                  a%iconcat$TYPE\_XFG23 = 0  
+                end subroutine
+               
+                subroutine CONCP\_$TYPE\_XFG23(a,proc1,PROCEDURE2) 
+                  implicit none
+                  class($TYPE) :: a 
+                  procedure(PROCEDURE2), pointer :: proc2   
+                  procedure($PROCEDURE), pointer :: proc1
+                  procedure($PROCEDURE), pointer :: proc3
+                  
+                  
+                  interface
+                     subroutine PROCEDURE2(a)
+                        import $TYPE
+                        implicit none
+                        class($TYPE) :: a
+                     end subroutine
+                  end interface
+                  
+                  
+                  proc2 => PROCEDURE2
+                  
+                  if (associated (proc1) ) then
+                     proc3 => proc1
+                     call a\%ComposeProcedures(proc3,proc2,proc1)
+                  else
+                     proc1 => proc2
+                  endif
+               
+               end subroutine
+               
+               subroutine ASSP\_$TYPE\_XFG23(a,proc1,PROCEDURE2) 
+                  implicit none
+                  class($TYPE) :: a 
+                  procedure(PROCEDURE2), pointer :: proc2   
+                  procedure($PROCEDURE), pointer :: proc1
+                  
+                  interface
+                     subroutine PROCEDURE2(a)
+                        import $TYPE
+                        implicit none
+                        class($TYPE) :: a
+                     end subroutine
+                  end interface
+                  
+                  proc2 => PROCEDURE2
+                  proc1 => proc2
+              
+               end subroutine
+               
+               
+               subroutine CP\_$TYPE\_XFG23(a,PROCEDURE1,PROCEDURE2,proc3) 
+                  implicit none
+                  class($TYPE) :: a 
+                  procedure(PROCEDURE1), pointer :: proc1
+                  procedure(PROCEDURE2), pointer :: proc2    
+                  procedure($PROCEDURE), pointer :: proc3
+                  
+                  interface
+                     subroutine PROCEDURE1(a)
+                        import $TYPE
+                        implicit none
+                        class($TYPE) :: a
+                     end subroutine
+                  end interface   
+                  
+                  interface
+                     subroutine PROCEDURE2(a)
+                        import $TYPE
+                        implicit none
+                        class($TYPE) :: a
+                     end subroutine
+                  end interface 
+                  
+                  a\%iconcat$TYPE\_XFG23 = a\%iconcat$TYPE\_XFG23+1 
+                  
+                  proc1 => PROCEDURE1
+                  proc2 => PROCEDURE2
+                  
+                  if (a\%iconcat$TYPE\_XFG23 > a\%nconcat$TYPE\_XFG23) then
+                     write(*,*) \"Maximum Number of Procedure Compositions reached\"
+                     stop
+                  endif
+                  
+               ";   
+               
+               for ($count = 1; $count <= int($NCONCAT); $count++) {
+                  print OUT "
+                  if (a\%iconcat$TYPE\_XFG23 == $count) then 
+                     call CP\_$TYPE\_XFG23_$count(a,proc1,proc2,proc3) 
+                  endif 
+                  ";
+               }
+               print OUT "
+               end subroutine
+               
+               
+               ";
+               
+               
+               for ($count = 1; $count <= $NCONCAT; $count++) {
+                  print OUT "
+                  subroutine CP\_$TYPE\_XFG23_$count(a,proc1,proc2,proc3) 
+                     implicit none
+                     class($TYPE) :: a
+                     procedure($PROCEDURE), pointer :: proc1
+                     procedure($PROCEDURE), pointer :: proc2
+                     procedure($PROCEDURE), pointer :: proc3
+                     
+                     a\%CP\_$TYPE\_XFG23_$PROCEDURE\_1\_$count  => proc1
+                     a\%CP\_$TYPE\_XFG23_$PROCEDURE\_2\_$count  => proc2
+                     
+                     proc3 => CP\_$TYPE\_XFG23RUN$count\_$PROCEDURE
+                     
+                  end subroutine
+                  
+                  subroutine CP\_$TYPE\_XFG23RUN$count\_$PROCEDURE(a) 
+                     implicit none
+                     class($TYPE) :: a
+                     
+                     call a\%CP\_$TYPE\_XFG23_$PROCEDURE\_1\_$count
+                     call a\%CP\_$TYPE\_XFG23_$PROCEDURE\_2\_$count
+                  end subroutine
+                  
+                  ";
+               }
+              
+
+            
+            close OUT;
+            $file2aux = "$file2\.aux";
+            $kflag = md5check($file2aux,$file2);
+            if ($kflag == 1) {system ("cp $file2aux $file2");}
+            unlink($file2aux);
+            
+            }
+               
+         
+      }
+      #print "$file \n";
+      close(IN);
+   }
+   
+   
+
+   $incontains = 0;
+   $uselist = ();
+   open(IN,"$file");
+   $subroutine_text = ();       #text from the subroutines is set to ();
+   $passed_interface = 0;       #we still didn't find an interface
+   while ($stringin =<IN>) {    #read lines
+      $stringaux = $stringin;
+      $stringaux =~ s/^\s+//; #remove leading spaces
+      @words = (split(/ {1,}/, $stringaux )) ; # words in the line, space separator
+      #@cellMessage = split(/ {2,}/, $message);
+      if (@words[0]  =~ /!#\$COMPOSEPROCS/i) {   
+         $NCONCAT = int(@words[1]);
+         
+         $file2 = dirname($file);
+         $file2 = "$file2\/COMPOSEPROCS_POINTERS_$NCONCAT\.i90";
+         open(OUT,">>$file2.aux");
+            print OUT "
+            integer :: nconcat\_XFG23 = $NCONCAT  
+            integer :: iconcat\_XFG23 = 0  
+            
+            ";
+            print OUT "
+            type :: POINTER_OBJECT_XFG23
+            ";
+            for ($count = 1; $count <= $NCONCAT; $count++) {
+               print OUT "
+            procedure(),NOPASS, pointer :: CP\_XFG23\_1\_$count => NULL()
+            procedure(),NOPASS, pointer :: CP\_XFG23\_2\_$count => NULL()
+            ";
+            }
+            print OUT "
+            end type 
+            type(POINTER_OBJECT_XFG23) :: POBJECT
+            ";
+         close OUT;
+         $file2aux = "$file2\.aux";
+         $kflag = md5check($file2aux,$file2);
+         if ($kflag == 1) {system ("cp $file2aux $file2");}
+         unlink($file2aux);
+         
+         $file2 = dirname($file);
+         $file2 = "$file2\/COMPOSEPROCS_SUBROUTINES_$NCONCAT\.i90";
+         open(OUT,">>$file2.aux");
+            print OUT "
+               
+               subroutine ResetProcedureComposition
+                  implicit none
+                  
+                  iconcat\_XFG23 = 0  
+               end subroutine
+               
+               subroutine PrependProcedure(proc1,PROCEDURE2) 
+                  implicit none
+                  procedure(PROCEDURE2), pointer :: proc2 => NULL()   
+                  procedure(), pointer :: proc1
+                  procedure(), pointer :: proc3 => NULL()
+                  
+                  
+                  interface
+                     subroutine PROCEDURE2
+                        implicit none
+                     end subroutine
+                  end interface
+                  
+                  
+                  proc2 => PROCEDURE2
+                  
+                  if (associated (proc1) ) then
+                     proc3 => proc1
+                     call ComposeProcedures(proc2,proc3,proc1)
+                  else
+                     proc1 => proc2
+                  endif
+               end subroutine
+            
+               subroutine ConcatenateProcedures(proc1,PROCEDURE2) 
+                  implicit none
+                  procedure(PROCEDURE2), pointer :: proc2 => NULL()   
+                  procedure(), pointer :: proc1
+                  procedure(), pointer :: proc3 => NULL()
+                  
+                  
+                  interface
+                     subroutine PROCEDURE2
+                        implicit none
+                     end subroutine
+                  end interface
+                  
+                  
+                  proc2 => PROCEDURE2
+                  
+                  if (associated (proc1) ) then
+                     proc3 => proc1
+                     call ComposeProcedures(proc3,proc2,proc1)
+                  else
+                     proc1 => proc2
+                  endif
+               end subroutine
+            
+            subroutine AssignProcedure(proc1,PROCEDURE2) 
+               implicit none
+               procedure(PROCEDURE2), pointer :: proc2 => NULL()   
+               procedure(), pointer :: proc1
+               
+               interface
+                  subroutine PROCEDURE2
+                  implicit none
+                  end subroutine
+               end interface
+               
+               proc2 => PROCEDURE2
+               proc1 => proc2
+            
+            end subroutine
+            
+            
+            subroutine ComposeProcedures(PROCEDURE1,PROCEDURE2,proc3) 
+               implicit none
+               procedure(), pointer :: proc1 => NULL()
+               procedure(), pointer :: proc2 => NULL()    
+               procedure(), pointer :: proc3
+               
+               interface
+                  subroutine PROCEDURE1
+                     implicit none
+                  end subroutine
+               end interface   
+               
+               interface
+                  subroutine PROCEDURE2
+                     implicit none
+                  end subroutine
+               end interface 
+               
+               iconcat\_XFG23 = iconcat\_XFG23+1 
+               
+               proc1 => PROCEDURE1
+               proc2 => PROCEDURE2
+               
+               if (iconcat\_XFG23 > nconcat\_XFG23) then
+                  write(*,*) \"Maximum Number of Procedure Compositions reached\"
+                  stop
+               endif
+               
+            ";   
+            
+            for ($count = 1; $count <= int($NCONCAT); $count++) {
+               print OUT "
+               if (iconcat\_XFG23 == $count) then 
+                  call CP\_XFG23_$count(proc1,proc2,proc3) 
+               endif 
+               ";
+            }
+            print OUT "
+            end subroutine
+            ";
+            
+            
+            for ($count = 1; $count <= $NCONCAT; $count++) {
+               print OUT "
+               subroutine CP\_XFG23_$count(proc1,proc2,proc3) 
+                  implicit none
+                  procedure(), pointer :: proc1
+                  procedure(), pointer :: proc2    
+                  procedure(), pointer :: proc3
+                  
+                  interface
+                     subroutine PROCEDURE1
+                        implicit none
+                     end subroutine
+                  end interface   
+                  
+                  interface
+                     subroutine PROCEDURE2
+                        implicit none
+                     end subroutine
+                  end interface 
+                  
+                  POBJECT\%CP\_XFG23\_1\_$count  => proc1
+                  POBJECT\%CP\_XFG23\_2\_$count  => proc2
+                  
+                  proc3 => CP\_XFG23RUN$count\_
+                  
+               end subroutine
+               
+               subroutine CP\_XFG23RUN$count\_
+                  implicit none
+                  
+                  call POBJECT\%CP\_XFG23\_1\_$count
+                  call POBJECT\%CP\_XFG23\_2\_$count
+               end subroutine
+               
+               ";
+            }
+            
+
+         
+         close OUT;
+         $file2aux = "$file2\.aux";
+         $kflag = md5check($file2aux,$file2);
+         if ($kflag == 1) {system ("cp $file2aux $file2");}
+         unlink($file2aux);
+         
+         }
+
+   
+   
+   }
+   
+   
+   
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+# ------------- Local Routines ----------------
+#
+
+sub md5check {
+   $kflag = 0;
+   open(FILEmd5,$_[0]);
+   if (-e $_[1]) {
+      open(FILE2md5,$_[1]);
+   }
+   else {
+      $kflag = 1;
+   }   
+   
+   if ($kflag == 0) {
+      $mdfile = Digest::MD5->new->addfile(*FILEmd5)->hexdigest;
+      $mdfile2 = Digest::MD5->new->addfile(*FILE2md5)->hexdigest;
+      
+      if ($mdfile !~ $mdfile2) {
+         $kflag = 1;
+      }
+   }
+   
+   close(FILEmd5);
+   close(FILE2md5);
+   
+   
+   
+   $kflag;
+}
+
+
+
+#
+# &toLower(string); --- convert string into lower case
+#
+sub toLower {
+  local($string) = @_[0];
+  $string =~ tr/A-Z/a-z/;
+  $string;
+}
+
+#
+# &uniq(sorted word list); --- remove adjacent duplicate words
+#
+sub uniq {
+  local(@wordlist);
+  @wordlist=();
+  foreach $word (@_) {
+    if ($word ne $wordlist[$#wordlist]) {
+      push(@wordlist, $word);
+    }
+  }
+  @wordlist;
+}
+
+#
+# &noSpaces(string); --- avoid spaces at the begin and end of the word
+#
+sub noSpaces {
+  for (@_) { s/ //g; }
+}
+#
+# &IsFixedForm(string); --- verify if extension is on @suffixes77. (if not source file, not fixed form!)
+#
+sub IsFixedForm {
+  my(undef, undef, $ftype) = fileparse(@_[0],@suffixes77);
+  return (length($ftype));
+}
+
+#
+# &IsSourceFile(string); --- verify if extension is on @suffixes.
+#
+sub IsSourceFile {
+  my(undef, undef, $ftype) = fileparse(@_[0],@suffixes);
+  return (length($ftype));
+}
+
+#
+# &FileToObject(string); --- delete path and change extension (if source file) to ".o"
+#
+sub FileToObject {
+  # not possible use fileparse() -> sometimes bad result.
+  my($current) = basename(@_[0]);
+  foreach my $ext (@suffixes){
+    $current=~s/$ext$/.o/;
+  }
+  $current;
+}
+
+sub ArrayFilter {
+
+  my ($element_count,$iterate,$nun_null);
+  $element_count = $#_;
+  for ($iterate = 0; $iterate <= $element_count; $iterate++)
+  {
+    $non_null = shift (@_);
+    $non_null =~s/ //g;
+    if (length ($non_null)){ push (@_, $non_null); }
+  }
+  return(@_);
+}
+
+sub EvaluateMacro {
+  my (@words_,$key,$macroundef,$macro);
+  @words_ = &ArrayFilter(split(/(\s+|\s*\(\s*|\s*\)\s*|=|,|!)/, )) ;
+  if ((lc($words_[0]) ne "#ifdef") && (lc($words_[0]) ne "#if") ) {
+    die "problem founded evaluating Macro\n";
+  }
+  $key=$words_[1];
+  $macroundef=1;
+  foreach $macro (@macros) {
+    if( $key eq $macro ) { $macroundef=0; }
+  }
+  return($macroundef);
+}
+
+#
+#
+#
+sub HelpText {
+  print "\nUsage:\n\n";
+  print "configure.pl name [opts]\n\n";
+  print "options:\n";
+  print " --srcdir=<dir>  : where <dir> is the root directory of the source files\n";
+  print "                   default: <dir>=./\n";
+  print " --objdir=<dir>  : where <dir> is the target directory for the compiled objects\n";
+  print "                   default: <dir>=./\n";
+  print " --check=<file>  : activate checking of used files. <file> is the file with the main program\n";
+  print "                   Not default value\n";
+  print " --verbose       : activate messages on the screen\n";
+  print " --nodir=<dir>   : get list of directories to exclude of the searches, separated by coma (--nodir=dir1,dir2,...).\n";
+  print "                   Not default list.\n";
+  print " --macros=<key>  : get list of macro definitions for conditional compilation, separated by coma (--macros=macro1,macro2,...).\n";
+  print "                   Not default list.\n";
+  print "                   NOTE: just #ifdef is considered:\n";
+  print "                         #ifdef MACRO\n";
+  print "                         ...\n";
+  print "                         #endif\n";
+  print "\n";
+}

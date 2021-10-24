@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ -z ${HDF5+x} ]
+then
+   cp -rf ../test117/natural.gid .
+   echo "Test not run"
+
+else
+
+   cd natural.gid
+   cp data/natural.dat_pre data/natural.dat
+   ../../../Executables/Unix/InspiraFEM.sh natural
+   cp data/natural.dat_res data/natural.dat
+   ../../../Executables/Unix/InspiraFEM.sh natural -np 2 -nomerge
+   ../../../Executables/Unix/InspiraFEM.sh natural  
+
+fi

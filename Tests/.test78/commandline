@@ -1,0 +1,14 @@
+cd femres_qstatic_nonlinear.gid
+../../../Executables/Unix/InspiraFEM.sh femres_qstatic_nonlinear 
+cd ../femres_timedep_linear.gid
+../../../Executables/Unix/InspiraFEM.sh femres_timedep_linear
+cd ../femres_timedep_nonlinear.gid
+../../../Executables/Unix/InspiraFEM.sh femres_timedep_nonlinear
+cd ../oss_qstatic_linear.gid
+../../../Executables/Unix/InspiraFEM.sh oss_qstatic_linear
+cd ../oss_qstatic_nonlinear.gid
+../../../Executables/Unix/InspiraFEM.sh oss_qstatic_nonlinear
+cd ../oss_timedep_linear.gid
+../../../Executables/Unix/InspiraFEM.sh oss_timedep_linear
+cd ../oss_timedep_nonlinear.gid
+../../../Executables/Unix/InspiraFEM.sh oss_timedep_nonlinear

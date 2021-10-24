@@ -1,0 +1,5 @@
+$        Time      Inner       Current         Displ        Stress      Pressure
+$        step  iteration          time      residual      residual      residual
+            0          1  0.100000E+00  0.100000E+01  0.100000E+01  0.100000E+01
+            0          2  0.100000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+            0          0  0.100000E+00  0.100000E+01  0.100000E+01  0.100000E+01

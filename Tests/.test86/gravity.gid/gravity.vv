@@ -1,0 +1,40 @@
+BeginZE /home/ecastillo/Escritorio/gravity.gid/gravity.vv
+   x -0.254386454820632935 1.25438606739044189
+   y 1.38294112682342529 -0.382941126823425293
+   z -2.17944955825805664 2.17944955825805664
+   e 0.726483166217803955
+   v -0 -0 -8.74227765734758577e-08
+   r -1
+   m 1 -1.74845553146951715e-07 0 0 1.74845553146951715e-07 1 0 0 0 0 1 0 0 0 0 1
+   c 0.5 0.5 0
+   pd 0
+   pno 0
+   pfo 0
+   pf 4
+   pv 0
+   NowUse 1
+   DrawingType 0
+   LightVector 90 90 150 0
+   OGLShadow(UseShadows) 0
+   OGLShadow(RenderMode) RenderNice
+   OGLShadow(ShadowBias) -0.002
+   OGLShadow(AmbientShadows) 1
+   OGLShadow(UseFBO) 0
+   OGLShadow(FBOSize) 0
+   OGLShadow(DimmedLightFactor) 0.02
+   OGLStereo(UseStereo) 0
+   OGLStereo(RelativeEyeDistance) 1
+   OGLStereo(FlipEyes) 0
+   OGLStereo(StereoMode) AnaglyphColors
+   OGLStereo(EyeDistance) 0.075
+   OGLStereo(LeftEyeDistance) 1 0 0 1
+   OGLStereo(RightEyeDistance) 0 1 1 1
+EndZE /home/ecastillo/Escritorio/gravity.gid/gravity.vv
+
+BeginMirror
+   Mirror 0 Angle 0.0 AngleFake -15.0 SizeFactor 2.0 HeightOffset 0.25 Color #d9e5f24d Backlight Off EdgeStyle No Type Scene DrawMode Mirror
+EndMirror
+
+BeginInfo
+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
+EndInfo

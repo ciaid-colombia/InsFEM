@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+<Collection>
+<DataSet timestep="0.4" group="" part="0" file="post/Fluid/bouss_0.pvtu"/>
+<DataSet timestep="0.4" group="" part="0" file="post/Tempe/bouss_0.pvtu"/>
+<DataSet timestep="0.8" group="" part="1" file="post/Fluid/bouss_1.pvtu"/>
+<DataSet timestep="0.8" group="" part="1" file="post/Tempe/bouss_1.pvtu"/>
+<DataSet timestep="0.8" group="" part="2" file="post/Fluid/bouss_2.pvtu"/>
+</Collection>
+</VTKFile>
+<DataSet timestep="0.8" group="" part="2" file="post/Tempe/bouss_2.pvtu"/>
+</Collection>
+</VTKFile>

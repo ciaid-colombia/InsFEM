@@ -1,0 +1,18 @@
+REDUCED_ORDER_PROBLEM
+$------------------------------------------------------------ 
+STAGE:                         FOM
+STYPE_OF_ROM:                  SVD
+NSNAPSHOTS:                    10
+INTERVAL_BETWEEN_SNAPSHOTS:    1
+NON_LINEAR_ITERATIONS:         1
+MASS_PROJECTION:               On
+CONVERGENCE_TOLERANCE:         1e-5
+ENERGY_RETAINED:               0.9999999
+PERCENTAGE_OF_SAMPLING_POINTS: 100
+PROJECTION_SPACE:              Petrov-Galerkin
+MEAN_SUBSTRACTION:             On
+SAMPLING_METHOD:               None
+HR_METHOD:		       Cubature
+SUBSCALES_FOR_ROM:             Off NoPostProcessSubscales ErrorFiltering 0.5 PearsonFiltering 0.2
+$------------------------------------------------------------ 
+END_REDUCED_ORDER_PROBLEM

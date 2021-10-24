@@ -1,0 +1,25 @@
+#!/bin/bash
+if [ -z ${SLEPC_DIR+x} ]
+then
+	cp -rf ../test132/naturalI.gid .
+	echo "Test not run"
+	touch testnotrun
+else
+	if [ -z ${HDF5+x} ]
+	then
+		cp -rf ../test132/naturalI.gid .
+		echo "Test not run"
+		touch testnotrun
+	else
+		cd naturalI.gid
+		cp rst/naturalI.lmn.rst_bkp rst/naturalI.lmn.rst
+                cp data/naturalI.lmn.rom.dat_1 data/naturalI.lmn.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh naturalI -np 2 -nomerge
+                cp data/naturalI.lmn.rom.dat_2 data/naturalI.lmn.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh naturalI -np 2 -nomerge
+                cp data/naturalI.lmn.rom.dat_3 data/naturalI.lmn.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh naturalI -np 2 -nomerge
+                cp data/naturalI.lmn.rom.dat_4 data/naturalI.lmn.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh naturalI -np 2 -nomerge
+	fi
+fi

@@ -1,0 +1,6 @@
+cd cylinder.gid
+../../../Executables/Unix/InspiraFEM.sh cylinder -postprocessfolder . -restartfolder data
+cd ..
+cd cylinder_FractOSS_NonLi_NewtonRaphson.gid
+../../../Executables/Unix/InspiraFEM.sh cylinder_FractOSS_NonLi_NewtonRaphson -postprocessfolder . -restartfolder data
+

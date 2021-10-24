@@ -1,0 +1,13 @@
+if [ -z ${SLEPC_DIR+x} ]
+then
+	cp -rf ../test39/tempe_rom.gid .
+	echo "Test not run"
+	touch testnotrun
+else
+	cd tempe_rom.gid
+	cp data/tempe_rom.romBUILD.dat data/tempe_rom.tem.rom.dat
+	../../../Executables/Unix/InspiraFEM.sh tempe_rom -postprocessfolder . -restartfolder data
+	cp data/tempe_rom.romRUN.dat data/tempe_rom.tem.rom.dat
+	../../../Executables/Unix/InspiraFEM.sh tempe_rom -postprocessfolder . -restartfolder data
+fi
+

@@ -1,0 +1,11 @@
+Mescape Postprocess
+      Mescape files add 
+      { post/Cantilever0.post.res  post/Cantilever1.post.res  post/Cantilever2.post.res  post/Cantilever3.post.res }
+      Mescape files saveall binMeshesSets
+      m0.bin
+         Mescape files new
+         Yes
+         Mescape files ReadMultiple { m0.bin}
+          Mescape files saveall binMeshesSets
+          Cantilever.post.res
+      Quit

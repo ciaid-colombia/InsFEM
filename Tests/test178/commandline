@@ -1,0 +1,3 @@
+cd cook_membrane.gid
+../../../Executables/Unix/InspiraFEM.sh cook_membrane -np 2 -nomerge
+

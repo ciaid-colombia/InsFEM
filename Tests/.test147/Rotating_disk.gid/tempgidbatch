@@ -1,0 +1,11 @@
+Mescape Postprocess
+      Mescape files add 
+      { post/Rotating_disk0.post.res  post/Rotating_disk1.post.res  post/Rotating_disk2.post.res  post/Rotating_disk3.post.res }
+      Mescape files saveall binMeshesSets
+      m0.bin
+         Mescape files new
+         Yes
+         Mescape files ReadMultiple { m0.bin}
+          Mescape files saveall binMeshesSets
+          Rotating_disk.post.res
+      Quit

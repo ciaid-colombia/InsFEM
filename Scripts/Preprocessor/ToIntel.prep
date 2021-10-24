@@ -1,0 +1,438 @@
+#!/usr/bin/perl
+use File::Basename;
+use Getopt::Long;
+use Digest::MD5 qw(md5 md5_hex md5_base64);
+
+
+system ("cp -r -p ../../Sources ../../.SourcesIntel0");
+system ("find ../../.SourcesIntel0/ -name .svn -print0 | xargs -0 rm -rf");
+
+my ($name,$main,$srcdir,$entry,$objdir,$file,$dirs,$i,$j,$k,$ncf,$imf,$verbose,$l,$help,$objvar) ;
+my (@entries,@otherfiles,@comfiles,@usedirs,@alldirs,@nodirs,@fnddirs,@macros);
+
+#Check intel version
+my $isIntel13 = "no";
+$output = `mpif90 -v 2>&1 1>/dev/null`;
+if ($output =~ / 13./) {
+   $isIntel13 = "yes";
+}
+print " Working with intel 13 version: $isIntel13 \n"; 
+
+
+
+our @suffixes77 = qw(.f .for .F .FOR);
+our @suffixes90 = qw(.f90 .f95 .f03 .f08 .F90 .F95 .F03 .F08 .i90 .fn);
+our @suffixes = (@suffixes77,@suffixes90);
+
+#-------------------------------------------------------------------------------------
+#List of directories and files
+@alldirs="../../.SourcesIntel0";
+$i=0;
+$j=0;
+foreach $dir (@alldirs) {
+  $usedirs[$j]=0;
+  if (grep(/^$dir$/,@nodirs)) { # --> verify if exist $dir on @nodirs
+#    if($verbose){ print "Excluded directory : $dir\n"; }
+  } else {
+    opendir(SDIR,$dir);
+    @entries=readdir(SDIR);
+    foreach (@entries) {
+      $file = $dir."/".$_;
+      if( -d $file ){
+        if( ! (($_=~/^\./) || ($_=~/CVS/)) ) { push(@alldirs,$file)};
+      }
+      if( -f $file ) {
+        if( ! ($_=~/\#/) ) {
+          if ( &IsSourceFile($_) ) {
+            $i++;
+            push(@comfiles,$file);
+            $usedirs[$j]=1;
+          }
+          else {
+            push(@otherfiles,$file);
+          }
+        }
+      }
+    }
+    closedir(SDIR);
+  }
+  $j++;
+}
+$ncf=$i-1;
+#-------------------------------------------------------------------------------------
+
+for(@alldirs){s/SourcesIntel0/SourcesIntel/g}
+
+foreach $dir (@alldirs) {
+   system("mkdir -p $dir");
+  }
+
+#------------------------------------------------------------------------------------
+#Loop over files
+my $passed_subroutine = 0;
+foreach $file (@comfiles) {
+   $Mod_name = $file;
+   $Mod_name =~ s/.*\///s;  #remove everything before last /
+   $Mod_name =~ s/\..*//;   #remove .f90
+   chomp $Mod_name;
+
+   my $outputthisparticular = 0;
+   
+   @Intelnames = ();
+   
+   $aux2 = substr($Mod_name, 0, 4); #aux2 contains the first 4 characters
+   if ($aux2 eq "Mod_") {
+      $incontains = 0;
+      $uselist = ();
+      open(IN,"$file");
+      open(OUT,">>$file.aux");
+      $subroutine_text = ();       #text from the subroutines is set to ();
+      $passed_interface = 0;       #we still didn't find an interface
+      $passed_subroutine = 0;
+      while ($stringin =<IN>) {    #read lines
+         $stringaux = $stringin;
+         $stringaux =~ s/^\s+//; #remove leading spaces
+   	   @words = (split(/ {1,}/, $stringaux )) ; # words in the line, space separator
+   	   #@cellMessage = split(/ {2,}/, $message);
+   	   if (@words[0]  =~ /contains/) {      #found a contains statement
+   	      $incontains = 1;
+   	   }
+   	   
+   	   if ($incontains == 0 and @words[0]  =~ /use/ and $stringin !~ /Mod_MpiObject/i) {      #found a module use statement
+   	   #if ($incontains == 0 and @words[0]  =~ /use/ ) {      #found a module use statement
+   	      $uselist .= $stringin;
+   	   }
+   	   
+   	   
+   	   if (@words[0]  =~ /subroutine/) {      #found a subroutine
+   	      $passed_subroutine = 1;
+   	   }
+   	   elsif (@words[0]  =~ /end/ and @words[1]  =~ /subroutine/) {
+   	      $passed_subroutine = 0;
+   	   }
+   	   
+   	   #if (@words[0] =~ /procedure/ ) {
+   	   #   print "@words[0]_@words[1]_@words[2]_@words[3]_@words[4]_@words[5] \n";
+   	   #}
+   	   
+   	   if (@words[0]  =~ /interface/ and (@words[1] eq "" or @words[1] eq "\n")  and $passed_subroutine eq 0) {      #found interface
+   	      $passed_interface = 1;
+   	      #print "$file \n";
+            $Interface_Text = $stringin;
+            
+                       
+   	      $stringin = <IN>;
+   	      $Interface_Text .= $stringin;
+   	      
+   	      $stringaux = $stringin;
+            $stringaux =~ s/^\s+//; #remove leading spaces
+   	      @words = (split(/ +/, $stringaux )) ;  #read new line and words
+   	      while (@words[0] !~ /end/ or @words[1] !~ /interface/)  {  #till the end of the interface
+   	         
+   	         
+   	         $aux_subroutine_text = $stringin;
+   	         if (@words[0] =~ /subroutine/) {#found a subroutine
+   	            #First I open the file, insert the use statements and close it
+   	            @myauxwords = @words;
+   	            @myauxwords[1] =~ s/\(.*//;  #subroutine name, remove everything after (   example: (a,ndime,npoin)
+   	            chomp @myauxwords[1];  #subroutine name, remove \n
+   	            foreach $filesub (@comfiles) {  #search for the subroutine with the correct name
+   	               if ($filesub =~ /\/@myauxwords[1].f90/i) {
+   	                  
+   	                  open(IN2,"$filesub");
+   	                  open(OUT2,">>$filesub.aux");
+   	                  $testaux = 0;
+   	                  while ($stringin2 =<IN2>) {
+   	                     $stringaux2 = $stringin2;
+                           $stringaux2 =~ s/^\s+//; #remove leading spaces
+   	                     @words2 = (split(/\s+/, $stringaux2)) ;  #read new line and words
+   	                     
+   	                     #if ($testaux == 0) {
+   	                     #   print "@words2[0] \n";
+   	                     #   print "$uselist";
+   	                     #}
+   	                     
+   	                     if (@words2[0] =~ /subroutine/) {
+   	                        if ($isIntel13 =~ /yes/) {
+   	                           $stringin2 .= $uselist;
+   	                        }
+   	                        #if($testaux == 0) {
+   	                        #   print "$stringin2";
+   	                        #}
+   	                     }
+   	                     
+   	                    $testaux = 1;
+   	                     
+   	                    print OUT2 "$stringin2";
+   	                     
+   	                  }
+   	                  close(IN2);
+   	                  close(OUT2);
+   	                  system ("mv $filesub.aux $filesub");
+
+   	                  #unlink("$filesub");  #remove this subroutine file
+   	               }
+   	            }
+   	            
+   	            
+   	            
+   	            
+   	            
+   	            
+   	            
+   	            
+   	            
+   	            
+   	            
+   	            
+   	            $auxwords1 = @words[1];
+   	            $auxwords1 =~ s/\(.*//;  #subroutine name, remove everything after (   example: (a,ndime,npoin)
+   	            chomp $auxwords1;  #subroutine name, remove \n
+   	            $auxwords2 = $auxwords1."_INTEL";
+   	            $aux_subroutine_text =~ s/$auxwords1/$auxwords2/g;
+   	            
+   	            $subroutine_call = $stringin;
+   	            $subroutine_call =~ s/subroutine/call/i;
+   	            
+   	            push(@Intelnames,$auxwords1);
+   	         }
+   	         elsif (@words[0] =~ /end/ and @words[1] =~ /subroutine/) {
+   	            $aux_subroutine_text = $subroutine_call.$stringin;
+   	         }
+   	         elsif (@words[0] =~ /import/) {
+   	            $aux_subroutine_text = "\n"; 
+   	         }
+   	         
+   	         $subroutine_text .= $aux_subroutine_text;
+   	         
+   	         $stringin = <IN>;
+   	         $Interface_Text .= $stringin;
+   	         $stringaux = $stringin;
+               $stringaux =~ s/^\s+//; #remove leading spaces
+   	         @words = (split(/ +/, $stringaux )) ;
+   	      } 
+   	      print OUT "$Interface_Text \n";  
+   	   }
+   	   elsif (@words[0]  =~ /contains/ and $passed_interface == 1) {
+   	      print OUT "$stringin";
+   	      print OUT "$subroutine_text";   #print the subroutine files
+   	   }
+   	   else {
+   	      print OUT "$stringin";
+   	   }
+   	   #foreach $word (@words) {
+   	   #   print "$word \n";
+   	   #}
+   	}
+      #print "$file \n";
+      close(IN);
+      close(OUT);
+      
+      #This is for replacing names in procedure =>  NameIntel
+      open(IN,"$file.aux");
+      open(OUT,">>$file.aux2");
+      
+      #foreach $NameIntel (@Intelnames) {
+      #   print "intelnames $NameIntel \n";          
+      #}
+      
+      while ($stringin =<IN>) {    #read lines
+         if ($stringin =~ /procedure/) {
+            if ($stringin =~ /=>/) {
+               foreach $NameIntel (@Intelnames) {
+                  $stringin =~ s/$NameIntel /$NameIntel _INTEL /i;
+                  $stringin =~ s/$NameIntel\n/$NameIntel _INTEL\n/i;
+                  $stringin =~ s/ _INTEL/_INTEL/i;
+               }
+            } 
+            else {  
+               foreach $NameIntel (@Intelnames) {
+                  $stringin =~ s/$NameIntel /$NameIntel => $NameIntel _INTEL /i;
+                  $stringin =~ s/$NameIntel\n/$NameIntel => $NameIntel _INTEL\n/i;
+                  $stringin =~ s/ _INTEL/_INTEL/i;
+               }
+            }
+         }   
+         print OUT "$stringin";
+      }
+      
+      close(IN);
+      close(OUT);
+      
+      #$userinput =  <STDIN>;
+      
+      unlink("$file.aux");  #remove this subroutine file
+      system ("mv $file.aux2 $file");
+   }
+}
+
+#$userinput =  <STDIN>;
+
+foreach $file (@comfiles) {
+   
+   #Check for file equality
+   $file2 = $file;
+   $file2 =~ s/SourcesIntel0/SourcesIntel/g;
+   
+   my $kflag = 0;
+   open(FILE,$file);
+   if (-e $file2) {
+      open(FILE2,$file2);
+   }
+   else {
+      $kflag = 1;
+   }   
+   
+   if ($kflag == 0) {
+      $mdfile = Digest::MD5->new->addfile(*FILE)->hexdigest;
+      $mdfile2 = Digest::MD5->new->addfile(*FILE2)->hexdigest;
+      
+      if ($mdfile !~ $mdfile2) {
+         $kflag = 1;
+      }
+      
+
+      
+   }
+
+   
+   close(FILE);
+   close(FILE2);
+   
+   
+   
+   if ($kflag == 1) {
+      system ("cp $file $file2");
+   }  
+}
+
+
+system ("rm -r -f ../../.SourcesIntel0");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+# ------------- Local Routines ----------------
+#
+
+#
+# &toLower(string); --- convert string into lower case
+#
+sub toLower {
+  local($string) = @_[0];
+  $string =~ tr/A-Z/a-z/;
+  $string;
+}
+
+#
+# &uniq(sorted word list); --- remove adjacent duplicate words
+#
+sub uniq {
+  local(@wordlist);
+  @wordlist=();
+  foreach $word (@_) {
+    if ($word ne $wordlist[$#wordlist]) {
+      push(@wordlist, $word);
+    }
+  }
+  @wordlist;
+}
+
+#
+# &noSpaces(string); --- avoid spaces at the begin and end of the word
+#
+sub noSpaces {
+  for (@_) { s/ //g; }
+}
+#
+# &IsFixedForm(string); --- verify if extension is on @suffixes77. (if not source file, not fixed form!)
+#
+sub IsFixedForm {
+  my(undef, undef, $ftype) = fileparse(@_[0],@suffixes77);
+  return (length($ftype));
+}
+
+#
+# &IsSourceFile(string); --- verify if extension is on @suffixes.
+#
+sub IsSourceFile {
+  my(undef, undef, $ftype) = fileparse(@_[0],@suffixes);
+  return (length($ftype));
+}
+
+#
+# &FileToObject(string); --- delete path and change extension (if source file) to ".o"
+#
+sub FileToObject {
+  # not possible use fileparse() -> sometimes bad result.
+  my($current) = basename(@_[0]);
+  foreach my $ext (@suffixes){
+    $current=~s/$ext$/.o/;
+  }
+  $current;
+}
+
+sub ArrayFilter {
+
+  my ($element_count,$iterate,$nun_null);
+  $element_count = $#_;
+  for ($iterate = 0; $iterate <= $element_count; $iterate++)
+  {
+    $non_null = shift (@_);
+    $non_null =~s/ //g;
+    if (length ($non_null)){ push (@_, $non_null); }
+  }
+  return(@_);
+}
+
+sub EvaluateMacro {
+  my (@words_,$key,$macroundef,$macro);
+  @words_ = &ArrayFilter(split(/(\s+|\s*\(\s*|\s*\)\s*|=|,|!)/, )) ;
+  if ((lc($words_[0]) ne "#ifdef") && (lc($words_[0]) ne "#if") ) {
+    die "problem founded evaluating Macro\n";
+  }
+  $key=$words_[1];
+  $macroundef=1;
+  foreach $macro (@macros) {
+    if( $key eq $macro ) { $macroundef=0; }
+  }
+  return($macroundef);
+}
+
+#
+#
+#
+sub HelpText {
+  print "\nUsage:\n\n";
+  print "configure.pl name [opts]\n\n";
+  print "options:\n";
+  print " --srcdir=<dir>  : where <dir> is the root directory of the source files\n";
+  print "                   default: <dir>=./\n";
+  print " --objdir=<dir>  : where <dir> is the target directory for the compiled objects\n";
+  print "                   default: <dir>=./\n";
+  print " --check=<file>  : activate checking of used files. <file> is the file with the main program\n";
+  print "                   Not default value\n";
+  print " --verbose       : activate messages on the screen\n";
+  print " --nodir=<dir>   : get list of directories to exclude of the searches, separated by coma (--nodir=dir1,dir2,...).\n";
+  print "                   Not default list.\n";
+  print " --macros=<key>  : get list of macro definitions for conditional compilation, separated by coma (--macros=macro1,macro2,...).\n";
+  print "                   Not default list.\n";
+  print "                   NOTE: just #ifdef is considered:\n";
+  print "                         #ifdef MACRO\n";
+  print "                         ...\n";
+  print "                         #endif\n";
+  print "\n";
+}

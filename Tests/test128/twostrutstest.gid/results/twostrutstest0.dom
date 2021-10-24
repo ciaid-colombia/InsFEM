@@ -1,0 +1,34 @@
+      DOMAIN DECOMPOSITION RESULTS
+      ------------------------------------------
+          GLOBAL NUMBER OF POINTS:                            45
+          OPTIMUM NUMBER OF POINTS PER PROCESSOR:             45
+          MAXIMUM NUMBER OF POINTS PER PROCESSOR:             45
+          DIFFERENCE:                                       0.00 %
+
+          TOTAL NUMBER OF GHOST POINTS:                        0
+          MAXIMUM NUMBER OF GHOST POINTS PER PROC              0
+
+          GLOBAL NUMBER OF ELEMENTS:                          67
+          REFERENCE NUMBER OF ELEMENTS PER PROCESSOR:         67
+          MAXIMUM NUMBER OF ELEMENTS PER PROCESSOR:           67
+          DIFFERENCE:                                       0.00 %
+
+     SUMMARY OF COMPUTING TIMES
+     ------------------------------------------
+
+          TOTAL CPU TIME:                  0.06
+               ReaLnods                        :           0.00 (  0.44 % )
+               Partitionate                    :           0.00 (  1.12 % )
+               LocalDimensionsAndIRenumbering  :           0.00 (  0.00 % )
+               GhostPoints                     :           0.00 (  0.01 % )
+               BuildLocalOrdering              :           0.00 (  0.02 % )
+               ReaCoord                        :           0.00 (  0.19 % )
+               LnodsToLocal                    :           0.00 (  0.00 % )
+               LocalGraph                      :           0.00 (  0.03 % )
+               BuildArrayCommunicator          :           0.00 (  0.31 % )
+               GhostCoord                      :           0.00 (  0.47 % )
+               PeriodicBoundaryConditions      :           0.00 (  0.47 % )
+               Dombou                          :           0.00 (  0.03 % )
+               ExtnorLpoty                     :           0.00 (  0.06 % )
+               ComputeVmass                    :           0.00 (  0.10 % )
+               Blbopo                          :           0.00 (  0.00 % )

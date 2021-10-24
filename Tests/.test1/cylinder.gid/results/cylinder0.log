@@ -1,0 +1,54 @@
+
+
+
+     *******
+     Yet another finite element software: NAME
+     *******
+
+          CURRENT TIME STEP dt = 0.100000E-02
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.100000E-02
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.260911E-01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                  8.95 kbytes
+          CONSTRUCTION OF THE DOMAIN:    8.95 kbytes (100.00 %)
+
+          MAXIMUM MEMORY REQUIRED:       8.95 kbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:     29.44 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.04
+          STARTING OPERATIONS         :        0.04 ( 98.78 % )
+               Initialize MPI         :           0.00 ( 37.66 % )
+               Reapro                 :           0.01 ( 37.66 % )
+               Initialize Par. Lib.   :           0.02 ( 37.66 % )
+               Domain Operations      :           0.02 ( 37.66 % )
+               Output Domain          :           0.00 (  2.33 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.00 (  0.91 % )
+          OTHER OPERATIONS            :        0.00 (  2.63 % )
+
+
+     * * * END OF ANALYSIS * * *
+

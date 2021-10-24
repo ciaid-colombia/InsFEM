@@ -1,0 +1,63 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------ 
+PROBLEM_DEFINTION  
+  TEMPORAL_DERIVATIVES: On  
+  CONVECTIVE_TERM:      On  
+  VISCOUS_TERM:         On  
+  GRAVITY:              NORM: 0.0, GX: 0.0, GY: 0.0,  GZ: 0.0  
+  SOURCE_TERMS:           Off, VALUE: 0.0  
+END_PROBLEM_DEFINITION
+$------------------------------------------------------------
+PROPERTIES
+  EQNST=             Ideal_gas
+  GAS_CONSTANT=            287.0
+  DENSITY=          1.2  
+  SPECIFIC_HEAT=    1012.0
+  VISCOSITY=        0.0005882  
+  TCONDUCTION=      0.83  
+  TPRESSURE=        101325.0  
+  REACTION=         0.0
+END_PROPERTIES  
+
+END_PROBLEM_DEFINITION  
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM  
+$------------------------------------------------------------
+NUMERICAL_TREATMENT
+  STABILITY_CONSTANTS:   4.0 2.0
+  TEST_FUNCTION_STABILIZATION: VMS
+  ACCURACY_IN_TIME_SGS:  Dynamic 
+  TYPE_OF_STABILIZATION: Residual_projection_OSS 
+  PROJECTION_TYPE=       L2
+  TRACKING_SUBSCALES:    On   
+  NON_LINEARITY_SGS:     Nonlinear  ITERATIONS: 10  TOLERANCE: 1e-8 Newton_Raphson
+  RELAXATION_SGS:        1.0
+  T1_SCHEME:             BDF2   
+  T1_EULER_STEPS:        1 
+  SAFETY_FACTOR:         1e24  
+  STEADY_STATE_TOLER:    1e-8   
+  NORM_OF_CONVERGENCE:   L2   
+  MAXIMUM_NUMBER_OF_IT:  10
+  CONVERGENCE_TOLERANCE: 1e-8
+END_NUMERICAL_TREATMENT  
+$------------------------------------------------------------
+OUTPUT_&_POST-PROCESS  
+ START_POSTPROCES_AT           STEP =1
+ POSTPROCESS VELOCITY,         STEPS=1
+ POSTPROCESS PRESSURE,         STEPS=1
+ POSTPROCESS TEMPERATURE,      STEPS=1
+ POSTPROCESS DENSITY,          STEPS=1
+ POSTPROCESS STREAMLINES,      STEPS=1
+ POSTPROCESS HEATFLUX,         STEPS=0
+ POSTPROCESS VeSGS,            STEPS=0
+ POSTPROCESS TeSGS,            STEPS=0
+ POSTPROCESS RESIDUAL,         STEPS=0
+ POSTPROCESS REPRO,            STEPS=0
+END_OUTPUT_&_POST_PROCESS
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS, \
+ CONSTANT_BOUNDARY_CONDITIONS
+  INCLUDE heated_cylinder_NR.lmn.fix
+END_BOUNDARY_CONDITIONS  
+$------------------------------------------------------------

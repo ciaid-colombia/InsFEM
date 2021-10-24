@@ -1,0 +1,173 @@
+
+
+
+     *******
+     CASE: NAME
+     *******
+
+          CURRENT TIME STEP dt = 0.200000E+00
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.200000E+00
+          LevSet:
+          - Critical Time step dtc: 0.100000E+07
+          - Ratio dt/dtc:           0.200000E-06
+          Alemov:
+          - Critical Time step dtc: 0.000000E+00
+          - Ratio dt/dtc:           0.000000E+00
+          NSTINC:
+          - Critical Time step dtc: 0.487850E+00
+          - Ratio dt/dtc:           0.409962E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.703914E-01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSTINC:  0.110E-01  0.731E-02  0.243E-04  0.119E-04  0.366E-02  0.147E-02  0.201E-02  0.168E-03  0.110E-04  0.000E+00  0.000E+00  0.000E+00  0.398E-03  0.000E+00
+          Alemov:  0.147E-01  0.138E-01  0.000E+00  0.862E-03  0.477E-06  0.185E-03  0.599E-03  0.238E-06  0.238E-06  0.000E+00  0.000E+00  0.000E+00  0.388E-03  0.000E+00
+          LevSet:  0.468E-02  0.458E-02  0.179E-04  0.596E-05  0.634E-04  0.000E+00  0.000E+00  0.627E-04  0.138E-04  0.000E+00  0.000E+00  0.000E+00  0.536E-03  0.000E+00
+          CURRENT TIME STEP dt = 0.200000E+00
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.400000E+00
+          LevSet:
+          - Critical Time step dtc: 0.447054E-02
+          - Ratio dt/dtc:           0.447373E+02
+          Alemov:
+          - Critical Time step dtc: 0.000000E+00
+          - Ratio dt/dtc:           0.000000E+00
+          NSTINC:
+          - Critical Time step dtc: 0.441561E-02
+          - Ratio dt/dtc:           0.452938E+02
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.914249E-01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSTINC:  0.213E-01  0.731E-02  0.846E-04  0.267E-04  0.139E-01  0.603E-02  0.753E-02  0.284E-03  0.191E-04  0.203E-04  0.000E+00  0.000E+00  0.107E-02  0.137E-03
+          Alemov:  0.168E-01  0.138E-01  0.000E+00  0.291E-02  0.119E-05  0.762E-03  0.202E-02  0.715E-06  0.477E-06  0.477E-05  0.000E+00  0.000E+00  0.980E-03  0.228E-03
+          LevSet:  0.487E-02  0.458E-02  0.689E-04  0.107E-04  0.181E-03  0.000E+00  0.000E+00  0.179E-03  0.329E-04  0.238E-05  0.000E+00  0.000E+00  0.145E-02  0.307E-03
+          CURRENT TIME STEP dt = 0.200000E+00
+
+     >>>  TIME STEP NUMBER:     3     STARTED AT t = 0.600000E+00
+          LevSet:
+          - Critical Time step dtc: 0.622678E-02
+          - Ratio dt/dtc:           0.321193E+02
+          Alemov:
+          - Critical Time step dtc: 0.000000E+00
+          - Ratio dt/dtc:           0.000000E+00
+          NSTINC:
+          - Critical Time step dtc: 0.596211E-02
+          - Ratio dt/dtc:           0.335452E+02
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.109804E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSTINC:  0.298E-01  0.731E-02  0.130E-03  0.403E-04  0.223E-01  0.961E-02  0.123E-01  0.397E-03  0.274E-04  0.505E-04  0.000E+00  0.000E+00  0.171E-02  0.250E-03
+          Alemov:  0.185E-01  0.138E-01  0.000E+00  0.464E-02  0.191E-05  0.116E-02  0.330E-02  0.119E-05  0.954E-06  0.141E-04  0.000E+00  0.000E+00  0.174E-02  0.403E-03
+          LevSet:  0.502E-02  0.458E-02  0.105E-03  0.157E-04  0.273E-03  0.000E+00  0.000E+00  0.270E-03  0.479E-04  0.572E-05  0.000E+00  0.000E+00  0.234E-02  0.554E-03
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 31.81 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   31.81 Mbytes (100.00 %)
+          NSTIN  MODULE:                 0.00 Mbytes (  0.00 %)
+          ALEPR  MODULE:                 0.00 Mbytes (  0.00 %)
+          LEVSE  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      31.83 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:     78.32 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.11
+          STARTING OPERATIONS         :        0.03 ( 31.00 % )
+               Initialize MPI         :           0.00 ( 29.82 % )
+               Reapro                 :           0.00 ( 29.82 % )
+               Initialize Par. Lib.   :           0.00 ( 29.82 % )
+               Domain Operations      :           0.03 ( 29.82 % )
+               Output Domain          :           0.00 (  0.19 % )
+          NSTIN  MODULE               :        0.03 ( 26.83 % )
+               Turnon                 :           0.01 ( 24.27 % )
+               Getste                 :           0.00 (  0.43 % )
+               Begste                 :           0.00 (  0.13 % )
+               Doiter                 :           0.02 ( 74.05 % )
+                 Build Linear System  :               0.01 ( 31.90 % )
+                 Solve Linear System  :               0.01 ( 40.73 % )
+                 Endite               :               0.00 (  1.32 % )
+               Endste                 :           0.00 (  0.09 % )
+               Output                 :           0.00 (  0.27 % )
+               Turnof                 :           0.00 (  1.02 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  5.67 % )
+               Project between meshes :           0.00 (  0.83 % )
+          ALEPR  MODULE               :        0.02 ( 16.67 % )
+               Turnon                 :           0.01 ( 73.96 % )
+               Getste                 :           0.00 (  0.00 % )
+               Begste                 :           0.00 ( 24.78 % )
+               Doiter                 :           0.00 (  0.01 % )
+                 Build Linear System  :               0.00 (  6.21 % )
+                 Solve Linear System  :               0.00 ( 17.64 % )
+                 Endite               :               0.00 (  0.01 % )
+               Endste                 :           0.00 (  0.01 % )
+               Output                 :           0.00 (  0.12 % )
+               Turnof                 :           0.00 (  1.25 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  9.29 % )
+               Project between meshes :           0.00 (  2.15 % )
+          LEVSE  MODULE               :        0.01 (  4.57 % )
+               Turnon                 :           0.00 ( 89.10 % )
+               Getste                 :           0.00 (  2.04 % )
+               Begste                 :           0.00 (  0.31 % )
+               Doiter                 :           0.00 (  5.31 % )
+                 Build Linear System  :               0.00 (  0.00 % )
+                 Solve Linear System  :               0.00 (  0.00 % )
+                 Endite               :               0.00 (  5.27 % )
+               Endste                 :           0.00 (  0.93 % )
+               Output                 :           0.00 (  0.18 % )
+               Turnof                 :           0.00 (  2.28 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 ( 45.56 % )
+               Project between meshes :           0.00 ( 10.79 % )
+          REFINEMENT OPERATIONS           :        0.02 ( 16.92 % )
+             REFINER                     :        0.00 (  3.37 % )
+               Initialize             :           0.00 (  4.62 % )
+               OldExternalBoundaries  :           0.00 (  1.25 % )
+               Refine                 :           0.00 ( 43.66 % )
+                  AmendMarkel         :           0.00 (  0.90 % )
+                  Do21Balancing       :           0.00 (  9.89 % )
+                  RefineSerial        :           0.00 (  5.25 % )
+                  NumberingToParallel :           0.00 ( 11.42 % )
+                  UpdateArraysParaNum :           0.00 (  0.40 % )
+                  HangingNodes        :           0.00 ( 10.66 % )
+                  SelectComp.ToExport :           0.00 ( 20.19 % )
+                  MarkDeadElements    :           0.00 (  0.51 % )
+              LoadRebalance           :           0.00 ( 51.72 % )
+                  Renumbering         :           0.00 (  0.01 % )
+                  ElemProcs           :           0.00 (  6.09 % )
+                  Faces_a             :           0.00 (  0.93 % )
+                  SendNodesAndElements:           0.00 ( 13.54 % )
+                  RebuildRefinementStr:           0.00 ( 30.11 % )
+                  Faces_b,&           :           0.00 (  0.08 % )
+                  Communicator        :           0.00 (  0.76 % )
+             MESH                     :        0.00 (  3.15 % )
+          MESH PROJECTIONS            :        0.00 (  2.58 % )
+          TURNOF OPERATIONS           :        0.00 (  1.61 % )
+          OTHER OPERATIONS            :        0.00 (  0.00 % )
+
+
+     * * * END OF ANALYSIS * * *
+

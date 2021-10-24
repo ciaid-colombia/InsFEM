@@ -1,0 +1,43 @@
+$-------------------------------------------------------------------
+RUN_DATA
+  Femuss:                 reflected
+  MEMCHECK:                   Off
+  OUTPUT_FORMAT:              VTK
+  OUTPUT_COMPRESSION:         ASCII
+  CUSTOMER:                   Universal
+  COMMUNICATOR_LIBRARY:       PETSc
+  ORDERING_LIBRARY:           PETSc
+  REBALANCE_NUMBERING:        PETSc
+  MPICommunicationsType:      NonBlocking
+  FLUSH_TO_DISK:              Off
+  
+  POSTPROCESS:
+     START_POSTPROCESS_AT:        1
+     PROCESSOR_POSTPROCESS_EVERY: 0
+  END_POSTPROCESS
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+  TIME_COUPLING:          Global, Prescribed
+  TIME_INTERVAL=          0.0, 100  
+  TIME_STEP_SIZE=         1  
+  NUMBER_OF_STEPS=        3   
+  MAXIMUM_NUMBER_GLOBAL=  1
+  REMESHING_STRATEGY:     Off
+     ADAPTIVE_MESH_REFINEMENT:   On Nscomp REBALANCING_RATIO 1.5 Off Max_Refinement_Level: 0
+     INITIAL_UNIFORM_REFINEMENT:  Off 1
+INTERPOLATOR_TOLERANCE:    1e-6
+
+  NSCOMP_PROBLEM:         On
+    DELAY STEPS:          0
+    PRELIMINARY RUN:      Off
+    RESTART:              Off
+    ALGORITHM:            Implicit  
+    CONVERGENCE_REQUIRED: Yes
+  END_NSCOMP_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------
+INTERPOLATION_DATA
+END_INTERPOLATION_DATA
+$-------------------------------------------------------------------
+

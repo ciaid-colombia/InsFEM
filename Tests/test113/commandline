@@ -1,0 +1,3 @@
+cd Test2.gid
+../../../Executables/Unix/InspiraFEM.sh Test2
+

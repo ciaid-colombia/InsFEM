@@ -1,0 +1,7 @@
+$    Step   Iteration     SGS iterations    Non Linear Subscales Maximum Residual
+                                              Velocity     Temperature
+          1          1          6        0.100673E-03    0.887531E-04
+          2          1          6        0.129593E-03    0.129482E-03
+          3          1         17        0.901470E-04    0.779420E-04
+          4          1          6        0.834054E-04    0.811543E-04
+          5          1          6        0.647172E-04    0.543160E-04

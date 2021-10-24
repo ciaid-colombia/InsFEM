@@ -1,0 +1,16 @@
+NUMBER OF MATERIALS: 1
+MATERIALS_PROPERTIES
+   
+   BEGIN_MATERIAL
+      IDNUMBER:   1
+      TYPELAW:    Damage
+         UNIAXIAL_STRESS: 5e6
+         FRACTURE_ENERGY: 2000
+         YOUNG0:          1.2e11
+      DENSITY:    1.0
+      CONST_TEN:  Isotropic
+         YOUNG:   1.2e11
+         POISSON: 0.21
+      TANG_TYPE:  Tangent
+   END_MATERIAL
+END_MATERIALS_PROPERTIES

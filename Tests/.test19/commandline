@@ -1,0 +1,3 @@
+cd cylinder_tempe2.gid
+../../../Executables/Unix/InspiraFEM.sh cylinder_tempe2 -postprocessfolder . -restartfolder data -nomerge
+

@@ -1,0 +1,2 @@
+cd cupula3d.gid
+../../../Executables/Unix/InspiraFEM.sh cupula3d -postprocessfolder . -restartfolder data -nomerge

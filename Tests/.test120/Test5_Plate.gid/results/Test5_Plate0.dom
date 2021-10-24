@@ -1,0 +1,37 @@
+      DOMAIN DECOMPOSITION RESULTS
+      ------------------------------------------
+          GLOBAL NUMBER OF POINTS:                           118
+          OPTIMUM NUMBER OF POINTS PER PROCESSOR:            118
+          MAXIMUM NUMBER OF POINTS PER PROCESSOR:            118
+          DIFFERENCE:                                       0.00 %
+
+          TOTAL NUMBER OF GHOST POINTS:                        0
+          MAXIMUM NUMBER OF GHOST POINTS PER PROC              0
+
+          GLOBAL NUMBER OF ELEMENTS:                         193
+          REFERENCE NUMBER OF ELEMENTS PER PROCESSOR:        193
+          MAXIMUM NUMBER OF ELEMENTS PER PROCESSOR:          193
+          DIFFERENCE:                                       0.00 %
+
+     SUMMARY OF COMPUTING TIMES
+     ------------------------------------------
+
+          TOTAL CPU TIME:                  0.79
+               ReaLnods                        :           0.00 (  0.07 % )
+               Partitionate                    :           0.10 ( 12.80 % )
+               LocalDimensionsAndIRenumbering  :           0.00 (  0.00 % )
+               GhostPoints                     :           0.00 (  0.00 % )
+               BuildLocalOrdering              :           0.00 (  0.00 % )
+               ReaCoord                        :           0.00 (  0.04 % )
+               LnodsToLocal                    :           0.00 (  0.00 % )
+               LocalGraph                      :           0.00 (  0.01 % )
+               BuildArrayCommunicator          :           0.00 (  0.03 % )
+               GhostCoord                      :           0.00 (  0.04 % )
+               PeriodicBoundaryConditions      :           0.00 (  0.00 % )
+               Dombou                          :           0.00 (  0.01 % )
+               ExtnorLpoty                     :           0.00 (  0.01 % )
+               ComputeVmass                    :           0.00 (  0.04 % )
+               Blbopo                          :           0.00 (  0.00 % )
+ New global number of points:          129
+ New global number of points:          153
+ New global number of points:          210

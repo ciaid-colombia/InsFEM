@@ -1,0 +1,2 @@
+Navier-Stokes Monolithic: Dynamic subgrid scales, Non-linear subgrid Scales. OSS_FractionalStep: Dynamic, non-linear subscales, newton-raphson, relaxation. Coupling with temperature, dynamic subgrid scales, CrankNicolson.  Coupling with Optics (dissipation required for both NS and TEMPE)
+

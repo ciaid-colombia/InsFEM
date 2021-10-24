@@ -1,0 +1,121 @@
+
+
+
+     *******
+     Yet another finite element software: 
+     *******
+
+          CURRENT TIME STEP dt = 0.250000E-04
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.250000E-04
+          SOLIDS:
+          - Critical Time step dtc: 0.695289-309
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.152222E+01
+
+          GLOBAL ITERATION NUMBER:     2
+          CURRENT CPU TIME:        0.152267E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          SOLIDS:  0.542E+00  0.540E+00  0.000E+00  0.153E-04  0.195E-02  0.545E-03  0.122E-02  0.784E-04  0.844E-04  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.250000E-04
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.500000E-04
+          SOLIDS:
+          - Critical Time step dtc: 0.695289-309
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.155746E+01
+
+          GLOBAL ITERATION NUMBER:     2
+          CURRENT CPU TIME:        0.155777E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          SOLIDS:  0.543E+00  0.540E+00  0.000E+00  0.267E-04  0.294E-02  0.998E-03  0.166E-02  0.120E-03  0.153E-03  0.339E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.250000E-04
+
+     >>>  TIME STEP NUMBER:     3     STARTED AT t = 0.750000E-04
+          SOLIDS:
+          - Critical Time step dtc: 0.695289-309
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.155975E+01
+
+          GLOBAL ITERATION NUMBER:     2
+          CURRENT CPU TIME:        0.156005E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          SOLIDS:  0.544E+00  0.540E+00  0.000E+00  0.374E-04  0.390E-02  0.146E-02  0.208E-02  0.158E-03  0.215E-03  0.351E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.250000E-04
+
+     >>>  TIME STEP NUMBER:     4     STARTED AT t = 0.100000E-03
+          SOLIDS:
+          - Critical Time step dtc: 0.695289-309
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.156185E+01
+
+          GLOBAL ITERATION NUMBER:     2
+          CURRENT CPU TIME:        0.156214E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          SOLIDS:  0.545E+00  0.540E+00  0.000E+00  0.474E-04  0.480E-02  0.191E-02  0.245E-02  0.189E-03  0.278E-03  0.361E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 47.69 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   47.69 Mbytes (100.00 %)
+          SOLID  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      47.70 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:    104.32 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        1.63
+          STARTING OPERATIONS         :        0.98 ( 60.22 % )
+               Initialize MPI         :           0.00 ( 57.63 % )
+               Reapro                 :           0.04 ( 57.63 % )
+               Initialize Par. Lib.   :           0.00 ( 57.63 % )
+               Domain Operations      :           0.94 ( 57.63 % )
+               Output Domain          :           0.00 (  0.02 % )
+          SOLID  MODULE               :        0.55 ( 33.46 % )
+               Turnon                 :           0.54 ( 98.98 % )
+               Getste                 :           0.00 (  0.00 % )
+               Begste                 :           0.00 (  0.01 % )
+               Doiter                 :           0.00 (  0.88 % )
+                 Build Linear System  :               0.00 (  0.35 % )
+                 Solve Linear System  :               0.00 (  0.45 % )
+                 Endite               :               0.00 (  0.03 % )
+               Endste                 :           0.00 (  0.05 % )
+               Output                 :           0.04 (  6.80 % )
+               Turnof                 :           0.00 (  0.08 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.07 (  4.04 % )
+          OTHER OPERATIONS            :        0.04 (  2.30 % )
+
+
+     * * * END OF ANALYSIS * * *
+

@@ -1,0 +1,3 @@
+cd cyl_NR.gid
+../../../Executables/Unix/InspiraFEM.sh cyl_NR -np 2 -nomerge
+

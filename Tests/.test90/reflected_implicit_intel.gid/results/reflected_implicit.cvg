@@ -1,0 +1,6 @@
+$        Time     Global       Current  Module residuals -->
+$        step  iteration          time   NSCOM   
+            1          1  0.461220E+00    0.182403E+00
+            2          1  0.690210E+00    0.723028E-01
+            3          1  0.804805E+00    0.352100E-01
+

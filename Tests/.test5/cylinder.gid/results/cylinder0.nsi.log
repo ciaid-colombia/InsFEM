@@ -1,0 +1,15 @@
+
+
+
+     >>>  EVOLUTION OF NUMERICAL PARAMETERS:
+
+
+
+$        Time      Inner       Current    Tau_min       Tau_max       Tau_mean       Re_min        Re_max        Re_mean       yp_min        yp_max        yp_mean
+$        step  iteration          time
+            1          1  0.100000E-02  0.860527E-03  0.114030E+00  0.304000E-01  0.000000E+00  0.181965E+03  0.136333E+02  0.100000E+13  -.100000E+13  0.000000E+00
+            2          1  0.200000E-02  0.253019E-03  0.256641E-01  0.182856E-02  0.210238E+01  0.726018E+03  0.197793E+03  0.100000E+13  -.100000E+13  0.000000E+00
+
+
+     * * * END OF NAVIER-STOKES RUN * * *
+

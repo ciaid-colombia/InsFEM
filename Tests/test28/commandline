@@ -1,0 +1,9 @@
+cd ListTest
+rm -f *.mod
+rm -f *.o > MainTest.compile 2>&1
+rm -f MainTest
+rm -f Test.post.res
+mpif90  ../../../Sources/base/typre.f90 ../runend.f90 ../../../Sources/base/Mem2String.f90 ../../../Sources/base/Mod_memor.f90 ../../../Sources/base/Mod_LinkedList.f90 ../LinkedListTest.f90 ../../../Sources/SpatialContainers/Mod_Octree.f90 ../Test_OctTree.f90 ../MainTest.f90  -ffree-line-length-0 -o MainTest > MainTest.compile 2>&1
+#mpif90  -I../../../Executables/Unix/Objects_g$COMPILER ../../../Sources/base/Mod_LinkedList.f90 ../LinkedListTest.f90 ../MainTest.f90 -ffree-line-length-0 -o MainTest > MainTest.compile 2>&1
+./MainTest > Test.post.res
+

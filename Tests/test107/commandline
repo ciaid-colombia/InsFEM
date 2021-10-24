@@ -1,0 +1,3 @@
+cd ALE_NSCOMP_CYLINDER.gid
+../../../Executables/Unix/InspiraFEM.sh ALE_NSCOMP_CYLINDER 
+

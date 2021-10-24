@@ -1,0 +1,6 @@
+cd cylinderGLS.gid
+../../../Executables/Unix/InspiraFEM.sh cylinderGLS
+cd ../cylinderVMS.gid
+../../../Executables/Unix/InspiraFEM.sh cylinderVMS
+cd ../cylinderVMSdivAV.gid
+../../../Executables/Unix/InspiraFEM.sh cylinderVMSdivAV

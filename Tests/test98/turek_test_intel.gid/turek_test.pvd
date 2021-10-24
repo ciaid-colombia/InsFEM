@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+<Collection>
+<DataSet timestep="0.05" group="" part="0" file="post/Fluid/turek_test_0.pvtu"/>
+<DataSet timestep="0.1" group="" part="1" file="post/Fluid/turek_test_1.pvtu"/>
+<DataSet timestep="0.15" group="" part="2" file="post/Fluid/turek_test_2.pvtu"/>
+<DataSet timestep="0.2" group="" part="3" file="post/Fluid/turek_test_3.pvtu"/>
+<DataSet timestep="0.25" group="" part="4" file="post/Fluid/turek_test_4.pvtu"/>
+<DataSet timestep="0.3" group="" part="5" file="post/Fluid/turek_test_5.pvtu"/>
+<DataSet timestep="0.3" group="" part="0" file="post/Solid/turek_test_0.pvtu"/>
+<DataSet timestep="0.35" group="" part="6" file="post/Fluid/turek_test_6.pvtu"/>
+<DataSet timestep="0.35" group="" part="1" file="post/Solid/turek_test_1.pvtu"/>
+<DataSet timestep="0.4" group="" part="7" file="post/Fluid/turek_test_7.pvtu"/>
+<DataSet timestep="0.4" group="" part="2" file="post/Solid/turek_test_2.pvtu"/>
+<DataSet timestep="0.45" group="" part="8" file="post/Fluid/turek_test_8.pvtu"/>
+<DataSet timestep="0.45" group="" part="3" file="post/Solid/turek_test_3.pvtu"/>
+<DataSet timestep="0.5" group="" part="9" file="post/Fluid/turek_test_9.pvtu"/>
+<DataSet timestep="0.5" group="" part="4" file="post/Solid/turek_test_4.pvtu"/>
+<DataSet timestep="0.5" group="" part="10" file="post/Fluid/turek_test_10.pvtu"/>
+</Collection>
+</VTKFile>
+<DataSet timestep="0.5" group="" part="5" file="post/Solid/turek_test_5.pvtu"/>
+</Collection>
+</VTKFile>

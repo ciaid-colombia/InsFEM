@@ -1,0 +1,6 @@
+$        Time     Global       Current  Module residuals -->
+$        step  iteration          time   NSTIN      ALEPR      LEVSE   
+            1          1  0.100000E-01    0.100000E+01    0.000000E+00    0.000000E+00  
+            2          1  0.200000E-01    0.110057E+01    0.000000E+00    0.000000E+00  
+            3          1  0.300000E-01    0.416190E+00    0.000000E+00    0.000000E+00  
+

@@ -1,0 +1,29 @@
+$------------------------------------------------------------
+DIMENSIONS
+NODAL_POINTS=             1509 
+ELEMENTS=                 2817
+SPACE_DIMENSIONS=        2
+NODES_PER_ELEMENT=             3
+BOUNDARIES=         AUTOMATIC
+SKEW_SYSTEMS=            0
+END_DIMENSIONS
+$------------------------------------------------------------
+STRATEGY
+INTEGRATION_RULE:          Open  
+DOMAIN_INTEGRATION_POINTS: 0  
+ELEMENT_DATA_STRUCTURES:   OFF
+OUTPUT MESH_DATA:          Off    
+PERIODIC_BC=               Off 0 1 0
+TEST_COMMUNICATIONS=       Off
+READ_STRATEGY=             Default 
+END_STRATEGY
+$-------------------------------------------------------------
+GEOMETRY, GID
+INCLUDE  turek_test.geo.dat
+INCLUDE  turek_test.dom.fix
+END_GEOMETRY  
+$-------------------------------------------------------------
+GROUPS
+GROUPNAME Fluid TYPE_EL 3 TOTAL_EL   2817 TOTAL_NOD 1509
+GROUPNAME Solid TYPE_EL 3 TOTAL_EL    250 TOTAL_NOD 306
+END_GROUPS

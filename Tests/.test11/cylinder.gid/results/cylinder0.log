@@ -1,0 +1,85 @@
+
+
+
+     *******
+     Yet another finite element software: NAME
+     *******
+
+          CURRENT TIME STEP dt = 0.100000E-02
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.100000E-02
+          NSTINC:
+          - Critical Time step dtc: 0.244357E-01
+          - Ratio dt/dtc:           0.409237E-01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.879632E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSTINC:  0.741E+00  0.696E+00  0.787E-04  0.267E-04  0.451E-01  0.343E-01  0.107E-01  0.765E-04  0.143E-04  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E-02
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.200000E-02
+          NSTINC:
+          - Critical Time step dtc: 0.102264E-02
+          - Ratio dt/dtc:           0.977864E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.969887E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSTINC:  0.800E+00  0.696E+00  0.180E-03  0.539E-04  0.104E+00  0.725E-01  0.316E-01  0.124E-03  0.265E-04  0.308E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 49.72 kbytes
+          CONSTRUCTION OF THE DOMAIN:   49.72 kbytes ( 99.99 %)
+          NSTIN  MODULE:                 0.00 kbytes (  0.01 %)
+
+          MAXIMUM MEMORY REQUIRED:      47.76 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:     34.98 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        1.00
+          STARTING OPERATIONS         :        0.14 ( 13.93 % )
+               Initialize MPI         :           0.00 (  9.22 % )
+               Reapro                 :           0.05 (  9.22 % )
+               Initialize Par. Lib.   :           0.00 (  9.22 % )
+               Domain Operations      :           0.09 (  9.22 % )
+               Output Domain          :           0.00 (  0.03 % )
+          NSTIN  MODULE               :        0.80 ( 80.00 % )
+               Turnon                 :           0.70 ( 86.88 % )
+               Getste                 :           0.00 (  0.02 % )
+               Begste                 :           0.00 (  0.01 % )
+               Doiter                 :           0.10 ( 13.03 % )
+                 Build Linear System  :               0.07 (  9.06 % )
+                 Solve Linear System  :               0.03 (  3.95 % )
+                 Endite               :               0.00 (  0.02 % )
+               Endste                 :           0.00 (  0.00 % )
+               Output                 :           0.05 (  5.79 % )
+               Turnof                 :           0.00 (  0.06 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.01 (  1.44 % )
+          OTHER OPERATIONS            :        0.05 (  4.66 % )
+
+
+     * * * END OF ANALYSIS * * *
+

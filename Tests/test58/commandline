@@ -1,0 +1,3 @@
+cd canal.gid
+../../../Executables/Unix/InspiraFEM.sh canal -postprocessfolder . -restartfolder data
+

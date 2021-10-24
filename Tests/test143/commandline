@@ -1,0 +1,7 @@
+cd ExactP2.gid
+../../../Executables/Unix/InspiraFEM.sh ExactP2 -nomerge
+cd ..
+cd ExactP2n16.gid
+../../../Executables/Unix/InspiraFEM.sh ExactP2n16 -nomerge
+
+

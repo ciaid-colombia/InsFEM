@@ -1,0 +1,97 @@
+
+
+
+     *******
+     CASE: NATUR
+     *******
+
+          CURRENT TIME STEP dt = 0.100000E+00
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.100000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.600000E+01
+          - Ratio dt/dtc:           0.166667E-01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.528590E-01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.283E-01  0.172E-01  0.349E-04  0.984E-05  0.110E-01  0.175E-02  0.753E-02  0.163E-02  0.951E-05  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E+00
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.200000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.117626E+01
+          - Ratio dt/dtc:           0.850155E-01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.635370E-01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.388E-01  0.172E-01  0.434E-04  0.162E-04  0.215E-01  0.352E-02  0.146E-01  0.326E-02  0.174E-04  0.958E-04  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E+00
+
+     >>>  TIME STEP NUMBER:     3     STARTED AT t = 0.300000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.472374E+00
+          - Ratio dt/dtc:           0.211696E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.752301E-01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.492E-01  0.172E-01  0.532E-04  0.225E-04  0.319E-01  0.531E-02  0.216E-01  0.483E-02  0.256E-04  0.130E-02  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 31.81 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   31.81 Mbytes (100.00 %)
+          LMACH  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      31.82 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:     91.81 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.08
+          STARTING OPERATIONS         :        0.02 ( 32.18 % )
+               Initialize MPI         :           0.00 ( 30.25 % )
+               Reapro                 :           0.00 ( 30.25 % )
+               Initialize Par. Lib.   :           0.00 ( 30.25 % )
+               Domain Operations      :           0.02 ( 30.25 % )
+               Output Domain          :           0.00 (  0.45 % )
+          LMACH  MODULE               :        0.05 ( 64.11 % )
+               Turnon                 :           0.02 ( 34.83 % )
+               Getste                 :           0.00 (  0.11 % )
+               Begste                 :           0.00 (  0.05 % )
+               Doiter                 :           0.03 ( 64.44 % )
+                 Build Linear System  :               0.01 ( 10.72 % )
+                 Solve Linear System  :               0.02 ( 43.65 % )
+                 Endite               :               0.00 (  9.77 % )
+               Endste                 :           0.00 (  0.05 % )
+               Output                 :           0.00 (  3.65 % )
+               Turnof                 :           0.00 (  0.52 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.00 (  1.19 % )
+          OTHER OPERATIONS            :        0.00 (  2.97 % )
+
+
+     * * * END OF ANALYSIS * * *
+

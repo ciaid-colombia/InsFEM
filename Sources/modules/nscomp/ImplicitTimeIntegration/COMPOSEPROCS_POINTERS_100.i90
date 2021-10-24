@@ -1,0 +1,310 @@
+
+            integer :: nconcat_XFG23 = 100  
+            integer :: iconcat_XFG23 = 0  
+            
+            
+            type :: POINTER_OBJECT_XFG23
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_1 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_1 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_2 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_2 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_3 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_3 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_4 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_4 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_5 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_5 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_6 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_6 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_7 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_7 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_8 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_8 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_9 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_9 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_10 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_10 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_11 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_11 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_12 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_12 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_13 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_13 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_14 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_14 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_15 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_15 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_16 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_16 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_17 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_17 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_18 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_18 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_19 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_19 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_20 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_20 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_21 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_21 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_22 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_22 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_23 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_23 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_24 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_24 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_25 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_25 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_26 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_26 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_27 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_27 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_28 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_28 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_29 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_29 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_30 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_30 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_31 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_31 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_32 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_32 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_33 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_33 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_34 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_34 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_35 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_35 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_36 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_36 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_37 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_37 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_38 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_38 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_39 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_39 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_40 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_40 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_41 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_41 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_42 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_42 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_43 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_43 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_44 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_44 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_45 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_45 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_46 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_46 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_47 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_47 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_48 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_48 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_49 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_49 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_50 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_50 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_51 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_51 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_52 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_52 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_53 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_53 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_54 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_54 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_55 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_55 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_56 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_56 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_57 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_57 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_58 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_58 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_59 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_59 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_60 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_60 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_61 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_61 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_62 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_62 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_63 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_63 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_64 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_64 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_65 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_65 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_66 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_66 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_67 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_67 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_68 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_68 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_69 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_69 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_70 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_70 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_71 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_71 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_72 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_72 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_73 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_73 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_74 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_74 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_75 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_75 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_76 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_76 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_77 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_77 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_78 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_78 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_79 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_79 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_80 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_80 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_81 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_81 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_82 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_82 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_83 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_83 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_84 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_84 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_85 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_85 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_86 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_86 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_87 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_87 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_88 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_88 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_89 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_89 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_90 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_90 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_91 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_91 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_92 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_92 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_93 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_93 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_94 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_94 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_95 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_95 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_96 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_96 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_97 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_97 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_98 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_98 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_99 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_99 => NULL()
+            
+            procedure(),NOPASS, pointer :: CP_XFG23_1_100 => NULL()
+            procedure(),NOPASS, pointer :: CP_XFG23_2_100 => NULL()
+            
+            end type 
+            type(POINTER_OBJECT_XFG23) :: POBJECT
+            

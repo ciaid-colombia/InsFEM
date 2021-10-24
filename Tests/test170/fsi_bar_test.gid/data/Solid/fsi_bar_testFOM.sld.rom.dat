@@ -1,0 +1,15 @@
+REDUCED_ORDER_PROBLEM
+$------------------------------------------------------------ 
+STAGE:                         FOM
+MASS_PROJECTION:               No
+STYPE_OF_ROM:                  SVD
+NSNAPSHOTS:                    10
+INTERVAL_BETWEEN_SNAPSHOTS:    1
+NON_LINEAR_ITERATIONS:         10
+CONVERGENCE_TOLERANCE:         1e-6
+ENERGY_RETAINED:               1
+PROJECTION_SPACE:              Petrov-Galerkin
+MEAN_SUBSTRACTION:             Yes
+SUBSCALES_FOR_ROM:             No 
+$------------------------------------------------------------ 
+END_REDUCED_ORDER_PROBLEM

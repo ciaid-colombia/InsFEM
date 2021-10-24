@@ -1,0 +1,3 @@
+cd exacta.gid
+../../../Executables/Unix/InspiraFEM.sh exacta -restartfolder data
+

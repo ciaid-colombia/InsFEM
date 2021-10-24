@@ -1,0 +1,8 @@
+cd CantileverTotal.gid
+../../../Executables/Unix/InspiraFEM.sh CantileverTotal
+cd ../CantileverUpdated.gid 
+../../../Executables/Unix/InspiraFEM.sh CantileverUpdated
+cd ../CantileverNewmark.gid
+../../../Executables/Unix/InspiraFEM.sh CantileverNewmark
+cd ../CantileverLineSearch.gid
+../../../Executables/Unix/InspiraFEM.sh CantileverLineSearch

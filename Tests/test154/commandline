@@ -1,0 +1,8 @@
+cd cilindro.gid
+../../../Executables/Unix/InspiraFEM.sh cilindro -nomerge
+cd ..
+cd cilindro_Split.gid
+../../../Executables/Unix/InspiraFEM.sh cilindro_Split -nomerge
+
+
+

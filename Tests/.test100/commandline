@@ -1,0 +1,25 @@
+#!/bin/bash
+if [ -z ${SLEPC_DIR+x} ]
+then
+	cp -rf ../test100/fsi_bar_test.gid .
+	echo "Test not run"
+	touch testnotrun
+else
+	if [ -z ${HDF5+x} ]
+	then
+		cp -rf ../test100/fsi_bar_test.gid .
+		echo "Test not run"
+		touch testnotrun
+	else
+		cd fsi_bar_test.gid
+                rm rst/Fluid/fsi_bar_test.rom.bas
+                rm rst/Solid/fsi_bar_test.rom.bas
+		cp data/Fluid/fsi_bar_testFOM.nsi.rom.dat data/Fluid/fsi_bar_test.nsi.rom.dat
+		cp data/Solid/fsi_bar_testFOM.sld.rom.dat data/Solid/fsi_bar_test.sld.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh fsi_bar_test -cases 2 data/Fluid data/Solid -np 2 -nomerge
+                cp -r post post_fom
+		cp data/Fluid/fsi_bar_testROM.nsi.rom.dat data/Fluid/fsi_bar_test.nsi.rom.dat
+		cp data/Solid/fsi_bar_testROM.sld.rom.dat data/Solid/fsi_bar_test.sld.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh fsi_bar_test -cases 2 data/Fluid data/Solid -np 2 -nomerge
+	fi
+fi

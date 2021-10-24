@@ -1,0 +1,6 @@
+$        Time      Inner       Current      Density      Momentum      Energy
+$        step  iteration          time      residual      residual      residual
+            0          1  0.100000E+00  0.383763E-08  0.100000E+01  0.383800E-08
+            0          2  0.100000E+00  0.537526E-08  0.000000E+00  0.515348E-08
+            0          0  0.100000E+00  0.175585E-08  0.000000E+00  0.152586E-08
+$ >>>  PROBLEM IS STATIONARY AT TIME STEP     0

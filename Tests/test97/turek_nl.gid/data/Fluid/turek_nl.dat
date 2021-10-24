@@ -1,0 +1,51 @@
+$-------------------------------------------------------------------
+RUN_DATA
+Femuss:                 fsi_rom
+RUN_TYPE:               Preliminary, Frequency=100 \
+No_restart \
+Memcheck 
+OUTPUT_FORMAT:              VTK
+OUTPUT_COMPRESSION:         ASCII
+CUSTOMER:                   Universal
+COMMUNICATOR_LIBRARY:       PETSc
+ORDERING_LIBRARY:           PETSc
+REBALANCE_NUMBERING:        Zoltan
+MPICommunicationsType:      NonBlocking
+FLUSH_TO_DISK:              Off
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+TIME_COUPLING:          Global, Prescribed
+TIME_INTERVAL=          0.0, 0.02  
+TIME_STEP_SIZE=         0.002  
+NUMBER_OF_STEPS=        1e5   
+MAXIMUM_NUMBER_GLOBAL=  1
+REMESHING_STRATEGY:     Off
+ADAPTIVE_MESH_REFINEMENT:   Off Temperature REBALANCING_RATIO 1.5 Off
+CP_CONVERGENCE= yes
+NSTINC_PROBLEM:         On MODNAME: 
+GROUP:          Fluid
+DELAY STEPS:          0
+ALGORITHM:            Monolithic   
+CONVERGENCE_REQUIRED: Yes
+EXTERNAL_TEMPERATURE: Off CASE: Solid MODNAME: 
+EXTERNAL_LEVELSET:    Off
+EXTERNAL_SOLID:       Solids CASE: Solid MODNAME: 
+END_NSTINC_PROBLEM
+ALE_PROBLEM:         On
+GROUP:          Fluid
+ALGORITHM:            SOLID_BODY
+DELAY STEPS:          0
+CONVERGENCE_REQUIRED: Yes
+EXTERNAL_VELOCITY:    Off
+EXTERNAL_DISPLACEMENT:    Solids CASE: Solid MODNAME: 
+FIXED_MESH_FROM  :    Off
+END_ALE_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------
+INTERPOLATE_DATA
+ FROM_CASE: Solid  BOUNDARY  1
+ END_INTERPOLATE_DATA
+ INTERPOLATE_DATA
+ FROM_CASE: Solid  BOUNDARY  1
+ END_INTERPOLATE_DATA

@@ -1,0 +1,73 @@
+
+
+
+     *******
+     CASE: CYLIN
+     *******
+
+          CURRENT TIME STEP dt = 0.100000E+01
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.155025E-03
+          NSCOMP:
+          - Critical Time step dtc: 0.155025E-03
+          - Ratio dt/dtc:           0.100000E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.529320E-01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSCOMP:  0.444E-01  0.409E-01  0.470E-04  0.882E-05  0.309E-02  0.296E-02  0.000E+00  0.978E-05  0.342E-03  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 19.39 kbytes
+          CONSTRUCTION OF THE DOMAIN:   19.38 kbytes ( 99.99 %)
+          NSCOM  MODULE:                 0.00 kbytes (  0.01 %)
+
+          MAXIMUM MEMORY REQUIRED:      31.83 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:     35.72 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.06
+          STARTING OPERATIONS         :        0.01 ( 16.76 % )
+               Initialize MPI         :           0.00 ( 14.31 % )
+               Reapro                 :           0.00 ( 14.31 % )
+               Initialize Par. Lib.   :           0.00 ( 14.31 % )
+               Domain Operations      :           0.01 ( 14.31 % )
+               Output Domain          :           0.00 (  0.39 % )
+          NSCOM  MODULE               :        0.04 ( 79.82 % )
+               Turnon                 :           0.04 ( 91.76 % )
+               Getste                 :           0.00 (  0.11 % )
+               Begste                 :           0.00 (  0.02 % )
+               Doiter                 :           0.00 (  6.93 % )
+                 Build Linear System  :               0.00 (  6.64 % )
+                 Solve Linear System  :               0.00 (  0.00 % )
+                 Endite               :               0.00 (  0.02 % )
+               Endste                 :           0.00 (  0.77 % )
+               Output                 :           0.00 (  0.13 % )
+               Turnof                 :           0.00 (  0.42 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.00 (  3.27 % )
+          OTHER OPERATIONS            :        0.00 (  0.54 % )
+
+
+     * * * END OF ANALYSIS * * *
+

@@ -1,0 +1,3 @@
+#!/bin/bash
+cd Cylinder_P2_DON_M0001.gid
+../../../Executables/Unix/InspiraFEM.sh Cylinder_P2_DON_M0001 -np 2 -nomerge

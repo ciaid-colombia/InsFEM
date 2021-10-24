@@ -1,0 +1,3 @@
+cd gravity.gid
+../../../Executables/Unix/InspiraFEM.sh gravity
+

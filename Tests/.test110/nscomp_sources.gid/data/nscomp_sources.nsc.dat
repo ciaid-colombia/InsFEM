@@ -1,0 +1,72 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------ 
+PROBLEM_DEFINTION  
+  TEMPORAL_DERIVATIVES: On
+  CONVECTIVE_TERM:      On  
+  VISCOUS_TERM:         On  
+ GRAVITY:              NORM: 100, \
+                       GX:   0.0, \
+                       GY:   -1.0, \
+                       GZ:   0.0  
+ SRCES:              SRCE: 10
+END_PROBLEM_DEFINITION
+$------------------------------------------------------------
+PROPERTIES
+  EQNST=                           Ideal_gas
+  CPHEAT=           1.010
+  CVHEAT=           0.718  
+  VISCOSITY=        0.1  
+  THERMAL_COND=     0.1  
+END_PROPERTIES  
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM  
+$------------------------------------------------------------
+NUMERICAL_TREATMENT    
+  STABILITY_CONSTANTS=     12.0 2.0 1.0
+  TAU_MATRIX:                    Diagonal 
+  TYPE_OF_STABILIZATION:         Total_residual  
+  PROJECTION_TYPE=               Lumped
+  TEST_FUNCTION_STABILIZATION:   SUPG
+  JACOBIAN_GRADIENT:   OFF
+  TIME_ACCURACY:         1   
+  TRACKING_SUBSCALES:    ON   
+  ACCURACY_IN_TIME_SGS:  Quasistatic
+  NON_LINEARITY_SGS:     Linear 
+  TIME_INTEGRATION:      BDF   
+  EXPLI_TIME_INTEGRATION: EULER   
+  SAFETY_FACTOR:         1  
+  STEADY_STATE_TOLER:    1e-8   
+  NORM_OF_CONVERGENCE:   L2   
+  LINEARIZATION_METHOD:  Picard   
+  MAXIMUM_NUMBER_OF_IT:  5  
+  CONVERGENCE_TOLERANCE: 1e-8
+  SUBRELAX_STRATEGY:             Off  
+  ERROR_ESTIMATOR:         GRADIENT, MAX_ERROR: 1e-3, MIN_ERROR: 1e-4, CRITERIA: Tolerance    
+END_NUMERICAL_TREATMENT  
+$------------------------------------------------------------
+OUTPUT_&_POST-PROCESS  
+ START_POSTPROCES_AT           STEP =1
+ POSTPROCESS VELOCITY,         STEPS=1
+ POSTPROCESS PRESSURE,         STEPS=1
+ POSTPROCESS TEMPERATURE,      STEPS=1
+ POSTPROCESS DENSITY,          STEPS=1
+ POSTPROCESS MOMENTUM,         STEPS=1
+ POSTPROCESS ENERGY,           STEPS=1
+ POSTPROCESS STREAMLINES,      STEPS=0
+ POSTPROCESS HEATFLUX,         STEPS=0
+ POSTPROCESS ARTDIFF,          STEPS=0
+ POSTPROCESS SGSDIFF,          STEPS=0
+ POSTPROCESS SUBSCALES,        STEPS=0
+ POSTPROCESS RESIDUAL,         STEPS=0
+ POSTPROCESS REPRO,            STEPS=0
+ POSTPROCESS STATI,            STEPS=0
+ READ_STRATEGY_BOUNDARY_CONDITION:         Default
+END_OUTPUT_&_POST_PROCESS  
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS, \
+      WALL_DISTANCE=0.0, \
+      CONTINUE
+ INCLUDE nscomp_sources.nsc.fix
+END_BOUNDARY_CONDITIONS  
+$------------------------------------------------------------

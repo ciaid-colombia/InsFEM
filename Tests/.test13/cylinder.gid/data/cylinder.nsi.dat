@@ -1,0 +1,73 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------ 
+PROBLEM_DEFINTION  
+ TEMPORAL_DERIVATIVES: On  
+ CONVECTIVE_TERM:      On  
+ VISCOUS_TERM:         LAPLA 
+ GRAVITY:              NORM: 0.0, GX: 0.0, GY: 1.0,  GZ: 0.0  
+ AXES_ROTATION:        NORM: 0.0, OX: 0.0, OY: 0.0,  OZ: 0.0  
+ AXES_VELOCITY:        NORM: 0.0, VX: 0.0, VY: 0.0,  VZ: 0.0  
+ TURBULENCE_MODEL:     Off 
+ $TURBULENCE_MODEL: LES_MODEL    Smast, PARAMETER: 0.025
+ TEMPERATURE_COUPLING: Off
+ INTERFACE_MODEL:      Off 
+END_PROBLEM_DEFINITION  
+$------------------------------------------------------------
+PROPERTIES
+  DENSITY=                10.0
+  VISCOSITY=          10.0
+  $VISCOSITY=          0.05
+  PERMEABILITY=       0.0
+  LAW_DENSITY:        Constant  
+  LAW_VISCOSITY:      Constant  
+  LAW_PERMEABILITY:   Constant  
+END_PROPERTIES  
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM  
+$------------------------------------------------------------
+NUMERICAL_TREATMENT    
+  STABILITY_CONSTANTS:   3.0 2.0 1.0 0.25 
+  
+  $TYPE_OF_STABILIZATION: Total_residual  
+  $TYPE_OF_STABILIZATION: Residual_projection $NoSkipFiniteElement
+  $TYPE_OF_STABILIZATION: SPLIT_OSS
+  $TRACKING_OF_SUBSCALES:  OFF
+  $ACCURACY_SUBSCALES:     OFF
+  SHOCK_CAPTURING:       Off, VALUE: 0.0 
+  PENALTY_STRATEGY:      Off  
+  TEMPORAL_TERM_WEIGHT:  All  
+  TIME_ACCURACY:         1, EULER: 0   
+  TIME_INTEGRATION:      ADAMS       
+  SAFETY_FACTOR:         1000  
+  STEADY_STATE_TOLER:    1e-8   
+  NORM_OF_CONVERGENCE:   L2   
+  LINEARIZATION_METHOD:  Picard   
+  MAXIMUM_NUMBER_OF_IT:  1 
+  CONVERGENCE_TOLERANCE: 1e-12
+  TOLERANCE_SOLVER: 1e-12
+  ALGEBRAIC_SOLVER:       DIRECT
+END_NUMERICAL_TREATMENT  
+$------------------------------------------------------------
+OUTPUT_&_POST-PROCESS  
+ START_POSTPROCES_AT           STEP =1
+ POSTPROCESS VELOCITY,         STEPS=1
+ POSTPROCESS PRESSURE,         STEPS=1
+ POSTPROCESS STREAMLINES,      STEPS=0
+ POSTPROCESS DENSITY,          STEPS=0
+ POSTPROCESS VISCOSITY,        STEPS=0
+ POSTPROCESS PERMEABILITY,     STEPS=0
+ POSTPROCESS TURBULENT_VISCO,  STEPS=0
+ POSTPROCESS NUMERICAL_VISCO,  STEPS=0
+ POSTPROCESS STRESS,           STEPS=0
+ POSTPROCESS TANGENTIAL,       STEPS=0
+ POSTPROCESS VORTICITY,        STEPS=0
+ POSTPROCESS DIVERGENCE_VEL,   STEPS=0
+ POSTPROCESS VESGS,            STEPS=0
+END_OUTPUT_&_POST_PROCESS  
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS, aaSTOKE, WALLD 0.01, EXITX 2000
+$  INCLUDE cylinder0.nsi.fix
+  INCLUDE cylinder_nelty2.nsi.fix
+END_BOUNDARY_CONDITIONS  
+$------------------------------------------------------------

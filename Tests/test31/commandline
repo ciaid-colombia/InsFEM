@@ -1,0 +1,5 @@
+cd periodic3dz.gid
+../../../Executables/Unix/InspiraFEM.sh periodic3dz -np 3 -nomerge -postprocessfolder . -restartfolder data
+cd ..
+cd periodic3dxyz.gid
+../../../Executables/Unix/InspiraFEM.sh periodic3dxyz -np 3 -nomerge -postprocessfolder . -restartfolder data

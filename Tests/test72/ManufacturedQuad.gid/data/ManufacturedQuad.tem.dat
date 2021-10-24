@@ -1,0 +1,66 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------
+PROBLEM_DEFINITION
+  TEMPORAL_DERIVATIVES:   Off 
+  CONVECTIVE_TERM:        Off , VELOC: 2 
+  SOURCE_TERMS:           constant, VALUE: 1.0  
+ TURBULENCE_MODEL:     Off 
+END_PROBLEM_DEFINITION
+$------------------------------------------------------------
+PROPERTIES:
+  DENSITY=                1.0
+  SPECIFIC_HEAT=          1.0  
+  THERMAL_COND=           1.0  
+  VISCOSITY=              0.0  
+  TURBULENT_PRANDTL=      0.9  
+  REACTION=               0.0
+  LAW_DENSITY=            Constant
+  LAW_SPECIFIC_HEAT=      Constant  
+  LAW_THERMAL_COND=       Constant  
+  LAW_VISCOSITY=          0.0  
+END_PROPERTIES
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM
+$------------------------------------------------------------
+NUMERICAL_TREATMENT
+ STABILITY_CONSTANTS=     4.0 2.0 1.0
+ TYPE_OF_STABILIZATION=   Total_residual
+ PROJECTION_TYPE=         Lumped
+ TEST_FUNCTION_STABILIZATION: VMS
+ TRACKING_OF_SUSBSCALES=  Off, RELAXATION: 1.0, TIME_ACCURACY: 1.0 NON_LINEARITY: LINEAR
+ TEMPORAL_TERM_WEIGHTING= All  
+ SHOCK_CAPTURING=         Off, VALUE: 0.0  
+  TIME_ACCURACY=           1  
+ TIME_INTEGRATION:      BDF   
+ SAFETY_FACTOR=           1e24  
+ STEADY_STATE_TOLERANCE=  1e-8  
+ NORM_OF_CONVERGENCE:     L2   
+ MAXIMUM_NUMBER_OF_ITER=  1  
+ RELAXATION_FACTOR=       1.0
+ CONVERGENCE_TOLERANCE=   1e-8  
+ ALGEBRAIC_SOLVER:        Direct
+ ERROR_ESTIMATOR:         ZZ, MAX_ERROR: 1e-3, MIN_ERROR: 1e-4, CRITERIA: Tolerance    
+END_NUMERICAL_TREATMENT
+
+$------------------------------------------------------------
+OUTPUT_&_POST_PROCESS_&_INPUT_STRATEGY
+ READ_STRATEGY_BOUNDARY_CONDITION:         Manufactured
+ MANUFACTURED_BOUNDARY_CONDITION:     1 
+ START_POSTPROCES_AT            STEP =1
+ POSTPROCESS TEMPER,            STEPS=1
+ POSTPROCESS DISSIPATION,       STEPS=0  
+ POSTPROCESS AVG_TEMPE_1D,      STEPS=0
+ POSTPROCESS AVG_DISSI_1D,      STEPS=0
+ POSTPROCESS GRADIENT,          STEPS=0
+ POSTPROCESS SHOCK_CAPT_VISCO,  STEPS=0
+ 
+ AVG_1D_DIRECTION:             Y
+ DIS_COMPUTATION: Off
+END_OUTPUT_&_POST-PROCESS
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS \
+      CONSTANT_BOUNDARY_CONDITIONS
+ INCLUDE data/ManufacturedQuad.tem.fix
+END_BOUNDARY_CONDITIONS
+$------------------------------------------------------------

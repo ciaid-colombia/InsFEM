@@ -1,0 +1,27 @@
+$-------------------------------------------------------------------
+RUN_DATA
+  Femuss:                 heated_cylinder
+  RUN_TYPE:               \
+                          No_restart \
+                          NoMemcheck 
+  OUTPUT_FORMAT:              VTK
+  OUTPUT_COMPRESSION:         ASCII
+  CUSTOMER:                   Universal
+  PARALLEL_LIBRARY:           PETSc
+  MPICommunicationsType:      NonBlocking
+  FLUSH_TO_DISK:              Off
+  ADAPTIVE_MESH_REFINEMENT:   Off Temperature REBALANCING_RATIO 1.5 Off
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+  TIME_COUPLING:          Global, Prescribed
+  TIME_INTERVAL=          0.0, 0.5  
+  TIME_STEP_SIZE=         0.1  
+  NUMBER_OF_STEPS=        1e5   
+  MAXIMUM_NUMBER_GLOBAL=  1
+  LMACHN_PROBLEM:         On
+    DELAY STEPS:          0
+    CONVERGENCE_REQUIRED: Yes
+  END_LMACHN_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------

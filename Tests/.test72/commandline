@@ -1,0 +1,8 @@
+cd ManufacturedQuad.gid
+../../../Executables/Unix/InspiraFEM.sh ManufacturedQuad -o -np 4 -nomerge
+cd ../ManufacturedTriang.gid
+../../../Executables/Unix/InspiraFEM.sh ManufacturedTriang -o -np 4 -nomerge
+cd ../ManufacturedHexa.gid
+../../../Executables/Unix/InspiraFEM.sh ManufacturedHexa -o -np 8 -nomerge
+cd ../ManufacturedTetra.gid
+../../../Executables/Unix/InspiraFEM.sh ManufacturedTetra -o -np 8 -nomerge

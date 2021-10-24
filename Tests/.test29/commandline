@@ -1,0 +1,5 @@
+cd cylinder_periodic.gid
+../../../Executables/Unix/InspiraFEM.sh cylinder_periodic -np 3 -nomerge -postprocessfolder . -restartfolder data
+cd ..
+cd cylinder_periodic2.gid
+../../../Executables/Unix/InspiraFEM.sh cylinder_periodic2 -np 3 -nomerge -postprocessfolder . -restartfolder data

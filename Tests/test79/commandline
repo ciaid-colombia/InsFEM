@@ -1,0 +1,4 @@
+cd beam_body.gid
+../../../Executables/Unix/InspiraFEM.O$COMPILER beam_body 
+
+

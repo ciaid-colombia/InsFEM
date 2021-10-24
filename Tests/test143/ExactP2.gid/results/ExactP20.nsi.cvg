@@ -1,0 +1,7 @@
+$        Time      Inner       Current      Velocity      Pressure      Stress
+$        step  iteration          time      residual      residual      residual
+            0          1  0.100000E-02  0.182298E-06  0.100000E+01  0.660201E+00
+            0          2  0.100000E-02  0.301384E-08  0.159927E-05  0.278678E-08
+            0          3  0.100000E-02  0.785029E-10  0.141690E-07  0.702799E-10
+            0          0  0.100000E-02  0.183130E-06  0.100000E+01  0.999373E+00
+$ >>>  VELOCITY IS STATIONARY AT TIME STEP     0

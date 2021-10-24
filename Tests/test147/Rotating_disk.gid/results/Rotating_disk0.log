@@ -1,0 +1,85 @@
+
+
+
+     *******
+     CASE: ROTAT
+     *******
+
+          CURRENT TIME STEP dt = 0.500000E+00
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.500000E+00
+          PLCD  :
+          - Critical Time step dtc: 0.000000E+00
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.895259E-01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          PLCD  :  0.281E-01  0.278E-01  0.000E+00  0.741E-04  0.307E-03  0.746E-04  0.336E-04  0.193E-03  0.358E-05  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.500000E+00
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.100000E+01
+          PLCD  :
+          - Critical Time step dtc: 0.000000E+00
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.899081E-01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          PLCD  :  0.284E-01  0.278E-01  0.000E+00  0.142E-03  0.488E-03  0.144E-03  0.672E-04  0.268E-03  0.644E-05  0.916E-04  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 47.70 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   47.70 Mbytes (100.00 %)
+          PLCDP  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      47.70 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:     82.83 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.09
+          STARTING OPERATIONS         :        0.06 ( 66.94 % )
+               Initialize MPI         :           0.00 ( 64.68 % )
+               Reapro                 :           0.00 ( 64.68 % )
+               Initialize Par. Lib.   :           0.00 ( 64.68 % )
+               Domain Operations      :           0.06 ( 64.68 % )
+               Output Domain          :           0.00 (  0.29 % )
+          PLCDP  MODULE               :        0.03 ( 30.77 % )
+               Turnon                 :           0.03 ( 97.25 % )
+               Getste                 :           0.00 (  0.00 % )
+               Begste                 :           0.00 (  0.50 % )
+               Doiter                 :           0.00 (  1.71 % )
+                 Build Linear System  :               0.00 (  0.51 % )
+                 Solve Linear System  :               0.00 (  0.24 % )
+                 Endite               :               0.00 (  0.94 % )
+               Endste                 :           0.00 (  0.02 % )
+               Output                 :           0.00 (  4.39 % )
+               Turnof                 :           0.00 (  0.52 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.00 (  0.95 % )
+          OTHER OPERATIONS            :        0.00 (  1.62 % )
+
+
+     * * * END OF ANALYSIS * * *
+

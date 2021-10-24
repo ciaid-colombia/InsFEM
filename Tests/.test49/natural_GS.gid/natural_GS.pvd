@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+<Collection>
+<DataSet timestep="0.2" group="" part="0" file=".//natural_GS_0.pvtu"/>
+<DataSet timestep="0.3" group="" part="1" file=".//natural_GS_1.pvtu"/>
+<DataSet timestep="0.4" group="" part="2" file=".//natural_GS_2.pvtu"/>
+<DataSet timestep="0.5" group="" part="3" file=".//natural_GS_3.pvtu"/>
+<DataSet timestep="0.5" group="" part="4" file=".//natural_GS_4.pvtu"/>
+</Collection>
+</VTKFile>

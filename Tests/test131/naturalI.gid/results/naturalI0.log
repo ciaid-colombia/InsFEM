@@ -1,0 +1,143 @@
+
+
+
+     *******
+     CASE: NATUR
+     *******
+
+          CURRENT TIME STEP dt = 0.500000E-01
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.500000E-01
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.142092E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.463E-01  0.430E-01  0.000E+00  0.110E-04  0.324E-02  0.144E-02  0.536E-03  0.973E-03  0.198E-04  0.000E+00  0.000E+00  0.286E-05  0.932E-03  0.000E+00
+          CURRENT TIME STEP dt = 0.500000E-01
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.100000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.153923E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.500E-01  0.430E-01  0.000E+00  0.165E-04  0.693E-02  0.316E-02  0.945E-03  0.223E-02  0.389E-04  0.229E-04  0.000E+00  0.286E-05  0.232E-02  0.000E+00
+          CURRENT TIME STEP dt = 0.500000E-01
+
+     >>>  TIME STEP NUMBER:     3     STARTED AT t = 0.150000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.162895E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.547E-01  0.430E-01  0.000E+00  0.222E-04  0.116E-01  0.507E-02  0.134E-02  0.433E-02  0.594E-04  0.477E-04  0.000E+00  0.286E-05  0.327E-02  0.000E+00
+          CURRENT TIME STEP dt = 0.500000E-01
+
+     >>>  TIME STEP NUMBER:     4     STARTED AT t = 0.200000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.171778E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.591E-01  0.430E-01  0.000E+00  0.274E-04  0.160E-01  0.721E-02  0.174E-02  0.584E-02  0.796E-04  0.746E-04  0.000E+00  0.286E-05  0.433E-02  0.000E+00
+          CURRENT TIME STEP dt = 0.500000E-01
+
+     >>>  TIME STEP NUMBER:     5     STARTED AT t = 0.250000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.180214E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.633E-01  0.430E-01  0.000E+00  0.331E-04  0.201E-01  0.908E-02  0.214E-02  0.741E-02  0.999E-04  0.101E-03  0.000E+00  0.286E-05  0.535E-02  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 35.78 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   35.78 Mbytes (100.00 %)
+          PODRO  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      35.80 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:     90.61 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.18
+          STARTING OPERATIONS         :        0.09 ( 47.24 % )
+               Initialize MPI         :           0.00 ( 45.24 % )
+               Reapro                 :           0.00 ( 45.24 % )
+               Initialize Par. Lib.   :           0.00 ( 45.24 % )
+               Domain Operations      :           0.08 ( 45.24 % )
+               Output Domain          :           0.00 (  0.12 % )
+          PODRO  MODULE               :        0.00 (  0.00 % )
+               Turnon                 :           0.04 ( 67.65 % )
+               Getste                 :           0.00 (  0.00 % )
+               Begste                 :           0.00 (  0.05 % )
+               Doiter                 :           0.02 ( 31.57 % )
+                 Build Linear System  :               0.01 ( 14.26 % )
+                 Solve Linear System  :               0.00 (  3.36 % )
+                 Endite               :               0.01 ( 11.65 % )
+               Endste                 :           0.00 (  0.16 % )
+               Output                 :           0.00 (  0.23 % )
+               Turnof                 :           0.00 (  0.56 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.01 (  8.40 % )
+               Project between meshes :           0.00 (  0.00 % )
+          REFINEMENT OPERATIONS           :        0.02 ( 13.36 % )
+             REFINER                     :        0.00 (  1.30 % )
+               Initialize             :           0.00 (  7.45 % )
+               OldExternalBoundaries  :           0.00 (  1.50 % )
+               Refine                 :           0.00 ( 72.10 % )
+                  AmendMarkel         :           0.00 (  1.27 % )
+                  Do21Balancing       :           0.00 (  0.01 % )
+                  RefineSerial        :           0.00 (  4.88 % )
+                  NumberingToParallel :           0.00 ( 19.34 % )
+                  UpdateArraysParaNum :           0.00 (  0.70 % )
+                  HangingNodes        :           0.00 ( 15.26 % )
+                  SelectComp.ToExport :           0.00 ( 38.36 % )
+                  MarkDeadElements    :           0.00 (  0.82 % )
+              LoadRebalance           :           0.00 ( 20.45 % )
+                  Renumbering         :           0.00 (  0.00 % )
+                  ElemProcs           :           0.00 (  1.63 % )
+                  Faces_a             :           0.00 (  0.35 % )
+                  SendNodesAndElements:           0.00 (  4.71 % )
+                  RebuildRefinementStr:           0.00 ( 13.14 % )
+                  Faces_b,&           :           0.00 (  0.02 % )
+                  Communicator        :           0.00 (  0.47 % )
+             MESH                     :        0.00 (  2.51 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.00 (  0.87 % )
+          OTHER OPERATIONS            :        0.07 ( 38.64 % )
+
+
+     * * * END OF ANALYSIS * * *
+

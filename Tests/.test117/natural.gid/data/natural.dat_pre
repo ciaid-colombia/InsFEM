@@ -1,0 +1,42 @@
+$-------------------------------------------------------------------
+RUN_DATA
+  Femuss:                 natural
+  RUN_TYPE:               Preliminary, Frequency=1 \
+                          Initial_restart \
+                          NoMemcheck 
+  OUTPUT_FORMAT:              VTK
+  OUTPUT_COMPRESSION:         ASCII
+  CUSTOMER:                   Universal
+  COMMUNICATOR_LIBRARY:       PETSc
+  ORDERING_LIBRARY:           PETSc
+  REBALANCE_NUMBERING:        Zoltan
+  MPICommunicationsType:      NonBlocking
+  IO_Format:                  PETSc
+  FLUSH_TO_DISK:              On
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+  TIME_COUPLING:          Global, Prescribed
+  TIME_INTERVAL=          0.0, 0.05
+  TIME_STEP_SIZE=         0.05  
+  NUMBER_OF_STEPS=        1e5   
+  MAXIMUM_NUMBER_GLOBAL=  1
+  REMESHING_STRATEGY:     Off
+     ADAPTIVE_MESH_REFINEMENT:   Off Temperature REBALANCING_RATIO 1.5 Off
+     INTERPOLATOR_TOLERANCE:    1e-6
+
+  LMACHN_PROBLEM:         On  MODNAME: 
+    GROUP:          Domain
+    DELAY STEPS:          0
+    PRELIMINARY RUN:      On
+    FREQUENCY=1
+    RESTART:              Off
+    CONVERGENCE_REQUIRED: Yes
+END_LMACHN_PROBLEM
+END_PODROM_LMACHN_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------
+INTERPOLATION_DATA
+END_INTERPOLATION_DATA
+$-------------------------------------------------------------------
+

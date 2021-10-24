@@ -1,0 +1,40 @@
+BeginZE /home/cbayona/SAFE/anisotropic_ortho_shock.gid/anisotropic_ortho_shock.vv
+   x -2.50592899322509766 6.60592937469482422
+   y 2.85292243957519531 -1.85292243957519531
+   z -6.79908084869384766 6.79908084869384766
+   e 2.26636028289794922
+   v 0 0 0
+   r 1
+   m 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1
+   c 2.04999995231628418 0.5 0
+   pd 0
+   pno 0
+   pfo 0
+   pf 4
+   pv 0
+   NowUse 1
+   DrawingType 0
+   LightVector 90 90 150 0
+   OGLShadow(UseShadows) 0
+   OGLShadow(RenderMode) RenderNice
+   OGLShadow(ShadowBias) -0.002
+   OGLShadow(AmbientShadows) 1
+   OGLShadow(UseFBO) 0
+   OGLShadow(FBOSize) 2048
+   OGLShadow(DimmedLightFactor) 0.02
+   OGLStereo(UseStereo) 0
+   OGLStereo(RelativeEyeDistance) 1
+   OGLStereo(FlipEyes) 0
+   OGLStereo(StereoMode) AnaglyphColors
+   OGLStereo(EyeDistance) 0.075
+   OGLStereo(LeftEyeDistance) 1 0 0 1
+   OGLStereo(RightEyeDistance) 0 1 1 1
+EndZE /home/cbayona/SAFE/anisotropic_ortho_shock.gid/anisotropic_ortho_shock.vv
+
+BeginMirror
+   Mirror 0 Angle 0.0 AngleFake -15.0 SizeFactor 2.0 HeightOffset 0.25 Color #d9e5f24d Backlight Off EdgeStyle No Type Scene DrawMode Mirror
+EndMirror
+
+BeginInfo
+eJzdV9ty6jYUfecrNNOXdiaHMZCkKW+50AxTIBkgGfqkke1tox5ZciU7QM/k37sl3w3pB/QJey0j78vaS/I2EHfDm+FoRLbf8eLn4uaXwYLL/EheHx8fPG9MJsPx0Pt2+9u3GCRoHpAfP428ybc3P5dZTjbLV7LNgWwgJWPi3Uy98XR0Td62j2Tsja4/yfHult5eD7YqFmQ0/HVKnhc78sFNzgThIfGO48kVYVkGSZrhA4PtHjQQbohURH2AFuzk/hIomcExGw4GLynIZzEdEELeZ6unl/WU/HjQnEnyynLxafE14rP1zDJLMIzsRqPP4vn1Zv6yQng0vCGOusWkx458mm9eF/d/kvnq95f18n5bPOjzzBANIbm7IrEGkPbCF5gy/jKR7hnxrkgIabYn4+srYjKQAReWxUsNChMZuvUX8+V8u8El7c2SHckW88kx2Q3/B6ZYruu7ipkJSEDii+cy5AGYKZl4nnfGvoPOzunJU3/lm9uKe8x9wIv0i3fffzAumC8AOxRi6AkkSp+IcQ95ZPlwysCUa/EkT8hB6e9cxkTmiQ+aqIhAGdyU3Hge+WPgUp/ttrOVrbxL/3lB719fFzOasuA7hDTlRxCmgbHr2GrKtGYnqvy/IMgcuX6grs40K4KvQc0O1M+jCLSpsEiz2MZBU61izZIz3OxZCLqC90xENBKKZUU0Fc4TFmN+1W2Si4wblqQCOlAvIBUEIjdcSfp3DvpUwW7lMtBeXqniNlaGkULWSqPATarxFRVWRF4uYNooRkoFk3HOYqAjVESLU4fuHWWJz7EQFVqmQH2l7eqBwCz7XKCSVIOxmZ1RKCyasLO/gPygLAwvwbiazyVcpLQyxmf6EheqbNLHE661wiGlGlJgZzlJ7ESqDrZoEc0Oqs9rLCSWrWlqppk0qTI2pUzzY4WXyrzYwpLr6a1Eu2o7cGk7gC9wyHZOceRkSOHvnGVWNgasFMqWI31JtQhfqOakzxWloUoGbjWcRMr8WFfXeMnqaxdEoITSXehiXA0d5TL4ghIq5gFVaRdNuEzYsYuZ3MeqF+W0aCB4Sj+UyBOgey4bHDXIBba67RINKe1fslKgBZSe2oZhscJFfJXL0CBn6sWdk2DvcXwqH6uoSMW4Fg5HDdhZLZXgC55dwhuFWCZO80oevVG37J6brJaOBZyzFCG5JOsnS9sssij3mx7XWGoBCsAdNuzX4QtDctQFQypwcYpRCSqKDNRPoykE+A4cNJ2wOhYD2I+Q6VNXU5VS0NYgyAXTPbqwJysq08J0E36VT80WJaAHzWqhWTl1k718O3nqARRC7H5tfx2m8bI+3PKyPlX5VRsXKqQ+Z6aPl8N68e3d/ly0rjZh1s8PNcYTbHC9F1moPz3zh2UhuESF0BedJTWzxxm0LDeZFfofBjxfPa+/MojlbHPvpEq5tJE0WDkeIU5QXKMoLzyBtLd4B3dt1EGnwA90u9Wr98pf0MNq6NLpAGHB432Gln+kcEyVLHdHJPrbMEL4DjwQY2iRwBaUhlPg541B/Hx7OANHdGTxl9kG/82wbHaaXAib53kxJK39qMEye2KroGav7lMb6k7wdvISnpZ7tcO/2vs7ZHcuOhTKucR25yc0hzYnkNZt+wiyeVtdMLxPpHZTd9TfzNbv7kBvIbeLxuD6F9iZtKcSRzhtu68LlFak+hhmXxzndoVe3O6AXlFqqyHQGrFCRRWLUu0qLQpgpi3GXZFT5KPbRTxukLRc9LPzfWK/Pa573x6Pi/lstf1fJveCXcOvKvx8qC7xA4ssZ6s3C/0Lb3AdPQ==
+EndInfo

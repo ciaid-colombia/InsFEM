@@ -1,0 +1,7 @@
+cd cubetest.gid
+../../../Executables/Unix/InspiraFEM.sh cubetest -nomerge
+
+cd ..
+cd cubetest1.gid
+../../../Executables/Unix/InspiraFEM.sh cubetest1 -nomerge
+

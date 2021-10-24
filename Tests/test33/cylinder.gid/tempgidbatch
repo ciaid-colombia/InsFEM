@@ -1,0 +1,6 @@
+Mescape Postprocess
+      Mescape files add 
+      {cylinder0.post.res cylinder1.post.res cylinder2.post.res cylinder3.post.res }
+      Mescape files saveall binMeshesSets
+      cylinder.post.res
+      Quit

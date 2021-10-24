@@ -1,0 +1,199 @@
+#!/usr/bin/perl   
+use Term::ANSIColor;
+use Cwd 'abs_path';
+use FindBin;
+use lib "$FindBin::Bin/../GroupPartitioner";
+use groupTools qw (getLine getGroupInfo deletefilesindir trim);
+
+$filename = $ARGV[0];
+
+my $casepath   = abs_path();
+
+my @groupname;
+
+if (-e "$casepath/Group.info")  { 
+    #next if ($casepath eq ".");   # skip the current directory entry
+    @groupname = getGroupInfo($casepath);
+}
+
+if(@groupname) {
+    for (my $i=0; $i<@groupname;$i++){
+        my $groupresdir = $casepath.'/results/'.$groupname[$i];
+        if (-d $groupresdir) {
+            doMemcheck($groupresdir,$filename,1);
+        }
+
+    }
+}
+else {
+    my $groupresdir = $casepath.'/results/';
+    doMemcheck($groupresdir,$filename,1);
+}
+
+sub doMemcheck {
+
+my $resdir   = $_[0];
+my $filename = $_[1];
+my $ask      = $_[2];
+
+opendir my $dir, $resdir or die "Cannot open directory: $!";
+my @files = readdir $dir;
+closedir $dir;
+    
+$firstmemoryleak = "";
+$nmemoryleaks = 0;
+$generalmemoryleaks = 0;
+    
+foreach $file (@files)
+{
+    #General check
+    if ($file=~/$filename/i && $file=~/\.log/) {
+      open(IN,"$resdir/$file" );
+      while ($stringin =<IN>) {
+         if ($stringin=~/MEMCHECK/i) {
+            $generalmemoryleaks = 1;
+         }
+      }
+      close(IN);
+    }     
+            
+    #If Memcheck was on  
+    elsif ($file=~/$filename/i && $file=~/\.mem/ && $file!~/\.memcheck/) {
+      open(IN,"$resdir/$file" );
+      $checkfile = $file . "check";
+      unlink("$resdir/$checkfile");
+      open(OUT,">>$resdir/$checkfile");
+      
+      my (%variables, @vanams);
+      %variables=();
+      @vanams   =();
+      while ($stringin =<IN>) {
+         $stringin =~ s/^\s+//; #remove leading spaces
+            @words = (split(/(\s+|\s*\(\s*|\s*\)\s*|=|,|!)/, $stringin )) ;
+            $index=$variables{$words[0]};
+            #print "$words[0] $index \n";
+            if( (defined $index )  ) {
+               #print "checking if I ever enter here \n";
+               if    ($words[6] eq "kbytes") {$mod = 1024.0;}
+               elsif ($words[6] eq "Mbytes") {$mod = 1024.0*1024.0}
+               elsif ($words[6] eq "Gbytes") {$mod = 1024.0*1024.0*1024.0}
+               elsif ($words[6] eq "bytes" ) {$mod = 1.0}
+               $variables{$words[0]} = $variables{$words[0]} + $words[4]*$mod;
+               
+               #print "$variables{$words[0]} \n";
+            }
+            else {
+               #print "checking if I ever enter here \n";
+               #print "$words[0] \n";
+               if    ($words[6] eq "kbytes") {$mod = 1024.0;}
+               elsif ($words[6] eq "Mbytes") {$mod = 1024.0*1024.0}
+               elsif ($words[6] eq "Gbytes") {$mod = 1024.0*1024.0*1024.0}
+               elsif ($words[6] eq "bytes" ) {$mod = 1.0}
+               $variables{$words[0]} = $words[4]*$mod;
+               push(@vanams,$words[0]);
+            }
+         }
+      @sortedvanams = reverse sort {abs($variables{$a}) <=> abs($variables{$b}) } @vanams;
+      $memoryleaks = 0;
+      foreach $var (@sortedvanams){
+         if (abs($variables{$var}) > 0.0001) {
+               $memoryleaks = 1;
+               $lbyts = $variables{$var};
+               if(abs($lbyts)>=1024*1024*1024) {
+                  $rbyte3=1024*1024*1024;
+                  $lbyte3='Gbytes';
+            }    
+               elsif(abs($lbyts)>=1024*1024) {
+                  $rbyte3=1024*1024;
+                  $lbyte3='Mbytes';
+            }
+            elsif(abs($lbyts)>=1024) {
+                  $rbyte3=1024.0;
+                  $lbyte3='kbytes';
+            }              
+               else {  
+                  $rbyte3=1.0;
+                  $lbyte3=' bytes';
+            }
+            $lbyts = $lbyts/$rbyte3;    
+         
+               $string = sprintf("%12s    %8.2f %6s", $var,$lbyts,$lbyte3); 
+               print OUT "$string \n";
+         }
+      }
+      if ($memoryleaks == 0) {print OUT "NO MEMORY LEAKS DETECTED \n";}
+      else {
+         $nmemoryleaks = $nmemoryleaks +1;
+         $firstmemoryleak = $checkfile;
+      }   
+      close(IN);
+      close(OUT);
+    }
+}      
+
+#General Memcheck
+if ($generalmemoryleaks ne 0 && $nmemoryleaks == 0) {
+   print color 'bold blue';
+   print "There were ";
+   print color 'bold red';
+   print "memory leaks";
+   print color 'bold blue';
+   print ". Run with ";
+   print color 'bold green';
+   print "Memcheck";
+   print color 'bold blue';
+   print " for detailed information \n";
+   print color 'reset';
+}
+
+#If Memcheck was on
+if ($nmemoryleaks ne 0) {
+   print color 'bold blue';
+   print "There were ";
+   print color 'bold red';
+   print "memory leaks";
+   print color 'bold blue';
+   print ". Do you want to open the ";
+   print color 'bold green';
+   print "$firstmemoryleak ";
+   print color 'bold blue';
+   print "file? \[y/n\] (Default y): \n";
+   print color 'reset';
+   if ($ask){
+   $userinput =  ask_data();
+   if ($userinput !~ /n/) {
+      system("gedit $resdir/$firstmemoryleak &");
+   }
+   }
+}
+}
+
+
+sub ask_data {
+    my $answer;
+ 
+    eval {
+        local $SIG{ALRM} = sub { die "timeout reading from keyboardn" };
+        alarm 5;
+        $answer = <STDIN>;
+        alarm 0;
+        chomp $answer;
+    };
+    if ($@) {
+        #die $@ if $@ ne "timeout reading from keyboardn";
+        print "\n";
+        $answer = 'n';
+    }
+    return $answer;
+}
+
+
+
+
+
+
+
+
+
+
+

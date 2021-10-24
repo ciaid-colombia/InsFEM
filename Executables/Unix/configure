@@ -1,0 +1,1057 @@
+#!/usr/bin/perl
+#
+# This script builds a list of objects and dependencies to include
+# in a makefile. In addition, if required, checks the tree structure
+# of the code to detect unsed files in the source directory.
+#
+# TO DO:
+#  * Take ; (line jump) into account
+#  * Take & (line continuation) into account
+#  * Source files extensions: Free form  - .f90 .f95 .f03 ( and upper cases )
+#                             Fixed form - .f .for        ( and upper cases )
+#
+#--------------------------------------------------------------------------
+#
+use File::Basename;
+use Getopt::Long;
+use List::Util 'first';
+
+
+
+#--------------------------------------------------------------------------
+#
+# 2) Create a list of files
+#
+my ($name,$main,$srcdir,$entry,$objdir,$file,$dirs,$i,$j,$k,$ncf,$imf,$verbose,$l,$help,$objvar) ;
+my (@entries,@otherfiles,@comfiles,@usedirs,@alldirs,@nodirs,@fnddirs,@macros);
+
+our @suffixes77 = qw(.f .for .F .FOR);
+our @suffixes90 = qw(.f90 .f95 .f03 .f08 .F90 .F95 .F03 .F08);
+#our @suffixes = (@suffixes77,@suffixes90);
+our @suffixes = qw(.f90 .F90);
+
+
+my @CODE_COMPILER_DIRECTIVES = split / /, $ENV{"CODE_COMPILER_DIRECTIVES"};
+
+#--------------------------------------------------------------------------
+
+#$objdir="\$O/";
+$objdir=".";
+$srcdir=".";
+$main='';
+$verbose='';
+@nodirs=();
+@macros=(unix,UNIX);
+$help='';
+$objvar='OFILES';
+
+$nargs=$#ARGV+1;
+if($nargs<1){
+  print "Not argument found!\n";
+  &HelpText;
+  exit 0;
+} else {
+  #$name=$ARGV[0];
+  foreach $arg (@ARGV) {
+    if(!($arg=~/^--/i)) { $name=$arg; }
+  }
+  if(!$name){
+    print "Error: Not filename found!\n";
+    exit 0;
+  }
+  GetOptions(
+    "objdir:s"  => \$objdir,
+    "srcdir:s"  => \$srcdir,
+    "check:s"   => \$main,
+    "verbose"   => \$verbose,
+    "nodir:s"   => \@nodirs,
+    "macros:s"  => \@macros,
+    "help"      => \$help,
+    "objvar:s"  => \$objvar,
+  );
+  if($help) {
+    &HelpText;
+    exit 0;
+  }
+  if( ! ( -d $srcdir ) ) {die "Cannot find directory $srcdir \n"};
+  if (@nodirs) {
+    @nodirs = split(/,/,join(',',@nodirs));
+    if ($verbose){
+      print "Unused directories : \n";
+      foreach $dirs (@nodirs) { print "  $dirs\n"; }
+      print "\n";
+    }
+  }
+  if (@macros) {
+    @macros = split(/,/,join(',',@macros));
+    if ($verbose){
+      print "Macro definitions : \n";
+      foreach $macro (@macros) { print "  $macro\n"; }
+      print "\n";
+    }
+  }
+}
+
+# verify / after the directory name ( add "/" and remove "//" )
+if($objdir) { $objdir = "$objdir/"; }
+$objdir =~ s/\/\//\//;
+
+@alldirs=($srcdir);
+@usedirs=();
+@entries=();
+@comfiles=();
+
+$i=0;
+$j=0;
+foreach $dir (@alldirs) {
+  $usedirs[$j]=0;
+  if (grep(/^$dir$/,@nodirs)) { # --> verify if exist $dir on @nodirs
+#    if($verbose){ print "Excluded directory : $dir\n"; }
+  } else {
+    opendir(SDIR,$dir);
+    @entries=readdir(SDIR);
+    foreach (@entries) {
+      $file = $dir."/".$_;
+      if( -d $file ){
+        if( ! (($_=~/^\./) || ($_=~/CVS/)) ) { push(@alldirs,$file)};
+      }
+      if( -f $file ) {
+        if( ! ($_=~/\#/) ) {
+          if ( &IsSourceFile($_) ) {
+            $i++;
+            push(@comfiles,$file);
+            $usedirs[$j]=1;
+          }
+          else {
+            push(@otherfiles,$file);
+          }
+        }
+      }
+    }
+    closedir(SDIR);
+  }
+  $j++;
+}
+$ncf=$i-1;
+
+if($main) {
+  $imf=-1;
+  $j=0;
+  my($lmain)=basename($main,@suffixes);
+  foreach (@comfiles) { 
+    if(basename($_,@suffixes) eq $lmain) {$imf=$j};
+    $j++;
+  }
+  if($imf==-1){ die "Cannot find main file $lmain nor $lmain.f nor $lmain.f90 ... \n" };
+}
+
+#--------------------------------------------------------------------------
+#
+# 3) Create a hash of files with subroutines, functions and modules as keys
+#
+my ($interf,$nwords,$lastword,$nextword,$module,$fixedform,$macrolevel,$macroundef);
+
+my (@words);
+@words=(" " , " ");
+
+my (%subfiles,%funfiles,%modfiles);
+%subfiles=();
+%funfiles=();
+%modfiles=();
+
+$i=0;
+$macrolevel=0;
+$macroundef=0;
+foreach $file (@comfiles) {
+  open (IN,$file);
+  $fixedform=&IsFixedForm($file);
+  $module=0;
+  $interf=0;
+  $j=0;
+  while (<IN>) {
+    $j++;
+    if ( ( !($fixedform) && (!($_=~/^\s*\!/)) ) || ( ($fixedform) && (!($_=~/^c/i)) ) ) {
+      chomp($_);
+      s/^\s+//;
+      s/\s+$//;
+      @words = &ArrayFilter(split(/(\s+|\s*\(\s*|\s*\)\s*|=|,|!)/, lc)) ;
+      $nwords=@words;
+      if(@words>0) {
+        $lastword=$nwords-1;
+        for ($k=0; $k < @words; $k++) {
+          if($words[$k]=~/\!/) {
+            # The rest of the sentence is a comment => break loop
+            $k=@words;
+          } elsif($words[$k]=~/\'/) {
+            # This is a character constant => jump it
+            $l=$k+1;
+            unless($l==@words || $words[$l]=~/\'/){ $l++; }
+            $k=$l;
+            # Interfaces:
+          } elsif( ($words[$k]=~/^interface$/i) ) {
+            if($k==$lastword) { 
+              if($k==0) {
+                $interf=1;  ## start interface block
+              } elsif( ($words[$k-1]=~/^end$/i) && ($interf==1) ) {
+                $interf=0;  ## stop interface block
+              }
+            } else {            ## something else after "interface"
+              if($k==0) {
+                $subfiles{$words[$k+1]}=$i;  ## add next word to @subfiles
+                $interf=1;
+              } elsif( ($words[$k-1]=~/^end$/i) && ($interf==1) ) {
+                $interf=0;
+                $k=$lastword;
+              } else {
+                if($verbose) {
+                  print "Warning in file $file (line $j) at interface definition \n";
+                }
+              }
+            }
+            # Subroutines:
+          } elsif( ($words[$k]=~/^subroutine$/i) && ($interf==0) && ($module==0) ) {
+            if($k==$lastword) {
+              if($k==0) {
+                if($verbose) {
+                  print "Error in file $file, at line $j \n"; # --> subroutine defined without name!
+                }
+              } elsif( ! ($words[$k-1]=~/^end$/i) ) {
+                print "Error in file $file, at line $j \n";     # --> only end allowed before subroutine!
+              }
+            } else {
+              if($k==0) {
+                $subfiles{$words[$k+1]}=$i;  # add next word to @subfiles
+              } elsif( ! ($words[$k-1]=~/^end$/i) ) {           # --> can be "elemental" or "pure" subroutine
+                $subfiles{$words[$k+1]}=$i;  # add next word to @subfiles
+              }
+              $k++;  # jump next word
+            }
+            # Modules:
+          } elsif ( ($words[$k]=~/^module$/i) && ($interf==0) ) {
+            if($k==$lastword) {
+              if($k==0) {
+                print "Error in file $file, at line $j \n";
+              } elsif( ! ($words[$k-1]=~/^end$/i) ) {
+                print "Error in file $file, at line $j \n";
+              } elsif($words[$k-1]=~/^end$/i) {                    ## end module
+                if($module==0){
+                  print "Error in file $file, at line $j \n";  ## found "end module" without $module active!
+                } else {
+                  $module=0;                                      # end $module
+                }
+              }
+            } else {
+              $nextword=$words[$k+1];
+              if( ($k==0) && ( !($nextword=~/^procedure$/i)) ) { ## not "module procedure"
+                $modfiles{$nextword}=$i;                       ## add next word to @modfiles
+                $module=1;                                     ## start $module
+                $k++; # jump next word
+              } elsif($words[$k-1]=~/^end$/i) {                    ## end module
+                if($module==0){
+                  print "Error in file $file, at line $j \n";  ## found "end module" without $module active!
+                } else {
+                  $module=0;                                      # end $module
+                }
+              }
+            }
+            # Functions:
+          } elsif ( ($words[$k]=~/^function$/i) && ($interf==0) &&($module==0) ) {
+            if($k==$lastword) {
+              if($k==0) {
+                print "Error in file $file, at line $j \n";
+              } elsif(! ($words[$k-1]=~/^end$/i) ) {
+                print "Error in file $file, at line $j \n";
+              }
+            } else {
+              if($k==0) {
+                $funfiles{$words[$k+1]}=$i;   # add next word to functions list
+              } elsif( ! ($words[$k-1]=~/^end$/) ) {
+                $funfiles{$words[$k+1]}=$i;   # add next word to functions list
+              }
+              $k++; # jump next word
+            }
+            # Macro definition: ( #ifdef ALGO )
+          } elsif( ($words[$k]=~/^#ifdef$/i) || ($words[$k]=~/^#if$/i) ) {
+            if($k==$lastword) {
+              print "Error in file $file, at line $j \n";
+              print "  Macro defined without key. \n"
+            }
+            $macrolevel++;  # verify level of macros (avoid wrong #endif)
+            $macroundef=&EvaluateMacro($_);
+            if ($macroundef) {
+              $macrodefault=$macrolevel;
+              while ($macroundef) {
+                if (eof(IN)) { die "Error in file $file. Not #endif found.\n"; }
+                $line = <IN>;
+                if( $line=~/^\s*#endif/i) {
+                  if ($macrolevel==$macrodefault) { $macroundef=0; }
+                  $macrolevel--;
+                } elsif ($line=~/^\s*#else/i) {
+                  if ($macrolevel==$macrodefault) { $macroundef=0; }
+                } elsif ($line=~/^\s*#ifdef/i) {
+                  $macrolevel++;
+                }
+              }
+            }
+            $k=@words;
+            # Macro definition: ( #ifdef ALGO )
+          } elsif( ($words[$k]=~/^#endif$/i) ) {
+            $macrolevel--;
+            $k=@words;
+          }
+        }
+      }
+    } 
+  }
+  close (IN);
+  if ($macrolevel>0) {
+    print "Error in file $file. Not #endif found before EOF.\n";
+    exit 0;
+  }
+  $i++;
+}
+
+my (@funs);
+@funs = keys %funfiles;
+#
+#--------------------------------------------------------------------------
+#
+# 4) Loop on the procedures tree (it is actually a graph) to decide which 
+#    files need to be compiled.
+#
+
+my ($a,$mlevel,$klevel,$godown,@level,$iword,@temp,$index,$macrodefault);
+
+if($main) {
+
+  $mlevel=1;
+  for ($i=0; $i <= $ncf; $i++) {$level[$i]=0};
+  $level[$imf]=1;
+
+  $klevel=0;
+  while ($klevel<$mlevel) {
+    $i=0;
+    $klevel++;
+    #print "Tree level: $klevel \n";
+    #print "Files: \n";
+    $godown=0;
+    foreach $file (@comfiles) { 
+      if( ($level[$i]==$klevel) || ($level[$i]==-$klevel) ) {  # negative value include files
+        open (IN,$file);
+        $fixedform=&IsFixedForm($file);
+        $j=0;
+        while (<IN>) {
+          $j++;
+          if ( ( !($fixedform) && (!($_=~/^\s*\!/)) ) || ( ($fixedform) && (!($_=~/^c/i)) ) ) {
+            chomp($_);
+            s/^\s+//;
+            s/\s+$//;
+            @words = &ArrayFilter(split(/(\s+|\s*\(\s*|\s*\)\s*|=|\*|\+|,|!|'|")/, lc )) ;
+            if(@words>0) {
+              $lastword=$#words;
+              $k=0;
+              while($k<@words) {
+                if($words[$k]=~/\!/) {           # the rest of the sentence is a comment => break loop
+                  $k=@words;
+                } elsif($words[$k]=~/\'/) {      # this is a character constant => jump it
+                  $l=$k+1;
+                  unless($l==@words || $words[$l]=~/\'/){ $l++; } # --> search to the next \' or end line!
+                  $k=$l;
+                } elsif( ($words[$k]=~/^interface$/i) ) {
+                   if($k==$lastword) { 
+                     if($k==0) {
+		              $interf=1;  ## start interface block
+		      } elsif( ($words[$k-1]=~/^end$/i) && ($interf==1) ) {
+		        $interf=0;  ## stop interface block
+		      }
+		    } else {            ## something else after "interface"
+		      if($k==0) {
+		        $subfiles{$words[$k+1]}=$i;  ## add next word to @subfiles
+		        $interf=1;
+		      } elsif( ($words[$k-1]=~/^end$/i) && ($interf==1) ) {
+		        $interf=0;
+		        $k=$lastword;
+		      } else {
+		        if($verbose) {
+		          print "Warning in file $file (line $j) at interface definition \n";
+		        }
+		      }
+		    }
+                } 
+                  
+                  elsif($words[$k]=~/^procedure$/i) {
+                     #print "$words[$k] $words[$k+1]  $words[$k+2]  $words[$k+3] $words[$k+4]\n";
+                     if ($words[$k+3] =~/^\:\:$/i) {
+                        $index=$subfiles{$words[$k+4]};
+                        #print "$words[$k+4] \n";
+                        if( (defined $index ) && ($index>-1) ) {
+                          if($level[$index]==0) {
+                            $level[$index]=$klevel+1;
+                            $godown=1;
+                          }
+                        }
+                        $k++;
+                     }
+                     if ($words[$k+4] =~/^\:\:$/i && $words[$k+3] !~/^pointer$/i ) {
+                        $index=$subfiles{$words[$k+5]};
+                        #print "$words[$k+5] \n";
+                        if( (defined $index ) && ($index>-1) ) {
+                          if($level[$index]==0) {
+                            $level[$index]=$klevel+1;
+                            $godown=1;
+                          }
+                        }
+                        $k++;
+                     }
+                  }
+                  
+                  
+                  
+                  elsif($words[$k]=~/^call$/i or ($interf==1 && $words[$k]=~m/^subroutine$/i)) { # touch file that contains this routine (if it has no been touch)
+                  $words[$k+1]=~s/\;$//;
+ 		  
+                  if ($words[$k+1]=~m/%/) {  
+                  $auxwords = $words[$k+1];
+                  $auxwords =~ m/(.*%)/;
+                  $words[$k+1]=~s/$1//;  
+                  # print $words[$k+1] . "\n"
+                  }                 
+
+                  $index=$subfiles{$words[$k+1]};
+                  if( (defined $index ) && ($index>-1) ) {
+                    if($level[$index]==0) {
+                      $level[$index]=$klevel+1;
+                      $godown=1;
+                    }
+                  }
+                  $k++;
+                  #
+                  # --> here the arguments of the subroutine could be verified
+                  #     to look for function/subroutine names
+                  #
+                } elsif($words[$k]=~/^use$/i) {
+                  # touch file that contains this module
+                  $words[$k+1]=~s/\;$//;   # avoid  ";" when exist:   CALL SUB;
+                  $index=$modfiles{$words[$k+1]};
+                  if( (defined $index ) && ($index>-1) ) {
+                    if($level[$index]==0) {
+                      $level[$index]=$klevel+1;
+                      $godown=1;
+                    }
+                    $k++;
+                  }
+                } elsif($words[$k]=~/^#?include$/i) {
+                  # Set level to -1 to avoid compilation
+                  if ($words[$k+1]=~ m/"/) {
+                     $nextword=$words[$k+2];
+                  } else {
+                     $nextword=$words[$k+1]; 
+                  }
+                  # if *.f or *.f90 found  --> avoid its compilation!
+                  if (!(defined $nextword)){
+                    print "file with problems $file\n";
+                  }
+                  $nextword=~s/</"/;
+                  $nextword=~s/>/"/;
+            if ( &IsSourceFile($nextword) ) {
+                    $nlast=-1;
+                    $l=0;
+                    foreach $a (@comfiles) {
+                      if( $a=~/$nextword/i) { $nlast=$l; }
+                      $l++;
+                    }
+                    if($nlast==-1){ # if not exist the file
+                      # Including file *.f90 who is not in the list !
+                      print "Error in file $file($j): include file not found!\n";
+                    } else {
+                      # set included file to negative to avoid compilation but with index of analysis
+                      $level[$nlast]= -($klevel+1);
+                      $godown=1;  #  Process the file
+                    }
+                  }
+                  $k=$k+3;  # Advance to the next significant word !
+                } elsif( ($words[$k]=~/\(/) ) {
+                  # this could be a function
+                  if($k > 0) {
+                    # look for words[$k-1] on the list of functions
+                    $index=$funfiles{$words[$k-1]};
+                    if( (defined $index ) && ($index>-1) ) {
+                      if($level[$index]==0) {
+                        $level[$index]=$klevel+1;
+                        $godown=1;
+                      }
+                      #
+                      # --> here the arguments of the subroutine could be verified
+                      #     to look for function/subroutine names
+                      #
+                    }
+                  }
+                  # Macro definition: ( #ifdef ALGO )
+                } elsif( ($words[$k]=~/^#ifdef$/i) || ($words[$k]=~/^#if$/i) ) {
+                  if($k==$lastword) {
+                    print "Error in file $file, at line $j \n";
+                    print "  Macro defined without key. \n"
+                  }
+                  $macrolevel++;  # verify level of macros (avoid wrong #endif)
+                  $macroundef=&EvaluateMacro($_);
+                  if ($macroundef) {
+                    $macrodefault=$macrolevel;
+                    while ($macroundef) {
+                      #if (eof(IN)) { die "Error in file $file. Not #endif found.\n"; }  # verified in the previous stage
+                      $line = <IN>;
+                      if( $line=~/^\s*#endif/i) {
+                        if ($macrolevel==$macrodefault) { $macroundef=0; }
+                        $macrolevel--;
+                      } elsif ($line=~/^\s*#else/i) {
+                        if ($macrolevel==$macrodefault) { $macroundef=0; }
+                      } elsif ($line=~/^\s*#ifdef/i) {
+                        $macrolevel++;
+                      }
+                    }
+                  }
+                  $k=@words;
+                  # Macro definition: ( #ifdef ALGO )
+                } elsif( ($words[$k]=~/^#endif$/i) ) {
+                  $macrolevel--;
+                }
+                $k++;
+              }
+            }
+          }
+        }
+      }
+      $i++;
+    }
+    if($godown==1) {$mlevel++}
+    #print "------------------------------------------------------------\n";
+  }
+
+  if($verbose){ print "Unused files: \n"; }
+  $i=0;
+  $k=0;
+  $nlast=0;
+  foreach $file (@comfiles) {
+    if($level[$i]==0) {
+      if($verbose){ print "  $file \n"; }
+      $k++;
+    } else {
+      $nlast=$i;
+    }
+    $i++;
+  }
+  print "\n";
+  print "Total number of unused files: $k \n";
+  print "\n";
+
+} else {
+  for ($i=0; $i <= $ncf; $i++) {$level[$i]=1};
+  $nlast=$ncf;
+}
+
+#
+#--------------------------------------------------------------------------
+#
+# 5) Build dependencies and write them
+#
+my (@dinc,@incfiles,@depf,@depf90,@modf90,$current,$line) ;
+#
+# 5.1) Dependencies
+#
+open (MAKEFILE,">$name.dep");
+@dinc=();
+@incfiles=();
+$i=0;
+foreach $file (@comfiles) { 
+  if($level[$i]>0) {
+    open (IN,$file);
+    @depf=();
+    @depf90=();
+    $current=&FileToObject($file);
+    print MAKEFILE "$objdir$current: $file";
+    while (<IN>) {
+      # Macros
+      if( ($_=~/^\s*#ifdef\s+([^\s,!]+)/i) || ($_=~/^\s*#if\s+([^\s,!]+)/i) ) {
+        chomp($_);
+        s/^\s+//;
+        s/\s+$//;
+        $macrolevel++;  # verify level of macros (avoid wrong #endif)
+        $macroundef=&EvaluateMacro($_);
+        if ($macroundef) {
+          $macrodefault=$macrolevel;
+          while ($macroundef) {
+            #if (eof(IN)) { die "Error in file $file. Not #endif found.\n"; }  # verified in the previous stage
+            $line = <IN>;
+            if( $line=~/^\s*#endif/i) {
+              if ($macrolevel==$macrodefault) { $macroundef=0; }
+              $macrolevel--;
+            } elsif ($line=~/^\s*#else/i) {
+              if ($macrolevel==$macrodefault) { $macroundef=0; }
+            } elsif ($line=~/^\s*#ifdef/i) {
+              $macrolevel++;
+            }
+          }
+        }
+      } elsif( $_=~/^\s*#endif/i) {
+        $macrolevel--;
+      } else {
+        if( $_=~/^\s*#?\s*include\s+["\']([^"\']+)["\']/i) { push(@depf,$1)};
+        if( $_=~/^\s*use\s+([^\s,!]+)/i)  { push(@depf90,$1)};
+      };
+    }
+    # Process modules
+    @depf90 = &uniq(sort(@depf90));
+    @modf90 = ();
+    foreach (@depf90){
+      $_=~s/\;$//;
+      $index=$modfiles{&toLower($_)};
+      if( (defined $index ) && ($index>-1) ) {
+        $a=$comfiles[$index];
+        push(@modf90,$a);
+      } elsif($verbose) {
+        print "\n";
+        print "Module $_  not found in Sources\n";
+        print "\n";
+      }
+    }
+    @modf90 = &uniq(sort(@modf90));
+    foreach (@modf90){
+      $a=&FileToObject($_);
+      if( !($a=~/^$current$/) ) {  # if exist USE of module defined in the same file !!
+        print MAKEFILE " \\\n";
+        print MAKEFILE "  $objdir$a";
+      }
+    }
+    # Process includes
+    @depf = &uniq(sort(@depf));
+    foreach $a (@depf){
+      foreach (@otherfiles) {
+        if($_ !~ "\~") { 
+         if( $_=~/$a/i) {
+            print MAKEFILE " \\\n";
+            print MAKEFILE "  $_";
+            push(@dinc,dirname($_));
+            push(@incfiles,$_);
+         }
+        }
+      }
+      foreach (@comfiles) {
+        if($_ !~ "\~") {  
+        if( $_=~/$a/i) {
+          print MAKEFILE " \\\n";
+          print MAKEFILE "  $_";
+          push(@dinc,dirname($_));
+          push(@incfiles,$_);
+        }
+        }
+      }
+    }
+    print MAKEFILE "\n";
+    close (IN);
+  } elsif($level[$i]<0) {
+    push(@incfiles,$file);
+  }
+  $i++;
+}
+# dependencies on include files
+print MAKEFILE "\n";
+print MAKEFILE "# include files dependencies\n";
+print MAKEFILE "\n";
+@incfiles = &uniq(sort(@incfiles));
+
+$i=0;
+foreach $file (@incfiles) { 
+  open (IN,$file);
+  @depf=();
+  @depf90=();
+  $a=&FileToObject($file);
+  print MAKEFILE "\n";    
+  print MAKEFILE "$file: ";
+  while (<IN>) {
+    # Macros
+    if( ($_=~/^\s*#ifdef\s+([^\s,!]+)/i) || ($_=~/^\s*#if\s+([^\s,!]+)/i) ) {
+      chomp($_);
+      s/^\s+//;
+      s/\s+$//;
+      $macrolevel++;  # verify level of macros (avoid wrong #endif)
+      $macroundef=&EvaluateMacro($_);
+      if ($macroundef) {
+        $macrodefault=$macrolevel;
+        while ($macroundef) {
+          #if (eof(IN)) { die "Error in file $file. Not #endif found.\n"; }  # verified in the previous stage
+          $line = <IN>;
+          if( $line=~/^\s*#endif/i) {
+            if ($macrolevel==$macrodefault) { $macroundef=0; }
+            $macrolevel--;
+          } elsif ($line=~/^\s*#else/i) {
+            if ($macrolevel==$macrodefault) { $macroundef=0; }
+          } elsif ($line=~/^\s*#ifdef/i) {
+            $macrolevel++;
+          }
+        }
+      }
+    } elsif( $_=~/^\s*#endif/i) {
+      $macrolevel--;
+    } else {
+      if( $_=~/^\s*#?\s*include\s+["\']([^"\']+)["\']/i) { push(@depf,$1); };
+      if( $_=~/^\s*use\s+([^\s,!]+)/i) { push(@depf90,$1); };
+    };
+  }
+  # Process modules
+  @depf90 = &uniq(sort(@depf90));
+  foreach (@depf90){
+    $index=$modfiles{&toLower($_)};
+    if( (defined $index ) && ($index>-1) ) { 
+      $a=basename($comfiles[$index]);
+    }
+    $a=&FileToObject($a);
+    print MAKEFILE " \\\n";
+    print MAKEFILE "  $objdir$a";
+  }
+  # Process includes
+  @depf = &uniq(sort(@depf));
+  foreach $a (@depf){
+    print MAKEFILE " \\\n";
+    print MAKEFILE "  $a";
+  }
+  print MAKEFILE "\n";
+  close (IN);
+  $i++;
+}
+close(MAKEFILE);
+
+#
+# 5.2) Object and source dirs list
+#
+open (MAKEFILE,">$name.obj");
+print MAKEFILE "SOURCE_DIRS= ";
+$i=0;
+foreach (@alldirs) { 
+  if($usedirs[$i]>0) {
+    print MAKEFILE "\\\n"; 
+    print MAKEFILE ":$_"; 
+  }
+  $i++;
+}
+print MAKEFILE "\n";
+print MAKEFILE "\n"; 
+
+# sort include directories
+@dinc = &uniq(sort(@dinc));
+print MAKEFILE "INC_DIRS=";
+foreach (@dinc){
+  print MAKEFILE " \\\n";
+  print MAKEFILE " $_";
+}
+
+print MAKEFILE "\n"; 
+print MAKEFILE "\n"; 
+
+print MAKEFILE "$objvar=";
+$i=0;
+foreach (@comfiles) { 
+  if($level[$i]>0) {
+    $a=&FileToObject($_);
+#    if ($i==$nlast) {
+#      print MAKEFILE "$objdir$a\n";  
+#    }else{
+#      print MAKEFILE "$objdir$a \\\n";
+#    }
+    print MAKEFILE " \\\n";
+    print MAKEFILE " $objdir$a";
+  }
+  $i++;
+}
+close(MAKEFILE);
+
+#
+# ------------- Local Routines ----------------
+#
+
+#
+# &toLower(string); --- convert string into lower case
+#
+sub toLower {
+  local($string) = @_[0];
+  $string =~ tr/A-Z/a-z/;
+  $string;
+}
+
+#
+# &uniq(sorted word list); --- remove adjacent duplicate words
+#
+sub uniq {
+  local(@wordlist);
+  @wordlist=();
+  foreach $word (@_) {
+    if ($word ne $wordlist[$#wordlist]) {
+      push(@wordlist, $word);
+    }
+  }
+  @wordlist;
+}
+
+#
+# &noSpaces(string); --- avoid spaces at the begin and end of the word
+#
+sub noSpaces {
+  for (@_) { s/ //g; }
+}
+#
+# &IsFixedForm(string); --- verify if extension is on @suffixes77. (if not source file, not fixed form!)
+#
+sub IsFixedForm {
+  my(undef, undef, $ftype) = fileparse(@_[0],@suffixes77);
+  return (length($ftype));
+}
+
+#
+# &IsSourceFile(string); --- verify if extension is on @suffixes.
+#
+sub IsSourceFile {
+  my(undef, undef, $ftype) = fileparse(@_[0],@suffixes);
+  return (length($ftype));
+}
+
+#
+# &FileToObject(string); --- delete path and change extension (if source file) to ".o"
+#
+sub FileToObject {
+  # not possible use fileparse() -> sometimes bad result.
+  my($current) = basename(@_[0]);
+  foreach my $ext (@suffixes){
+    $current=~s/$ext$/.o/;
+  }
+  $current;
+}
+
+sub ArrayFilter {
+
+  my ($element_count,$iterate,$nun_null);
+  $element_count = $#_;
+  for ($iterate = 0; $iterate <= $element_count; $iterate++)
+  {
+    $non_null = shift (@_);
+    $non_null =~s/ //g;
+    if (length ($non_null)){ push (@_, $non_null); }
+  }
+  return(@_);
+}
+
+sub EvaluateMacro {
+  my (@words_,$key,$macroundef,$macro);
+  @words_ = &ArrayFilter(split(/(\s+|\s*\(\s*|\s*\)\s*|=|,|!)/, )) ;
+  if ((lc($words_[0]) ne "#ifdef") && (lc($words_[0]) ne "#if") ) {
+    die "problem found evaluating Macro\n";
+  }
+  
+  $key=$words_[1];
+  $macroundef=1;
+  
+  #print "Start string: @words_ \n";
+  
+  if (lc($words_[0]) eq "#ifdef") {
+     if (grep { $words_[1] eq $_ } @CODE_COMPILER_DIRECTIVES) {
+        $macroundef=0;
+     }
+  } 
+  
+  if (lc($words_[0]) eq "#if") {
+     my @newwords = @words_[1..$#words_];
+     $macrodef=&EvaluateString(@newwords);
+     if ($macrodef eq 1) {
+      $macroundef = 0;
+     } else {
+      $macroundef = 1;
+     }
+  }
+  
+  #print "macrodundef = $macroundef  \n \n \n \n \n ";
+  #$age = <>;
+  return($macroundef);
+}
+
+sub EvaluateString {
+   my @array = @_;
+   #print "Entering String Evaluation \n";
+   #print "String: @array \n";
+
+   #parenthesis
+   $match = first_index ("(" , \@_);
+   #print "match $match \n";
+   if ($match != -1) {
+       # print "par entry: @array \n";
+   
+      $first_index = first_index ( "(" , \@_);
+      $last_index  = last_index  ( ")" , \@_);
+   #   print "last_index $last_index \n";
+      
+      $subarray=&EvaluateString(@array[$firstindex+1..$last_index-1]);
+      
+      @array = (@array[0..$first_index-1], $subarray, @array[$last_index+1..$#array]);
+      
+      #print "par evaluated: @array \n";
+      
+      $subarray=&EvaluateString(@array);
+      
+      #print "par return: $subarray \n";
+      return($subarray);
+      
+   }  
+   
+   #&&
+   $match = first_index ( "&&" , \@_); 
+   #print "match $match \n";
+   if ($match != -1) {
+      #print "and entry: @array \n";
+      my @subarray1 =   @array[0..$match-1];
+      my @subarray2 = @array[$match+1..$#array];
+      $subarray1=&EvaluateString(@subarray1);
+      $subarray2=&EvaluateString(@subarray2);
+
+      my $returnvalue;
+      
+      if ($subarray1  && $subarray2 ) { 
+         $returnvalue = 1;
+      } else {
+         $returnvalue = 0;
+
+      }
+      #print "and return $returnvalue \n";
+      return($returnvalue);      
+      
+    }
+    
+   #|| 
+   $match = first_index ( "||" , \@_); 
+   #print "match $match \n";
+   if ($match != -1) {
+      #print "or entry: @array \n";
+   
+      my @subarray1 =   @array[0..$match-1];
+      my @subarray2 = @array[$match+1..$#array];
+      
+      #print "or substring1: @subarray1 \n";
+      #print "or substring2: @subarray2 \n";
+      
+      $subarray1=&EvaluateString(@subarray1);
+      $subarray2=&EvaluateString(@subarray2);
+      
+      if ($subarray1  || $subarray2 ) { 
+         $returnvalue = 1;
+      } else {
+         $returnvalue = 0;
+      }
+      #print "or return: $returnvalue \n";
+      return($returnvalue);
+      
+   }
+   
+   #print "array values before defined and not defined @array[0] @array[1] @array[2] \n";
+   
+    
+   #defined
+   if (lc(@array[0]) eq "defined") {
+      #print "defined words1 : $array[1] jsnp \n";
+      if (grep { $array[1] eq $_ } @CODE_COMPILER_DIRECTIVES) {
+        $returnvalue = 1;
+      }  
+      else {
+        $returnvalue = 0;
+      }
+      #print "defined return: $returnvalue \n";
+      return($returnvalue);
+      
+   }
+   
+   if (lc(@array[0]) eq "!" && lc(@array[1]) eq "defined") {
+      #print "not defined words2 $array[2] jsñp \n";
+      if (grep { $array[2] eq $_ } @CODE_COMPILER_DIRECTIVES) {
+        $returnvalue = 0;
+      }  
+      else {
+         $returnvalue = 1;
+      }
+      #print "not defined return: $returnvalue \n";
+      return ($returnvalue);
+   }
+   
+   
+   
+   
+   
+   
+   #default for unknown things
+   return(@array[0]);
+}
+
+#
+#
+#
+sub HelpText {
+  print "\nUsage:\n\n";
+  print "configure.pl name [opts]\n\n";
+  print "options:\n";
+  print " --srcdir=<dir>  : where <dir> is the root directory of the source files\n";
+  print "                   default: <dir>=./\n";
+  print " --objdir=<dir>  : where <dir> is the target directory for the compiled objects\n";
+  print "                   default: <dir>=./\n";
+  print " --check=<file>  : activate checking of used files. <file> is the file with the main program\n";
+  print "                   Not default value\n";
+  print " --verbose       : activate messages on the screen\n";
+  print " --nodir=<dir>   : get list of directories to exclude of the searches, separated by coma (--nodir=dir1,dir2,...).\n";
+  print "                   Not default list.\n";
+  print " --macros=<key>  : get list of macro definitions for conditional compilation, separated by coma (--macros=macro1,macro2,...).\n";
+  print "                   Not default list.\n";
+  print "                   NOTE: just #ifdef is considered:\n";
+  print "                         #ifdef MACRO\n";
+  print "                         ...\n";
+  print "                         #endif\n";
+  print "\n";
+}
+
+sub first_index {
+ #print "hello first index \n";
+   my $string = $_[0];
+   my @array = @{$_[1]};
+   
+  # print "string $string \n";
+  #    print "array @array \n";
+      
+   
+   my $first_index = -1;
+   
+   foreach $word (@array) {
+      $first_index = $first_index+1;
+      if ($string eq $word) {
+         return($first_index);
+      }
+   }
+   return(-1);
+};
+
+sub last_index {
+#print "hello last index \n";
+   my $string = $_[0];
+   my @array = @{$_[1]};
+   
+#   print "string $string \n";
+#      print "array @array \n";
+   
+   my $last_index = $#array+1;
+   
+   foreach $word (reverse(@array)) {
+      $last_index = $last_index-1;
+      if ($string eq $word) {
+         return($last_index);
+      }
+   }
+   return(-1);
+};   
+
+
+
+
+
+
+
+

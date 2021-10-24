@@ -1,0 +1,23 @@
+$------------------------------------------------------------
+DIMENSIONS
+  NODAL_POINTS=           81
+  ELEMENTS=               24
+  SPACE_DIMENSIONS=        2
+  NODES_PER_ELEMENT=  6,  9
+  BOUNDARIES=         AUTOMATIC
+  SKEW_SYSTEMS=            0
+  SLAVES=                  0
+END_DIMENSIONS
+$------------------------------------------------------------
+STRATEGY
+  INTEGRATION_RULE:          Open  
+  DOMAIN_INTEGRATION_POINTS: 0  
+  OUTPUT MESH_DATA:          Off    
+END_STRATEGY
+$-------------------------------------------------------------
+GEOMETRY, GID, WALL_DISTANCE= 0.0   
+ INCLUDE  tempe5.geo.dat
+END_GEOMETRY  
+$-------------------------------------------------------------
+
+ 

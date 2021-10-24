@@ -1,0 +1,355 @@
+BOOK:TEMPER_Materials
+NUMBER: 1 MATERIAL: TEM_MATERIAL_1
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 2 MATERIAL: TEM_MATERIAL_2
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 3 MATERIAL: TEM_MATERIAL_3
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 4 MATERIAL: TEM_MATERIAL_4
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 5 MATERIAL: TEM_MATERIAL_5
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 6 MATERIAL: TEM_MATERIAL_6
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 7 MATERIAL: TEM_MATERIAL_7
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 8 MATERIAL: TEM_MATERIAL_8
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 9 MATERIAL: TEM_MATERIAL_9
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+BOOK:NSTINC_Materials
+NUMBER: 10 MATERIAL: NSI_FLUID
+END MATERIAL
+NUMBER: 11 MATERIAL: NSI_SOLID
+END MATERIAL
+BOOK:PLCd_Materials
+NUMBER: 12 MATERIAL: Mat01
+TITLE: General
+QUESTION: ID_Number
+VALUE: 1
+HELP: ID of the material
+QUESTION: Type_of_Material#CB#(Simple,Composite)
+VALUE: Simple
+DEPENDENCIES: (Simple,TITLESTATE,Simple_Material_Data,normal,TITLESTATE,Composite_Data,hidden)
+DEPENDENCIES: (Composite,TITLESTATE,Simple_Material_Data,hidden,TITLESTATE,Composite_Data,normal)
+QUESTION: Mat._Ref._System#CB#(Global,Local)
+VALUE: Global
+DEPENDENCIES: (Global,HIDE,Rot._Z=,#CURRENT#,HIDE,Rot._X_3D=,#CURRENT#,HIDE,Rot._Z_3D=,#CURRENT#)
+DEPENDENCIES: (Local,RESTORE,Rot._Z=,#CURRENT#,RESTORE,Rot._X_3D=,#CURRENT#,RESTORE,Rot._Z_3D=,#CURRENT#)
+QUESTION: Rot._Z=
+VALUE: 0
+STATE: HIDDEN
+HELP: Rotation about Z axis (degres)
+QUESTION: Rot._X_3D=
+VALUE: 0
+STATE: HIDDEN
+HELP: Rotation about X' axis (degres)
+QUESTION: Rot._Z_3D=
+VALUE: 0
+STATE: HIDDEN
+HELP: Rotation about Z'' axis (degres)
+TITLE: Simple_Material_Data
+QUESTION: Density=
+VALUE: 1.0
+QUESTION: Constitutive_Tensor#CB#(Isotropic,Transversely_Isotropic,Orthotropic)
+VALUE: Isotropic
+DEPENDENCIES: (Isotropic,RESTORE,Young's_Modulus=,#CURRENT#,RESTORE,Poisson's_Ratio=,#CURRENT#,HIDE,Young's_Modulus_"transverse"=,#CURRENT#,HIDE,Young's_Modulus_"in-plane"=,#CURRENT#,HIDE,Shear_Modulus_"transverse"=,#CURRENT#,HIDE,Shear_Modulus_"in-plane"=,#CURRENT#,HIDE,Poisson's_Ratio_"transverse_in-plane"=,#CURRENT#,HIDE,Young's_Modulus_1=,#CURRENT#,HIDE,Young's_Modulus_2=,#CURRENT#,HIDE,Young's_Modulus_3=,#CURRENT#,HIDE,Shear_Modulus_12=,#CURRENT#,HIDE,Shear_Modulus_13=,#CURRENT#,HIDE,Shear_Modulus_23=,#CURRENT#,HIDE,Poisson's_Ratio_12=,#CURRENT#,HIDE,Poisson's_Ratio_13=,#CURRENT#,HIDE,Poisson's_Ratio_23=,#CURRENT#)
+DEPENDENCIES: (Transversely_Isotropic,HIDE,Young's_Modulus=,#CURRENT#,HIDE,Poisson's_Ratio=,#CURRENT#,RESTORE,Young's_Modulus_"transverse"=,#CURRENT#,RESTORE,Young's_Modulus_"in-plane"=,#CURRENT#,RESTORE,Shear_Modulus_"transverse"=,#CURRENT#,RESTORE,Shear_Modulus_"in-plane"=,#CURRENT#,RESTORE,Poisson's_Ratio_"transverse_in-plane"=,#CURRENT#,HIDE,Young's_Modulus_1=,#CURRENT#,HIDE,Young's_Modulus_2=,#CURRENT#,HIDE,Young's_Modulus_3=,#CURRENT#,HIDE,Shear_Modulus_12=,#CURRENT#,HIDE,Shear_Modulus_13=,#CURRENT#,HIDE,Shear_Modulus_23=,#CURRENT#,HIDE,Poisson's_Ratio_12=,#CURRENT#,HIDE,Poisson's_Ratio_13=,#CURRENT#,HIDE,Poisson's_Ratio_23=,#CURRENT#)
+DEPENDENCIES: (Orthotropic,HIDE,Young's_Modulus=,#CURRENT#,HIDE,Poisson's_Ratio=,#CURRENT#,HIDE,Young's_Modulus_"transverse"=,#CURRENT#,HIDE,Young's_Modulus_"in-plane"=,#CURRENT#,HIDE,Shear_Modulus_"transverse"=,#CURRENT#,HIDE,Shear_Modulus_"in-plane"=,#CURRENT#,HIDE,Poisson's_Ratio_"transverse_in-plane"=,#CURRENT#,RESTORE,Young's_Modulus_1=,#CURRENT#,RESTORE,Young's_Modulus_2=,#CURRENT#,RESTORE,Young's_Modulus_3=,#CURRENT#,RESTORE,Shear_Modulus_12=,#CURRENT#,RESTORE,Shear_Modulus_13=,#CURRENT#,RESTORE,Shear_Modulus_23=,#CURRENT#,RESTORE,Poisson's_Ratio_12=,#CURRENT#,RESTORE,Poisson's_Ratio_13=,#CURRENT#,RESTORE,Poisson's_Ratio_23=,#CURRENT#)
+HELP: Type of material
+QUESTION: Bidimensional_type#CB#(Does_Not_Apply,Stress,Strain)
+VALUE: Does_Not_Apply
+HELP: Only for 2D cases
+QUESTION: Young's_Modulus=
+VALUE: 240e9
+STATE: HIDDEN
+QUESTION: Poisson's_Ratio=
+VALUE: 0.21
+STATE: HIDDEN
+QUESTION: Young's_Modulus_"transverse"=
+VALUE: 240e9
+STATE: HIDDEN
+QUESTION: Young's_Modulus_"in-plane"=
+VALUE: 7e9
+STATE: HIDDEN
+QUESTION: Shear_Modulus_"transverse"=
+VALUE: 5e9
+STATE: HIDDEN
+QUESTION: Shear_Modulus_"in-plane"=
+VALUE: 5e9
+STATE: HIDDEN
+QUESTION: Poisson's_Ratio_"transverse_in-plane"=
+VALUE: 0.2
+STATE: HIDDEN
+QUESTION: Young's_Modulus_1=
+VALUE: 240e9
+STATE: HIDDEN
+QUESTION: Young's_Modulus_2=
+VALUE: 7e9
+STATE: HIDDEN
+QUESTION: Young's_Modulus_3=
+VALUE: 7e9
+STATE: HIDDEN
+QUESTION: Shear_Modulus_12=
+VALUE: 5e9
+STATE: HIDDEN
+QUESTION: Shear_Modulus_13=
+VALUE: 5e9
+STATE: HIDDEN
+QUESTION: Shear_Modulus_23=
+VALUE: 5e9
+STATE: HIDDEN
+QUESTION: Poisson's_Ratio_12=
+VALUE: 0.2
+STATE: HIDDEN
+QUESTION: Poisson's_Ratio_13=
+VALUE: 0.2
+STATE: HIDDEN
+QUESTION: Poisson's_Ratio_23=
+VALUE: 0.1
+STATE: HIDDEN
+QUESTION: Tangent_Type#CB#(Initial,Secant,Tangent)
+VALUE: Tangent
+QUESTION: Law_Type#CB#(Linear_Elastic,Damage,SIMP,Saint-Venant_Kirchhoff,NeoHookean)
+VALUE: Linear_Elastic
+HELP: Type law of the material
+DEPENDENCIES: (Linear_Elastic,HIDE,Uniaxial_Stress=,#CURRENT#,HIDE,Fracture_Energy=,#CURRENT#,HIDE,Max_Damage=,#CURRENT#,HIDE,ComparisonCriteria=,#CURRENT#,HIDE,Type_Of_Damage=,#CURRENT#) (Damage,RESTORE,Uniaxial_Stress=,#CURRENT#,RESTORE,Fracture_Energy=,#CURRENT#,RESTORE,Max_Damage=,#CURRENT#,RESTORE,ComparisonCriteria=,#CURRENT#,RESTORE,Type_Of_Damage=,#CURRENT#) (Composite,HIDE,Uniaxial_Stress=,#CURRENT#,HIDE,Fracture_Energy=,#CURRENT#,HIDE,Max_Damage=,#CURRENT#,HIDE,ComparisonCriteria=,#CURRENT#,HIDE,Type_Of_Damage=,#CURRENT#(SIMP,HIDE,Uniaxial_Stress=,#CURRENT#,HIDE,Fracture_Energy=,#CURRENT#,HIDE,Max_Damage=,#CURRENT#,HIDE,ComparisonCriteria=,#CURRENT#,HIDE,Type_Of_Damage=,#CURRENT#)(Saint-Venant_Kirchhoff,HIDE,Uniaxial_Stress=,#CURRENT#,HIDE,Fracture_Energy=,#CURRENT#,HIDE,Max_Damage=,#CURRENT#,HIDE,ComparisonCriteria=,#CURRENT#,HIDE,Type_Of_Damage=,#CURRENT#)(NeoHookean,HIDE,Uniaxial_Stress=,#CURRENT#,HIDE,Fracture_Energy=,#CURRENT#,HIDE,Max_Damage=,#CURRENT#,HIDE,ComparisonCriteria=,#CURRENT#,HIDE,Type_Of_Damage=,#CURRENT#)
+QUESTION: Uniaxial_Stress=
+VALUE: 100e6
+STATE: HIDDEN
+QUESTION: Fracture_Energy=
+VALUE: 24e3
+STATE: HIDDEN
+QUESTION: Max_Damage=
+VALUE: 0.9999
+STATE: HIDDEN
+QUESTION: ComparisonCriteria=#CB#(SimoJu,VonMises)
+VALUE: SimoJu
+STATE: HIDDEN
+QUESTION: Type_Of_Damage=#CB#(Full,Deviatoric)
+VALUE: Full
+STATE: HIDDEN
+TITLE: Composite_Data
+QUESTION: Materials_Data_(ID_Sim._Mats.,Vol._Fraction)
+VALUE: #N# 2 1 1.0
+HELP: Information to compose the composite
+END MATERIAL
+NUMBER: 13 MATERIAL: Material1
+TITLE: General
+QUESTION: ID_Number
+VALUE: 1
+HELP: ID of the material
+QUESTION: Type_of_Material#CB#(Simple,Composite)
+VALUE: Simple
+DEPENDENCIES: (Simple,TITLESTATE,Simple_Material_Data,normal,TITLESTATE,Composite_Data,hidden)
+DEPENDENCIES: (Composite,TITLESTATE,Simple_Material_Data,hidden,TITLESTATE,Composite_Data,normal)
+QUESTION: Mat._Ref._System#CB#(Global,Local)
+VALUE: Global
+DEPENDENCIES: (Global,HIDE,Rot._Z=,#CURRENT#,HIDE,Rot._X_3D=,#CURRENT#,HIDE,Rot._Z_3D=,#CURRENT#)
+DEPENDENCIES: (Local,RESTORE,Rot._Z=,#CURRENT#,RESTORE,Rot._X_3D=,#CURRENT#,RESTORE,Rot._Z_3D=,#CURRENT#)
+QUESTION: Rot._Z=
+VALUE: 0
+STATE: HIDDEN
+HELP: Rotation about Z axis (degres)
+QUESTION: Rot._X_3D=
+VALUE: 0
+STATE: HIDDEN
+HELP: Rotation about X' axis (degres)
+QUESTION: Rot._Z_3D=
+VALUE: 0
+STATE: HIDDEN
+HELP: Rotation about Z'' axis (degres)
+TITLE: Simple_Material_Data
+QUESTION: Density=
+VALUE: 1
+QUESTION: Constitutive_Tensor#CB#(Isotropic,Transversely_Isotropic,Orthotropic)
+VALUE: Isotropic
+DEPENDENCIES: (Isotropic,RESTORE,Young's_Modulus=,#CURRENT#,RESTORE,Poisson's_Ratio=,#CURRENT#,HIDE,Young's_Modulus_"transverse"=,#CURRENT#,HIDE,Young's_Modulus_"in-plane"=,#CURRENT#,HIDE,Shear_Modulus_"transverse"=,#CURRENT#,HIDE,Shear_Modulus_"in-plane"=,#CURRENT#,HIDE,Poisson's_Ratio_"transverse_in-plane"=,#CURRENT#,HIDE,Young's_Modulus_1=,#CURRENT#,HIDE,Young's_Modulus_2=,#CURRENT#,HIDE,Young's_Modulus_3=,#CURRENT#,HIDE,Shear_Modulus_12=,#CURRENT#,HIDE,Shear_Modulus_13=,#CURRENT#,HIDE,Shear_Modulus_23=,#CURRENT#,HIDE,Poisson's_Ratio_12=,#CURRENT#,HIDE,Poisson's_Ratio_13=,#CURRENT#,HIDE,Poisson's_Ratio_23=,#CURRENT#)
+DEPENDENCIES: (Transversely_Isotropic,HIDE,Young's_Modulus=,#CURRENT#,HIDE,Poisson's_Ratio=,#CURRENT#,RESTORE,Young's_Modulus_"transverse"=,#CURRENT#,RESTORE,Young's_Modulus_"in-plane"=,#CURRENT#,RESTORE,Shear_Modulus_"transverse"=,#CURRENT#,RESTORE,Shear_Modulus_"in-plane"=,#CURRENT#,RESTORE,Poisson's_Ratio_"transverse_in-plane"=,#CURRENT#,HIDE,Young's_Modulus_1=,#CURRENT#,HIDE,Young's_Modulus_2=,#CURRENT#,HIDE,Young's_Modulus_3=,#CURRENT#,HIDE,Shear_Modulus_12=,#CURRENT#,HIDE,Shear_Modulus_13=,#CURRENT#,HIDE,Shear_Modulus_23=,#CURRENT#,HIDE,Poisson's_Ratio_12=,#CURRENT#,HIDE,Poisson's_Ratio_13=,#CURRENT#,HIDE,Poisson's_Ratio_23=,#CURRENT#)
+DEPENDENCIES: (Orthotropic,HIDE,Young's_Modulus=,#CURRENT#,HIDE,Poisson's_Ratio=,#CURRENT#,HIDE,Young's_Modulus_"transverse"=,#CURRENT#,HIDE,Young's_Modulus_"in-plane"=,#CURRENT#,HIDE,Shear_Modulus_"transverse"=,#CURRENT#,HIDE,Shear_Modulus_"in-plane"=,#CURRENT#,HIDE,Poisson's_Ratio_"transverse_in-plane"=,#CURRENT#,RESTORE,Young's_Modulus_1=,#CURRENT#,RESTORE,Young's_Modulus_2=,#CURRENT#,RESTORE,Young's_Modulus_3=,#CURRENT#,RESTORE,Shear_Modulus_12=,#CURRENT#,RESTORE,Shear_Modulus_13=,#CURRENT#,RESTORE,Shear_Modulus_23=,#CURRENT#,RESTORE,Poisson's_Ratio_12=,#CURRENT#,RESTORE,Poisson's_Ratio_13=,#CURRENT#,RESTORE,Poisson's_Ratio_23=,#CURRENT#)
+HELP: Type of material
+QUESTION: Bidimensional_type#CB#(Does_Not_Apply,Stress,Strain)
+VALUE: Stress
+HELP: Only for 2D cases
+QUESTION: Young's_Modulus=
+VALUE: 1.2e6
+STATE: HIDDEN
+QUESTION: Poisson's_Ratio=
+VALUE: 0.25
+STATE: HIDDEN
+QUESTION: Young's_Modulus_"transverse"=
+VALUE: 240e9
+STATE: HIDDEN
+QUESTION: Young's_Modulus_"in-plane"=
+VALUE: 7e9
+STATE: HIDDEN
+QUESTION: Shear_Modulus_"transverse"=
+VALUE: 5e9
+STATE: HIDDEN
+QUESTION: Shear_Modulus_"in-plane"=
+VALUE: 5e9
+STATE: HIDDEN
+QUESTION: Poisson's_Ratio_"transverse_in-plane"=
+VALUE: 0.2
+STATE: HIDDEN
+QUESTION: Young's_Modulus_1=
+VALUE: 240e9
+STATE: HIDDEN
+QUESTION: Young's_Modulus_2=
+VALUE: 7e9
+STATE: HIDDEN
+QUESTION: Young's_Modulus_3=
+VALUE: 7e9
+STATE: HIDDEN
+QUESTION: Shear_Modulus_12=
+VALUE: 5e9
+STATE: HIDDEN
+QUESTION: Shear_Modulus_13=
+VALUE: 5e9
+STATE: HIDDEN
+QUESTION: Shear_Modulus_23=
+VALUE: 5e9
+STATE: HIDDEN
+QUESTION: Poisson's_Ratio_12=
+VALUE: 0.2
+STATE: HIDDEN
+QUESTION: Poisson's_Ratio_13=
+VALUE: 0.2
+STATE: HIDDEN
+QUESTION: Poisson's_Ratio_23=
+VALUE: 0.1
+STATE: HIDDEN
+QUESTION: Tangent_Type#CB#(Initial,Secant,Tangent)
+VALUE: Tangent
+QUESTION: Law_Type#CB#(Linear_Elastic,Damage,SIMP,Saint-Venant_Kirchhoff,NeoHookean)
+VALUE: Saint-Venant_Kirchhoff
+HELP: Type law of the material
+DEPENDENCIES: (Linear_Elastic,HIDE,Uniaxial_Stress=,#CURRENT#,HIDE,Fracture_Energy=,#CURRENT#,HIDE,Max_Damage=,#CURRENT#,HIDE,ComparisonCriteria=,#CURRENT#,HIDE,Type_Of_Damage=,#CURRENT#) (Damage,RESTORE,Uniaxial_Stress=,#CURRENT#,RESTORE,Fracture_Energy=,#CURRENT#,RESTORE,Max_Damage=,#CURRENT#,RESTORE,ComparisonCriteria=,#CURRENT#,RESTORE,Type_Of_Damage=,#CURRENT#) (Composite,HIDE,Uniaxial_Stress=,#CURRENT#,HIDE,Fracture_Energy=,#CURRENT#,HIDE,Max_Damage=,#CURRENT#,HIDE,ComparisonCriteria=,#CURRENT#,HIDE,Type_Of_Damage=,#CURRENT#(SIMP,HIDE,Uniaxial_Stress=,#CURRENT#,HIDE,Fracture_Energy=,#CURRENT#,HIDE,Max_Damage=,#CURRENT#,HIDE,ComparisonCriteria=,#CURRENT#,HIDE,Type_Of_Damage=,#CURRENT#)(Saint-Venant_Kirchhoff,HIDE,Uniaxial_Stress=,#CURRENT#,HIDE,Fracture_Energy=,#CURRENT#,HIDE,Max_Damage=,#CURRENT#,HIDE,ComparisonCriteria=,#CURRENT#,HIDE,Type_Of_Damage=,#CURRENT#)(NeoHookean,HIDE,Uniaxial_Stress=,#CURRENT#,HIDE,Fracture_Energy=,#CURRENT#,HIDE,Max_Damage=,#CURRENT#,HIDE,ComparisonCriteria=,#CURRENT#,HIDE,Type_Of_Damage=,#CURRENT#)
+QUESTION: Uniaxial_Stress=
+VALUE: 100e6
+STATE: HIDDEN
+QUESTION: Fracture_Energy=
+VALUE: 24e3
+STATE: HIDDEN
+QUESTION: Max_Damage=
+VALUE: 0.9999
+STATE: HIDDEN
+QUESTION: ComparisonCriteria=#CB#(SimoJu,VonMises)
+VALUE: SimoJu
+STATE: HIDDEN
+QUESTION: Type_Of_Damage=#CB#(Full,Deviatoric)
+VALUE: Full
+STATE: HIDDEN
+TITLE: Composite_Data
+QUESTION: Materials_Data_(ID_Sim._Mats.,Vol._Fraction)
+VALUE: #N# 2 1 1.0 
+HELP: Information to compose the composite
+END MATERIAL

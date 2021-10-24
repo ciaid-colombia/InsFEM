@@ -1,0 +1,2 @@
+cd cylinder.gid
+../../../Executables/Unix/InspiraFEM.sh cylinder -postprocessfolder . -restartfolder data

@@ -1,0 +1,10 @@
+if [ -z ${ZOLTAN_DIR+x} ]
+then
+   cp -rf ../test104/test.gid .
+	echo "Test not run"
+   touch testnotrun
+else
+   cd test.gid
+   ../../../Executables/Unix/InspiraFEM.sh test -cases 2 data/helix data/background -np 3 -nomerge
+   cd ..
+fi

@@ -1,0 +1,47 @@
+$-------------------------------------------------------------------
+RUN_DATA
+Femuss:                 natural
+MEMCHECK:                   Off
+OUTPUT_FORMAT:              VTK
+OUTPUT_COMPRESSION:         ASCII
+IO_FORMAT:                  PETSc
+CUSTOMER:                   Universal
+COMMUNICATOR_LIBRARY:       PETSc
+ORDERING_LIBRARY:           PETSc
+REBALANCE_NUMBERING:        Zoltan
+MPICommunicationsType:      NonBlocking
+FLUSH_TO_DISK:              On
+POSTPROCESS:
+START_POSTPROCESS_AT:        1
+PROCESSOR_POSTPROCESS_EVERY: 0
+END_POSTPROCESS
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+TIME_COUPLING:          Global, Prescribed
+TIME_INTERVAL=          0.0, 0.5 
+TIME_STEP_SIZE=         0.05  
+NUMBER_OF_STEPS=        1e5   
+MAXIMUM_NUMBER_GLOBAL=  1
+REMESHING_STRATEGY:     Off
+ADAPTIVE_MESH_REFINEMENT:   Off Temperature REBALANCING_RATIO 1.5 Off Max_Refinement_Level: 0
+INITIAL_UNIFORM_REFINEMENT:  Off 1
+INTERPOLATOR_TOLERANCE:    1e-6
+CP_CONVERGENCE=    no
+PODROM_LMACHN_PROBLEM:         On MODNAME: 
+DELAY_STEPS:          0
+RESTART:              Off
+OLD_CASE_NAME:      natural
+PHYSICAL_PROBLEM:     LowMach
+LMACHN_PROBLEM:         On  MODNAME:  
+DELAY_STEPS:          0
+PRELIMINARY RUN:      On FRECUENCY: 1
+RESTART:              Initial $Initial
+OLD_CASE_NAME:      natural
+GROUP:          Domain
+CONVERGENCE_REQUIRED: Yes
+END_LMACHN_PROBLEM
+END_PODROM_LMACHN_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------
+$-------------------------------------------------------------------

@@ -1,0 +1,6 @@
+$        Time     Global       Current  Module residuals -->
+$        step  iteration          time   NSTIN      TEMPE   
+            1          1  0.100000E+01    0.100000E+01    0.123834E+00  
+            2          1  0.200000E+01    0.644515E+00    0.825673E-01  
+            3          1  0.300000E+01    0.310755E+00    0.478562E-01  
+

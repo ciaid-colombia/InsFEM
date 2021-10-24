@@ -1,0 +1,1 @@
+FSI-ROM-ROM-TRIFIL-TRIFIL(NavierStokes-Solids(NeoHookean)): restart flow over an elastic cantilever bar; Base-ROM (10 snapshots), Petrov-Galerkin, ALE(solid-Aitken)

@@ -1,0 +1,19 @@
+NUMBER OF MATERIALS: 1
+MATERIALS_PROPERTIES
+   
+   BEGIN_MATERIAL
+      IDNUMBER:   1
+      TYPELAW:    Damage
+         UNIAXIAL_STRESS: 10000
+         FRACTURE_ENERGY: 200
+         MAX_DAMAGE:      0.999999
+         COMPARISON_CRIT: VonMises
+         TYPE_OF_DAMAGE:  Full
+      DENSITY:    1.0
+      CONST_TEN:  Isotropic Stress
+         YOUNG:   10e6
+         POISSON: 0.5
+      
+      TANG_TYPE:  Tangent
+   END_MATERIAL
+END_MATERIALS_PROPERTIES

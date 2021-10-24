@@ -1,0 +1,4 @@
+$        Time      Inner       Current      Force
+$        step  iteration          time      residual      residual
+            1          1  0.500000E+00  0.321423E-02
+            2          1  0.100000E+01  0.336789E-02

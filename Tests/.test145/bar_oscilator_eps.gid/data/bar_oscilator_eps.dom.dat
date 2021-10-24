@@ -1,0 +1,27 @@
+$------------------------------------------------------------
+DIMENSIONS
+  NODAL_POINTS=           12
+  ELEMENTS=               10
+  SPACE_DIMENSIONS=        2
+  NODES_PER_ELEMENT=  3
+  BOUNDARIES=         AUTOMATIC
+  SKEW_SYSTEMS=            0
+END_DIMENSIONS
+$------------------------------------------------------------
+STRATEGY
+  INTEGRATION_RULE:          Open  
+  DOMAIN_INTEGRATION_POINTS: 0  
+  ELEMENT_DATA_STRUCTURES:   OFF
+  OUTPUT MESH_DATA:          Off    
+  PERIODIC_BC=               Off 0 1 0
+  TEST_COMMUNICATIONS=       Off
+  READ_STRATEGY=             Default 
+END_STRATEGY
+$-------------------------------------------------------------
+GEOMETRY, GID
+ INCLUDE  bar_oscilator_eps.geo.dat
+ INCLUDE  bar_oscilator_eps.dom.fix
+END_GEOMETRY  
+$-------------------------------------------------------------
+GROUPS
+END_GROUPS

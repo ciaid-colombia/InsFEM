@@ -1,0 +1,2 @@
+cd turek_nl.gid
+../../../Executables/Unix/InspiraFEM.sh turek_nl -cases 2 data/Fluid data/Solid -nomerge

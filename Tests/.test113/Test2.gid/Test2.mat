@@ -1,0 +1,162 @@
+BOOK:TEMPER_Materials
+NUMBER: 1 MATERIAL: TEM_MATERIAL_1
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 2 MATERIAL: TEM_MATERIAL_2
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 3 MATERIAL: TEM_MATERIAL_3
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 4 MATERIAL: TEM_MATERIAL_4
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 5 MATERIAL: TEM_MATERIAL_5
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 6 MATERIAL: TEM_MATERIAL_6
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 7 MATERIAL: TEM_MATERIAL_7
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 8 MATERIAL: TEM_MATERIAL_8
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+NUMBER: 9 MATERIAL: TEM_MATERIAL_9
+QUESTION: Density_tem=
+VALUE: 1.0
+QUESTION: Law_density_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Specific_heat_tem=
+VALUE: 1.0
+QUESTION: Law_specific_heat_tem:#CB#(Constant)
+VALUE: Constant
+QUESTION: Thermal_conductivity_tem=
+VALUE: 1.0
+QUESTION: Law_thermal_conductivity_tem:#CB#(Constant)
+VALUE: Constant
+END MATERIAL
+BOOK:NSTINC_Materials
+NUMBER: 10 MATERIAL: NSI_FLUID
+END MATERIAL
+NUMBER: 11 MATERIAL: NSI_SOLID
+END MATERIAL
+BOOK:PLCd_Materials
+NUMBER: 12 MATERIAL: Material1
+QUESTION: ID_Number
+VALUE: 1
+HELP: ID of the material
+QUESTION: Density=
+VALUE: 1.0
+QUESTION: Constitutive_Tensor#CB#(Isotropic,Orthotropic)
+VALUE: Isotropic
+HELP: Type of material
+DEPENDENCIES: (Isotropic,RESTORE,YOUNG=,#CURRENT#,RESTORE,POISSON=,#CURRENT#) (Orthotropic,HIDE,YOUNG=,#CURRENT#,HIDE,POISSON=,#CURRENT#)
+QUESTION: Young=
+VALUE: 1.2e11
+STATE: HIDDEN
+QUESTION: Poisson=
+VALUE: 0.21
+STATE: HIDDEN
+QUESTION: Tangent_Type#CB#(Initial,Secant,Tangent)
+VALUE: Tangent
+QUESTION: Law_Type#CB#(Linear_Elastic,Damage,Composite)
+VALUE: Damage
+HELP: Type law of the material
+DEPENDENCIES: (Linear_Elastic,HIDE,Uniaxial_Stress=,#CURRENT#,HIDE,Fracture_Energy=,#CURRENT#) (Damage,RESTORE,Uniaxial_Stress=,#CURRENT#,RESTORE,Fracture_Energy=,#CURRENT#) (Composite,HIDE,Uniaxial_Stress=,#CURRENT#,HIDE,Fracture_Energy=,#CURRENT#)
+QUESTION: Uniaxial_Stress=
+VALUE: 5e6
+STATE: HIDDEN
+QUESTION: Fracture_Energy=
+VALUE: 2000
+STATE: HIDDEN
+END MATERIAL

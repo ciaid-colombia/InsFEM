@@ -1,0 +1,64 @@
+      DOMAIN DECOMPOSITION RESULTS
+      ------------------------------------------
+          GLOBAL NUMBER OF POINTS:                            36
+          OPTIMUM NUMBER OF POINTS PER PROCESSOR:             18
+          MAXIMUM NUMBER OF POINTS PER PROCESSOR:             18
+          DIFFERENCE:                                       0.00 %
+
+          TOTAL NUMBER OF GHOST POINTS:                       12
+          MAXIMUM NUMBER OF GHOST POINTS PER PROC              6
+
+          GLOBAL NUMBER OF ELEMENTS:                          25
+          REFERENCE NUMBER OF ELEMENTS PER PROCESSOR:         12
+          MAXIMUM NUMBER OF ELEMENTS PER PROCESSOR:           15
+          DIFFERENCE:                                      25.00 %
+
+     SUMMARY OF COMPUTING TIMES
+     ------------------------------------------
+
+          TOTAL CPU TIME:                  0.42
+               ReaLnods                        :           0.06 ( 14.24 % )
+               Partitionate                    :           0.03 (  7.03 % )
+               LocalDimensionsAndIRenumbering  :           0.00 (  0.00 % )
+               GhostPoints                     :           0.00 (  0.01 % )
+               BuildLocalOrdering              :           0.00 (  0.00 % )
+               ReaCoord                        :           0.00 (  0.04 % )
+               LnodsToLocal                    :           0.00 (  0.00 % )
+               LocalGraph                      :           0.00 (  0.01 % )
+               BuildArrayCommunicator          :           0.02 (  5.51 % )
+               GhostCoord                      :           0.00 (  0.08 % )
+               PeriodicBoundaryConditions      :           0.00 (  0.00 % )
+               Dombou                          :           0.00 (  0.01 % )
+               ExtnorLpoty                     :           0.00 (  0.02 % )
+               ComputeVmass                    :           0.00 (  0.04 % )
+               Blbopo                          :           0.00 (  0.00 % )
+
+
+
+
+
+
+  MAXIMUM TIME AMONGST ALL PROCESSES
+
+
+
+
+     SUMMARY OF COMPUTING TIMES
+     ------------------------------------------
+
+          TOTAL CPU TIME:                  0.42
+               ReaLnods                        :           0.06 ( 14.24 % )
+               Partitionate                    :           0.03 (  7.03 % )
+               LocalDimensionsAndIRenumbering  :           0.00 (  0.00 % )
+               GhostPoints                     :           0.00 (  0.01 % )
+               BuildLocalOrdering              :           0.00 (  0.01 % )
+               ReaCoord                        :           0.00 (  0.04 % )
+               LnodsToLocal                    :           0.00 (  0.00 % )
+               LocalGraph                      :           0.00 (  0.01 % )
+               BuildArrayCommunicator          :           0.03 (  8.03 % )
+               GhostCoord                      :           0.00 (  0.08 % )
+               PeriodicBoundaryConditions      :           0.00 (  0.00 % )
+               Dombou                          :           0.00 (  0.01 % )
+               ExtnorLpoty                     :           0.00 (  0.02 % )
+               ComputeVmass                    :           0.00 (  0.04 % )
+               Blbopo                          :           0.00 (  0.00 % )

@@ -1,0 +1,6 @@
+$        Time      Inner       Current      Velocity      Pressure      Stress
+$        step  iteration          time      residual      residual      residual
+            0          1  0.500000E-04  0.981024E+00  0.100000E+01  0.966621E+00
+            0          2  0.500000E-04  0.166013E+00  0.249749E+00  0.454339E+00
+            0          3  0.500000E-04  0.580417E-01  0.103626E+00  0.204590E+00
+            0          0  0.500000E-04  0.987337E+00  0.100000E+01  0.989637E+00

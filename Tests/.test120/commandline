@@ -1,0 +1,5 @@
+cd Test5_Plate.gid
+../../../Executables/Unix/InspiraFEM.sh Test5_Plate -nomerge
+cd ..
+cd Plate_J2_PlaneStress.gid
+../../../Executables/Unix/InspiraFEM.sh Plate_J2_PlaneStress -nomerge

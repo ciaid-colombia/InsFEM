@@ -1,0 +1,16 @@
+#LEVELSET MODULE PREFIX: lev_
+
+-lev_ksp_type preonly 
+-lev_ksp_rtol 1e-8 
+-lev_pc_type lu 
+
+
+#-lev_mat_type mpiaij  
+#-lev_ksp_type bcgs
+#-lev_ksp_rtol 1e-8 
+#-lev_pc_type ml
+#-lev_pc_mg_cycles 2
+#-lev_pc_mg_smoothup 5 
+#-lev_pc_mg_smoothdown 1
+#-lev_pc_mg_type multiplicative
+

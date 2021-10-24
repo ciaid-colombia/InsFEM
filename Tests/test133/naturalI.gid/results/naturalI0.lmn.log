@@ -1,0 +1,18 @@
+ WALL DISTANCE IS VERY SMALL: WALL LAW CONDITION IS REPLACED BY A NON-SLIP CONDITION
+
+
+
+     >>>  EVOLUTION OF NUMERICAL PARAMETERS:
+
+
+
+$        Time      Inner       Current    Tau_min       Tau_max       Tau_mean       Re_min        Re_max        Re_mean       yp_min        yp_max        yp_mean
+$        step  iteration          time
+            1          1  0.500000E-01  0.466027E-01  0.142552E+00  0.876301E-01  0.796739E+00  0.348768E+02  0.153993E+02
+            2          1  0.100000E+00  0.423521E-01  0.120651E+00  0.731634E-01  0.490482E+01  0.144533E+03  0.767158E+02
+            3          1  0.150000E+00  0.422757E-01  0.128775E+00  0.748052E-01  0.503078E+01  0.155537E+03  0.725513E+02
+            4          1  0.200000E+00  0.406206E-01  0.107636E+00  0.669951E-01  0.385313E+02  0.243196E+03  0.131080E+03
+
+
+     * * * END OF LOW MACH RUN * * *
+

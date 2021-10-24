@@ -1,0 +1,29 @@
+FUNCTIONS
+  FUNCTION: 1,Off,\
+    PARAMETERS=0.0,0.0,0.0,\
+               0.0,0.0,0.0
+  FUNCTION: 2,Off,\
+    PARAMETERS=0.0,0.0,0.0,\
+               0.0,0.0,0.0
+  FUNCTION: 3,Off,\
+    PARAMETERS=0.0,0.0,0.0,\
+               0.0,0.0,0.0
+  FUNCTION: 4,Off,\
+    PARAMETERS=0.0,0.0,0.0,\
+               0.0,0.0,0.0
+  FUNCTION: 5,Off,\
+    PARAMETERS=0.0,0.0,0.0,\
+               0.0,0.0,0.0
+END_FUNCTIONS
+ON_NODES
+   21   1        0.000000 0 
+   24   1        0.000000 0 
+   26   1        0.000000 0 
+   34   1        1.000000 0 
+   35   1        1.000000 0 
+   36   1        1.000000 0 
+   37   1        1.000000 0 
+   38   1        1.000000 0 
+END_ON_NODES
+ON_BOUNDARIES
+END_ON_BOUNDARIES

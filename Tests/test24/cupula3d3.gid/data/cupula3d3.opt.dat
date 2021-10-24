@@ -1,0 +1,33 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------
+PROBLEM_DEFINITION
+  FLOW_FIELD:       External
+  TEMPERATURE: External  
+END_PROBLEM_DEFINITION
+$------------------------------------------------------------
+PROPERTIES:
+  DENSITY=                1.0
+  SPECIFIC_HEAT=          1.0  
+  THERMAL_COND=           1.0  
+  VISCOSITY=              1.0  
+  TURBULENT_PRANDTL=      1.0  
+  UNITS=                  Meters_Seconds_Pascals_Celsius
+END_PROPERTIES
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM
+$------------------------------------------------------------
+NUMERICAL_TREATMENT
+  DISSIPATION_MODEL=      EXTERNAL_DISSIPATION 0.01
+  OBUKHOV_CORRSIN_CT=     2.4
+END_NUMERICAL_TREATMENT
+$------------------------------------------------------------
+OUTPUT_&_POST_PROCESS
+ START_POSTPROCES_AT  STEP =1
+ POSTPROCESS CN2,     STEPS=1
+ POSTPROCESS CT2,     STEPS=1
+ NUMBER_OF_RAYS       3
+ INCLUDE cupula3d3.opt.ray
+ WAVE_LENGTH=         500e-9
+ AVG_1D_CN2=          On, Y
+END_OUTPUT_&_POST-PROCESS

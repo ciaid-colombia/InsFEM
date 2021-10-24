@@ -1,0 +1,35 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------ 
+PROBLEM_DEFINTION
+END_PROBLEM_DEFINITION  
+PROPERTIES
+YOUNG=            200.0e9 
+POISSON=          0.4  
+END_PROPERTIES  
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM  
+$------------------------------------------------------------
+NUMERICAL_TREATMENT    
+FIXED_MESH_FROM:       Off
+T1_SCHEME              BDF2 $ {BDF,BDF2,BDF3,CNOBS,CN}
+N_EULER_STEPS          0 $ number of backward euler steps   
+SAFETY_FACTOR:         1e24  
+STEADY_STATE_TOLER:    1e-8   
+ALGEBRAIC_SOLVER:       Direct
+REMESHING_CRITERIA:    Folded
+$------------------------------------------------------------
+END_NUMERICAL_TREATMENT  
+$------------------------------------------------------------
+OUTPUT_&_POST-PROCESS  
+START_POSTPROCES_AT           STEP =1
+POSTPROCESS ALEDISPL,         STEPS=1
+POSTPROCESS ALEVELOC,         STEPS=1
+POSTPROCESS PSTRAINS,         STEPS=1
+END_OUTPUT_&_POST_PROCESS  
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS, \
+CONTINUE
+INCLUDE  turek_nl.ale.fix
+END_BOUNDARY_CONDITIONS  
+$------------------------------------------------------------

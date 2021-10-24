@@ -1,0 +1,26 @@
+$-------------------------------------------------------------------
+RUN_DATA
+  Femuss:                 name
+  RUN_TYPE:               Preliminary, Frequency=1e6 \
+                          No_restart \
+                          NoMemcheck 
+  OUTPUT_FORMAT:              VTK
+  OUTPUT_COMPRESSION:         ASCII
+  CUSTOMER:                   Universal
+  PARALLEL_LIBRARY:           PETSc
+  MPICommunicationsType:      NonBlocking
+  FLUSH_TO_DISK:              Off
+  ADAPTIVE_MESH_REFINEMENT:   Off Temperature REBALANCING_RATIO 1.5
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+  TIME_INTERVAL=          0.0, 1.0  
+  TIME_STEP_SIZE=         0.1  
+  NUMBER_OF_STEPS=        1e5   
+  MAXIMUM_NUMBER_GLOBAL=  1
+  SOLIDS_PROBLEM:         On
+    DELAY STEPS:          0
+    CONVERGENCE_REQUIRED: Yes
+  END_SOLIDS_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------

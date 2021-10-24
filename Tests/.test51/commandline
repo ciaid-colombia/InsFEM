@@ -1,0 +1,2 @@
+cd natural_3d.gid
+../../../Executables/Unix/InspiraFEM.sh natural_3d -np 3 -nomerge

@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="23" NumberOfCells="28">
+      <PointData>
+        <DataArray type="Float64" Name="nsi_BC" NumberOfComponents="3" format="ascii" RangeMin="0" RangeMax="0">
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0
+            </Value>
+            <Value index="1">
+              0
+            </Value>
+          </InformationKey>
+        </DataArray>
+        <DataArray type="Float64" Name="nsi_FIXNO" NumberOfComponents="3" format="ascii" RangeMin="1.4142135623730951" RangeMax="1.4142135623730951">
+          -1 -1 0 -1 -1 0
+          -1 -1 0 -1 -1 0
+          -1 -1 0 -1 -1 0
+          -1 -1 0 -1 -1 0
+          -1 -1 0 -1 -1 0
+          -1 -1 0 -1 -1 0
+          -1 -1 0 -1 -1 0
+          -1 -1 0 -1 -1 0
+          -1 -1 0 -1 -1 0
+          -1 -1 0 -1 -1 0
+          -1 -1 0 -1 -1 0
+          -1 -1 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              1.4142135624
+            </Value>
+            <Value index="1">
+              1.4142135624
+            </Value>
+          </InformationKey>
+        </DataArray>
+        <DataArray type="Float64" Name="Velocity" NumberOfComponents="3" format="ascii" RangeMin="0.0003292894776434778" RangeMax="0.0018102736463016507">
+          0.0009978287864693038 -0.00005810005505188814 0 0.0010805286323821869 0.000021998188524011298 0
+          0.0009797063290155753 0.0000878268441657693 0 0.0009610871794028092 0.000008919275980717317 0
+          0.0010315127726640877 -0.00003480612276441833 0 0.0010084222566081958 0.0000401590028480876 0
+          0.0010114821313646051 -0.00012426892016817554 0 0.0009729989325259771 0.000030495274198275253 0
+          0.0008963580825893173 0.00003475419979346925 0 0.0010599272482212623 -0.000055688218819620395 0
+          0.0010215243787752367 -0.00001704757058399956 0 0.0008653898340107974 0.00014567031221016205 0
+          0.0009978287864693038 -0.00005810005505188814 0 0.0010898405972818226 -0.000004309577989758698 0
+          0.0009797063290155753 0.0000878268441657693 0 0.0010084222566081958 0.0000401590028480876 0
+          0.0012117752440244838 -0.00011898702339419029 0 0.0016150464613975206 -0.00009734831812077282 0
+          0.0012756772412459833 -0.00007871608053680561 0 0.0012117752440244838 -0.00011898702339419029 0
+          0.0018073465629961617 -0.00010290323474135897 0 0.00013616452729813284 0.000299817914061836 0
+          0.00013616452729813284 0.000299817914061836 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0.00032928947764
+            </Value>
+            <Value index="1">
+              0.0018102736463
+            </Value>
+          </InformationKey>
+        </DataArray>
+        <DataArray type="Float64" Name="Pressure" format="ascii" RangeMin="0" RangeMax="0.08353181046702692">
+          0 0 0.01981899107219957 0.025594359057505685 0 0.03948588837814575
+          0.01943053065851406 0.04800923119143793 0 0.04069876906703927 0.026300034725623464 0.06100251577353694
+          0 0.0503617541654445 0.01981899107219957 0.03948588837814575 0.06143164284459011 0.0751211358361979
+          0.07068181175587497 0.06143164284459011 0.08257798295128682 0.08353181046702692 0.08353181046702692
+        </DataArray>
+      </PointData>
+      <CellData>
+        <DataArray type="UInt8" Name="vtkGhostType" format="ascii" RangeMin="0" RangeMax="1">
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 1
+        </DataArray>
+      </CellData>
+      <Points>
+        <DataArray type="Float32" Name="Points" NumberOfComponents="3" format="ascii" RangeMin="8" RangeMax="17.88854381999832">
+          16 8 0 16 6 0
+          14 8 0 13.571430206298828 5.4463372230529785 0
+          16 4 0 12 8 0
+          14 3.464102029800415 0 11.101200103759766 5.649384021759033 0
+          16 2 0 12 3.464102029800415 0
+          13.166669845581055 1.776708960533142 0 10 3.464102029800415 0
+          16 0 0 11 1.7320510149002075 0
+          14 0 0 12 0 0
+          10 0 0 8.865592002868652 1.8541419506072998 0
+          9.0526123046875 5.597301006317139 0 10 8 0
+          8 3.464102029800415 0 8 0 0
+          8 8 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              8
+            </Value>
+            <Value index="1">
+              17.88854382
+            </Value>
+          </InformationKey>
+        </DataArray>
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="ascii" RangeMin="0" RangeMax="22">
+          12 8 14 17 16 13
+          13 16 15 13 15 10
+          10 15 14 13 10 9
+          10 14 8 9 10 6
+          6 10 8 9 6 3
+          3 4 1 9 3 7
+          7 3 5 9 7 11
+          11 7 18 9 11 13
+          18 7 19 11 18 20
+          13 11 17 17 11 20
+          0 2 1 4 3 6
+          5 19 7 8 4 6
+          2 5 3 1 2 3
+          21 16 17 19 22 18
+        </DataArray>
+        <DataArray type="Int64" Name="offsets" format="ascii" RangeMin="3" RangeMax="84">
+          3 6 9 12 15 18
+          21 24 27 30 33 36
+          39 42 45 48 51 54
+          57 60 63 66 69 72
+          75 78 81 84
+        </DataArray>
+        <DataArray type="UInt8" Name="types" format="ascii" RangeMin="5" RangeMax="5">
+          5 5 5 5 5 5
+          5 5 5 5 5 5
+          5 5 5 5 5 5
+          5 5 5 5 5 5
+          5 5 5 5
+        </DataArray>
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+</VTKFile>

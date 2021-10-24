@@ -1,0 +1,436 @@
+#!/usr/bin/perl -w
+package main;
+use FileHandle;
+# This version uses a double linked list to manage maximum opened output files.
+{
+# quit unless we have the correct number of command-line args
+$num_args = $#ARGV + 1;
+if ($num_args != 2) {
+    print "\nUsage: naivepartition.pl problem.gid numberofprocessors\n";
+    exit;
+}
+ 
+my $start = time;
+# we got two command line args
+# problem and number of processors
+$problem=$ARGV[0];
+$nproc=$ARGV[1];
+ 
+$MAXOPEN = 250;  #Maximum number of simultaneosly opened output files.
+
+$name = $problem;
+$name =~ s/.gid//;   #remove .gid
+
+#------------------------------------------------------------------------------------
+#Directories and files
+print "Start Directories and files \n";
+@alldirs="$problem";
+foreach $dir (@alldirs) {
+  opendir(SDIR,$dir);
+  @entries=readdir(SDIR);
+  foreach (@entries) {
+     $file = $dir."/".$_;
+     if( -d $file ){
+       if( $_ =~ /data/  ) { 
+          opendir(DDIR,$file);
+          @dataentries=readdir(DDIR);
+	  $modulecount = 0;
+          foreach (@dataentries) {
+            if( ! ($_=~/^\./)  ) {
+               $suff = $_;
+               $suff =~ s/$name//;   #leave suffix
+	       $modname = "$dir/data/$name$suff";
+               if( $modname =~ /.rst/  ) {$rstfile = 1;}
+               if( $modname =~ /.geo.dat/  ) {$geofile = $modname;}
+               if($modname =~ /dom.dat/) {$domdatfile = $modname;}
+               if( $modname =~ /dom.fix/  ) {$domfile = $modname;}
+               if( ($modname =~ /.fix/) && !($modname =~ /dom.fix/)  ) {
+		       @modwords = split m/\./, $modname;
+		       $module = $modwords[2];
+                       push(@savedmods,$module);}
+	               $modulecount++;
+            }
+          }
+       }
+     }
+  }
+  closedir(SDIR);
+}
+print "End Directories and files \n";
+
+print "Start DomDat \n";
+#dom.dat reading
+open(IN,"$domdatfile") or die;
+foreach $stringin (<IN>) {
+   $stringaux = $stringin;
+   $stringaux =~ s/^\s+//; 
+   @words = (split(/ {1,}/, $stringaux )) ;
+   if ($words[0]=~/NODAL_POINTS/i) {$nodalpoints = $words[1];}     
+   push(@saveddomdat,$stringin);
+}
+close(IN);
+print "End DomDat \n";
+
+print "Start ModDat \n";
+#.mod.dat reading
+$modco = 0;
+foreach $module (@savedmods) {
+   open(IN,"$problem/data/$name.$module.dat") or die;
+   foreach $stringin (<IN>) {#read all lines in order
+      push(@savedmoddat,$stringin);
+   }
+   close(IN);
+   $modulesdat[$modco]=[@savedmoddat];
+   undef(@savedmoddat);
+   $modco++;
+}
+print "End ModDat \n";
+
+# modified problem directories and files
+print "Start Modified Problem Directories and Data Files \n";
+$problem_out = "$name.gid.$nproc";
+system ("rm -r $problem_out");
+system ("mkdir $problem_out");
+system ("mkdir $problem_out/data");
+for ($iproc=0; $iproc<$nproc;$iproc++){
+	$localdir = "$problem_out/data/data$iproc/";
+        system ("mkdir $localdir");
+        if ($iproc == 0){ system ("cp $problem/data/$name.dom.sol $localdir$name.dom.sol"); }
+	open (OUT,">$localdir$name.dom.dat") or die "Could'nt open output file $localdir$name.dom.dat";
+        $printline = 1;
+        foreach $stringin (@saveddomdat) {
+           $stringaux = $stringin;
+           if($printline) {print OUT "$stringaux";}
+           $stringaux =~ s/^\s+//;
+           @words = (split(/ {1,}/, $stringaux )) ;
+           if ($words[0] =~ /GEOMETRY,/i) {
+		   print OUT " INCLUDE  data$iproc/$name.geo.dat\n INCLUDE  data$iproc/$name.dom.fix\nEND_GEOMETRY\n\$-------------------------------------------------------------";
+		   $printline = 0;
+          }
+        }
+	close (OUT) or die "Could'nt close the output file $localdir$name.dom.dat";
+	$modco = 0;
+	foreach $module (@savedmods) {
+           if ($iproc == 0){ system ("cp $problem/data/$name.$module.sol $localdir$name.$module.sol"); }
+           if (defined ($rstfile)){ system ("cp $problem/data/$name.$module.rst $localdir$name.$module.rst"); }
+	   open (OUT,">$localdir$name.$module.dat") or die "Could'nt open output file $localdir$name.$module.dat";
+	   $savedmoddat = $modulesdat[$modco];
+           foreach $stringin (@$savedmoddat) {
+              $printline = 1;
+              $stringaux = $stringin;
+              $stringaux =~ s/^\s+//; 
+              @words = (split(/ {1,}/, $stringaux )) ;
+	      if (defined $words[0]){
+                 if ($words[0]=~/INCLUDE/i) {
+         	        print OUT " INCLUDE  data$iproc/$name.$module.fix\n";
+               	   $printline = 0;
+                 }
+              }
+	      if($printline) {print OUT "$stringaux";}
+           }
+           close(OUT) or die "Could'nt close the output file $localdir$name.$module.dat";
+	   $modco++;
+	}
+}
+print "End Modified Problem Directories and Data Files \n";
+
+$npoinlocal = int(($nodalpoints/$nproc)+0.99);
+
+#geo.dat 
+print "Start Geo \n";
+&inidoarray;
+#must initiate processors 0 and 1 output files.
+$oarray[0] = FileHandle->new(">>$problem_out/data/data0/$name.geo.dat");
+$oarray[1] = FileHandle->new(">>$problem_out/data/data1/$name.geo.dat");
+$nopen = 2;
+
+for ($ic = 0; $ic<$nproc; $ic++) {$elempart[$ic] = 0;}
+open(IN,"$geofile") or die;
+foreach $stringin (<IN>){ 
+   $saveline = 1; 
+   $stringaux = $stringin;
+   $stringaux =~ s/^\s+//; 
+   @words = (split(/ {1,}/, $stringaux )) ;
+   if ($words[0]=~/END_ELEMENTS/i) {$inelements = 0;$stringin = " -1 0 0\n$stringin";}     
+   if ($words[0]=~/END_COORDINATES/i) {$innodes = 0;}     
+   if ($inelements) {
+           $pnode = $words[1]; 
+           for($inode=1; $inode<$pnode+1; $inode++){
+              $ipoin = $words[1+$inode];
+              $iproc = int(($ipoin -1)/$npoinlocal);
+	      if (!($elempart[$iproc]==$words[0])){
+                 $path = "$problem_out/data/data$iproc/$name.geo.dat";
+	         &openmyfile;
+	         $file = $oarray[$iproc];
+                 print $file "$stringin";
+		 $elempart[$iproc]=$words[0];
+		 }           
+           }
+	   $saveline =0;
+   }    
+   if ($innodes) {
+	   $ipoin = $words[0];
+           $iproc = int(($ipoin -1)/$npoinlocal); 
+           $path = "$problem_out/data/data$iproc/$name.geo.dat";
+	   &openmyfile;
+	   $file = $oarray[$iproc];
+           print $file "$stringin";
+	   $saveline =0;
+   }     
+   if (($words[0]=~/ELEMENTS/i)&&!($words[0]=~/END_ELEMENTS/i)) {$inelements = 1;}     
+   if (($words[0]=~/COORDINATES/i)&&!($words[0]=~/END_COORDINATES/i)) {$innodes = 1;} 
+   if ($saveline) {
+      for ($iproc=0; $iproc<$nproc;$iproc++){
+           $path = "$problem_out/data/data$iproc/$name.geo.dat";
+	   &openmyfile;
+	   $file = $oarray[$iproc];
+           print $file "$stringin";
+      }  
+   }
+}
+close(IN);
+foreach $output (@oarray){undef($output);}
+print "End Geo \n";
+
+#dom.fix 
+print "Start Dom.fix \n";
+&inidoarray;
+#must initiate processors 0 and 1 output files.
+$oarray[0] = FileHandle->new(">>$problem_out/data/data0/$name.dom.fix");
+$oarray[1] = FileHandle->new(">>$problem_out/data/data1/$name.dom.fix"); 
+$nopen = 2;
+
+for ($ic = 0; $ic<$nproc; $ic++) {$bodypart[$ic] = 0;}
+open(IN,"$domfile") or die;
+foreach $stringin (<IN>) {#read all lines in order
+   $saveline = 1;
+   $stringaux = $stringin;
+   $stringaux =~ s/^\s+//; #remove leading spaces
+   @words = (split(/ {1,}/, $stringaux )) ; # words in the line, space separator
+   if ($words[0]=~/BODY_END/i) {$inbody = 0;}     
+   if ($words[0]=~/END_EXTERNAL_NORMAL/i) {$innor = 0;}     
+   if ($inbody) {
+           $pnode = $words[1]; 
+           for($inode=1; $inode<$pnode+1; $inode++){
+              $ipoin = $words[1+$inode];
+              $iproc = int(($ipoin -1)/$npoinlocal);
+	      if (!($bodypart[$iproc]==$words[0])){ 
+                 $path = "$problem_out/data/data$iproc/$name.dom.fix";
+   	         &openmyfile;
+   	         $file = $oarray[$iproc];
+                 print $file "$stringin";
+		 $bodypart[$iproc]=$words[0];
+		 }           
+           }
+	   $saveline =0;
+   }    
+   if ($innor) {
+	   $ipoin = $words[0];
+           $iproc = int(($ipoin -1)/$npoinlocal); 
+           $path = "$problem_out/data/data$iproc/$name.dom.fix";
+   	   &openmyfile;
+   	   $file = $oarray[$iproc];
+           print $file "$stringin";
+	   $saveline =0;
+   }     
+   if ($words[0]=~/BODY_DEFINITION/i) {$inbody = 1;}     
+   if (($words[0]=~/EXTERNAL_NORMAL/i)&&!($words[0]=~/END_EXTERNAL_NORMAL/i)) {$innor = 1;} 
+   if ($saveline) {
+      for ($iproc=0; $iproc<$nproc;$iproc++){
+           $path = "$problem_out/data/data$iproc/$name.dom.fix";
+   	  &openmyfile;
+   	  $file = $oarray[$iproc];
+          print $file "$stringin";
+      }  
+   }
+}
+close(IN);
+foreach $output (@oarray){undef($output);}
+print "End Dom.fix \n";
+
+#mod.fix
+print "Start Mod.fix \n";
+$modco = 0;
+for ($ic = 0; $ic<$nproc; $ic++) {for ($mi = 0; $mi<$modulecount; $mi++){$bounfixpart[$ic][$mi] = 0;}}
+foreach $module (@savedmods) {
+   &inidoarray;
+   #must initiate processors 0 and 1 output files.
+   $oarray[0] = FileHandle->new(">>$problem_out/data/data0/$name.$module.fix");
+   $oarray[1] = FileHandle->new(">>$problem_out/data/data1/$name.$module.fix");
+   $nopen = 2;
+
+   open(IN,"$problem/data/$name.$module.fix") or die;
+   $inbound = 0;
+   $innodfix = 0;
+   foreach $stringin (<IN>) {
+      $saveline = 1;
+      $stringaux = $stringin;
+      $stringaux =~ s/^\s+//; #remove leading spaces
+      @words = (split(/ {1,}/, $stringaux )) ; # words in the line, space separator
+      if ($words[0]=~/END_ON_BOUNDARIES/i) {$inbound = 0;}     
+      if ($words[0]=~/END_ON_NODES/i) {$innodfix = 0;}     
+      if ($inbound) {
+           $pnode = $words[1]; 
+           for($inode=1; $inode<$pnode+1; $inode++){
+              $ipoin = $words[1+$inode];
+              $iproc = int(($ipoin -1)/$npoinlocal);
+	      if (!($bounfixpart[$iproc][$modco]==$words[0])){ 
+                 $path = "$problem_out/data/data$iproc/$name.$module.fix";
+   	         &openmyfile;
+   	         $file = $oarray[$iproc];
+                 print $file "$stringin";
+		 $bounfixpart[$iproc][$modco]=$words[0];
+		 }           
+           }
+   	   $saveline =0;
+      }    
+      if ($innodfix) {
+	   $ipoin = $words[0];
+           $iproc = int(($ipoin -1)/$npoinlocal); 
+           $path = "$problem_out/data/data$iproc/$name.$module.fix";
+   	   &openmyfile;
+   	   $file = $oarray[$iproc];
+           print $file "$stringin";
+   	   $saveline =0;
+      }     
+      if (($words[0]=~/ON_BOUNDARIES/i)&&!($words[0]=~/END_ON_BOUNDARIES/i)) {$inbound = 1;}     
+      if (($words[0]=~/ON_NODES/i)&&!($words[0]=~/END_ON_NODES/i)) {$innodfix = 1;} 
+      if ($saveline) {
+         for ($iproc=0; $iproc<$nproc;$iproc++){
+            $path = "$problem_out/data/data$iproc/$name.$module.fix";
+   	    &openmyfile;
+   	    $file = $oarray[$iproc];
+            print $file "$stringin";
+         }  
+      }  
+   }
+   close(IN);
+   foreach $output (@oarray){undef($output);}
+   $modco++;
+}
+print "End Mod.fix \n";
+
+my $duration = time - $start;
+print "Execution time: $duration s\n";
+
+}
+
+sub openmyfile {
+        $element = $double[$iproc];
+        if ($element->{prev} eq $element){
+        	if ($element->{next} eq $element){
+        		#This element is not part of the list
+        		if ($nopen > $MAXOPEN){
+        			undef($oarray[$last]);
+        		        &movelast;
+        			$nopen--;
+        		}
+               	       &movefirst;
+               	       $oarray[$iproc] = FileHandle->new(">>$path");
+                       $nopen++;
+        	}
+        }
+        else{
+        	if ($element->{next} eq $element){
+        		#This is the last element of the list
+        		&movelast;
+        		&movefirst;
+        	}
+        	else{
+        		#This element belongs to the interior of the list
+        		&inbetween;
+        		&movefirst;
+        	}
+        }
+}
+
+sub inidoarray {
+	if (defined @double) {undef (@double);}
+	$first = 0;
+	$last = 1;
+	for ( $ipc = 0; $ipc<$nproc; ++$ipc ) {
+	 	my $new = double::->new ($ipc);
+	 	$double[$ipc] = $new;
+ 	}
+	$firstel = $double[$first];
+	$lastel = $double[$last];
+	$firstel->_link_to($lastel);
+}
+
+
+sub inbetween {
+	$prevelem = $element->prev;
+	$valprev = $prevelem->{val};
+	$nextelem = $element->next;
+	$valnext = $nextelem->{val};
+	
+	$double[$valprev]->next($element->next);
+	$double[$valnext]->prev($element->prev);
+}
+
+sub movelast {
+	$oldlastelem = $double[$last];
+	$newlastelem = $oldlastelem->prev;
+	$oldlastelem->prev($oldlastelem);
+	$newlastelem->next($newlastelem);
+	$last = $newlastelem->{val};
+}
+
+sub movefirst {
+        $firstel = $double[$first];
+	$element->_link_to($firstel);
+	$element->prev($element);
+	$first = $element->{val};
+}
+
+package double;
+
+# $node = double -> new( $val);
+#
+# Create a new double element with value $val.
+
+sub new {
+    my $class = shift;
+    $class = ref($class) || $class;
+    my $self = { val=>shift};
+    bless $self, $class;
+    return $self->_link_to( $self);
+
+}
+
+# $elem1->_link_to($elem2);
+#
+# Join this node to another, return self
+# (This is for internal use only, it doesn't care whether 
+# the elements linked are linked into any sort of correct
+# list order.)
+
+sub _link_to {
+	my ( $node, $next ) = @_;
+
+	$node->next( $next );
+	return $next->prev( $node );
+}
+
+# The next and prev methods provide access to the links.
+# To either follow or change them.
+
+# $cur = $node->next
+# $new = $node->next($new)
+#
+# Get next link, or set (and return) a new value in next link.
+
+sub next {
+    my $node = shift;
+    return  @_ ? ($node->{next} = shift) : $node->{next};
+}
+
+# $cur = $node->prev
+# $new = $node->prev($new)
+#
+# Get previous link, or set (and return) a new value in previous link.
+
+sub prev {
+    my $node = shift;
+    return  @_ ? ($node->{prev} = shift) : $node->{prev};
+}

@@ -1,0 +1,2 @@
+cd natural_GS.gid
+../../../Executables/Unix/InspiraFEM.sh natural_GS -np 3 -nomerge

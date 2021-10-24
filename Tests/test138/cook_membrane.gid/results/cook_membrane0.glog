@@ -1,0 +1,19 @@
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.07
+          STARTING OPERATIONS         :        0.02 ( 25.31 % )
+               Initialize MPI         :           0.02 (  0.00 % )
+               GetArgsAndEnv          :           0.00 (  0.00 % )
+
+ Here the timing for the cases needs to be added
+ Also the timing for the MatchCases
+
+          MAXIMUM MEMORY REQUIRED:      35.79 Mbytes
+
+
+          WARNING, MEMORY LEAK:          0.00 Mbytes
+          RUN MEMCHECK

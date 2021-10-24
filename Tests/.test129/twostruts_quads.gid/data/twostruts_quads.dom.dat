@@ -1,0 +1,25 @@
+$------------------------------------------------------------
+DIMENSIONS
+  NODAL_POINTS=          264
+  ELEMENTS=              140
+  SPACE_DIMENSIONS=        3
+  NODES_PER_ELEMENT=       8
+  BOUNDARIES=         AUTOMATIC
+  SKEW_SYSTEMS=            0
+END_DIMENSIONS
+$------------------------------------------------------------
+STRATEGY
+  INTEGRATION_RULE:          Open  
+  DOMAIN_INTEGRATION_POINTS: 0  
+  ELEMENT_DATA_STRUCTURES:   ON
+  OUTPUT MESH_DATA:          Off    
+  PERIODIC_BC=               On 0 0 1 FORCE_PERIODIC_MESH TOLERANCE_ForPerMesh 1e-2
+  TEST_COMMUNICATIONS=       Off
+  READ_STRATEGY=             Default 
+END_STRATEGY
+$-------------------------------------------------------------
+GEOMETRY, GID
+ INCLUDE  twostruts_quads.geo.dat
+ INCLUDE  twostruts_quads.dom.fix
+END_GEOMETRY  
+$-------------------------------------------------------------

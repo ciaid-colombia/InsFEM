@@ -1,0 +1,5 @@
+cd tempe5.gid
+cp data/tempe5Preliminary.dat data/tempe5.dat
+../../../Executables/Unix/InspiraFEM.sh tempe5 -postprocessfolder . -restartfolder data -nomerge
+cp data/tempe5Initial.dat data/tempe5.dat
+../../../Executables/Unix/InspiraFEM.sh tempe5 -postprocessfolder . -restartfolder data -nomerge

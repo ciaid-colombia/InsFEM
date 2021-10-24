@@ -1,0 +1,34 @@
+$-------------------------------------------------------------------
+RUN_DATA
+  Femuss:                 gravity
+  RUN_TYPE:               Preliminary, Frequency=1e6 \
+                          No_restart \
+                          NoMemcheck 
+  OUTPUT_FORMAT:              VTK
+  OUTPUT_COMPRESSION:         ASCII
+  CUSTOMER:               Universal
+  PARALLEL_LIBRARY:       PETSc
+  MPICommunicationsType:  NonBlocking
+  FLUSH_TO_DISK:          On
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+  TIME_COUPLING:          Global, Prescribed
+  TIME_INTERVAL=          0.0, 20.0  
+  TIME_STEP_SIZE=         0.1  
+  NUMBER_OF_STEPS=        3   
+  MAXIMUM_NUMBER_GLOBAL=  1
+  NSTINC_PROBLEM:         On
+    DELAY STEPS:          0
+    ALGORITHM:            Three
+    CONVERGENCE_REQUIRED: Yes
+    EXTERNAL_TEMPERATURE: Off
+    EXTERNAL_LEVELSET:    LevelSet
+  END_NSTINC_PROBLEM
+  LEVSET_PROBLEM:         On
+    DELAY STEPS:          0
+    CONVERGENCE_REQUIRED: Yes
+    EXTERNAL_VELOCITY:    Nstinc
+  END_LEVSET_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------

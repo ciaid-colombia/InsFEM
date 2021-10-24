@@ -1,0 +1,70 @@
+
+
+
+     *******
+     Yet another finite element software: 
+     *******
+
+          CURRENT TIME STEP dt = 0.100000E-02
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.100000E-02
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.171316E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          sigmau:  0.835E+00  0.429E+00  0.000E+00  0.217E-04  0.405E+00  0.371E+00  0.344E-01  0.197E-03  0.127E-03  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 47.70 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   47.70 Mbytes (100.00 %)
+          NSTIN  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      47.71 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:    106.11 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        1.76
+          STARTING OPERATIONS         :        0.88 ( 50.05 % )
+               Initialize MPI         :           0.00 ( 46.29 % )
+               Reapro                 :           0.07 ( 46.29 % )
+               Initialize Par. Lib.   :           0.00 ( 46.29 % )
+               Domain Operations      :           0.81 ( 46.29 % )
+               Output Domain          :           0.00 (  0.02 % )
+          NSTIN  MODULE               :        0.84 ( 47.67 % )
+               Turnon                 :           0.43 ( 51.25 % )
+               Getste                 :           0.00 (  0.00 % )
+               Begste                 :           0.00 (  0.00 % )
+               Doiter                 :           0.41 ( 48.43 % )
+                 Build Linear System  :               0.37 ( 44.29 % )
+                 Solve Linear System  :               0.03 (  4.11 % )
+                 Endite               :               0.00 (  0.02 % )
+               Endste                 :           0.00 (  0.02 % )
+               Output                 :           0.00 (  0.26 % )
+               Turnof                 :           0.00 (  0.31 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.04 (  2.41 % )
+          OTHER OPERATIONS            :       -0.00 ( -0.11 % )
+
+
+     * * * END OF ANALYSIS * * *
+

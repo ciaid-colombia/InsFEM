@@ -1,0 +1,5 @@
+cd boussinesq.gid
+../../../Executables/Unix/InspiraFEM.sh boussinesq -postprocessfolder . -restartfolder data
+cd ..
+cd boussinesq2.gid
+../../../Executables/Unix/InspiraFEM.sh boussinesq2 -postprocessfolder . -restartfolder data

@@ -1,0 +1,40 @@
+BeginZE /home/arnaupont/Desktop/Femuss_branch/Femuss/Tests/test35/oscillatornew.gid/oscillatornew.vv
+   x -5.9495387077331543 7.81394863128662109
+   y 4.9249424934387207 -3.15093255043029785
+   z -9.9653167724609375 9.9653167724609375
+   e 3.32177209854125977
+   v 0 0 0
+   r 1
+   m 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1
+   c 0.932204961776733398 0.887005031108856201 0
+   pd 0
+   pno 0
+   pfo 0
+   pf 4
+   pv 0
+   NowUse 1
+   DrawingType 0
+   LightVector 90 90 150 0
+   OGLShadow(UseShadows) 0
+   OGLShadow(RenderMode) RenderNice
+   OGLShadow(ShadowBias) -0.002
+   OGLShadow(AmbientShadows) 1
+   OGLShadow(UseFBO) 0
+   OGLShadow(FBOSize) 0
+   OGLShadow(DimmedLightFactor) 0.02
+   OGLStereo(UseStereo) 0
+   OGLStereo(RelativeEyeDistance) 1
+   OGLStereo(FlipEyes) 0
+   OGLStereo(StereoMode) AnaglyphColors
+   OGLStereo(EyeDistance) 0.075
+   OGLStereo(LeftEyeDistance) 1 0 0 1
+   OGLStereo(RightEyeDistance) 0 1 1 1
+EndZE /home/arnaupont/Desktop/Femuss_branch/Femuss/Tests/test35/oscillatornew.gid/oscillatornew.vv
+
+BeginMirror
+   Mirror 0 Angle 0.0 AngleFake -15.0 SizeFactor 2.0 HeightOffset 0.25 Color #d9e5f24d Backlight Off EdgeStyle No Type Scene DrawMode Mirror
+EndMirror
+
+BeginInfo
+eJzdV8tu4zYU3fsrCHTTAhlDipM09S4PT2DUdgLbCdwVQUmUzIYiNSQV2x3k33tJvWWlH9CVpXNk6j7OPaS2Ib8dX499H23f4eLX4ua30YKJ/IheHh7uPe8WTcb+ZOx9u5l8S6igioXo5y++N/n2GuTC5GizfEHfFUN3eYL8K3TpT68up9d/oNftA7r0/OtPdLy9wTdXo61MOPLHv0/R02KHPpjOCUcsQt7x5vICEWNomhl4YLTdU0UR00hIJD+o4uTk/hJKYejRjEej54yKJz4dIYTeZqvH5/UU/bxXjAj0QnL+afE14LP1zDJLqgna+f5n8fx6M39eAeyPr5GjbiDtS0c+zjcvi7u/0Hz1/Xm9vNsWDwbMaKRohG4vUKIoFfYi4Dm1v4Rne4K8CxTRzOzR5dUF0oaKkHHLwqWiEhIZu/UX8+V8u4El7c2SHNEW8skh2Q37h06hXFe3FTPjNKUCXjwXEQupnqKJ53ln7BtV5pyePPZXvr6puIc8oHCRffHuuw/COAk4hQ5FEHpKU6lOSLuHPLS8Pxmqy7VYmqfoINU7EwkSeRpQhWSMaBncFF17Hvpz5FKf7bazla28S/9pge9eXhYznJHwnUY4Y0fKdQND16HVmChFTlgGf9PQOHJ9j12dsSmCr0FFDjjI45gqXWGxIomNA2dKJoqkZ7jek4iqCt4THuOYS2KKaCqcpSSB/KrbNOeGaZJmnHagXkAyDHmumRT4R07VqYLdymWgvbwyyWysBCKlppVGgetMwSsqrIi8XEC3UYgUcyKSnCQU+6CIFicP3TtM0oBBISq0TAEHUtnVQw5Z9rlQppmi2mZ2RoGwcErO/kLFByZRNATDagETdJBSUuuAqCEukmbSx1OmlIQhxYpmlJzlJKATmTzYosXYHGSfV1BIKFvTVKOI0JnUNiWj2LHCS2UOtrDkenor0a7aDkzYDsALHLKdYxg5EWH6IyfGykZTK4Wy5UAPqRbggWpO+lxRGixF6FaDScQkSFR1DZekvnZBhJJL1YUG42roOBfhFxSXCQuxzLpoykRKjl1M5wFUvSinRUPOMvwheZ5SvGeiwUGDjEOr2y7RkML+xZQCLaDs1DYMixUuEshcRBo4XS/unAR6D+NT+VhFxTKBtWA4asDOaqmEgDMzhDcKsUyS5ZU8eqNu2T3TppaOBZyzFCG5JOsnS9sssij3mx7XWGoBcgo7bNSvwxeG5KgBQypwfkpACTKONa2fBlMI4R0waColdSyaQj8iok5dTVVKAVujYc6J6tGFPVlR6RammvCrfGq2KAE+KFILzcqpm+zw7eSxB2AaQfdr++swjZf14ZaX9anKr9o4lxEOGNF9vBzWwbd3+zNoXW1Cr5/ua4yl0OB6L7JQf3rm98tCcKmMaF90llTEHmfAstxkVuh/GPB89bT+yiCWs82dkypmwkbSYOV4RDBBSY2CvOAE0t7iHdy1UQedwiBU7Vav3ip/AQ+roaHTAcCcJXsDln/E9JhJUe6OQPS3YYDgHXAihtBiDi0oDafAzxsD+Pn2cAb62Lf482wD/yZQNjtNLoTN07wYktZ+1GDGntgqqNmr+9QGuyO8nbyUZeVe7fCv9v4O2Z2LDgVyLrHd+QnNoc0JpHXbPoJsXlcDhvcJ1G7qjvqb2frNHegt5HbRhLr+hXYm7anEEU7b7usCpBXLPgbZF8e5XaEXtzuAV5TaagiwRqhQUcWiVLtKi5wS3RbjrsgpDsDtYpY0SFYu+tn5PrHfHle9b4+HxXy22v4vk3uGrsFXFXw+VJfwgYWWs9Wrhf4FsEYdmQ==
+EndInfo

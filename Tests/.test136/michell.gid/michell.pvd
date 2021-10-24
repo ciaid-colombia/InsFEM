@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+<Collection>
+<DataSet timestep="0.006" group="" part="0" file="post/post4//michell_0.pvtu"/>
+<DataSet timestep="0.006" group="" part="0" file="post/post1//michell_0.pvtu"/>
+<DataSet timestep="0.006" group="" part="0" file="post/post6//michell_0.pvtu"/>
+<DataSet timestep="0.006" group="" part="0" file="post/post0//michell_0.pvtu"/>
+<DataSet timestep="0.006" group="" part="0" file="post/post3//michell_0.pvtu"/>
+<DataSet timestep="0.006" group="" part="0" file="post/post2//michell_0.pvtu"/>
+<DataSet timestep="0.006" group="" part="0" file="post/post5//michell_0.pvtu"/>
+<DataSet timestep="0.009" group="" part="1" file="post/post6//michell_1.pvtu"/>
+<DataSet timestep="0.009" group="" part="1" file="post/post3//michell_1.pvtu"/>
+<DataSet timestep="0.009" group="" part="1" file="post/post0//michell_1.pvtu"/>
+<DataSet timestep="0.009" group="" part="1" file="post/post1//michell_1.pvtu"/>
+<DataSet timestep="0.009" group="" part="1" file="post/post2//michell_1.pvtu"/>
+<DataSet timestep="0.009" group="" part="2" file="post/post2//michell_2.pvtu"/>
+<DataSet timestep="0.009" group="" part="2" file="post/post1//michell_2.pvtu"/>
+<DataSet timestep="0.009" group="" part="2" file="post/post3//michell_2.pvtu"/>
+</Collection>
+</VTKFile>
+<DataSet timestep="0.009" group="" part="1" file="post/post4//michell_1.pvtu"/>
+</Collection>
+</VTKFile>
+</Collection>
+</VTKFile>
+<DataSet timestep="0.009" group="" part="2" file="post/post6//michell_2.pvtu"/>
+</Collection>
+</VTKFile>
+<DataSet timestep="0.009" group="" part="1" file="post/post5//michell_1.pvtu"/>
+<DataSet timestep="0.009" group="" part="2" file="post/post4//michell_2.pvtu"/>
+<DataSet timestep="0.009" group="" part="2" file="post/post0//michell_2.pvtu"/>
+<DataSet timestep="0.009" group="" part="2" file="post/post5//michell_2.pvtu"/>
+</Collection>
+</VTKFile>
+</Collection>
+</VTKFile>
+</Collection>
+</VTKFile>

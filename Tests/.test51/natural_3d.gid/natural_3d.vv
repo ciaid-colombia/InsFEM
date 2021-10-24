@@ -1,0 +1,37 @@
+BeginZE natural_3d.gid/natural_3d.vv
+   x -0.992440462112426758 0.992440462112426758
+   y 1.15895724296569824 -1.15895724296569824
+   z -3.09807610511779785 2.09807610511779785
+   e 0.866025388240814209
+   v -0.21877656877040863 -0.276114791631698608 -0.0895020738244056702
+   r 0.931604444980621338
+   m 0.831499993801116943 0.28757593035697937 -0.475297629833221436 0 -0.0459461621940135956 0.888252377510070801 0.457052111625671387 0 0.553621470928192139 -0.358200728893280029 0.751794874668121338 0 0 0 0 1
+   c 0 0 0.5
+   pd 0
+   pno 0
+   pfo 0
+   pf 4
+   pv 0
+   NowUse 1
+   DrawingType 0
+   LightVector 90 90 150 0
+   OGLShadow(UseShadows) 0
+   OGLShadow(RenderMode) RenderNice
+   OGLShadow(ShadowBias) -0.002
+   OGLShadow(AmbientShadows) 1
+   OGLShadow(UseFBO) 0
+   OGLShadow(FBOSize) 0
+   OGLShadow(DimmedLightFactor) 0.02
+   OGLStereo(UseStereo) 0
+   OGLStereo(RelativeEyeDistance) 1
+   OGLStereo(FlipEyes) 0
+   OGLStereo(StereoMode) AnaglyphColors
+   OGLStereo(EyeDistance) 0.075
+   OGLStereo(LeftEyeDistance) 1 0 0 1
+   OGLStereo(RightEyeDistance) 0 1 1 1
+EndZE natural_3d.gid/natural_3d.vv
+
+BeginMirror
+   Mirror 0 Angle 0.0 AngleFake -15.0 SizeFactor 2.0 HeightOffset 0.25 Color #d9e5f24d Backlight Off EdgeStyle No Type Scene DrawMode Mirror
+EndMirror
+

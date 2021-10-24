@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<VTKFile type="PUnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <PUnstructuredGrid GhostLevel="1">
+    <PPointData>
+      <PDataArray type="Float64" Name="Temperature"/>
+    </PPointData>
+    <PCellData>
+      <PDataArray type="UInt8" Name="vtkGhostType"/>
+    </PCellData>
+    <PPoints>
+      <PDataArray type="Float32" Name="Points" NumberOfComponents="3"/>
+    </PPoints>
+    <Piece Source="Cube1Hexas_2_0.vtu"/>
+    <Piece Source="Cube1Hexas_2_1.vtu"/>
+    <Piece Source="Cube1Hexas_2_2.vtu"/>
+    <Piece Source="Cube1Hexas_2_3.vtu"/>
+    <Piece Source="Cube1Hexas_2_4.vtu"/>
+    <Piece Source="Cube1Hexas_2_5.vtu"/>
+  </PUnstructuredGrid>
+</VTKFile>

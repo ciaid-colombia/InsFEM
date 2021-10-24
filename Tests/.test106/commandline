@@ -1,0 +1,5 @@
+cd Manufactured.gid
+../../../Executables/Unix/InspiraFEM.sh Manufactured -np 4 -nomerge
+cd ../reflected.gid
+../../../Executables/Unix/InspiraFEM.sh reflected -nomerge
+

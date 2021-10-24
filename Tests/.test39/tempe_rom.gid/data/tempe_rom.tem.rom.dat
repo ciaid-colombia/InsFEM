@@ -1,0 +1,16 @@
+$------------------------------------------------------------
+REDUCED_ORDER_PROBLEM
+$------------------------------------------------------------ 
+STAGE:                         ROM
+STYPE_OF_ROM:                  SVD
+NSNAPSHOTS:                    10
+INTERVAL_BETWEEN_SNAPSHOTS:    1
+NDOFR:                         10
+NON_LINEAR_ITERATIONS:         20
+MASS_PROJECTION:               Off
+CONVERGENCE_TOLERANCE:         1e-6
+ENERGY_RETAINED:               1
+PROJECTION_SPACE:              PetrovGalerkin
+MEAN_SUBSTRACTION:             No
+$------------------------------------------------------------ 
+END_REDUCED_ORDER_PROBLEM

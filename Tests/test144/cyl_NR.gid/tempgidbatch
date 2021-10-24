@@ -1,0 +1,11 @@
+Mescape Postprocess
+      Mescape files add 
+      { post/cyl_NR0.post.res  post/cyl_NR1.post.res }
+      Mescape files saveall binMeshesSets
+      m0.bin
+         Mescape files new
+         Yes
+         Mescape files ReadMultiple { m0.bin}
+          Mescape files saveall binMeshesSets
+          cyl_NR.post.res
+      Quit

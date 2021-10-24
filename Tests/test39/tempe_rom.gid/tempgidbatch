@@ -1,0 +1,6 @@
+Mescape Postprocess
+      Mescape files add 
+      {tempe_rom0.post.res tempe_rom1.post.res tempe_rom2.post.res tempe_rom3.post.res }
+      Mescape files saveall binMeshesSets
+      tempe_rom.post.res
+      Quit

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+<Collection>
+<DataSet timestep="0.002" group="" part="0" file="post/Fluid/turek_nl_0.pvtu"/>
+<DataSet timestep="0.002" group="" part="0" file="post/Solid/turek_nl_0.pvtu"/>
+<DataSet timestep="0.004" group="" part="1" file="post/Fluid/turek_nl_1.pvtu"/>
+<DataSet timestep="0.004" group="" part="1" file="post/Solid/turek_nl_1.pvtu"/>
+<DataSet timestep="0.006" group="" part="2" file="post/Fluid/turek_nl_2.pvtu"/>
+<DataSet timestep="0.006" group="" part="2" file="post/Solid/turek_nl_2.pvtu"/>
+<DataSet timestep="0.008" group="" part="3" file="post/Fluid/turek_nl_3.pvtu"/>
+<DataSet timestep="0.008" group="" part="3" file="post/Solid/turek_nl_3.pvtu"/>
+<DataSet timestep="0.01" group="" part="4" file="post/Fluid/turek_nl_4.pvtu"/>
+<DataSet timestep="0.01" group="" part="4" file="post/Solid/turek_nl_4.pvtu"/>
+<DataSet timestep="0.012" group="" part="5" file="post/Fluid/turek_nl_5.pvtu"/>
+<DataSet timestep="0.012" group="" part="5" file="post/Solid/turek_nl_5.pvtu"/>
+<DataSet timestep="0.014" group="" part="6" file="post/Fluid/turek_nl_6.pvtu"/>
+<DataSet timestep="0.014" group="" part="6" file="post/Solid/turek_nl_6.pvtu"/>
+<DataSet timestep="0.016" group="" part="7" file="post/Fluid/turek_nl_7.pvtu"/>
+<DataSet timestep="0.016" group="" part="7" file="post/Solid/turek_nl_7.pvtu"/>
+<DataSet timestep="0.018" group="" part="8" file="post/Fluid/turek_nl_8.pvtu"/>
+<DataSet timestep="0.018" group="" part="8" file="post/Solid/turek_nl_8.pvtu"/>
+<DataSet timestep="0.02" group="" part="9" file="post/Fluid/turek_nl_9.pvtu"/>
+<DataSet timestep="0.02" group="" part="9" file="post/Solid/turek_nl_9.pvtu"/>
+<DataSet timestep="0.02" group="" part="10" file="post/Fluid/turek_nl_10.pvtu"/>
+</Collection>
+</VTKFile>
+<DataSet timestep="0.02" group="" part="10" file="post/Solid/turek_nl_10.pvtu"/>
+</Collection>
+</VTKFile>

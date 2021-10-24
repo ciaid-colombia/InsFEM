@@ -1,0 +1,5 @@
+cd cylinder_OSS.gid
+../../../Executables/Unix/InspiraFEM.sh cylinder_OSS -np 3
+cd ..
+cd cylinder_SOSS.gid
+../../../Executables/Unix/InspiraFEM.sh cylinder_SOSS -np 3

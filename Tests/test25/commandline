@@ -1,0 +1,2 @@
+cd exacta.gid
+../../../Executables/Unix/InspiraFEM.sh exacta -postprocessfolder . -restartfolder data -nomerge

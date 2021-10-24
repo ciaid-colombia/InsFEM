@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+<Collection>
+<DataSet timestep="0.01" group="" part="0" file="post//gravityMonoSplit_OSS_0.pvtu"/>
+<DataSet timestep="0.02" group="" part="1" file="post//gravityMonoSplit_OSS_1.pvtu"/>
+<DataSet timestep="0.03" group="" part="2" file="post//gravityMonoSplit_OSS_2.pvtu"/>
+<DataSet timestep="0.03" group="" part="3" file="post//gravityMonoSplit_OSS_3.pvtu"/>
+</Collection>
+</VTKFile>

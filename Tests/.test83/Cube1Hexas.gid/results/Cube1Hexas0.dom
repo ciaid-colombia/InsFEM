@@ -1,0 +1,85 @@
+      DOMAIN DECOMPOSITION RESULTS
+      ------------------------------------------
+          GLOBAL NUMBER OF POINTS:                             8
+          OPTIMUM NUMBER OF POINTS PER PROCESSOR:              1
+          MAXIMUM NUMBER OF POINTS PER PROCESSOR:              8
+          DIFFERENCE:                                     700.00 %
+
+          TOTAL NUMBER OF GHOST POINTS:                        0
+          MAXIMUM NUMBER OF GHOST POINTS PER PROC              0
+
+          GLOBAL NUMBER OF ELEMENTS:                           1
+          REFERENCE NUMBER OF ELEMENTS PER PROCESSOR:          0
+          MAXIMUM NUMBER OF ELEMENTS PER PROCESSOR:            1
+          DIFFERENCE:                                   Infinity %
+
+     SUMMARY OF COMPUTING TIMES
+     ------------------------------------------
+
+          TOTAL CPU TIME:                  2.07
+               ReaLnods                        :           0.08 (  3.67 % )
+               Partitionate                    :           1.12 ( 53.97 % )
+               LocalDimensionsAndIRenumbering  :           0.00 (  0.00 % )
+               GhostPoints                     :           0.03 (  1.54 % )
+               BuildLocalOrdering              :           0.00 (  0.00 % )
+               ReaCoord                        :           0.00 (  0.00 % )
+               LnodsToLocal                    :           0.00 (  0.00 % )
+               LocalGraph                      :           0.00 (  0.00 % )
+               BuildArrayCommunicator          :           0.06 (  2.87 % )
+               GhostCoord                      :           0.36 ( 17.16 % )
+               PeriodicBoundaryConditions      :           0.00 (  0.00 % )
+               Dombou                          :           0.00 (  0.00 % )
+               ExtnorLpoty                     :           0.00 (  0.00 % )
+               ComputeVmass                    :           0.22 ( 10.60 % )
+               Blbopo                          :           0.00 (  0.00 % )
+
+
+
+
+
+
+  MAXIMUM TIME AMONGST ALL PROCESSES
+
+
+
+
+     SUMMARY OF COMPUTING TIMES
+     ------------------------------------------
+
+          TOTAL CPU TIME:                  2.10
+               ReaLnods                        :           0.11 (  5.33 % )
+               Partitionate                    :           1.12 ( 53.42 % )
+               LocalDimensionsAndIRenumbering  :           0.04 (  2.10 % )
+               GhostPoints                     :           0.03 (  1.52 % )
+               BuildLocalOrdering              :           0.05 (  2.26 % )
+               ReaCoord                        :           0.00 (  0.00 % )
+               LnodsToLocal                    :           0.00 (  0.00 % )
+               LocalGraph                      :           0.00 (  0.00 % )
+               BuildArrayCommunicator          :           0.08 (  3.86 % )
+               GhostCoord                      :           0.36 ( 17.24 % )
+               PeriodicBoundaryConditions      :           0.00 (  0.00 % )
+               Dombou                          :           0.00 (  0.00 % )
+               ExtnorLpoty                     :           0.00 (  0.00 % )
+               ComputeVmass                    :           0.24 ( 11.64 % )
+               Blbopo                          :           0.00 (  0.00 % )
+ New global number of points:           27
+ New global number of points:           27
+ New global number of points:          125
+ New global number of points:          125
+ New global number of points:           27
+ New global number of points:            8
+ New global number of points:           27
+ New global number of points:           27
+ New global number of points:           60
+ New global number of points:           60
+ New global number of points:           27
+ New global number of points:           27
+ New global number of points:            8
+ New global number of points:           27
+ New global number of points:           27
+ New global number of points:           60
+ New global number of points:           60
+ New global number of points:          165
+ New global number of points:          165
+ New global number of points:          274
+ New global number of points:          274

@@ -1,0 +1,6 @@
+Mescape Postprocess
+      Mescape files add 
+      {fractional0.post.res fractional1.post.res fractional2.post.res fractional3.post.res }
+      Mescape files saveall binMeshesSets
+      fractional.post.res
+      Quit

@@ -1,0 +1,32 @@
+$-------------------------------------------------------------------
+RUN_DATA
+  CASE:                 name
+  $RUN_TYPE:               Initial, Preliminary, Frequency=20
+  $RUN_TYPE:               Initial Restart Preliminary, Frequency=20 \
+  RUN_TYPE:               Preliminary, Frequency=20
+  CUSTOMER:               Universal
+  OUTPUT_FORMAT:          VTK
+  OUTPUT_COMPRESSION:     ASCII
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+  TIME_COUPLING:          Global, Prescribed
+  TIME_INTERVAL=          0.0, 20  
+  TIME_STEP_SIZE=         0.001
+  NUMBER_OF_STEPS=        2
+  MAXIMUM_NUMBER_GLOBAL=  1
+  NSTINC_PROBLEM:         OFF
+    DELAY STEPS:          0
+    ALGORITHM:            Monolithic   
+    $ALGORITHM:            Fractional  
+    CONVERGENCE_REQUIRED: Yes
+  END_NSTINC_PROBLEM
+  ADAPTIVE_REFINEMENT:    Off
+  END_ADAPTIVE_REFINEMENT
+  REDUCED_ORDER_MODELING: OFF
+  END_REDUCED_ORDER_MODELING
+  $SOLVER: FELAP
+END_PROBLEM_DATA
+$-------------------------------------------------------------------
+
+

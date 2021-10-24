@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ "$COMPILER" == "MPIGNU" ]
+then
+   cd twostrutstest.gid
+   ../../../Executables/Unix/InspiraFEM.sh twostrutstest
+elif [ "$COMPILER" == "MPINTEL" ]
+then
+   cp -r ../test128/twostrutstest.gid .
+   echo "Test not run, Turbulence not working"
+   touch testnotrun
+fi

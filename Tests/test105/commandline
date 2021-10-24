@@ -1,0 +1,3 @@
+cd fsi_bar_test.gid
+../../../Executables/Unix/InspiraFEM.sh fsi_bar_test -cases 2 data/Fluid data/Solid -np 4 -nomerge
+

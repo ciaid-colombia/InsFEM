@@ -1,0 +1,12 @@
+cd cupula3d1.gid
+../../../Executables/Unix/InspiraFEM.sh cupula3d1 -postprocessfolder . -restartfolder data -nomerge
+cd ..
+cd cupula3d2.gid
+../../../Executables/Unix/InspiraFEM.sh cupula3d2 -postprocessfolder . -restartfolder data -nomerge
+cd ..
+cd cupula3d3.gid
+../../../Executables/Unix/InspiraFEM.sh cupula3d3 -postprocessfolder . -restartfolder data -nomerge
+cd ..
+cd cupula3d4.gid
+../../../Executables/Unix/InspiraFEM.sh cupula3d3 -postprocessfolder . -restartfolder data -nomerge
+

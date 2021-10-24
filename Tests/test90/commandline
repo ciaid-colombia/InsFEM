@@ -1,0 +1,17 @@
+#!/bin/bash
+cd natural_VTK.gid
+../../../Executables/Unix/InspiraFEM.sh natural_VTK -np 3 -nomerge
+cd ../natural_VTK_blocks.gid
+../../../Executables/Unix/InspiraFEM.sh natural_VTK -np 3 -nomerge
+cd ..
+if [ "$COMPILER" == "MPIGNU" ]
+then
+   cp -r ../test90/reflected_implicit_intel.gid .
+   cd reflected_implicit.gid
+   ../../../Executables/Unix/InspiraFEM.sh reflected_implicit -np 2 -nomerge
+elif [ "$COMPILER" == "MPINTEL" ]
+then
+   cp -r ../test90/reflected_implicit.gid .
+   cd reflected_implicit_intel.gid
+   ../../../Executables/Unix/InspiraFEM.sh reflected_implicit -np 2 -nomerge
+fi

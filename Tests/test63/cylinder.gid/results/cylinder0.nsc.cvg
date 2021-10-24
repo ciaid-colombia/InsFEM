@@ -1,0 +1,5 @@
+$        Time      Inner       Current      Density      Momentum      Energy
+$        step  iteration          time      residual      residual      residual
+            1          0  0.632161E-04  0.337029E-01  0.315732E+00  0.651573E-01
+            2          0  0.119770E-03  0.398296E-01  0.110428E+00  0.763192E-01
+            3          0  0.175385E-03  0.278285E-01  0.140524E+00  0.525111E-01

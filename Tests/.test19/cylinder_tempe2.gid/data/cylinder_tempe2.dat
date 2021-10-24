@@ -1,0 +1,31 @@
+$-------------------------------------------------------------------
+RUN_DATA
+  Femuss:                 name
+  RUN_TYPE:               Preliminary, Frequency=1e6 \
+                          No_restart \
+                          Memcheck 
+  CUSTOMER:               Universal
+  OUTPUT_FORMAT:              VTK
+  OUTPUT_COMPRESSION:         ASCII
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+  TIME_COUPLING:          Global, Prescribed
+  TIME_INTERVAL=          0.0, 0.5  
+  TIME_STEP_SIZE=         0.001  
+  NUMBER_OF_STEPS=        3   
+  MAXIMUM_NUMBER_GLOBAL=  2
+  NSTINC_PROBLEM:         On
+    DELAY STEPS:          0
+    ALGORITHM:            Fractional_step, Total  
+    CONVERGENCE_REQUIRED: Yes
+  END_NSTINC_PROBLEM
+  TEMPER_PROBLEM:         On
+    DELAY STEPS:          0
+    CONVERGENCE_REQUIRED: Yes
+    EXTERNAL_VELOCITY:    NSTINC   
+  END_TEMPER_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------
+
+

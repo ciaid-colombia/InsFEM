@@ -1,0 +1,51 @@
+$-------------------------------------------------------------------
+RUN_DATA
+Femuss:                 name
+MEMCHECK:                   Off
+OUTPUT_FORMAT:              VTK
+OUTPUT_COMPRESSION:         ASCII
+IO_FORMAT:                  PETSc
+CUSTOMER:                   Universal
+COMMUNICATOR_LIBRARY:       PETSc
+ORDERING_LIBRARY:           PETSc
+REBALANCE_NUMBERING:        PETSc
+MPICommunicationsType:      NonBlocking
+FLUSH_TO_DISK:              Off
+POSTPROCESS:
+START_POSTPROCESS_AT:        1
+PROCESSOR_POSTPROCESS_EVERY: 0
+END_POSTPROCESS
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+TIME_COUPLING:          Global, Prescribed
+TIME_INTERVAL=          0.0, 0.5  
+TIME_STEP_SIZE=         0.1  
+NUMBER_OF_STEPS=        1e5   
+ADAPTIVE_MESH_REFINEMENT:   Off TEMPER REBALANCING_RATIO 1.5 Off Max_Refinement_Level: 0 ProgressiveRefinementLevel: 0 Delay: -1
+INITIAL_UNIFORM_REFINEMENT:  Off 1
+MULTICOMM ADAPTIVE: Off 
+INTERPOLATOR TOLERANCE:    1e-6
+CP_CONVERGENCE=    yes
+CP_MAXITERS    =    500
+CP_BETA        =    0
+ PODROM_NSTINC_PROBLEM:         Off     MODNAME: CAVI2
+  DELAY_STEPS:          0
+  RESTART:              Off $Initial, Interpolated
+  PHYSICAL_PROBLEM:     Navier-Stokes
+  NSTINC_PROBLEM:       On MODNAME: CAVI2
+   DELAY_STEPS:          0
+   PRELIMINARY_RUN:      Off FREQUENCY=1e6
+   RESTART:              Off $Initial, Interpolated
+   ALGORITHM:            Monolithic   
+   CONVERGENCE_REQUIRED: Yes
+   GROUP:          Domain
+   EXTERNAL:       NSTINC CASE: Cavi1 MODNAME: CAVI1
+  END_NSTINC_PROBLEM
+ END_PODROM_NSTINC_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------
+INTERPOLATION_DATA
+FROM_CASE: Cavi1  BOUNDARY 1 ORIGINAL $DEFORMED ORIGINAL
+END_INTERPOLATION_DATA
+$-------------------------------------------------------------------

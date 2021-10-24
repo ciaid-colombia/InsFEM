@@ -1,0 +1,54 @@
+
+
+
+     *******
+     CASE: NAME
+     *******
+
+          CURRENT TIME STEP dt = 0.100000E-02
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.100000E-02
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.484681E-02
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                  6.69 kbytes
+          CONSTRUCTION OF THE DOMAIN:    6.69 kbytes (100.00 %)
+
+          MAXIMUM MEMORY REQUIRED:       6.69 kbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:     31.99 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.01
+          STARTING OPERATIONS         :        0.01 ( 94.43 % )
+               Initialize MPI         :           0.00 ( 73.43 % )
+               Reapro                 :           0.00 ( 73.43 % )
+               Initialize Par. Lib.   :           0.00 ( 73.43 % )
+               Domain Operations      :           0.00 ( 73.43 % )
+               Output Domain          :           0.00 (  3.26 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.00 (  3.89 % )
+          OTHER OPERATIONS            :        0.00 (  4.94 % )
+
+
+     * * * END OF ANALYSIS * * *
+

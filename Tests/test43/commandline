@@ -1,0 +1,5 @@
+cd heated_cylinder_linear.gid
+../../../Executables/Unix/InspiraFEM.sh heated_cylinder_linear -postprocessfolder . -restartfolder data
+cd ..
+cd heated_cylinder_NRSeg.gid
+../../../Executables/Unix/InspiraFEM.sh heated_cylinder_NRSeg -postprocessfolder . -restartfolder data

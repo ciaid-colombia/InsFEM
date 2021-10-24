@@ -1,0 +1,20 @@
+#!/bin/bash
+if [ -z ${SLEPC_DIR+x} ]
+then
+	cp -rf ../test145/bar_oscilator_eps.gid .
+	echo "Test not run"
+	touch testnotrun
+else
+	if [ -z ${HDF5+x} ]
+	then
+		cp -rf ../test145/bar_oscilator_eps.gid .
+		echo "Test not run"
+		touch testnotrun
+	else
+		cd bar_oscilator_eps.gid
+		cp data/bar_oscilator_epsFOM.sld.rom.dat data/bar_oscilator_eps.sld.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh bar_oscilator_eps -np 2 -nomerge
+		cp data/bar_oscilator_epsROM.sld.rom.dat data/bar_oscilator_eps.sld.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh bar_oscilator_eps -np 2 -nomerge
+	fi
+fi

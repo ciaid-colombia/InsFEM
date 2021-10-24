@@ -1,0 +1,8 @@
+if [ ${PETSC_VERSION_MINOR:-5} -gt 5 ]
+then
+	cd cylinder.gid
+	../../../Executables/Unix/InspiraFEM.sh cylinder -np 3 -nomerge -postprocessfolder . -restartfolder data
+else
+	cd cylinder_old.gid
+	../../../Executables/Unix/InspiraFEM.sh cylinder -np 3 -nomerge -postprocessfolder . -restartfolder data
+fi

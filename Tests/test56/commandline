@@ -1,0 +1,5 @@
+cd isotropicshock.gid
+../../../Executables/Unix/InspiraFEM.sh isotropicshock -postprocessfolder . -restartfolder data
+cd ../anisotropicshock.gid
+../../../Executables/Unix/InspiraFEM.sh anisotropicshock -postprocessfolder . -restartfolder data
+

@@ -1,0 +1,1 @@
+Dynamic subgrid scales, Navier-Stokes monolithic, ASGS, first order in time, OSS: The same with OSS, AND consistent L2 projection. Coupling with temperature CrankNicolson, dynamic sgs. Also CrankNicolson for NavierStokes (3rd case) with subscales and dissipation

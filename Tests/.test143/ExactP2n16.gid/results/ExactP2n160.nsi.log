@@ -1,0 +1,16 @@
+
+
+
+     >>>  EVOLUTION OF NUMERICAL PARAMETERS:
+
+
+
+$        Time      Inner       Current    Tau_min       Tau_max       Tau_mean     Tausig_min    Tausig_max    Tausig_mean    Re_min        Re_max        Re_mean
+$        step  iteration          time
+            0          1  0.100000E-02  0.706321E-02  0.100000E-01  0.853116E-02  0.443130E+00  0.449683E+00  0.445382E+00  0.143513E-12  0.207263E-02  0.102908E-02
+            0          2  0.100000E-02  0.700157E-02  0.100000E-01  0.849960E-02  0.411691E+00  0.449683E+00  0.433841E+00  0.143513E-12  0.181799E-01  0.833488E-02
+            0          3  0.100000E-02  0.700112E-02  0.100000E-01  0.849953E-02  0.411472E+00  0.449683E+00  0.433810E+00  0.143513E-12  0.182572E-01  0.833891E-02
+
+
+     * * * END OF THREE-FIELD-NAVIER-STOKES RUN * * *
+

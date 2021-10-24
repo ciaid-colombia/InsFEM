@@ -1,0 +1,1 @@
+MPI, -np 3. Periodic Boundary Conditions: Navier-Stokes Monolithic (all physical problems), Navier-Stokes fractional step (particular case). 2D, both 1 dimension (y) and 2 dimension (x and y) periodicity

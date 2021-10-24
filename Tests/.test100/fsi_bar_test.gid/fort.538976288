@@ -1,0 +1,12 @@
+          ia  Memory:    404.0  bytes  Module memo:    404.0  bytes  Total memo:       26.8 kbytes BroadCastB
+          ja  Memory:    800.0  bytes  Module memo:      1.2 kbytes  Total memo:       27.6 kbytes BroadCastB
+ExternalRPoi  Memory:    100.0  bytes  Module memo:      1.3 kbytes  Total memo:       27.7 kbytes BroadCastB
+ExternalLPoi  Memory:    100.0  bytes  Module memo:      1.4 kbytes  Total memo:       27.7 kbytes BroadCastB
+    SendType  Memory:    400.0  bytes  Module memo:      1.8 kbytes  Total memo:       28.1 kbytes BroadCastB
+ExternalPoin  Memory:    500.0  bytes  Module memo:      2.2 kbytes  Total memo:       28.6 kbytes BroadCastB
+          ia  Memory:   -404.0  bytes  Module memo:      1.9 kbytes  Total memo:       28.2 kbytes BroadCastB
+          ja  Memory:   -800.0  bytes  Module memo:      1.1 kbytes  Total memo:       27.5 kbytes BroadCastB
+ExternalRPoi  Memory:   -100.0  bytes  Module memo:   1000.0  bytes  Total memo:       27.4 kbytes BroadCastB
+ExternalLPoi  Memory:   -100.0  bytes  Module memo:    900.0  bytes  Total memo:       27.3 kbytes BroadCastB
+    SendType  Memory:   -400.0  bytes  Module memo:    500.0  bytes  Total memo:       26.9 kbytes BroadCastB
+ExternalPoin  Memory:   -500.0  bytes  Module memo:      0.0  bytes  Total memo:       26.4 kbytes BroadCastB

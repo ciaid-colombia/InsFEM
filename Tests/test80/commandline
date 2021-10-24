@@ -1,0 +1,3 @@
+cd beam_force.gid
+../../../Executables/Unix/InspiraFEM.sh beam_force -nomerge
+

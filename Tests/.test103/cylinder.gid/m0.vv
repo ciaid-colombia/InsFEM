@@ -1,0 +1,27 @@
+
+BeginPostState
+BeginSingleMesh
+  Num meshes: 0
+  Num sets: 1
+  Num cuts: 0
+  Set: 0
+  State: On
+    Name: "Triangle"
+    IdSet: 4
+    Color Type: 0
+    Color Ambient: 0 0.3 0.3 0.5
+    Color Diffuse: 0 1 1 0.5
+    Color Specular: 1 1 1 0.5
+    Color Shininess: 0.5
+    Property Massive: 0
+    Property Transparent: 0
+    Property Style: 8126525
+    Property Edge Width: 1
+    Property Vector Filter Factor: 0
+    Property Stream Arrow: 0
+  EndSet: 0
+EndSingleMesh
+  Post_Prefs_Vector_Size: 0 32 32 32
+  ResultView: {Id 12} {No results} {} {} {} {} 0 4
+EndPostState
+

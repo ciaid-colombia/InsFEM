@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="13" NumberOfCells="11">
+      <PointData>
+        <DataArray type="Float64" Name="Temperature" format="ascii" RangeMin="0" RangeMax="0.5191482360446066">
+          0.4941566719815884 0.37001819790673207 0.48890252612733487 0.4663013320977133 0.37444060499207715 0.3694456404775758
+          0.49840941117074594 0 0.3733356326834946 0.4780558299624554 0 0.5191482360446066
+          0.3653273377298512
+        </DataArray>
+      </PointData>
+      <CellData>
+        <DataArray type="UInt8" Name="vtkGhostType" format="ascii" RangeMin="0" RangeMax="1">
+          0 0 0 0 0 1
+          0 1 1 1 1
+        </DataArray>
+      </CellData>
+      <Points>
+        <DataArray type="Float32" Name="Points" NumberOfComponents="3" format="ascii" RangeMin="0.5" RangeMax="1.5">
+          0 1 1 0 0.5 1
+          0 1 0.5 0 1 0
+          0.5 0.5 0 0 0.5 0
+          0.5 1 0.5 0 0 1
+          0.5 0.5 1 0.5 1 0
+          0 0 0.5 0.5 1 1
+          0 0.5 0.5
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0.5
+            </Value>
+            <Value index="1">
+              1.5
+            </Value>
+          </InformationKey>
+        </DataArray>
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="ascii" RangeMin="0" RangeMax="12">
+          0 6 11 12 7 1
+          8 10 0 11 1 12
+          8 10 1 12 11 8
+          1 12 3 2 5 9
+          0 12 2 6 12 4
+          5 2 2 4 5 9
+          12 2 6 4 4 2
+          6 9
+        </DataArray>
+        <DataArray type="Int64" Name="offsets" format="ascii" RangeMin="4" RangeMax="44">
+          4 8 12 16 20 24
+          28 32 36 40 44
+        </DataArray>
+        <DataArray type="UInt8" Name="types" format="ascii" RangeMin="10" RangeMax="10">
+          10 10 10 10 10 10
+          10 10 10 10 10
+        </DataArray>
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+</VTKFile>

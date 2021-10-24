@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<VTKFile type="PUnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <PUnstructuredGrid GhostLevel="1">
+    <PCellData>
+      <PDataArray type="UInt8" Name="vtkGhostType"/>
+      <PDataArray type="Float64" Name="MOSGS" NumberOfComponents="3"/>
+    </PCellData>
+    <PPoints>
+      <PDataArray type="Float32" Name="Points" NumberOfComponents="3"/>
+    </PPoints>
+    <Piece Source="reflected_sgs_output_1_0.vtu"/>
+  </PUnstructuredGrid>
+</VTKFile>

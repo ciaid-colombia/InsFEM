@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+<Collection>
+<DataSet timestep="0.147487" group="" part="0" file=".//reflected_sgdiff_output_0.pvtu"/>
+<DataSet timestep="0.221143" group="" part="1" file=".//reflected_sgdiff_output_1.pvtu"/>
+<DataSet timestep="0.294756" group="" part="2" file=".//reflected_sgdiff_output_2.pvtu"/>
+<DataSet timestep="0.368311" group="" part="3" file=".//reflected_sgdiff_output_3.pvtu"/>
+<DataSet timestep="0.441798" group="" part="4" file=".//reflected_sgdiff_output_4.pvtu"/>
+<DataSet timestep="0.515192" group="" part="5" file=".//reflected_sgdiff_output_5.pvtu"/>
+<DataSet timestep="0.588425" group="" part="6" file=".//reflected_sgdiff_output_6.pvtu"/>
+<DataSet timestep="0.661511" group="" part="7" file=".//reflected_sgdiff_output_7.pvtu"/>
+<DataSet timestep="0.734436" group="" part="8" file=".//reflected_sgdiff_output_8.pvtu"/>
+<DataSet timestep="0.734436" group="" part="9" file=".//reflected_sgdiff_output_9.pvtu"/>
+</Collection>
+</VTKFile>

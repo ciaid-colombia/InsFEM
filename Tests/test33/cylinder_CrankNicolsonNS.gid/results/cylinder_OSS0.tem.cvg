@@ -1,0 +1,4 @@
+$        Time      Inner       Current   Temperature
+$        step  iteration          time      residual
+            1          1  0.100000E-02  0.416270E-01
+            1          0  0.100000E-02  0.416270E-01

@@ -1,0 +1,25 @@
+$-------------------------------------------------------------------
+RUN_DATA
+  Femuss:                 name
+                          NoMemcheck 
+  CUSTOMER:               Universal
+  IO_FORMAT:                  PETSc
+  OUTPUT_FORMAT:              VTK
+  OUTPUT_COMPRESSION:         ASCII
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+  TIME_COUPLING:          Global, Prescribed
+  TIME_INTERVAL=          0.0, 0.1  
+  TIME_STEP_SIZE=         0.01  
+  NUMBER_OF_STEPS=        1e5   
+  MAXIMUM_NUMBER_GLOBAL=  1
+  TEMPER_PROBLEM:         On
+    DELAY STEPS:          0
+    PRELIMINARY:          Off
+    RESTART:              Initial
+    CONVERGENCE_REQUIRED: Yes
+  END_TEMPER_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------
+

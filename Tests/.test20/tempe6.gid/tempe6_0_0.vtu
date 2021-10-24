@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="81" NumberOfCells="8">
+      <PointData>
+        <DataArray type="Float64" Name="tem_BC" format="ascii" RangeMin="0" RangeMax="0">
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0
+        </DataArray>
+        <DataArray type="Float64" Name="tem_FIXNO" format="ascii" RangeMin="-1" RangeMax="1">
+          1 1 1 -1 1 1
+          -1 -1 -1 1 1 -1
+          -1 -1 -1 1 1 -1
+          -1 -1 -1 -1 1 -1
+          1 -1 -1 -1 -1 -1
+          -1 -1 -1 1 1 -1
+          -1 -1 -1 -1 -1 -1
+          -1 1 1 -1 -1 -1
+          -1 -1 -1 -1 -1 -1
+          -1 -1 1 1 1 -1
+          1 -1 1 1 -1 1
+          1 -1 -1 1 1 -1
+          -1 1 1 -1 1 1
+          1 1 1
+        </DataArray>
+      </PointData>
+      <CellData>
+        <DataArray type="UInt8" Name="vtkGhostType" format="ascii" RangeMin="0" RangeMax="0">
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+        </DataArray>
+      </CellData>
+      <Points>
+        <DataArray type="Float32" Name="Points" NumberOfComponents="3" format="ascii" RangeMin="0" RangeMax="1.4142135623730951">
+          0 1 0 0 0.875 0
+          0.125 1 0 0.125 0.875 0
+          0 0.75 0 0.25 1 0
+          0.25 0.875 0 0.125 0.75 0
+          0.25 0.75 0 0 0.625 0
+          0.375 1 0 0.375 0.875 0
+          0.125 0.625 0 0.25 0.625 0
+          0.375 0.75 0 0.5 1 0
+          0 0.5 0 0.5 0.875 0
+          0.125 0.5 0 0.375 0.625 0
+          0.5 0.75 0 0.25 0.5 0
+          0 0.375 0 0.5 0.625 0
+          0.625 1 0 0.375 0.5 0
+          0.625 0.875 0 0.125 0.375 0
+          0.625 0.75 0 0.25 0.375 0
+          0.5 0.5 0 0.625 0.625 0
+          0.375 0.375 0 0 0.25 0
+          0.75 1 0 0.75 0.875 0
+          0.125 0.25 0 0.25 0.25 0
+          0.75 0.75 0 0.5 0.375 0
+          0.625 0.5 0 0.75 0.625 0
+          0.375 0.25 0 0 0.125 0
+          0.875 1 0 0.875 0.875 0
+          0.625 0.375 0 0.125 0.125 0
+          0.5 0.25 0 0.75 0.5 0
+          0.875 0.75 0 0.25 0.125 0
+          0.875 0.625 0 0.375 0.125 0
+          0.75 0.375 0 0.625 0.25 0
+          0 0 0 1 1 0
+          0.125 0 0 0.5 0.125 0
+          1 0.875 0 0.875 0.5 0
+          0.25 0 0 1 0.75 0
+          0.75 0.25 0 0.375 0 0
+          1 0.625 0 0.875 0.375 0
+          0.625 0.125 0 0.5 0 0
+          1 0.5 0 0.75 0.125 0
+          0.875 0.25 0 1 0.375 0
+          0.625 0 0 0.875 0.125 0
+          1 0.25 0 0.75 0 0
+          1 0.125 0 0.875 0 0
+          1 0 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0
+            </Value>
+            <Value index="1">
+              1.4142135624
+            </Value>
+          </InformationKey>
+        </DataArray>
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="ascii" RangeMin="15" RangeMax="80">
+          76 64 77 80 72 71
+          79 78 75 70 49 64
+          76 61 54 72 73 67
+          63 38 49 70 50 41
+          61 66 52 57 34 38
+          63 44 35 50 60 45
+          64 48 69 77 55 59
+          74 71 68 49 30 48
+          64 40 39 55 54 46
+          38 20 30 49 28 23
+          40 41 31 34 15 20
+          38 24 17 28 35 26
+        </DataArray>
+        <DataArray type="Int64" Name="offsets" format="ascii" RangeMin="9" RangeMax="72">
+          9 18 27 36 45 54
+          63 72
+        </DataArray>
+        <DataArray type="UInt8" Name="types" format="ascii" RangeMin="28" RangeMax="28">
+          28 28 28 28 28 28
+          28 28
+        </DataArray>
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+</VTKFile>

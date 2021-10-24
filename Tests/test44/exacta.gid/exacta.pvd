@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+<Collection>
+<DataSet timestep="0.05" group="" part="0" file="post//exacta_0.pvtu"/>
+<DataSet timestep="0.1" group="" part="1" file="post//exacta_1.pvtu"/>
+<DataSet timestep="0.15" group="" part="2" file="post//exacta_2.pvtu"/>
+<DataSet timestep="0.2" group="" part="3" file="post//exacta_3.pvtu"/>
+<DataSet timestep="0.25" group="" part="4" file="post//exacta_4.pvtu"/>
+<DataSet timestep="0.25" group="" part="5" file="post//exacta_5.pvtu"/>
+</Collection>
+</VTKFile>

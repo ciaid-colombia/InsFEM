@@ -1,0 +1,124 @@
+
+
+
+     *******
+     CASE: GRAVI
+     *******
+
+          CURRENT TIME STEP dt = 0.100000E+00
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.100000E+00
+          LevSet:
+          - Critical Time step dtc: 0.100000E+07
+          - Ratio dt/dtc:           0.100000E-06
+          NSTINC:
+          - Critical Time step dtc: 0.195094E-01
+          - Ratio dt/dtc:           0.512574E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.105331E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSTINC:  0.276E-01  0.255E-01  0.191E-04  0.954E-05  0.207E-02  0.148E-02  0.505E-03  0.668E-04  0.691E-05  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          LevSet:  0.148E-01  0.143E-01  0.906E-05  0.668E-04  0.380E-03  0.191E-03  0.122E-03  0.589E-04  0.691E-05  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E+00
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.200000E+00
+          LevSet:
+          - Critical Time step dtc: 0.110708E+00
+          - Ratio dt/dtc:           0.903277E+00
+          NSTINC:
+          - Critical Time step dtc: 0.174122E-01
+          - Ratio dt/dtc:           0.574309E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.108553E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSTINC:  0.293E-01  0.255E-01  0.339E-04  0.174E-04  0.371E-02  0.286E-02  0.709E-03  0.114E-03  0.119E-04  0.113E-02  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          LevSet:  0.152E-01  0.143E-01  0.186E-04  0.131E-03  0.659E-03  0.361E-03  0.178E-03  0.108E-03  0.131E-04  0.238E-05  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E+00
+
+     >>>  TIME STEP NUMBER:     3     STARTED AT t = 0.300000E+00
+          LevSet:
+          - Critical Time step dtc: 0.478175E-01
+          - Ratio dt/dtc:           0.209128E+01
+          NSTINC:
+          - Critical Time step dtc: 0.148478E-01
+          - Ratio dt/dtc:           0.673501E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.111256E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSTINC:  0.309E-01  0.255E-01  0.489E-04  0.246E-04  0.531E-02  0.421E-02  0.896E-03  0.160E-03  0.174E-04  0.179E-02  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          LevSet:  0.155E-01  0.143E-01  0.279E-04  0.195E-03  0.944E-03  0.526E-03  0.232E-03  0.170E-03  0.196E-04  0.477E-05  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 47.70 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   47.70 Mbytes (100.00 %)
+          NSTIN  MODULE:                 0.00 Mbytes (  0.00 %)
+          LEVSE  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      47.72 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:    105.73 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.11
+          STARTING OPERATIONS         :        0.06 ( 55.83 % )
+               Initialize MPI         :           0.00 ( 54.20 % )
+               Reapro                 :           0.00 ( 54.20 % )
+               Initialize Par. Lib.   :           0.00 ( 54.20 % )
+               Domain Operations      :           0.06 ( 54.20 % )
+               Output Domain          :           0.00 (  0.21 % )
+          NSTIN  MODULE               :        0.03 ( 27.32 % )
+               Turnon                 :           0.03 ( 82.17 % )
+               Getste                 :           0.00 (  0.16 % )
+               Begste                 :           0.00 (  0.08 % )
+               Doiter                 :           0.01 ( 17.09 % )
+                 Build Linear System  :               0.00 ( 13.56 % )
+                 Solve Linear System  :               0.00 (  2.88 % )
+                 Endite               :               0.00 (  0.51 % )
+               Endste                 :           0.00 (  0.06 % )
+               Output                 :           0.00 (  7.75 % )
+               Turnof                 :           0.00 (  0.45 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          LEVSE  MODULE               :        0.02 ( 13.75 % )
+               Turnon                 :           0.01 ( 91.69 % )
+               Getste                 :           0.00 (  0.18 % )
+               Begste                 :           0.00 (  1.25 % )
+               Doiter                 :           0.00 (  6.03 % )
+                 Build Linear System  :               0.00 (  3.36 % )
+                 Solve Linear System  :               0.00 (  1.48 % )
+                 Endite               :               0.00 (  1.09 % )
+               Endste                 :           0.00 (  0.12 % )
+               Output                 :           0.00 (  0.05 % )
+               Turnof                 :           0.00 (  0.72 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.00 (  0.95 % )
+          OTHER OPERATIONS            :        0.00 (  2.35 % )
+
+
+     * * * END OF ANALYSIS * * *
+

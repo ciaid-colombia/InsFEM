@@ -1,0 +1,5 @@
+cd isotropic_ortho_shock.gid
+../../../Executables/Unix/InspiraFEM.sh isotropic_ortho_shock -postprocessfolder . -restartfolder data
+cd ../anisotropic_ortho_shock.gid
+../../../Executables/Unix/InspiraFEM.sh anisotropic_ortho_shock -postprocessfolder . -restartfolder data
+

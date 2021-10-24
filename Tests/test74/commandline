@@ -1,0 +1,4 @@
+cd square_test.gid
+../../../Executables/Unix/InspiraFEM.O$COMPILER square_test
+
+

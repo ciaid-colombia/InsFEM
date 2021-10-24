@@ -1,0 +1,11 @@
+Mescape Postprocess
+      Mescape files add 
+      { post/fsi_bar_test0.post.res  post/fsi_bar_test1.post.res  post/fsi_bar_test2.post.res  post/fsi_bar_test3.post.res  post/fsi_bar_test4.post.res  post/fsi_bar_test5.post.res  post/fsi_bar_test6.post.res  post/fsi_bar_test7.post.res }
+      Mescape files saveall binMeshesSets
+      m0.bin
+         Mescape files new
+         Yes
+         Mescape files ReadMultiple { m0.bin}
+          Mescape files saveall binMeshesSets
+          fsi_bar_test.post.res
+      Quit

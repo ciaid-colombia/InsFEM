@@ -1,0 +1,64 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------ 
+PROBLEM_DEFINTION  
+  TEMPORAL_DERIVATIVES: On
+ GRAVITY:              NORM: 0.0, GX: 0.0, GY: 0.0,  GZ: 0.0  
+ SRCES:              SRCE: 0.0  
+END_PROBLEM_DEFINITION
+$------------------------------------------------------------
+PROPERTIES
+  EQNST=                           Ideal_gas
+  CPHEAT=           1.010
+  CVHEAT=           0.718  
+  VISCOSITY=        0.0  
+  THERMAL_COND=     0.0  
+END_PROPERTIES  
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM  
+$------------------------------------------------------------
+NUMERICAL_TREATMENT    
+  STABILITY_CONSTANTS=     4.0 2.0 1.0
+  TAU_MATRIX:                    Diagonal 
+  TYPE_OF_STABILIZATION:         Residual_projection_OSS  
+  PROJECTION_TYPE=               Lumped
+  TEST_FUNCTION_STABILIZATION:   VMS
+  JACOBIAN_GRADIENT:   ON
+  TIME_ACCURACY:         1   
+  TRACKING_SUBSCALES:    OFF   
+  ACCURACY_IN_TIME_SGS:  Dynamic
+  NON_LINEARITY_SGS:     Nonlinear 
+  TIME_INTEGRATION:      Adams   
+  EXPLI_TIME_INTEGRATION: RK4   
+  SAFETY_FACTOR:         1.0  
+  STEADY_STATE_TOLER:    1e-8   
+  NORM_OF_CONVERGENCE:   L2   
+  LINEARIZATION_METHOD:  Picard   
+  MAXIMUM_NUMBER_OF_IT:  1  
+  CONVERGENCE_TOLERANCE: 1e-8
+END_NUMERICAL_TREATMENT  
+$------------------------------------------------------------
+OUTPUT_&_POST-PROCESS  
+ START_POSTPROCES_AT           STEP =1
+ POSTPROCESS VELOCITY,         STEPS=0
+ POSTPROCESS PRESSURE,         STEPS=0
+ POSTPROCESS TEMPERATURE,      STEPS=0
+ POSTPROCESS DENSITY,          STEPS=1
+ POSTPROCESS MOMENTUM,         STEPS=1
+ POSTPROCESS ENERGY,           STEPS=1
+ POSTPROCESS STREAMLINES,      STEPS=0
+ POSTPROCESS HEATFLUX,         STEPS=0
+ POSTPROCESS ARTDIFF,          STEPS=0
+ POSTPROCESS SGSDIFF,          STEPS=1
+ POSTPROCESS SUBSCALES,        STEPS=1
+ POSTPROCESS RESIDUAL,         STEPS=1
+ POSTPROCESS REPRO,            STEPS=1
+END_OUTPUT_&_POST_PROCESS  
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS, \
+      CONSTANT_BOUNDARY_CONDITIONS, \
+      WALL_DISTANCE=0.0, \
+      CONTINUE
+ INCLUDE oss_timedep_nonlinear.nsc.fix
+END_BOUNDARY_CONDITIONS  
+$------------------------------------------------------------

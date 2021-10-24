@@ -1,0 +1,22 @@
+#####################################################
+#####################################################
+NUMBER OF MATERIALS: 1
+MATERIALS_PROPERTIES
+   
+   BEGIN_MATERIAL
+      IDNUMBER:   1
+      TYPELAW:    Lin_Elastic
+      DENSITY:    1.0
+      CONST_TEN:  Orthotropic Does_Not_Apply
+         YOUNG DIR11:   240e9
+         YOUNG DIR22:   15.7e9
+         YOUNG DIR33:   7.8e9
+         SHEAR DIR12:   5.98e9
+         SHEAR DIR13:   10e9
+         SHEAR DIR23:   12e9
+         POISSON DIR12: 0.2
+         POISSON DIR13: 0.3
+         POISSON DIR23: 0.1
+      TANG_TYPE:  Tangent
+   END_MATERIAL
+END_MATERIALS_PROPERTIES

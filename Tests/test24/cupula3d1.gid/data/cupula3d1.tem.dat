@@ -1,0 +1,59 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------
+PROBLEM_DEFINITION
+  TEMPORAL_DERIVATIVES:   On 
+  CONVECTIVE_TERM:        On , VELOC: External 
+  SOURCE_TERMS:           Off, VALUE: 0.0  
+ TURBULENCE_MODEL:     Off 
+END_PROBLEM_DEFINITION
+$------------------------------------------------------------
+PROPERTIES:
+  DENSITY=                1.18
+  SPECIFIC_HEAT=          1.005  
+  THERMAL_COND=           0.0257  
+  VISCOSITY=              1.18e-5  
+  TURBULENT_PRANDTL=      1.0  
+  REACTION=               0.0
+  LAW_DENSITY=            Constant
+  LAW_SPECIFIC_HEAT=      Constant  
+  LAW_THERMAL_COND=       Constant  
+  LAW_VISCOSITY=          1.18e-5  
+END_PROPERTIES
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM
+$------------------------------------------------------------
+NUMERICAL_TREATMENT
+ STABILITY_CONSTANTS=     4.0 2.0 1.0
+ TYPE_OF_STABILIZATION=   Residual_projection_OSS
+ PROJECTION_TYPE=         Lumped
+ TEST_FUNCTION_STABILIZATION: VMS
+ TRACKING_OF_SUSBSCALES=  Off, RELAXATION: 1.0, TIME_ACCURACY: 1.0 NON_LINEARITY: LINEAR
+ TEMPORAL_TERM_WEIGHTING= All  
+ SHOCK_CAPTURING=         Off, VALUE: 0.0  
+  TIME_ACCURACY=           1  
+ SAFETY_FACTOR=           1000  
+ STEADY_STATE_TOLERANCE=  1e-8  
+ NORM_OF_CONVERGENCE:     L2   
+ MAXIMUM_NUMBER_OF_ITER=  1  
+ RELAXATION_FACTOR=       1.0
+ CONVERGENCE_TOLERANCE=   1e-8  
+  ALGEBRAIC_SOLVER:       Direct
+END_NUMERICAL_TREATMENT
+$------------------------------------------------------------
+OUTPUT_&_POST_PROCESS
+ START_POSTPROCES_AT            STEP =1
+ POSTPROCESS TEMPER,            STEPS=1
+ POSTPROCESS DISSIPATION,       STEPS=1  
+ POSTPROCESS AVG_TEMPE_1D,      STEPS=0
+ POSTPROCESS AVG_DISSI_1D,      STEPS=0
+ 
+ AVG_1D_DIRECTION:             Y
+ DIS_COMPUTATION: On
+END_OUTPUT_&_POST-PROCESS
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS \
+      CONSTANT_BOUNDARY_CONDITIONS
+ INCLUDE cupula3d1.tem.fix
+END_BOUNDARY_CONDITIONS
+$------------------------------------------------------------

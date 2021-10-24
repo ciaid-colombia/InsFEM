@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+<Collection>
+<DataSet timestep="0.1" group="" part="0" file=".//oscillatornew_0.pvtu"/>
+<DataSet timestep="0.2" group="" part="1" file=".//oscillatornew_1.pvtu"/>
+<DataSet timestep="0.3" group="" part="2" file=".//oscillatornew_2.pvtu"/>
+<DataSet timestep="0.3" group="" part="3" file=".//oscillatornew_3.pvtu"/>
+</Collection>
+</VTKFile>

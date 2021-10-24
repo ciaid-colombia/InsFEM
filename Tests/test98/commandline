@@ -1,0 +1,15 @@
+#!/bin/bash
+#cd turek_test.gid
+#../../../Executables/Unix/InspiraFEM.sh turek_test -cases 2 data/Fluid data/Solid -nomerge -np 4
+if [ "$COMPILER" == "MPIGNU" ]
+then
+   cp -r ../test98/turek_test_intel.gid .
+   cd turek_test.gid
+   ../../../Executables/Unix/InspiraFEM.sh turek_test -cases 2 data/Fluid data/Solid -nomerge -np 4
+elif [ "$COMPILER" == "MPINTEL" ]
+then
+   cp -r ../test98/turek_test.gid .
+   cd turek_test_intel.gid
+   ../../../Executables/Unix/InspiraFEM.sh turek_test -cases 2 data/Fluid data/Solid -nomerge -np 4
+fi
+

@@ -1,0 +1,70 @@
+$-------------------------------------------------------------------
+RUN_DATA
+  Femuss:                 natural
+  RUN_TYPE:               Preliminary, Frequency=50 \
+                          No_restart \
+                          NoMemcheck 
+  OUTPUT_FORMAT:              VTK
+  OUTPUT_COMPRESSION:         ASCII
+  CUSTOMER:                   Universal
+  COMMUNICATOR_LIBRARY:       PETSc
+  ORDERING_LIBRARY:           PETSc
+  IO_FORMAT:                  PETSc
+  REBALANCE_NUMBERING:        Zoltan
+  MPICommunicationsType:      NonBlocking
+  FLUSH_TO_DISK:              On
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+  TIME_COUPLING:          Global, Prescribed
+  TIME_INTERVAL=          0.0, 0.2  
+  TIME_STEP_SIZE=         0.05  
+  NUMBER_OF_STEPS=        1e5   
+  MAXIMUM_NUMBER_GLOBAL=  1
+  REMESHING_STRATEGY:     Off
+     ADAPTIVE_MESH_REFINEMENT:   Off Temperature REBALANCING_RATIO 1.5 Off
+     INTERPOLATOR_TOLERANCE:    1e-6
+
+  PODROM_LMACHN_PROBLEM:         On MODNAME: 
+    DELAY STEPS:          0
+    PHYSICAL_PROBLEM:     LowMach
+    GROUP:          Domain
+    DELAY STEPS:          0
+    PRELIMINARY RUN:      Off
+    RESTART:              Off
+    CONVERGENCE_REQUIRED: Yes
+REDUCED_ORDER_PROBLEM
+$------------------------------------------------------------ 
+    STAGE:                         FOM
+    STYPE_OF_ROM:                  SVD
+    NSNAPSHOTS:                    1
+    INTERVAL_BETWEEN_SNAPSHOTS:    1
+    NON_LINEAR_ITERATIONS:         50
+    CONVERGENCE_TOLERANCE:         1e-8
+    ENERGY_RETAINED:               1
+    PERCENTAGE_OF_SAMPLING_POINTS: 100
+    PROJECTION_SPACE:              Petrov-Galerkin
+    MEAN_SUBSTRACTION:             On
+    GAPPY_DATA_TYPE:               None 
+    SUBSCALES_FOR_ROM:             Off 
+    GAPPY_DATA_TYPE:               None 
+#ROM_SOLVER_OPTIONS
+-lmn_ksp_type preonly 
+-lmn_ksp_rtol 1e-8 
+-lmn_pc_type lu
+-lmn_svd_tol 1e-6
+-lmn_svd_max_it 1000
+-lmn_svd_type trlanczos
+-lmn_svd_nsv 250
+-lmn_bv_type mat
+#END_ROM_SOLVER_OPTIONS
+$------------------------------------------------------------ 
+END_REDUCED_ORDER_PROBLEM
+END_LMACHN_PROBLEM
+END_PODROM_LMACHN_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------
+INTERPOLATION_DATA
+END_INTERPOLATION_DATA
+$-------------------------------------------------------------------
+

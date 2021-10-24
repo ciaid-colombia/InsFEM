@@ -1,0 +1,37 @@
+BeginZE /home/cbayona/Femuss/Tests/test109/reflected3d_anisotropic.gid/reflected3d_anisotropic.vv
+   x -2.77171063423156738 6.87170934677124023
+   y 2.88105940818786621 -1.88105940818786621
+   z -8.14317798614501953 6.14317798614501953
+   e 2.38105940818786621
+   v -0.136193990707397461 0.0887652859091758728 -0.0928150266408920288
+   r 0.982322454452514648
+   m 0.967012166976928711 0.158169969916343689 0.199673965573310852 0 -0.206527158617973328 0.945673167705535889 0.251095294952392578 0 -0.149110570549964905 -0.284050315618515015 0.947143852710723877 0 0 0 0 1
+   c 2.04999995231628418 0.5 1
+   pd 0
+   pno 0
+   pfo 0
+   pf 4
+   pv 0
+   NowUse 1
+   DrawingType 0
+   LightVector 90 90 150 0
+   OGLShadow(UseShadows) 0
+   OGLShadow(RenderMode) RenderNice
+   OGLShadow(ShadowBias) -0.002
+   OGLShadow(AmbientShadows) 1
+   OGLShadow(UseFBO) 0
+   OGLShadow(FBOSize) 2048
+   OGLShadow(DimmedLightFactor) 0.02
+   OGLStereo(UseStereo) 0
+   OGLStereo(RelativeEyeDistance) 1
+   OGLStereo(FlipEyes) 0
+   OGLStereo(StereoMode) AnaglyphColors
+   OGLStereo(EyeDistance) 0.075
+   OGLStereo(LeftEyeDistance) 1 0 0 1
+   OGLStereo(RightEyeDistance) 0 1 1 1
+EndZE /home/cbayona/Femuss/Tests/test109/reflected3d_anisotropic.gid/reflected3d_anisotropic.vv
+
+BeginMirror
+   Mirror 0 Angle 0.0 AngleFake -15.0 SizeFactor 2.0 HeightOffset 0.25 Color #d9e5f24d Backlight Off EdgeStyle No Type Scene DrawMode Mirror
+EndMirror
+

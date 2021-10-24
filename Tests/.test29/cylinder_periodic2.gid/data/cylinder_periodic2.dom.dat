@@ -1,0 +1,23 @@
+$------------------------------------------------------------
+DIMENSIONS
+  NODAL_POINTS=           51
+  ELEMENTS=               75
+  SPACE_DIMENSIONS=        2
+  NODES_PER_ELEMENT=  3
+  BOUNDARIES=         AUTOMATIC
+  SKEW_SYSTEMS=            0
+END_DIMENSIONS
+$------------------------------------------------------------
+STRATEGY
+  INTEGRATION_RULE:          Open  
+  DOMAIN_INTEGRATION_POINTS: 0  
+  OUTPUT MESH_DATA:          Off    
+  PERIODIC_BC=        On 0 1 0
+END_STRATEGY
+$-------------------------------------------------------------
+GEOMETRY, GID, WALL_DISTANCE= 0.0   
+ INCLUDE  cylinder_periodic2.geo.dat
+END_GEOMETRY  
+$-------------------------------------------------------------
+
+ 

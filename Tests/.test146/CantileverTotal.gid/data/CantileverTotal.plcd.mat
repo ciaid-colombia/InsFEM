@@ -1,0 +1,16 @@
+#####################################################
+#####################################################
+NUMBER OF MATERIALS: 1
+MATERIALS_PROPERTIES
+   
+  BEGIN_MATERIAL
+    IDNUMBER:   1
+    MAT_NAME:   Material1
+      TYPELAW:    ToNeoHookean
+    DENSITY:    1
+    CONST_TEN:  Isotropic Stress
+      YOUNG:   1.2e6
+      POISSON: 0.25
+    TANG_TYPE:  Tangent
+  END_MATERIAL
+END_MATERIALS_PROPERTIES

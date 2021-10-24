@@ -1,0 +1,4 @@
+cd heated_cylinder_hs.gid
+../../../Executables/Unix/InspiraFEM.sh heated_cylinder_hs -postprocessfolder . -restartfolder data
+
+

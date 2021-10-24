@@ -1,0 +1,24 @@
+$------------------------------------------------------------
+DIMENSIONS
+  NODAL_POINTS=           64
+  ELEMENTS=               27
+  SPACE_DIMENSIONS=        3
+  NODES_PER_ELEMENT=       8
+  BOUNDARIES=         AUTOMATIC
+  SKEW_SYSTEMS=            0
+END_DIMENSIONS
+$------------------------------------------------------------
+STRATEGY
+  INTEGRATION_RULE:          Open  
+  DOMAIN_INTEGRATION_POINTS: 0  
+  OUTPUT MESH_DATA:          Off    
+  PERIODIC_BC=               On 0 0 1
+  TEST_COMMUNICATIONS=       Off
+  READ_STRATEGY=             Default 
+END_STRATEGY
+$-------------------------------------------------------------
+GEOMETRY, GID
+ INCLUDE  channel_3d_test.geo.dat
+ INCLUDE  channel_3d_test.dom.fix
+END_GEOMETRY  
+$-------------------------------------------------------------

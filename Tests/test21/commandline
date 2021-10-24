@@ -1,0 +1,3 @@
+cd tempe7.gid
+../../../Executables/Unix/InspiraFEM.O$COMPILER tempe7 -postprocessfolder . -restartfolder data
+

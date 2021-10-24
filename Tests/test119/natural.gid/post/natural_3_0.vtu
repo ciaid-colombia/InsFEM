@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="16" NumberOfCells="9">
+      <PointData>
+        <DataArray type="Float64" Name="Velocity" NumberOfComponents="3" format="ascii" RangeMin="0" RangeMax="0.29391036159828365">
+          0 0 0 0 0 0
+          0 0 0 0.1056431780776992 0.2742677880839771 0
+          0 0 0 0 0 0
+          -0.2309845499215296 0.11195469026243576 0 0.09072215808540512 0.25672795341175275 0
+          -0.12264905522003772 0.1971097439724548 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0
+            </Value>
+            <Value index="1">
+              0.2939103616
+            </Value>
+          </InformationKey>
+        </DataArray>
+        <DataArray type="Float64" Name="Pressure" format="ascii" RangeMin="-1.1759990851467306" RangeMax="1.1961637810627554">
+          -0.662870723378146 -0.2678867592626041 -0.7610132541814951 -0.2858895885183831 0.24803745498580393 -1.0125030783960207
+          0.2794715791591534 -0.3858239471944138 0.3839520460502376 0.6373931530157665 -1.1759990851467306 0.7472298145130009
+          -0.331181066656157 1.0268687735815523 0.34270254494630625 1.1961637810627554
+        </DataArray>
+        <DataArray type="Float64" Name="Temperature" format="ascii" RangeMin="240" RangeMax="960">
+          960 960 602.9408440561156 606.6132972491313 960 598.9435975424846
+          598.8965507660658 600.7160583192382 588.4601025069512 960 240 609.1569395627374
+          240 592.4791375518338 240.00000000000003 240
+        </DataArray>
+        <DataArray type="Float64" Name="Density" format="ascii" RangeMin="0.36705307966895423" RangeMax="1.468212318675817">
+          0.36705307966895423 0.36705307966895423 0.5844204451496754 0.5808823480792906 0.36705307966895423 0.588320766643142
+          0.5883669826307535 0.5865848791658833 0.5988017793917195 0.36705307966895423 1.468212318675817 0.5784567713127154
+          1.468212318675817 0.5947398552094476 1.4682123186758167 1.468212318675817
+        </DataArray>
+      </PointData>
+      <CellData>
+        <DataArray type="UInt8" Name="vtkGhostType" format="ascii" RangeMin="0" RangeMax="0">
+          0 0 0 0 0 0
+          0 0 0
+        </DataArray>
+      </CellData>
+      <Points>
+        <DataArray type="Float32" Name="Points" NumberOfComponents="3" format="ascii" RangeMin="0" RangeMax="1.4142135623730951">
+          0 1 0 0 0.6666666865348816 0
+          0.3333333134651184 1 0 0.3333333134651184 0.6666666865348816 0
+          0 0.3333333134651184 0 0.6666666865348816 1 0
+          0.3333333134651184 0.3333333134651184 0 0.6666666865348816 0.6666666865348816 0
+          0.6666666865348816 0.3333333134651184 0 0 0 0
+          1 1 0 0.3333333134651184 0 0
+          1 0.6666666865348816 0 0.6666666865348816 0 0
+          1 0.3333333134651184 0 1 0 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0
+            </Value>
+            <Value index="1">
+              1.4142135624
+            </Value>
+          </InformationKey>
+        </DataArray>
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="ascii" RangeMin="0" RangeMax="15">
+          11 6 4 9 13 8
+          6 11 15 14 8 13
+          6 3 1 4 8 7
+          3 6 14 12 7 8
+          3 2 0 1 7 5
+          2 3 12 10 5 7
+        </DataArray>
+        <DataArray type="Int64" Name="offsets" format="ascii" RangeMin="4" RangeMax="36">
+          4 8 12 16 20 24
+          28 32 36
+        </DataArray>
+        <DataArray type="UInt8" Name="types" format="ascii" RangeMin="9" RangeMax="9">
+          9 9 9 9 9 9
+          9 9 9
+        </DataArray>
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+</VTKFile>

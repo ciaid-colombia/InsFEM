@@ -1,0 +1,121 @@
+
+
+
+     *******
+     Yet another finite element software: 
+     *******
+
+          CURRENT TIME STEP dt = 0.100000E+01
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.100000E+01
+          NSCOMP:
+          - Critical Time step dtc: 0.143430E+00
+          - Ratio dt/dtc:           0.697206E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.388955E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSCOMP:  0.202E+00  0.952E-01  0.472E-04  0.215E-04  0.107E+00  0.982E-01  0.268E-02  0.596E-02  0.124E-04  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E+01
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.200000E+01
+          NSCOMP:
+          - Critical Time step dtc: 0.144018E+00
+          - Ratio dt/dtc:           0.694358E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.499280E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSCOMP:  0.312E+00  0.952E-01  0.873E-04  0.346E-04  0.217E+00  0.192E+00  0.405E-02  0.210E-01  0.279E-04  0.696E-04  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E+01
+
+     >>>  TIME STEP NUMBER:     3     STARTED AT t = 0.300000E+01
+          NSCOMP:
+          - Critical Time step dtc: 0.144234E+00
+          - Ratio dt/dtc:           0.693318E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.598058E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSCOMP:  0.409E+00  0.952E-01  0.136E-03  0.496E-04  0.314E+00  0.281E+00  0.562E-02  0.273E-01  0.408E-04  0.198E-02  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E+01
+
+     >>>  TIME STEP NUMBER:     4     STARTED AT t = 0.400000E+01
+          NSCOMP:
+          - Critical Time step dtc: 0.144056E+00
+          - Ratio dt/dtc:           0.694177E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.703477E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSCOMP:  0.513E+00  0.952E-01  0.178E-03  0.637E-04  0.418E+00  0.377E+00  0.718E-02  0.337E-01  0.534E-04  0.299E-02  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E+01
+
+     >>>  TIME STEP NUMBER:     5     STARTED AT t = 0.500000E+01
+          NSCOMP:
+          - Critical Time step dtc: 0.143842E+00
+          - Ratio dt/dtc:           0.695209E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.808089E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSCOMP:  0.617E+00  0.952E-01  0.221E-03  0.775E-04  0.521E+00  0.467E+00  0.847E-02  0.457E-01  0.668E-04  0.400E-02  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 47.70 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   47.70 Mbytes (100.00 %)
+          NSCOM  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      47.72 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:    106.67 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.84
+          STARTING OPERATIONS         :        0.19 ( 22.21 % )
+               Initialize MPI         :           0.00 ( 21.98 % )
+               Reapro                 :           0.00 ( 21.98 % )
+               Initialize Par. Lib.   :           0.00 ( 21.98 % )
+               Domain Operations      :           0.19 ( 21.98 % )
+               Output Domain          :           0.00 (  0.04 % )
+          NSCOM  MODULE               :        0.62 ( 73.15 % )
+               Turnon                 :           0.10 ( 15.42 % )
+               Getste                 :           0.00 (  0.04 % )
+               Begste                 :           0.00 (  0.01 % )
+               Doiter                 :           0.52 ( 84.45 % )
+                 Build Linear System  :               0.47 ( 75.65 % )
+                 Solve Linear System  :               0.01 (  1.37 % )
+                 Endite               :               0.05 (  7.41 % )
+               Endste                 :           0.00 (  0.01 % )
+               Output                 :           0.01 (  0.81 % )
+               Turnof                 :           0.00 (  0.07 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.03 (  4.04 % )
+          OTHER OPERATIONS            :        0.01 (  0.65 % )
+
+
+     * * * END OF ANALYSIS * * *
+

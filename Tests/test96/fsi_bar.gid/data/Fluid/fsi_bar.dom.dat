@@ -1,0 +1,28 @@
+$------------------------------------------------------------
+DIMENSIONS
+NODAL_POINTS=             418
+ELEMENTS=                 757
+SPACE_DIMENSIONS=        2
+NODES_PER_ELEMENT=             3
+BOUNDARIES=         AUTOMATIC
+SKEW_SYSTEMS=            0
+END_DIMENSIONS
+$------------------------------------------------------------
+STRATEGY
+INTEGRATION_RULE:          Open  
+DOMAIN_INTEGRATION_POINTS: 0  
+OUTPUT MESH_DATA:          Off    
+PERIODIC_BC=               Off 0 1 0
+TEST_COMMUNICATIONS=       Off
+READ_STRATEGY=             Default 
+END_STRATEGY
+$-------------------------------------------------------------
+GEOMETRY, GID
+INCLUDE  fsi_bar.geo.dat
+INCLUDE  fsi_bar.dom.fix
+END_GEOMETRY  
+$-------------------------------------------------------------
+GROUPS
+GROUPNAME Fluid TYPE_EL 3 TOTAL_EL    757 TOTAL_NOD 418
+GROUPNAME Solid TYPE_EL 3 TOTAL_EL     20 TOTAL_NOD 33
+END_GROUPS

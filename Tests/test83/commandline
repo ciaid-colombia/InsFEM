@@ -1,0 +1,19 @@
+cd test1.gid
+../../../Executables/Unix/InspiraFEM.sh test1 -np 6 -nomerge
+cd ../Cube1.gid
+../../../Executables/Unix/InspiraFEM.sh Cube1 -np 6 -nomerge
+cd ../quads1.gid
+../../../Executables/Unix/InspiraFEM.sh quads1 -np 6 -nomerge
+cd ../Cube1Hexas.gid
+../../../Executables/Unix/InspiraFEM.sh Cube1Hexas -np 6 -nomerge
+
+if [ -z ${ZOLTAN_DIR+x} ]
+then
+   cd ..
+   cp -rf ../test83/test1Zoltan.gid .
+	echo "Test not run"
+   touch testnotrun
+else
+   cd ../test1Zoltan.gid
+   ../../../Executables/Unix/InspiraFEM.sh test1 -np 3 -nomerge
+fi

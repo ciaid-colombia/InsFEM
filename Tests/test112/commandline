@@ -1,0 +1,6 @@
+cd Damping.gid
+../../../Executables/Unix/InspiraFEM.sh Damping
+cd ../Backflow.gid
+../../../Executables/Unix/InspiraFEM.sh Backflow  
+cd ../NSCNBC.gid
+../../../Executables/Unix/InspiraFEM.sh NSCNBC 

@@ -1,0 +1,24 @@
+$-------------------------------------------------------------------
+RUN_DATA
+  Femuss:                 cylinder
+  RUN_TYPE:               Preliminary, Frequency=1e6 \
+                          No_restart \
+                          NoMemcheck 
+  OUTPUT_FORMAT:              VTK
+  OUTPUT_COMPRESSION:         ASCII
+  CUSTOMER:               Universal
+  PARALLEL_LIBRARY:       PETSc
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+  TIME_COUPLING:          Global, Prescribed
+  TIME_INTERVAL=          0.0, 0.5  
+  TIME_STEP_SIZE=         1.0  
+  NUMBER_OF_STEPS=        2   
+  MAXIMUM_NUMBER_GLOBAL=  1
+  NSCOMP_PROBLEM:         On
+    DELAY STEPS:          0
+    CONVERGENCE_REQUIRED: Yes
+  END_NSCOMP_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------

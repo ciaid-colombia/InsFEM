@@ -1,0 +1,36 @@
+Mescape Postprocess
+      Mescape files add 
+      { post/Plate_J2_PlaneStress0.post.res }
+      Mescape files saveall binMeshesSets
+      m0.bin
+            Mescape files new
+            Yes
+            Mescape files add { post/Plate_J2_PlaneStress_mesh1_0.post.res}
+            Mescape files saveall binMeshesSets
+            m1.bin
+            Mescape files new
+            Yes
+            Mescape files add { post/Plate_J2_PlaneStress_mesh2_0.post.res}
+            Mescape files saveall binMeshesSets
+            m2.bin
+            Mescape files new
+            Yes
+            Mescape files add { post/Plate_J2_PlaneStress_mesh3_0.post.res}
+            Mescape files saveall binMeshesSets
+            m3.bin
+            Mescape files new
+            Yes
+            Mescape files add { post/Plate_J2_PlaneStress_mesh4_0.post.res}
+            Mescape files saveall binMeshesSets
+            m4.bin
+            Mescape files new
+            Yes
+            Mescape files add { post/Plate_J2_PlaneStress_mesh5_0.post.res}
+            Mescape files saveall binMeshesSets
+            m5.bin
+         Mescape files new
+         Yes
+         Mescape files ReadMultiple { m0.bin m1.bin m2.bin m3.bin m4.bin m5.bin}
+          Mescape files saveall binMeshesSets
+          Plate_J2_PlaneStress.post.res
+      Quit

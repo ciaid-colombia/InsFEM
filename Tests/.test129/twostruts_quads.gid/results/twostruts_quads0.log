@@ -1,0 +1,101 @@
+
+
+
+     *******
+     Yet another finite element software: 
+     *******
+
+
+ NstincProblem: If tracking of subgrid scales is used, quadratures at the end of step and end of iteration must be default
+ Setting EndLoopQuadrature to Default
+
+          CURRENT TIME STEP dt = 0.100000E-02
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.100000E-02
+          NSTINC:
+          - Critical Time step dtc: 0.285430E-02
+          - Ratio dt/dtc:           0.350348E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.204118E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSTINC:  0.743E+00  0.401E+00  0.112E-03  0.498E-01  0.282E+00  0.269E+00  0.635E-02  0.202E-02  0.106E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E-02
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.200000E-02
+          NSTINC:
+          - Critical Time step dtc: 0.114690E-02
+          - Ratio dt/dtc:           0.871919E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.232996E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSTINC:  0.102E+01  0.401E+00  0.221E-03  0.499E-01  0.557E+00  0.483E+00  0.399E-01  0.512E-02  0.127E-01  0.321E-02  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E-02
+
+     >>>  TIME STEP NUMBER:     3     STARTED AT t = 0.300000E-02
+          NSTINC:
+          - Critical Time step dtc: 0.651686E-03
+          - Ratio dt/dtc:           0.153448E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.255734E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSTINC:  0.122E+01  0.401E+00  0.357E-03  0.499E-01  0.754E+00  0.640E+00  0.496E-01  0.304E-01  0.155E-01  0.314E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 47.88 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   47.88 Mbytes (100.00 %)
+          NSTIN  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      48.07 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:    110.07 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        2.63
+          STARTING OPERATIONS         :        1.31 ( 49.79 % )
+               Initialize MPI         :           0.00 ( 49.71 % )
+               Reapro                 :           0.00 ( 49.71 % )
+               Initialize Par. Lib.   :           0.00 ( 49.71 % )
+               Domain Operations      :           1.31 ( 49.71 % )
+               Output Domain          :           0.00 (  0.02 % )
+          NSTIN  MODULE               :        1.22 ( 46.46 % )
+               Turnon                 :           0.40 ( 32.79 % )
+               Getste                 :           0.00 (  0.03 % )
+               Begste                 :           0.05 (  4.09 % )
+               Doiter                 :           0.75 ( 61.70 % )
+                 Build Linear System  :               0.64 ( 52.40 % )
+                 Solve Linear System  :               0.05 (  4.06 % )
+                 Endite               :               0.03 (  2.49 % )
+               Endste                 :           0.02 (  1.27 % )
+               Output                 :           0.06 (  4.82 % )
+               Turnof                 :           0.00 (  0.12 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.04 (  1.54 % )
+          OTHER OPERATIONS            :        0.06 (  2.23 % )
+
+
+     * * * END OF ANALYSIS * * *
+

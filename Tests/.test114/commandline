@@ -1,0 +1,2 @@
+cd Injection.gid
+../../../Executables/Unix/InspiraFEM.sh Injection -np 3 -nomerge

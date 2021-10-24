@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<VTKFile type="PUnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <PUnstructuredGrid GhostLevel="1">
+    <PCellData>
+      <PDataArray type="UInt8" Name="vtkGhostType"/>
+      <PDataArray type="Float64" Name="Error"/>
+    </PCellData>
+    <PPoints>
+      <PDataArray type="Float32" Name="Points" NumberOfComponents="3"/>
+    </PPoints>
+    <Piece Source="nscomp_adaptivity_0_0.vtu"/>
+    <Piece Source="nscomp_adaptivity_0_1.vtu"/>
+    <Piece Source="nscomp_adaptivity_0_2.vtu"/>
+  </PUnstructuredGrid>
+</VTKFile>

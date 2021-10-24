@@ -1,0 +1,1 @@
+ROM: Initial test. Runs case and takes snapshots. Runs again, builds system (FOM) and projects onto ROM basis and solves. No Petrov-Galerkin, no mean substraction, no hyper-reduction. Applied to Temperature problem.

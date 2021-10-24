@@ -1,0 +1,40 @@
+BeginZE /home/ecastillo/Escritorio/canal.gid/canal.vv
+   x -0.123266354203224182 5.35319328308105469
+   y 1.57593679428100586 -1.60619008541107178
+   z -8.29156208038330078 8.29156208038330078
+   e 2.76385402679443359
+   v 0 0 0
+   r 1
+   m 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1
+   c 2.5 0 0
+   pd 0
+   pno 0
+   pfo 0
+   pf 4
+   pv 0
+   NowUse 1
+   DrawingType 0
+   LightVector 90 90 150 0
+   OGLShadow(UseShadows) 0
+   OGLShadow(RenderMode) RenderNice
+   OGLShadow(ShadowBias) -0.002
+   OGLShadow(AmbientShadows) 1
+   OGLShadow(UseFBO) 0
+   OGLShadow(FBOSize) 0
+   OGLShadow(DimmedLightFactor) 0.02
+   OGLStereo(UseStereo) 0
+   OGLStereo(RelativeEyeDistance) 1
+   OGLStereo(FlipEyes) 0
+   OGLStereo(StereoMode) AnaglyphColors
+   OGLStereo(EyeDistance) 0.075
+   OGLStereo(LeftEyeDistance) 1 0 0 1
+   OGLStereo(RightEyeDistance) 0 1 1 1
+EndZE /home/ecastillo/Escritorio/canal.gid/canal.vv
+
+BeginMirror
+   Mirror 0 Angle 0.0 AngleFake -15.0 SizeFactor 2.0 HeightOffset 0.25 Color #d9e5f24d Backlight Off EdgeStyle No Type Scene DrawMode Mirror
+EndMirror
+
+BeginInfo
+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
+EndInfo

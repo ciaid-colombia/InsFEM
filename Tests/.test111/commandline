@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ "$COMPILER" == "MPIGNU" ]
+then
+   cp -r ../test111/nscomp_adaptivity_intel.gid .
+   cd nscomp_adaptivity.gid
+   ../../../Executables/Unix/InspiraFEM.sh nscomp_adaptivity -np 3 -nomerge
+elif [ "$COMPILER" == "MPINTEL" ]
+then
+   cp -r ../test111/nscomp_adaptivity.gid .
+   cd nscomp_adaptivity_intel.gid
+   ../../../Executables/Unix/InspiraFEM.sh nscomp_adaptivity -np 3 -nomerge
+fi

@@ -1,0 +1,40 @@
+BeginZE reflected_residual.gid/reflected_residual.vv
+   x -2.50573515892028809 6.60573577880859375
+   y 2.85282254219055176 -1.85282254219055176
+   z -6.79908084869384766 6.79908084869384766
+   e 2.26636028289794922
+   v 0 0 0
+   r 1
+   m 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1
+   c 2.04999995231628418 0.5 0
+   pd 0
+   pno 0
+   pfo 0
+   pf 4
+   pv 0
+   NowUse 1
+   DrawingType 0
+   LightVector 90 90 150 0
+   OGLShadow(UseShadows) 0
+   OGLShadow(RenderMode) RenderNice
+   OGLShadow(ShadowBias) -0.002
+   OGLShadow(AmbientShadows) 1
+   OGLShadow(UseFBO) 0
+   OGLShadow(FBOSize) 2048
+   OGLShadow(DimmedLightFactor) 0.02
+   OGLStereo(UseStereo) 0
+   OGLStereo(RelativeEyeDistance) 1
+   OGLStereo(FlipEyes) 0
+   OGLStereo(StereoMode) AnaglyphColors
+   OGLStereo(EyeDistance) 0.075
+   OGLStereo(LeftEyeDistance) 1 0 0 1
+   OGLStereo(RightEyeDistance) 0 1 1 1
+EndZE reflected_residual.gid/reflected_residual.vv
+
+BeginMirror
+   Mirror 0 Angle 0.0 AngleFake -15.0 SizeFactor 2.0 HeightOffset 0.25 Color #d9e5f24d Backlight Off EdgeStyle No Type Scene DrawMode Mirror
+EndMirror
+
+BeginInfo
+eJzdV9ty6jYUfecrNNOXdiaHMSHJyeEtF5phCiQDJKVPGtneNuqRJR/JDtAz+fduyXdD+gF9wl7LyPuy9pK8CcTt8Ho4GpHNd7z4tbj5bTDnMj+Ql4eHe8+7JOPh5dD78tX7EoMEzQPy85eRd/3l1c9llpP14oX8CSFZQ0our8jo2+Tq22R0Q143D+TSG119kMPtDb25GmxULMho+HVCnuZb8s5NzgThIfEOl+MLwrIMkjTDBwabHWgg3BCpiHoHLdjR/SVQMoNDNhwMnlOQT2IyIIS8TZePz6sJ+XmvOZPkheXiw+IrxKerqWUWYBjZjkYfxfOr9ex5ifBoeE0cdYNZXzrycbZ+md/9RWbL359Xi7tN8aDPM0M0pnh7QWINIO2FL3Kwv0ykO0a8CxJCmu2wAhfEZCADLiyLlxoUJjJ0689ni9lmjUvamwU7kA3mk2Oya/4PTLBcV7cVMxWQgMQXz2TIAzATMvY874R9A52d0uPH/srXNxX3kPuAF+kn7757Z1wwXwB2KMTQE0iUPhLjHvLI4v6YgSnX4kmekL3S37mMicwTHzRREYEyuAm59jzyx8ClPt1upktbeZf+05zevbzMpzRlwXcIacoPIEwDY9ex1ZRpzY5U+X9DkDlydU9dnWlWBF+Dmu2pn0cRaFNhkWaxjYOmWsWaJSe42bEQdAXvmIhoJBTLimgqnCcsxvyq2yQXGTcsSQV0oF5AKghEbriS9EcO+ljBbuUy0F5eqeI2VoaRQtZKo8BNqvEVFVZEXi5g2ihGSgWTcc5ioCNURItT++4dZYnPsRAVWqZAfaXt6oHALPtcoJJUg7GZnVAoLJqwk7+AfKcsDM/BuJrPJZyltDLGZ/ocF6ps3McTrrXCIaUaUmAnOUnsRKr2tmgRzfaqz2ssJJataWqmmTSpMjalTPNDhZfKPNvCkuvprUS7attzaTuAL3DIZkZx5GRI4UfOMisbA1YKZcuRPqdahM9Uc9znitJQJQO3Gk4iZX6sq2u8ZPW1CyJQQukudDauho5yGXxCCRXzgKq0iyZcJuzQxUzuY9WLclo0EDyl70rkCdAdlw2OGuQCW912iYaU9i9ZKdACSo9tw7BY4SK+ymVokDP14s5JsPc4PpWPVVSkYlwLh6MG7KyWSvAFz87hjUIsE6d5JY/eqFt2x01WS8cCzlmKkFyS9ZOlbRZZlPtNj2sstQAF4A4b9uvwiSE56owhFbg4xqgEFUUG6qfRFAJ8Bw6aTlgdiwHsR8j0saupSiloaxDkgukeXdiTFZVpYboJv8qnZosS0L1mtdCsnLrJnr8dP/YACiF2v7a/DtN4WR9ueVmfqvyqjQsVUp8z08fLYT379m5/zlpXmzCrp/sa4wk2uN6LLNSfntn9ohBcokLoi86SmtnjDFqWm8wK/Q8Dni2fVp8ZxGK6vnNSpVzaSBqsHI8QJyiuUZQXnkDaW7yDuzbqoGPgB7rd6uVb5S/oYTV07nSAsODxLkPLP1A4pEqWuyMS/W0YIXwHnogxtEhgC0rDKfDTxiB+uj2cgCM6svjzdI3/Zlg2O00uhPXTrBiS1n7UYJk9sVVQs1f3qTV1R3g7eQlPy73a4Z/t/R2yOxcdCuVcYtvTE5pDmxNI67Z9BFm/Ls8Y3gdS24k76q+nqzd3oLeQ20VjcP0L7EzaU4kjnLbd1wVKK1J9DLMvjnPbQi9ud0CvKLXVEGiNWKGiikWptpUWBTDTFuO2yCny0e0iHjdIWi760fk+sd8eV71vj4f5bLrc/C+Te8au4VcVfj5Ul/iBRRbT5auF/gVJsB1v
+EndInfo

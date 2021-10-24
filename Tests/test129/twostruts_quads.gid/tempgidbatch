@@ -1,0 +1,11 @@
+Mescape Postprocess
+      Mescape files add 
+      { post/twostruts_quads0.post.res  post/twostruts_quads1.post.res  post/twostruts_quads2.post.res  post/twostruts_quads3.post.res }
+      Mescape files saveall binMeshesSets
+      m0.bin
+         Mescape files new
+         Yes
+         Mescape files ReadMultiple { m0.bin}
+          Mescape files saveall binMeshesSets
+          twostruts_quads.post.res
+      Quit

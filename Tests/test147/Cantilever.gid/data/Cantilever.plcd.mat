@@ -1,0 +1,16 @@
+#####################################################
+#####################################################
+NUMBER OF MATERIALS: 1
+MATERIALS_PROPERTIES
+   
+  BEGIN_MATERIAL
+    IDNUMBER:   1
+    MAT_NAME:   Mat01
+      TYPELAW:    Lin_Elastic
+    DENSITY:    1.0
+    CONST_TEN:  Isotropic Stress
+      YOUNG:   200e9
+      POISSON: 0
+    TANG_TYPE:  Tangent
+  END_MATERIAL
+END_MATERIALS_PROPERTIES

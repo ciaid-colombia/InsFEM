@@ -1,0 +1,31 @@
+#!/bin/bash
+if [ -z ${SLEPC_DIR+x} ]
+then
+	cp -rf ../test125/lowMach.gid .
+	cp -rf ../test125/bouss.gid .
+	echo "Test not run"
+	touch testnotrun
+else
+	if [ -z ${HDF5+x} ]
+	then
+		cp -rf ../test125/lowMach.gid .
+		cp -rf ../test125/bouss.gid .
+		echo "Test not run"
+		touch testnotrun
+	else
+		cd lowMach.gid
+		cp data/lowMachFOM.rom.dat data/lowMach.lmn.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh lowMach -np 3 -nomerge
+		cp data/lowMachROM.rom.dat data/lowMach.lmn.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh lowMach -nomerge
+		cd ..
+		#cp -rf ../test125/bouss.gid .
+		cd bouss.gid
+		cp data/Fluid/boussFOM.rom.dat data/Fluid/bouss.nsi.rom.dat
+		cp data/Tempe/boussFOM.rom.dat data/Tempe/bouss.tem.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh bouss -cases 2 data/Fluid data/Tempe -np 3 -nomerge
+		cp data/Fluid/boussROM.rom.dat data/Fluid/bouss.nsi.rom.dat
+		cp data/Tempe/boussROM.rom.dat data/Tempe/bouss.tem.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh bouss -cases 2 data/Fluid data/Tempe -nomerge
+	fi
+fi

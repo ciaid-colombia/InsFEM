@@ -1,0 +1,2 @@
+cd testShockCapturing_withShockCapturing2.gid
+../../../Executables/Unix/InspiraFEM.sh testShockCapturing_withShockCapturing2

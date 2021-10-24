@@ -1,0 +1,9 @@
+cd reflected_residual.gid
+../../../Executables/Unix/InspiraFEM.sh reflected_residual -postprocessfolder . -restartfolder data
+cd ../reflected_scdiff_output.gid
+../../../Executables/Unix/InspiraFEM.sh reflected_scdiff_output -postprocessfolder . -restartfolder data
+cd ../reflected_sgdiff_output.gid
+../../../Executables/Unix/InspiraFEM.sh reflected_sgdiff_output -postprocessfolder . -restartfolder data
+cd ../reflected_sgs_output.gid
+../../../Executables/Unix/InspiraFEM.sh reflected_sgs_output -postprocessfolder . -restartfolder data
+

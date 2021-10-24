@@ -1,0 +1,4 @@
+cd gravitytest.gid
+../../../Executables/Unix/InspiraFEM.sh gravitytest -np 3 -nomerge 
+cd ../gravitytest_fmale.gid
+../../../Executables/Unix/InspiraFEM.sh gravitytest -nomerge 

@@ -1,0 +1,22 @@
+#!/bin/bash
+if [ -z ${HDF5+x} ]
+then
+	cp -rf ../test121/reflected.gid .
+	cp -rf ../test121/reflected_primitive.gid .
+	cp -rf ../test121/reflected_old.gid .
+	cp -rf ../test121/reflected_primitive_old.gid .
+	echo "Test not run"
+	touch testnotrun
+else
+	cd reflected.gid
+	../../../Executables/Unix/InspiraFEM.sh reflected
+	cp data/reflected.dat_imp_rst data/reflected.dat
+	../../../Executables/Unix/InspiraFEM.sh reflected -np 2 -nomerge
+	cp data/reflected.dat_exp_rst data/reflected.dat
+	../../../Executables/Unix/InspiraFEM.sh reflected
+	cp data/reflected.dat_exp_ini data/reflected.dat
+	cp rst/reflected.nsc.rst ../reflected_primitive.gid/rst/reflected_primitive.nsc.rst
+	cd ../reflected_primitive.gid
+	../../../Executables/Unix/InspiraFEM.sh reflected_primitive -np 2 -nomerge
+	rm rst/reflected_primitive.nsc.rst
+fi

@@ -1,0 +1,30 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------ 
+PROBLEM_DEFINTION
+END_PROBLEM_DEFINITION  
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM  
+$------------------------------------------------------------
+NUMERICAL_TREATMENT    
+  FIXED_MESH_FROM:       Off
+  T1_SCHEME              BDF1 $ {BDF,BDF2,BDF3,CNOBS,CN}
+  N_EULER_STEPS          0 $ number of backward euler steps   
+  SAFETY_FACTOR:         1e24  
+  STEADY_STATE_TOLER:    1e-8   
+  ALGEBRAIC_SOLVER:       Direct
+  REMESHING_CRITERIA:    Folded
+$------------------------------------------------------------
+END_NUMERICAL_TREATMENT  
+$------------------------------------------------------------
+OUTPUT_&_POST-PROCESS  
+ START_POSTPROCES_AT           STEP =1
+ POSTPROCESS ALEDISPL,         STEPS=1
+ POSTPROCESS ALEVELOC,         STEPS=1
+END_OUTPUT_&_POST_PROCESS  
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS, \
+   CONTINUE
+ INCLUDE oscillatornew.ale.fix
+END_BOUNDARY_CONDITIONS  
+$------------------------------------------------------------

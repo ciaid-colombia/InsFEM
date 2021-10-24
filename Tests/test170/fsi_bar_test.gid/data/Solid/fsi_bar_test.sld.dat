@@ -1,0 +1,54 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------ 
+PROBLEM_DEFINTION  
+TEMPORAL_DERIVATIVES: On  
+GRAVITY:              NORM: 0.0, GX: 0.0, GY: 0.0,  GZ: 0.0  
+END_PROBLEM_DEFINITION
+$------------------------------------------------------------
+PROPERTIES
+SLD_MODEL=         NeoHookean  
+DENSITY=          10  
+YOUNG=            11428  
+POISSON=          0.5
+DAMPING(%)        0.0
+END_PROPERTIES  
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM  
+$------------------------------------------------------------
+NUMERICAL_TREATMENT
+T1_SCHEME                 BDF2 $ {NEWMA}
+T2_SCHEME                 BDF2 $ {NEWMA}
+SAFETY_FACTOR:            1e24  
+STEADY_STATE_TOLER:       1e-8   
+NORM_OF_CONVERGENCE:      L2   
+CONVERGENCE_TOLERANCE:    1e-3
+CP_CONVERGENCE_TOLERANCE: 1e-5
+MAXIMUM_NUMBER_OF_IT:     100
+ACCURACY_IN_TIME_SGS:     dynamic
+STABILITY_CONSTANTS:      24.0 0.2 0.2 
+RELDI:                    1.0 $Relaxation factor for tractions (FSI)
+END_NUMERICAL_TREATMENT  
+$------------------------------------------------------------
+OUTPUT_&_POST-PROCESS  
+PNTBC = No
+START_POSTPROCES_AT        STEP =1
+POSTPROCESS DISPLACEMENT,  STEPS=1
+POSTPROCESS SIGMA ,        STEPS=1
+POSTPROCESS STRESS,        STEPS=1
+POSTPROCESS NSTRESS,       STEPS=1
+POSTPROCESS PRESSURE,      STEPS=1
+POSTPROCESS STRAIN,        STEPS=1
+POSTPROCESS NSTRAIN,       STEPS=1
+POSTPROCESS VELOCITY,      STEPS=1
+POSTPROCESS INTTRACTION,   STEPS=1
+POSTPROCESS EXTTRACTION,   STEPS=1
+POSTPROCESS FLDTRACTION,   STEPS=1
+POSTPROCESS PSTRAINS,   STEPS=0
+END_OUTPUT_&_POST_PROCESS  
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS, \
+CONSTANT_BOUNDARY_CONDITIONS
+INCLUDE  fsi_bar_test.sld.fix
+END_BOUNDARY_CONDITIONS  
+$------------------------------------------------------------

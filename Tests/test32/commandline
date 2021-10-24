@@ -1,0 +1,5 @@
+cd cylinder_tempe2_asgs.gid
+../../../Executables/Unix/InspiraFEM.sh cylinder_tempe2_asgs -postprocessfolder . -restartfolder data
+cd ..
+cd cylinder_tempe2_oss.gid
+../../../Executables/Unix/InspiraFEM.sh cylinder_tempe2_oss -postprocessfolder . -restartfolder data

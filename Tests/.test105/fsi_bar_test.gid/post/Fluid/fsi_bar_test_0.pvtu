@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<VTKFile type="PUnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <PUnstructuredGrid GhostLevel="1">
+    <PPointData>
+      <PDataArray type="Float64" Name="Velocity" NumberOfComponents="3"/>
+      <PDataArray type="Float64" Name="Pressure"/>
+      <PDataArray type="Float64" Name="BTraction" NumberOfComponents="3"/>
+      <PDataArray type="Float64" Name="ALEdispl" NumberOfComponents="3"/>
+      <PDataArray type="Float64" Name="ALEveloc" NumberOfComponents="3"/>
+    </PPointData>
+    <PCellData>
+      <PDataArray type="UInt8" Name="vtkGhostType"/>
+      <PDataArray type="Float64" Name="PStrain" NumberOfComponents="6"/>
+      <PDataArray type="Float64" Name="Stress" NumberOfComponents="6"/>
+      <PDataArray type="Float64" Name="Strain" NumberOfComponents="6"/>
+    </PCellData>
+    <PPoints>
+      <PDataArray type="Float32" Name="Points" NumberOfComponents="3"/>
+    </PPoints>
+    <Piece Source="fsi_bar_test_0_0.vtu"/>
+    <Piece Source="fsi_bar_test_0_1.vtu"/>
+    <Piece Source="fsi_bar_test_0_2.vtu"/>
+    <Piece Source="fsi_bar_test_0_3.vtu"/>
+  </PUnstructuredGrid>
+</VTKFile>

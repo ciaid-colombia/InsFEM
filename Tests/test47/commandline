@@ -1,0 +1,3 @@
+cd fractional.gid
+../../../Executables/Unix/InspiraFEM.sh fractional -postprocessfolder . -restartfolder data
+

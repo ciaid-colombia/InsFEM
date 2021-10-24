@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="12" NumberOfCells="14">
+      <PointData>
+        <DataArray type="Float64" Name="Temperature" format="ascii" RangeMin="0" RangeMax="7.416625149764744">
+          2.5617528900740347 0 2.2284820680728443 4.906208482495855 2.158262751726047 6.040048117197834
+          1.6058707984463365 7.416625149764744 0.9332249255622589 0 3.575157775499972 1.1398968129301434
+        </DataArray>
+      </PointData>
+      <CellData>
+        <DataArray type="UInt8" Name="vtkGhostType" format="ascii" RangeMin="0" RangeMax="1">
+          0 0 0 0 1 1
+          1 1 1 1 0 0
+          0 0
+        </DataArray>
+      </CellData>
+      <Points>
+        <DataArray type="Float32" Name="Points" NumberOfComponents="3" format="ascii" RangeMin="0.5590169943749475" RangeMax="1.118033988749895">
+          0.75 0.25 0 1 0 0
+          0.625 0.375 0 0.875 0.375 0
+          0.875 0.125 0 1 0.25 0
+          0.5 0.5 0 1 0.5 0
+          0.625 0.125 0 0.75 0 0
+          0.75 0.5 0 0.5 0.25 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0.55901699437
+            </Value>
+            <Value index="1">
+              1.1180339887
+            </Value>
+          </InformationKey>
+        </DataArray>
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="ascii" RangeMin="0" RangeMax="11">
+          6 2 10 0 3 2
+          7 10 3 2 3 10
+          0 2 8 6 11 2
+          8 2 11 1 4 9
+          0 8 4 4 8 9
+          7 3 5 0 4 3
+          1 5 4 3 4 5
+        </DataArray>
+        <DataArray type="Int64" Name="offsets" format="ascii" RangeMin="3" RangeMax="42">
+          3 6 9 12 15 18
+          21 24 27 30 33 36
+          39 42
+        </DataArray>
+        <DataArray type="UInt8" Name="types" format="ascii" RangeMin="5" RangeMax="5">
+          5 5 5 5 5 5
+          5 5 5 5 5 5
+          5 5
+        </DataArray>
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+</VTKFile>

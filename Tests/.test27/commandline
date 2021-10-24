@@ -1,0 +1,3 @@
+cd cavity.gid
+../../../Executables/Unix/InspiraFEM.sh cavity -postprocessfolder . -restartfolder data
+

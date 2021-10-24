@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="8" NumberOfCells="6">
+      <PointData>
+        <DataArray type="Float64" Name="Disp" NumberOfComponents="3" format="ascii" RangeMin="0.00015531329868742502" RangeMax="0.0006912803176696717">
+          -0.00020248181768447334 0.000612979185442214 0 0.000011224657926963086 0.0006189670664244223 0
+          -0.00019619040738139368 -0.0001596280379140702 0 -0.00001730861900129228 -0.0001543458209911671 0
+          -0.00013960128491143927 -0.0006770376347357341 0 -0.00006760064081802416 -0.000679179353336766 0
+          -0.0000998691106147722 -0.0006721928112666644 0 -0.000052159335200027315 -0.0006603971566197731 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0.00015531329869
+            </Value>
+            <Value index="1">
+              0.00069128031767
+            </Value>
+          </InformationKey>
+        </DataArray>
+        <DataArray type="Float64" Name="Sld_traction" NumberOfComponents="3" format="ascii" RangeMin="104.75687140965377" RangeMax="2012.9484400714712">
+          952.6868284275748 -715.8451830173512 0 -2.097542691827493 104.7358697972891 0
+          1471.172523288003 -1133.8306994694046 0 271.1160864614072 -280.8183534736119 0
+          1484.8252797512748 -1012.2837518538594 0 1286.5768692207532 -943.89822033794 0
+          1655.8523295608097 -1144.6023261701896 0 277.95042444281114 -177.54138927709494 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              104.75687141
+            </Value>
+            <Value index="1">
+              2012.9484401
+            </Value>
+          </InformationKey>
+        </DataArray>
+        <DataArray type="Float64" Name="Velocity" NumberOfComponents="3" format="ascii" RangeMin="0.007371136531046109" RangeMax="0.0476045128700334">
+          -0.001999803372943216 0.040488983481183204 0 -0.003554364873826406 0.03994269523446948 0
+          -0.0024052618488289955 0.047543710004918034 0 -0.0009724780867297984 0.04724640175731437 0
+          -0.005473504808329794 0.030787017108586945 0 0.0019153067157590595 0.03128004153161097 0
+          0.0007688703571632808 -0.007330927099159975 0 -0.006112758556058498 -0.007776139078450293 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0.007371136531
+            </Value>
+            <Value index="1">
+              0.04760451287
+            </Value>
+          </InformationKey>
+        </DataArray>
+        <DataArray type="Float64" Name="Acceleration" NumberOfComponents="3" format="ascii" RangeMin="0.14641718970420065" RangeMax="3.4723243372355297">
+          0.6633280676247288 -3.408376765802074 0 -0.23718928748862933 -3.450067901535337 0
+          0.6168968422615834 -0.1142457232683678 0 -0.04044447635976672 -0.1407204241496598 0
+          0.292975354674872 1.3133783131012864 0 0.22145847038389416 1.346580407150979 0
+          0.23787667921673772 0.2746349278488929 0 -0.0059232002398923456 0.21953843385739902 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0.1464171897
+            </Value>
+            <Value index="1">
+              3.4723243372
+            </Value>
+          </InformationKey>
+        </DataArray>
+      </PointData>
+      <CellData>
+        <DataArray type="UInt8" Name="vtkGhostType" format="ascii" RangeMin="0" RangeMax="0">
+          0 0 0 0 0 0
+        </DataArray>
+        <DataArray type="Float64" Name="Gauss Stress" NumberOfComponents="6" format="ascii" RangeMin="655.0577947303954" RangeMax="3187.6797805235874">
+          1597.1062799638132 1243.214070061861 0 -1849.9199742646756 0 0
+          -2567.9466657999587 -728.9932232923661 0 1073.8838273974716 0 0
+          1627.1506712839139 644.5823706140188 0 -723.2337641768311 0 0
+          -2211.076245752006 -1295.5742804153522 0 1895.7667321050772 0 0
+          624.066627275836 -82.94566366679533 0 181.00159125401723 0 0
+          -797.8535624222966 -972.0871185234571 0 1046.578314470929 0 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              655.05779473
+            </Value>
+            <Value index="1">
+              3187.6797805
+            </Value>
+          </InformationKey>
+        </DataArray>
+        <DataArray type="Float64" Name="Gauss Strain" NumberOfComponents="6" format="ascii" RangeMin="0.0006219611980365518" RangeMax="0.0038782379881521557">
+          0.00046097813995354356 0.00010708593005159112 0 -0.0036998399485293513 0 0
+          -0.0012491707101630286 0.000589782732344564 0 0.002147767654794944 0 0
+          0.0007184574545247409 -0.0002641108461451545 0 -0.001446467528353662 0 0
+          -0.0008084160352850622 0.00010708593005159112 0 0.0037915334642101535 0 0
+          0.0004076182418322197 -0.0002993940491104116 0 0.00036200318250803436 0 0
+          -0.00008987729004399526 -0.00026411084614515537 0 0.0020931566289418575 0 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0.00062196119804
+            </Value>
+            <Value index="1">
+              0.0038782379882
+            </Value>
+          </InformationKey>
+        </DataArray>
+        <DataArray type="Float64" Name="Btraction" NumberOfComponents="3" format="ascii" RangeMin="0" RangeMax="0">
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          0 0 0 0 0 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0
+            </Value>
+            <Value index="1">
+              0
+            </Value>
+          </InformationKey>
+        </DataArray>
+      </CellData>
+      <Points>
+        <DataArray type="Float32" Name="Points" NumberOfComponents="3" format="ascii" RangeMin="0.14000000059604645" RangeMax="0.35057095688290196">
+          0.3499999940395355 0.019999999552965164 0 0.3499999940395355 0 0
+          0.2800000011920929 0.019999999552965164 0 0.2800000011920929 0 0
+          0.20999999344348907 0.019999999552965164 0 0.20999999344348907 0 0
+          0.14000000059604645 0 0 0.14000000059604645 0.019999999552965164 0
+          <InformationKey name="L2_NORM_RANGE" location="vtkDataArray" length="2">
+            <Value index="0">
+              0.1400000006
+            </Value>
+            <Value index="1">
+              0.35057095688
+            </Value>
+          </InformationKey>
+        </DataArray>
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="ascii" RangeMin="0" RangeMax="7">
+          5 4 6 4 7 6
+          3 2 5 2 4 5
+          1 0 3 0 2 3
+        </DataArray>
+        <DataArray type="Int64" Name="offsets" format="ascii" RangeMin="3" RangeMax="18">
+          3 6 9 12 15 18
+        </DataArray>
+        <DataArray type="UInt8" Name="types" format="ascii" RangeMin="5" RangeMax="5">
+          5 5 5 5 5 5
+        </DataArray>
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+</VTKFile>

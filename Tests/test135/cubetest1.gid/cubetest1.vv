@@ -1,0 +1,37 @@
+BeginZE /home/fotero/Documents/TestFemuss/cubetest1.gid/cubetest1.vv
+   x -15.0073928833007812 25.7394561767578125
+   y 14.8190021514892578 -5.80454444885253906
+   z -13.6602544784545898 3.66025447845458984
+   e 8.66025447845458984
+   v 0.724372583871783604 0.593596659329730048 0.34476528961107844
+   r 0.0637515556428716879
+   m 0.0575598031282424927 0.816011667251586914 0.57516247034072876 0 0.903928935527801514 -0.28715747594833374 0.31694328784942627 0 0.423791617155075073 0.501662790775299072 -0.754145264625549316 0 0 0 0 1
+   c 5 5 5
+   pd 0
+   pno 0
+   pfo 0
+   pf 4
+   pv 0
+   NowUse 1
+   DrawingType 0
+   LightVector 90 90 150 0
+   OGLShadow(UseShadows) 0
+   OGLShadow(RenderMode) RenderNice
+   OGLShadow(ShadowBias) -0.002
+   OGLShadow(AmbientShadows) 1
+   OGLShadow(UseFBO) 0
+   OGLShadow(FBOSize) 2048
+   OGLShadow(DimmedLightFactor) 0.02
+   OGLStereo(UseStereo) 0
+   OGLStereo(RelativeEyeDistance) 1
+   OGLStereo(FlipEyes) 0
+   OGLStereo(StereoMode) AnaglyphColors
+   OGLStereo(EyeDistance) 0.075
+   OGLStereo(LeftEyeDistance) 1 0 0 1
+   OGLStereo(RightEyeDistance) 0 1 1 1
+EndZE /home/fotero/Documents/TestFemuss/cubetest1.gid/cubetest1.vv
+
+BeginMirror
+   Mirror 0 Angle 0.0 AngleFake -15.0 SizeFactor 2.0 HeightOffset 0.25 Color #d9e5f24d Backlight Off EdgeStyle No Type Scene DrawMode Mirror
+EndMirror
+

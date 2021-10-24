@@ -1,0 +1,7 @@
+cd reflected_euler.gid
+../../../Executables/Unix/InspiraFEM.sh reflected_euler -postprocessfolder . -restartfolder data
+cd ../reflected_heun.gid
+../../../Executables/Unix/InspiraFEM.sh reflected_heun -postprocessfolder . -restartfolder data
+cd ../reflected_rk2a23.gid
+../../../Executables/Unix/InspiraFEM.sh reflected_rk2a23 -postprocessfolder . -restartfolder data
+

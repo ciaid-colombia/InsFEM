@@ -1,0 +1,5 @@
+cd oscillatornew.gid
+../../../Executables/Unix/InspiraFEM.sh oscillatornew -postprocessfolder . -restartfolder data
+cd ..
+cd FractionalStepALE.gid
+../../../Executables/Unix/InspiraFEM.sh FractionalStepALE -postprocessfolder . -restartfolder data

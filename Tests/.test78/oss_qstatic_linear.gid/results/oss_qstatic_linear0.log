@@ -1,0 +1,97 @@
+
+
+
+     *******
+     Yet another finite element software: 
+     *******
+
+          CURRENT TIME STEP dt = 0.100000E+01
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.738249E-01
+          NSCOMP:
+          - Critical Time step dtc: 0.738249E-01
+          - Ratio dt/dtc:           0.100000E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.147599E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSCOMP:  0.565E-01  0.517E-01  0.336E-04  0.882E-05  0.432E-02  0.425E-02  0.238E-06  0.551E-04  0.455E-03  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E+01
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.147491E+00
+          NSCOMP:
+          - Critical Time step dtc: 0.736657E-01
+          - Ratio dt/dtc:           0.100000E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.153421E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSCOMP:  0.618E-01  0.517E-01  0.901E-04  0.153E-04  0.913E-02  0.903E-02  0.238E-06  0.751E-04  0.917E-03  0.381E-03  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.100000E+01
+
+     >>>  TIME STEP NUMBER:     3     STARTED AT t = 0.221041E+00
+          NSCOMP:
+          - Critical Time step dtc: 0.735507E-01
+          - Ratio dt/dtc:           0.100000E+01
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.160635E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          NSCOMP:  0.665E-01  0.517E-01  0.122E-03  0.219E-04  0.134E-01  0.132E-01  0.238E-06  0.899E-04  0.136E-02  0.278E-02  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 47.70 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   47.70 Mbytes (100.00 %)
+          NSCOM  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      47.74 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:    106.19 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        0.17
+          STARTING OPERATIONS         :        0.09 ( 55.79 % )
+               Initialize MPI         :           0.00 ( 54.53 % )
+               Reapro                 :           0.00 ( 54.53 % )
+               Initialize Par. Lib.   :           0.00 ( 54.53 % )
+               Domain Operations      :           0.09 ( 54.53 % )
+               Output Domain          :           0.00 (  0.22 % )
+          NSCOM  MODULE               :        0.07 ( 40.35 % )
+               Turnon                 :           0.05 ( 77.43 % )
+               Getste                 :           0.00 (  0.18 % )
+               Begste                 :           0.00 (  0.03 % )
+               Doiter                 :           0.01 ( 20.01 % )
+                 Build Linear System  :               0.01 ( 19.81 % )
+                 Solve Linear System  :               0.00 (  0.00 % )
+                 Endite               :               0.00 (  0.13 % )
+               Endste                 :           0.00 (  2.04 % )
+               Output                 :           0.00 (  6.56 % )
+               Turnof                 :           0.00 (  0.30 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.00 (  1.10 % )
+          OTHER OPERATIONS            :        0.00 (  2.98 % )
+
+
+     * * * END OF ANALYSIS * * *
+

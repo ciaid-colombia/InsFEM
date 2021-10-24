@@ -1,0 +1,3 @@
+cd cavityTF.gid
+../../../Executables/Unix/InspiraFEM.sh cavityTF -nomerge
+

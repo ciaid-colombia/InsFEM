@@ -1,0 +1,18 @@
+#####################################################
+#####################################################
+NUMBER OF MATERIALS: 1
+MATERIALS_PROPERTIES
+   
+   BEGIN_MATERIAL
+      IDNUMBER:   1
+      TYPELAW:    Lin_Elastic
+      DENSITY:    1.0
+      CONST_TEN:  Transversely_Isotropic Does_Not_Apply
+         YOUNG TRANSVERSE:   153e9
+         YOUNG INPLANE:      7.85e9
+         SHEAR TRANSVERSE:   8.9e9
+         SHEAR INPLANE:      3.2e9        
+         POISSON TRANSINPLA: 0.22
+      TANG_TYPE:  Tangent
+   END_MATERIAL
+END_MATERIALS_PROPERTIES

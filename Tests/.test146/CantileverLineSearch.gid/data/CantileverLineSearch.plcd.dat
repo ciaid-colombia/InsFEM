@@ -1,0 +1,61 @@
+#####################################################
+#####################################################
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------ 
+PROBLEM_DEFINTION  
+NUMBER OF STAGES: 1
+BEGIN STAGE
+   NUMBER OF SUBSTAGES:        1
+   BEGIN SUBSTAGE
+      Initial_Load_Factor: 0
+      Final_Load_Factor:   1
+      Time_Step:           0.5
+      Time_Interval:       1
+      Maximum_NonLinear_Iterations: 2
+      Iterations_Tolerance:         1e-8
+   END_SUBSTAGE
+END_STAGE
+ FORMULATION: TOTAL  
+
+END_PROBLEM_DEFINITION
+$------------------------------------------------------------
+PROPERTIES
+INCLUDE CantileverLineSearch.plcd.mat
+END_PROPERTIES  
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM  
+$------------------------------------------------------------
+NUMERICAL_TREATMENT
+   SMOOTH_DISPLACEMENT_GRADIENTS:  OFF
+   UP_FORMULATION:                 OFF
+   STA_CONSTANTS:                  1
+   LINE_SEARCH:   0.5 2
+$  STEADY_STATE_TOLER:    1e-8   
+$  NORM_OF_CONVERGENCE:   L2   
+$  CONVERGENCE_TOLERANCE: 1e-6
+$  MAXIMUM_NUMBER_OF_IT:  100
+ ERROR_ESTIMATOR:         GRADIENT, MAX_ERROR: 1e-3, MIN_ERROR: 1e-4, CRITERIA: Tolerance
+ ERR_SUBSCALES_TYPE:      ORTHOGONAL
+END_NUMERICAL_TREATMENT  
+$------------------------------------------------------------
+OUTPUT_&_POST-PROCESS  
+ START_POSTPROCES_AT                STEP =1
+ POSTPROCESS DISPLACEMENT,          STEPS=1
+ POSTPROCESS VELOCITIY,             STEPS=1
+ POSTPROCESS ACCELERATION,          STEPS=1
+ POSTPROCESS STRESS,                STEPS=1
+ POSTPROCESS STRAIN,                STEPS=1
+ POSTPROCESS MAT_DATA,              STEPS=0
+ POSTPROCESS MAT_DATA, ITERATIONS: OFF
+ POSTPROCESS SUBSCALES,             STEPS=0 
+ POSTPROCESS TOPOL_DERIVATIVE:      STEPS=0
+ PNTBC:                               No
+ PNTBC: No
+ POSTPROCESS DISPLACEMENT, ITERATIONS: OFF
+END_OUTPUT_&_POST_PROCESS  
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS, \
+      DONT_FIX_PRESSURE
+  INCLUDE CantileverLineSearch.plcd.fix
+END_BOUNDARY_CONDITIONS  

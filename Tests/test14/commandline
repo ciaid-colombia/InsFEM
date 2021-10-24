@@ -1,0 +1,6 @@
+cd cylinder.gid
+cp data/cylinderPreliminary.dat data/cylinder.dat
+../../../Executables/Unix/InspiraFEM.sh cylinder -o -np 3 -nomerge -postprocessfolder . -restartfolder data
+cp data/cylinderInitial.dat data/cylinder.dat
+../../../Executables/Unix/InspiraFEM.sh cylinder -o -np 3 -nomerge -postprocessfolder . -restartfolder data
+

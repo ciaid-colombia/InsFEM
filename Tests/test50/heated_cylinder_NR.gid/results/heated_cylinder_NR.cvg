@@ -1,0 +1,7 @@
+$        Time     Global       Current  Module residuals -->
+$        step  iteration          time   LMACH   
+            1          1  0.500000E-01    0.100000E+01
+            2          1  0.100000E+00    0.370247E+01
+            3          1  0.150000E+00    0.553389E+01
+            4          1  0.200000E+00    0.392560E+00
+

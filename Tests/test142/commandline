@@ -1,0 +1,7 @@
+cd ExactQ1.gid
+../../../Executables/Unix/InspiraFEM.sh ExactQ1 -nomerge
+cd ..
+cd ExactQ2.gid
+../../../Executables/Unix/InspiraFEM.sh ExactQ2 -nomerge
+
+

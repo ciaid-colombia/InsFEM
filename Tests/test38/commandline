@@ -1,0 +1,4 @@
+cd reflected_shock.gid
+../../../Executables/Unix/InspiraFEM.sh reflected_shock -np 3 -nomerge -postprocessfolder . -restartfolder data
+
+

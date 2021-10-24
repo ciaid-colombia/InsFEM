@@ -1,0 +1,82 @@
+$------------------------------------------------------------
+PHYSICAL_PROBLEM
+$------------------------------------------------------------ 
+PROBLEM_DEFINTION  
+ TEMPORAL_DERIVATIVES: On  
+ CONVECTIVE_TERM:      On  
+ VISCOUS_TERM:         Laplacian_form  
+ GRAVITY:              NORM: 0.0, GX: 0.0, GY: 0.0,  GZ: 0.0  
+ AXES_ROTATION:        NORM: 0.0, OX: 0.0, OY: 0.0,  OZ: 0.0  
+ AXES_VELOCITY:        NORM: 0.0, VX: 0.0, VY: 0.0,  VZ: 0.0  
+ TURBULENCE_MODEL:     Off 
+ TEMPERATURE_COUPLING: Off
+ INTERFACE_MODEL:      Off 
+END_PROBLEM_DEFINITION  
+$------------------------------------------------------------
+PROPERTIES
+  DENSITY=                10.0
+  VISCOSITY=          0.1  
+  PERMEABILITY=       0.0
+  LAW_DENSITY:        Constant  
+  LAW_VISCOSITY:      Constant  
+  LAW_PERMEABILITY:   Constant  
+END_PROPERTIES  
+$------------------------------------------------------------
+END_PHYSICAL_PROBLEM  
+$------------------------------------------------------------
+NUMERICAL_TREATMENT    
+  STABILITY_CONSTANTS:           4.0 2.0 1.0 1.0 
+  TYPE_OF_STABILIZATION:         Residual_projection_OSS  
+  PROJECTION_TYPE=               Lumped
+  TEST_FUNCTION_STABILIZATION:   VMS
+  TAU_SMOOTHING:                 On 2
+  TRACKING_OF_SUSBSCALES=        On
+  RELAXATION_SGS:                1.0
+  ACCURACY_IN_TIME_SGS:          Dynamic 
+  NON_LINEARITY_SGS:             Nonlinear ITERATIONS: 12 TOLERANCE: 1e-15 Picard
+  SHOCK_CAPTURING:               Off, VALUE: 0.0 
+  PENALTY_STRATEGY:      Off  
+  TEMPORAL_TERM_WEIGHT:          All  
+  TIME_ACCURACY:         1   
+  TIME_INTEGRATION:      BDF   
+  SAFETY_FACTOR:         1000  
+  STEADY_STATE_TOLER:    1e-8   
+  NORM_OF_CONVERGENCE:   L2   
+  LINEARIZATION_METHOD:  Picard   
+  MAXIMUM_NUMBER_OF_IT:  3  
+  CONVERGENCE_TOLERANCE: 1e-8
+
+END_NUMERICAL_TREATMENT  
+$------------------------------------------------------------
+OUTPUT_&_POST-PROCESS  
+ START_POSTPROCES_AT           STEP =1
+ POSTPROCESS VELOCITY,         STEPS=1
+ POSTPROCESS PRESSURE,         STEPS=1
+ POSTPROCESS STREAMLINES,      STEPS=0
+ POSTPROCESS DENSITY,          STEPS=0
+ POSTPROCESS VISCOSITY,        STEPS=0
+ POSTPROCESS PERMEABILITY,     STEPS=0
+ POSTPROCESS TAUSMOOTHING,     STEPS=1
+ POSTPROCESS TURBULENT_VISCO,  STEPS=0
+ POSTPROCESS NUMERICAL_VISCO,  STEPS=0
+ POSTPROCESS STRESS,           STEPS=0
+ POSTPROCESS TANGENTIAL,       STEPS=0
+ POSTPROCESS VORTICITY,        STEPS=0
+ POSTPROCESS DIVERGENCE_VEL,   STEPS=0
+ POSTPROCESS VeSGS,            STEPS=1
+ POSTPROCESS DISSIPATION,      STEPS=1
+ POSTPROCESS RESIDUAL,         STEPS=1    
+ POSTPROCESS REPRO,            STEPS=1
+ POSTPROCESS AVG_VELOC_1D,     STEPS=1
+ POSTPROCESS AVG_DISSI_1D,     STEPS=1
+ 
+ AVG_1D_DIRECTION:             Y
+ DIS_COMPUTATION: On
+END_OUTPUT_&_POST_PROCESS  
+$------------------------------------------------------------
+BOUNDARY_CONDITIONS, \
+      WALL_DISTANCE=0.0, \
+      CONTINUE
+  INCLUDE cylinder_Fractio.nsi.fix
+END_BOUNDARY_CONDITIONS  
+$------------------------------------------------------------

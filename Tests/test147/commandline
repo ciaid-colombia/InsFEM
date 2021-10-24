@@ -1,0 +1,4 @@
+cd Rotating_disk.gid
+../../../Executables/Unix/InspiraFEM.sh Rotating_disk
+cd ../Cantilever.gid 
+../../../Executables/Unix/InspiraFEM.sh Cantilever

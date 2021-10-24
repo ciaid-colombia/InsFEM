@@ -1,0 +1,8 @@
+cd natural_SUPG.gid
+../../../Executables/Unix/InspiraFEM.sh natural_SUPG -postprocessfolder . -restartfolder data
+cd ..
+cd natural_ASGS.gid
+../../../Executables/Unix/InspiraFEM.sh natural_ASGS -postprocessfolder . -restartfolder data
+cd ..
+cd natural_Pic.gid
+../../../Executables/Unix/InspiraFEM.sh natural_Pic -postprocessfolder . -restartfolder data

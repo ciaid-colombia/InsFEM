@@ -1,0 +1,21 @@
+set output "Convergence.pdf"
+set terminal pdf enhanced color font 'Helvetica,10'
+set   autoscale                        # scale axes automatically
+unset log                              # remove any log-scaling
+unset label                            # remove any previous labels
+unset border
+set xtic auto                          # set xtics automatically
+set ytic auto                          # set ytics automatically
+set xlabel "Iter"
+set ylabel "Conv"
+set key bottom;
+set logscale x;
+set logscale y;
+set xrange [1:*] reverse
+
+
+plot    "natural0.lmn.cvg" using 2:($4) title 'V' with points ps 0.2, \
+	"natural0.lmn.cvg" using 2:($5) title 'T' with points ps 0.2, \
+	"natural0.lmn.cvg" using 2:($6) title 'P' with points ps 0.2, \
+
+

@@ -1,0 +1,4 @@
+cd nscomp_ALE.gid
+../../../Executables/Unix/InspiraFEM.sh nscomp_ALE -np 3 -nomerge 
+cd ../nscomp_sources.gid
+../../../Executables/Unix/InspiraFEM.sh nscomp_sources  

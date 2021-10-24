@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gid>
+  <pre>
+    <groups_open>
+      <group fullname='Fluid' open='1'/>
+      <group fullname='Solid' open='1'/>
+    </groups_open>
+    <layers_open>
+    </layers_open>
+  </pre>
+</gid>

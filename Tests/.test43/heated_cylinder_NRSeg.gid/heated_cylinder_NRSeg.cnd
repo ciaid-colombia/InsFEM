@@ -1,0 +1,1354 @@
+BOOK:NSTINC_BOUNDARY_CONDITIONS
+NUMBER: 1 CONDITION: VELOCITY_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Type_x:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_y:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_z:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Value_x:
+VALUE: 0.0
+QUESTION: Value_y:
+VALUE: 0.0
+QUESTION: Value_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 2 CONDITION: VELOCITY_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Type_x:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_y:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_z:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Value_x:
+VALUE: 0.0
+QUESTION: Value_y:
+VALUE: 0.0
+QUESTION: Value_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 3 CONDITION: VELOCITY_surface
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Type_x:#CB#(Free_or_initial,Fixed,Temporarily_free,Switch_off)
+VALUE: Fixed
+QUESTION: Type_y:#CB#(Free_or_initial,Fixed,Temporarily_free,Switch_off)
+VALUE: Fixed
+QUESTION: Type_z:#CB#(Free_or_initial,Fixed,Temporarily_free,Switch_off)
+VALUE: Fixed
+QUESTION: Value_x:
+VALUE: 0.0
+QUESTION: Value_y:
+VALUE: 0.0
+QUESTION: Value_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 4 CONDITION: VELOCITY_volume
+CONDTYPE: over volumes
+CONDMESHTYPE: over nodes
+QUESTION: Type_x:#CB#(Free_or_initial,Fixed,Temporarily_free,Switch_off)
+VALUE: Free_or_initial
+QUESTION: Type_y:#CB#(Free_or_initial,Fixed,Temporarily_free,Switch_off)
+VALUE: Free_or_initial
+QUESTION: Type_z:#CB#(Free_or_initial,Fixed,Temporarily_free,Switch_off)
+VALUE: Free_or_initial
+QUESTION: Value_x:
+VALUE: 0.0
+QUESTION: Value_y:
+VALUE: 0.0
+QUESTION: Value_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 5 CONDITION: NSTINC_Boundary_3D
+CONDTYPE: over surfaces
+CONDMESHTYPE: over face elements
+CANREPEAT: yes
+QUESTION: Type:#CB#(Fixed,Slip_wall,No_slip_wall,Wall_law,Symmetry,Pressure,Dynamic_pressure,Open_flow,Atmospheric_stress,Traction)
+VALUE: Pressure
+DEPENDENCIES: (#DEFAULT#,HIDE,Value_pressure,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Pressure,RESTORE,Value_pressure,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,RESTORE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Atmospheric_stress,RESTORE,Value_pressure,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Fixed,HIDE,Value_pressure,#CURRENT#,RESTORE,Value_velocity_x,#CURRENT#,RESTORE,Value_velocity_y,#CURRENT#,RESTORE,Value_velocity_z,#CURRENT#,RESTORE,Time_function,#CURRENT#,RESTORE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Traction,HIDE,Value_pressure,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,RESTORE,Value_Traction_x,#CURRENT#,RESTORE,Value_Traction_y,#CURRENT#,RESTORE,Value_Traction_z,#CURRENT#)
+QUESTION: Value_pressure:
+VALUE: 0.0
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss)
+VALUE: GLOBAL
+QUESTION: Value_Traction_x:
+VALUE: 0.0
+QUESTION: Value_Traction_y:
+VALUE: 0.0
+QUESTION: Value_Traction_z:
+VALUE: 0.0
+END CONDITION
+NUMBER: 6 CONDITION: NSTINC_Boundary_2D
+CONDTYPE: over lines
+CONDMESHTYPE: over face elements
+CANREPEAT: yes
+QUESTION: Type:#CB#(Fixed,Slip_wall,No_slip_wall,Wall_law,Symmetry,Pressure,Dynamic_pressure,Open_flow,Atmospheric_stress)
+VALUE: Pressure
+DEPENDENCIES: (#DEFAULT#,HIDE,Value_pressure,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Pressure,RESTORE,Value_pressure,#CURRENT#,RESTORE,Time_function,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Atmospheric_stress,RESTORE,Value_pressure,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Fixed,HIDE,Value_pressure,#CURRENT#,RESTORE,Time_function,#CURRENT#,RESTORE,Value_velocity_x,#CURRENT#,RESTORE,Value_velocity_y,#CURRENT#,RESTORE,Value_velocity_z,#CURRENT#,RESTORE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Traction,HIDE,Value_pressure,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,RESTORE,Value_Traction_x,#CURRENT#,RESTORE,Value_Traction_y,#CURRENT#,RESTORE,Value_Traction_z,#CURRENT#)
+QUESTION: Value_pressure:
+VALUE: 0.0
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss)
+VALUE: GLOBAL
+QUESTION: Value_Traction_x:
+VALUE: 0.0
+QUESTION: Value_Traction_y:
+VALUE: 0.0
+QUESTION: Value_Traction_z:
+VALUE: 0.0
+END CONDITION
+BOOK:TEMPER_BOUNDARY_CONDITIONS
+NUMBER: 7 CONDITION: TEMPERATURE_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Type:#CB#(Free_or_initial,Fixed,Adaptive)
+VALUE: Fixed
+QUESTION: Value:
+VALUE: 0.0
+QUESTION: Heat_power:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+END CONDITION
+NUMBER: 8 CONDITION: TEMPERATURE_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Type:#CB#(Free_or_initial,Fixed,Adaptive)
+VALUE: Fixed
+QUESTION: Value:
+VALUE: 0.0
+QUESTION: Heat_power:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+END CONDITION
+NUMBER: 9 CONDITION: TEMPERATURE_surface
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Type:#CB#(Free_or_initial,Fixed,Adaptive)
+VALUE: Fixed
+QUESTION: Value:
+VALUE: 0.0
+QUESTION: Heat_power:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+END CONDITION
+NUMBER: 10 CONDITION: TEMPERATURE_volume
+CONDTYPE: over volumes
+CONDMESHTYPE: over nodes
+QUESTION: Type:#CB#(Free_or_initial,Fixed)
+VALUE: Free_or_initial
+QUESTION: Value:
+VALUE: 0.0
+QUESTION: Heat_power:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+END CONDITION
+NUMBER: 11 CONDITION: TEMPER_Boundary_3D
+CONDTYPE: over surfaces
+CANREPEAT: yes
+QUESTION: code:#CB#(Heat_flux,Wall_law,Robin)
+VALUE: Heat_flux
+DEPENDENCIES: (Heat_flux,HIDE,Value_alpha_r,#CURRENT#,HIDE,Value_T_r,#CURRENT#,HIDE,Value_q_r,#CURRENT#,HIDE,Value_T_wall,#CURRENT#,RESTORE,Value_heat_flux,#CURRENT#)
+DEPENDENCIES: (Wall_law,HIDE,Value_alpha_r,#CURRENT#,HIDE,Value_T_r,#CURRENT#,HIDE,Value_q_r,#CURRENT#,RESTORE,Value_T_wall,#CURRENT#,HIDE,Value_heat_flux,#CURRENT#)
+DEPENDENCIES: (Robin,RESTORE,Value_alpha_r,#CURRENT#,RESTORE,Value_T_r,#CURRENT#,RESTORE,Value_q_r,#CURRENT#,HIDE,Value_T_wall,#CURRENT#,HIDE,Value_heat_flux,#CURRENT#)
+QUESTION: Value_alpha_r=
+VALUE: 0.0
+QUESTION: Value_T_r=
+VALUE: 0.0
+QUESTION: Value_q_r=
+VALUE: 0.0
+QUESTION: Value_T_wall=
+VALUE: 0.0
+QUESTION: Value_heat_flux=
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+END CONDITION
+NUMBER: 12 CONDITION: TEMPER_Boundary_2D
+CONDTYPE: over lines
+CANREPEAT: yes
+QUESTION: code:#CB#(Heat_flux,Wall_law,Robin)
+VALUE: Heat_flux
+DEPENDENCIES: (Heat_flux,HIDE,Value_alpha_r,#CURRENT#,HIDE,Value_T_r,#CURRENT#,HIDE,Value_q_r,#CURRENT#,HIDE,Value_T_wall,#CURRENT#,RESTORE,Value_heat_flux,#CURRENT#)
+DEPENDENCIES: (Wall_law,HIDE,Value_alpha_r,#CURRENT#,HIDE,Value_T_r,#CURRENT#,HIDE,Value_q_r,#CURRENT#,RESTORE,Value_T_wall,#CURRENT#,HIDE,Value_heat_flux,#CURRENT#)
+DEPENDENCIES: (Robin,RESTORE,Value_alpha_r,#CURRENT#,RESTORE,Value_T_r,#CURRENT#,RESTORE,Value_q_r,#CURRENT#,HIDE,Value_T_wall,#CURRENT#,HIDE,Value_heat_flux,#CURRENT#)
+QUESTION: Value_alpha_r=
+VALUE: 0.0
+QUESTION: Value_T_r=
+VALUE: 0.0
+QUESTION: Value_q_r=
+VALUE: 0.0
+QUESTION: Value_T_wall=
+VALUE: 0.0
+QUESTION: Value_heat_flux=
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+END CONDITION
+BOOK:DOMAIN_CONDITIONS
+NUMBER: 13 CONDITION: DOMAIN_body_2D
+CONDTYPE: over lines
+CONDMESHTYPE: over face elements
+QUESTION: Body=
+VALUE: 1
+END CONDITION
+NUMBER: 14 CONDITION: DOMAIN_body_3d
+CONDTYPE: over surfaces
+CONDMESHTYPE: over face elements
+QUESTION: Body=
+VALUE: 1
+END CONDITION
+NUMBER: 15 CONDITION: EXTERNAL_NORMAL_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Value_x:
+VALUE: 0.0
+QUESTION: Value_y:
+VALUE: 0.0
+QUESTION: Value_z:
+VALUE: 0.0
+END CONDITION
+NUMBER: 16 CONDITION: EXTERNAL_NORMAL_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Value_x:
+VALUE: 0.0
+QUESTION: Value_y:
+VALUE: 0.0
+QUESTION: Value_z:
+VALUE: 0.0
+END CONDITION
+NUMBER: 17 CONDITION: EXTERNAL_NORMAL_surface
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Value_x:
+VALUE: 0.0
+QUESTION: Value_y:
+VALUE: 0.0
+QUESTION: Value_z:
+VALUE: 0.0
+END CONDITION
+NUMBER: 18 CONDITION: EXTERNAL_NORMAL_volume
+CONDTYPE: over volumes
+CONDMESHTYPE: over nodes
+QUESTION: Value_x:
+VALUE: 0.0
+QUESTION: Value_y:
+VALUE: 0.0
+QUESTION: Value_z:
+VALUE: 0.0
+END CONDITION
+BOOK:NSCOMP_BOUNDARY_CONDITIONS
+NUMBER: 19 CONDITION: NSCOMPRESSIBLE_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Type_density:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_x:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_y:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_z:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_temperature:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_density:
+VALUE: 1.0
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Value_temperature:
+VALUE: 0.0
+END CONDITION
+NUMBER: 20 CONDITION: NSCOMPRESSIBLE_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Type_density:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_x:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_y:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_z:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_temperature:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_density:
+VALUE: 1.0
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Value_temperature:
+VALUE: 0.0
+END CONDITION
+NUMBER: 21 CONDITION: NSCOMPRESSIBLE_surface
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Type_density:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_x:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_y:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_z:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_temperature:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_density:
+VALUE: 1.0
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Value_temperature:
+VALUE: 0.0
+END CONDITION
+NUMBER: 22 CONDITION: NSCOMPRESSIBLE_volume
+CONDTYPE: over volumes
+CONDMESHTYPE: over nodes
+QUESTION: Type_density:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_x:#CB#(Free_or_initial,Fixed)
+VALUE: Free_or_initial
+QUESTION: Type_velocity_y:#CB#(Free_or_initial,Fixed)
+VALUE: Free_or_initial
+QUESTION: Type_velocity_z:#CB#(Free_or_initial,Fixed)
+VALUE: Free_or_initial
+QUESTION: Type_temperature:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_density:
+VALUE: 1.0
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Value_temperature:
+VALUE: 0.0
+END CONDITION
+NUMBER: 23 CONDITION: NSCOMP_Boundary_3D
+CONDTYPE: over surfaces
+CONDMESHTYPE: over face elements
+CANREPEAT: yes
+QUESTION: Type_for_momentum:#CB#(Fixed,Neumann)
+VALUE: Neumann
+DEPENDENCIES: (#DEFAULT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Fixed,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Neumann,RESTORE,Value_Traction_x,#CURRENT#,RESTORE,Value_Traction_y,#CURRENT#,RESTORE,Value_Traction_z,#CURRENT#)
+QUESTION: Value_Traction_x:
+VALUE: 0.0
+QUESTION: Value_Traction_y:
+VALUE: 0.0
+QUESTION: Value_Traction_z:
+VALUE: 0.0
+QUESTION: Type_for_energy:#CB#(Fixed,Neumann,Robin)
+VALUE: Neumann
+DEPENDENCIES: (#DEFAULT#,HIDE,Value_Temperature,#CURRENT#,HIDE,Value_flux,#CURRENT#,HIDE,Value_alpha,#CURRENT#)
+DEPENDENCIES: (Fixed,HIDE,Value_Temperature,#CURRENT#,HIDE,Value_flux,#CURRENT#,HIDE,Value_alpha,#CURRENT#)
+DEPENDENCIES: (Neumann,HIDE,Value_Temperature,#CURRENT#,RESTORE,Value_flux,#CURRENT#,HIDE,Value_alpha,#CURRENT#)
+DEPENDENCIES: (Robin,RESTORE,Value_Temperature,#CURRENT#,RESTORE,Value_flux,#CURRENT#,RESTORE,Value_alpha,#CURRENT#)
+QUESTION: Value_Temperature:
+VALUE: 0.0
+QUESTION: Value_flux:
+VALUE: 0.0
+QUESTION: Value_alpha:
+VALUE: 0.0
+END CONDITION
+NUMBER: 24 CONDITION: NSCOMP_Boundary_2D
+CONDTYPE: over lines
+CONDMESHTYPE: over face elements
+CANREPEAT: yes
+QUESTION: Type_for_momentum:#CB#(Fixed,Neumann)
+VALUE: Neumann
+DEPENDENCIES: (#DEFAULT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Fixed,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Neumann,RESTORE,Value_Traction_x,#CURRENT#,RESTORE,Value_Traction_y,#CURRENT#,RESTORE,Value_Traction_z,#CURRENT#)
+QUESTION: Value_Traction_x:
+VALUE: 0.0
+QUESTION: Value_Traction_y:
+VALUE: 0.0
+QUESTION: Value_Traction_z:
+VALUE: 0.0
+QUESTION: Type_for_energy:#CB#(Fixed,Neumann,Robin)
+VALUE: Neumann
+DEPENDENCIES: (#DEFAULT#,HIDE,Value_Temperature,#CURRENT#,HIDE,Value_flux,#CURRENT#,HIDE,Value_alpha,#CURRENT#)
+DEPENDENCIES: (Fixed,HIDE,Value_Temperature,#CURRENT#,HIDE,Value_flux,#CURRENT#,HIDE,Value_alpha,#CURRENT#)
+DEPENDENCIES: (Neumann,HIDE,Value_Temperature,#CURRENT#,RESTORE,Value_flux,#CURRENT#,HIDE,Value_alpha,#CURRENT#)
+DEPENDENCIES: (Robin,RESTORE,Value_Temperature,#CURRENT#,RESTORE,Value_flux,#CURRENT#,RESTORE,Value_alpha,#CURRENT#)
+QUESTION: Value_Temperature:
+VALUE: 0.0
+QUESTION: Value_flux:
+VALUE: 0.0
+QUESTION: Value_alpha:
+VALUE: 0.0
+END CONDITION
+BOOK:LMACHN_BOUNDARY_CONDITIONS
+NUMBER: 25 CONDITION: LOWMACH_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Type_velocity_x:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_y:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_z:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_temperature:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Value_temperature:
+VALUE: 0.0
+QUESTION: Heat_power:
+VALUE: 0.0
+END CONDITION
+NUMBER: 26 CONDITION: LOWMACH_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Type_velocity_x:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_y:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_z:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_temperature:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Value_temperature:
+VALUE: 0.0
+QUESTION: Heat_power:
+VALUE: 0.0
+END CONDITION
+NUMBER: 27 CONDITION: LOWMACH_surface
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Type_velocity_x:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_y:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_velocity_z:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_temperature:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Value_temperature:
+VALUE: 0.0
+QUESTION: Heat_power:
+VALUE: 0.0
+END CONDITION
+NUMBER: 28 CONDITION: LOWMACH_volume
+CONDTYPE: over volumes
+CONDMESHTYPE: over nodes
+QUESTION: Type_velocity_x:#CB#(Free_or_initial,Fixed)
+VALUE: Free_or_initial
+QUESTION: Type_velocity_y:#CB#(Free_or_initial,Fixed)
+VALUE: Free_or_initial
+QUESTION: Type_velocity_z:#CB#(Free_or_initial,Fixed)
+VALUE: Free_or_initial
+QUESTION: Type_temperature:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Value_temperature:
+VALUE: 0.0
+QUESTION: Heat_power:
+VALUE: 0.0
+END CONDITION
+NUMBER: 29 CONDITION: LMACHN_Boundary_3D
+CONDTYPE: over surfaces
+CONDMESHTYPE: over face elements
+CANREPEAT: yes
+QUESTION: Type_for_velocity:#CB#((Fixed,Slip_wall,No_slip_wall,Wall_law,Symmetry,Pressure,Dynamic_pressure,Open_flow,Atmospheric_stress)
+VALUE: Pressure
+DEPENDENCIES: (#DEFAULT#,HIDE,Value_pressure,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Pressure,RESTORE,Value_pressure,#CURRENT#,RESTORE,Time_function,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Atmospheric_stress,RESTORE,Value_pressure,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Fixed,HIDE,Value_pressure,#CURRENT#,RESTORE,Time_function,#CURRENT#,RESTORE,Value_velocity_x,#CURRENT#,RESTORE,Value_velocity_y,#CURRENT#,RESTORE,Value_velocity_z,#CURRENT#,RESTORE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Traction,HIDE,Value_pressure,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,RESTORE,Value_Traction_x,#CURRENT#,RESTORE,Value_Traction_y,#CURRENT#,RESTORE,Value_Traction_z,#CURRENT#)
+QUESTION: Value_pressure:
+VALUE: 0.0
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss)
+VALUE: GLOBAL
+QUESTION: Value_Traction_x:
+VALUE: 0.0
+QUESTION: Value_Traction_y:
+VALUE: 0.0
+QUESTION: Value_Traction_z:
+VALUE: 0.0
+QUESTION: Type_for_temperature:#CB#(Heat_flux,Wall_law,Robin)
+VALUE: Heat_flux
+DEPENDENCIES: (Heat_flux,HIDE,Value_alpha_r,#CURRENT#,HIDE,Value_T_r,#CURRENT#,HIDE,Value_q_r,#CURRENT#,HIDE,Value_T_wall,#CURRENT#,RESTORE,Value_heat_flux,#CURRENT#)
+DEPENDENCIES: (Wall_law,HIDE,Value_alpha_r,#CURRENT#,HIDE,Value_T_r,#CURRENT#,HIDE,Value_q_r,#CURRENT#,RESTORE,Value_T_wall,#CURRENT#,HIDE,Value_heat_flux,#CURRENT#)
+DEPENDENCIES: (Robin,RESTORE,Value_alpha_r,#CURRENT#,RESTORE,Value_T_r,#CURRENT#,RESTORE,Value_q_r,#CURRENT#,HIDE,Value_T_wall,#CURRENT#,HIDE,Value_heat_flux,#CURRENT#)
+QUESTION: Value_alpha_r=
+VALUE: 0.0
+QUESTION: Value_T_r=
+VALUE: 0.0
+QUESTION: Value_q_r=
+VALUE: 0.0
+QUESTION: Value_T_wall=
+VALUE: 0.0
+QUESTION: Value_heat_flux=
+VALUE: 0.0
+QUESTION: Temp_Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+END CONDITION
+NUMBER: 30 CONDITION: LMACHN_Boundary_2D
+CONDTYPE: over lines
+CONDMESHTYPE: over face elements
+CANREPEAT: yes
+QUESTION: Type:#CB#(Fixed,Slip_wall,No_slip_wall,Wall_law,Symmetry,Pressure,Dynamic_pressure,Open_flow,Atmospheric_stress)
+VALUE: Pressure
+DEPENDENCIES: (#DEFAULT#,HIDE,Value_pressure,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Pressure,RESTORE,Value_pressure,#CURRENT#,RESTORE,Time_function,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Atmospheric_stress,RESTORE,Value_pressure,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Fixed,HIDE,Value_pressure,#CURRENT#,RESTORE,Time_function,#CURRENT#,RESTORE,Value_velocity_x,#CURRENT#,RESTORE,Value_velocity_y,#CURRENT#,RESTORE,Value_velocity_z,#CURRENT#,RESTORE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Traction,HIDE,Value_pressure,#CURRENT#,HIDE,Value_velocity_x,#CURRENT#,HIDE,Value_velocity_y,#CURRENT#,HIDE,Value_velocity_z,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,RESTORE,Value_Traction_x,#CURRENT#,RESTORE,Value_Traction_y,#CURRENT#,RESTORE,Value_Traction_z,#CURRENT#)
+QUESTION: Value_pressure:
+VALUE: 0.0
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss)
+VALUE: GLOBAL
+QUESTION: Value_Traction_x:
+VALUE: 0.0
+QUESTION: Value_Traction_y:
+VALUE: 0.0
+QUESTION: Value_Traction_z:
+VALUE: 0.0
+QUESTION: Type_for_temperature:#CB#(Heat_flux,Wall_law,Robin)
+VALUE: Heat_flux
+DEPENDENCIES: (Heat_flux,HIDE,Value_alpha_r,#CURRENT#,HIDE,Value_T_r,#CURRENT#,HIDE,Value_q_r,#CURRENT#,HIDE,Value_T_wall,#CURRENT#,RESTORE,Value_heat_flux,#CURRENT#)
+DEPENDENCIES: (Wall_law,HIDE,Value_alpha_r,#CURRENT#,HIDE,Value_T_r,#CURRENT#,HIDE,Value_q_r,#CURRENT#,RESTORE,Value_T_wall,#CURRENT#,HIDE,Value_heat_flux,#CURRENT#)
+DEPENDENCIES: (Robin,RESTORE,Value_alpha_r,#CURRENT#,RESTORE,Value_T_r,#CURRENT#,RESTORE,Value_q_r,#CURRENT#,HIDE,Value_T_wall,#CURRENT#,HIDE,Value_heat_flux,#CURRENT#)
+QUESTION: Value_alpha_r=
+VALUE: 0.0
+QUESTION: Value_T_r=
+VALUE: 0.0
+QUESTION: Value_q_r=
+VALUE: 0.0
+QUESTION: Value_T_wall=
+VALUE: 0.0
+QUESTION: Value_heat_flux=
+VALUE: 0.0
+QUESTION: Temp_Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+END CONDITION
+BOOK:SOLIDS_BOUNDARY_CONDITIONS
+NUMBER: 31 CONDITION: SOLIDS_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Type_displacement_x:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_displacement_y:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_displacement_z:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_displacement_x:
+VALUE: 0.0
+QUESTION: Value_displacement_y:
+VALUE: 0.0
+QUESTION: Value_displacement_z:
+VALUE: 0.0
+END CONDITION
+NUMBER: 32 CONDITION: SOLIDS_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Type_displacement_x:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_displacement_y:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_displacement_z:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_displacement_x:
+VALUE: 0.0
+QUESTION: Value_displacement_y:
+VALUE: 0.0
+QUESTION: Value_displacement_z:
+VALUE: 0.0
+END CONDITION
+NUMBER: 33 CONDITION: SOLIDS_surface
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Type_displacement_x:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_displacement_y:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_displacement_z:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_displacement_x:
+VALUE: 0.0
+QUESTION: Value_displacement_y:
+VALUE: 0.0
+QUESTION: Value_displacement_z:
+VALUE: 0.0
+END CONDITION
+NUMBER: 34 CONDITION: SOLIDS_volume
+CONDTYPE: over volumes
+CONDMESHTYPE: over nodes
+QUESTION: Type_displacement_x:#CB#(Free_or_initial,Fixed)
+VALUE: Free_or_initial
+QUESTION: Type_displacement_y:#CB#(Free_or_initial,Fixed)
+VALUE: Free_or_initial
+QUESTION: Type_displacement_z:#CB#(Free_or_initial,Fixed)
+VALUE: Free_or_initial
+QUESTION: Value_displacement_x:
+VALUE: 0.0
+QUESTION: Value_displacement_y:
+VALUE: 0.0
+QUESTION: Value_displacement_z:
+VALUE: 0.0
+END CONDITION
+NUMBER: 35 CONDITION: SLD_Boundary_3D
+CONDTYPE: over surfaces
+CONDMESHTYPE: over face elements
+CANREPEAT: yes
+QUESTION: Type:#CB#(Displacement,Traction)
+VALUE: Displacement
+DEPENDENCIES: (#DEFAULT#,HIDE,Value_displacement_x,#CURRENT#,HIDE,Value_displacement_y,#CURRENT#,HIDE,Value_displacement_z,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Displacement,RESTORE,Value_displacement_x,#CURRENT#,RESTORE,Value_displacement_y,#CURRENT#,RESTORE,Value_displacement_z,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Traction,HIDE,Value_displacement_x,#CURRENT#,HIDE,Value_displacement_y,#CURRENT#,HIDE,Value_displacement_z,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,RESTORE,Value_Traction_x,#CURRENT#,RESTORE,Value_Traction_y,#CURRENT#,RESTORE,Value_Traction_z,#CURRENT#)
+QUESTION: Value_displacement_x:
+VALUE: 0.0
+QUESTION: Value_displacement_y:
+VALUE: 0.0
+QUESTION: Value_displacement_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss)
+VALUE: GLOBAL
+QUESTION: Value_Traction_x:
+VALUE: 0.0
+QUESTION: Value_Traction_y:
+VALUE: 0.0
+QUESTION: Value_Traction_z:
+VALUE: 0.0
+END CONDITION
+NUMBER: 36 CONDITION: SLD_Boundary_2D
+CONDTYPE: over lines
+CONDMESHTYPE: over face elements
+CANREPEAT: yes
+QUESTION: Type:#CB#(Displacement,Traction)
+VALUE: Displacement
+DEPENDENCIES: (#DEFAULT#,HIDE,Value_displacement_x,#CURRENT#,HIDE,Value_displacement_y,#CURRENT#,HIDE,Value_displacement_z,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,HIDE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Displacement,RESTORE,Value_displacement_x,#CURRENT#,RESTORE,Value_displacement_y,#CURRENT#,HIDE,Value_displacement_z,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,HIDE,Value_Traction_x,#CURRENT#,HIDE,Value_Traction_y,#CURRENT#,RESTORE,Value_Traction_z,#CURRENT#)
+DEPENDENCIES: (Traction,HIDE,Value_displacement_x,#CURRENT#,HIDE,Value_displacement_y,#CURRENT#,HIDE,Value_displacement_z,#CURRENT#,HIDE,Time_function,#CURRENT#,HIDE,Type_of_axis,#CURRENT#,RESTORE,Value_Traction_x,#CURRENT#,RESTORE,Value_Traction_y,#CURRENT#,RESTORE,Value_Traction_z,#CURRENT#)
+QUESTION: Value_displacement_x:
+VALUE: 0.0
+QUESTION: Value_displacement_y:
+VALUE: 0.0
+QUESTION: Value_displacement_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss)
+VALUE: GLOBAL
+QUESTION: Value_Traction_x:
+VALUE: 0.0
+QUESTION: Value_Traction_y:
+VALUE: 0.0
+QUESTION: Value_Traction_z:
+VALUE: 0.0
+END CONDITION
+NUMBER: 37 CONDITION: SOURCE_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Type_Traction_x:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_Traction_y:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_Traction_z:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_Traction_x:
+VALUE: 0.0
+QUESTION: Value_Traction_y:
+VALUE: 0.0
+QUESTION: Value_Traction_z:
+VALUE: 0.0
+END CONDITION
+NUMBER: 38 CONDITION: SOURCE_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Type_Traction_x:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_Traction_y:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Type_Traction_z:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value_Traction_x:
+VALUE: 0.0
+QUESTION: Value_Traction_y:
+VALUE: 0.0
+QUESTION: Value_Traction_z:
+VALUE: 0.0
+END CONDITION
+BOOK:ALEMOV_BOUNDARY_CONDITIONS
+NUMBER: 39 CONDITION: DISPLACEMENT_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Type_x:#CB#(Free_surface,Fixed)
+VALUE: Fixed
+QUESTION: Type_y:#CB#(Free_surface,Fixed)
+VALUE: Fixed
+QUESTION: Type_z:#CB#(Free_surface,Fixed)
+VALUE: Fixed
+QUESTION: Value_x:
+VALUE: 0.0
+QUESTION: Value_y:
+VALUE: 0.0
+QUESTION: Value_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 40 CONDITION: DISPLACEMENT_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Type_x:#CB#(Free_surface,Fixed)
+VALUE: Fixed
+QUESTION: Type_y:#CB#(Free_surface,Fixed)
+VALUE: Fixed
+QUESTION: Type_z:#CB#(Free_surface,Fixed)
+VALUE: Fixed
+QUESTION: Value_x:
+VALUE: 0.0
+QUESTION: Value_y:
+VALUE: 0.0
+QUESTION: Value_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 41 CONDITION: DISPLACEMENT_surface
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Type_x:#CB#(Free_surface,Fixed)
+VALUE: Fixed
+QUESTION: Type_y:#CB#(Free_surface,Fixed)
+VALUE: Fixed
+QUESTION: Type_z:#CB#(Free_surface,Fixed)
+VALUE: Fixed
+QUESTION: Value_x:
+VALUE: 0.0
+QUESTION: Value_y:
+VALUE: 0.0
+QUESTION: Value_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 42 CONDITION: DISPLACEMENT_volume
+CONDTYPE: over volumes
+CONDMESHTYPE: over nodes
+QUESTION: Type_x:#CB#(Free_surface,Fixed)
+VALUE: Free_or_initial
+QUESTION: Type_y:#CB#(Free_surface,Fixed)
+VALUE: Free_or_initial
+QUESTION: Type_z:#CB#(Free_surface,Fixed)
+VALUE: Free_or_initial
+QUESTION: Value_x:
+VALUE: 0.0
+QUESTION: Value_y:
+VALUE: 0.0
+QUESTION: Value_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+BOOK:WAVETI_BOUNDARY_CONDITIONS
+NUMBER: 43 CONDITION: WAVETI_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Type_p:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Pressure:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 44 CONDITION: WAVETI_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Type_p:#CB#(Free_or_initial,Fixed,Scattering)
+VALUE: Fixed
+QUESTION: Pressure:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 45 CONDITION: WAVETI_surface
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Type_p:#CB#(Free_or_initial,Fixed,Switch_off,Scattering)
+VALUE: Fixed
+QUESTION: Pressure:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 46 CONDITION: WAVETI_volume
+CONDTYPE: over volumes
+CONDMESHTYPE: over nodes
+QUESTION: Type_p:#CB#(Free_or_initial,Fixed,Switch_off)
+VALUE: Fixed
+QUESTION: Pressure:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 47 CONDITION: WAVETI_Boundary_2D
+CONDTYPE: over lines
+CONDMESHTYPE: over face elements
+QUESTION: Type:#CB#(Pressure,NRBC,Impedance,Lighthill)
+VALUE: Pressure
+QUESTION: Value_pressure:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 48 CONDITION: WAVETI_Boundary_3D
+CONDTYPE: over surfaces
+CONDMESHTYPE: over face elements
+QUESTION: Type:#CB#(Pressure,NRBC,Impedance,Lighthill)
+VALUE: Pressure
+QUESTION: Value_pressure:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss)
+VALUE: GLOBAL
+END CONDITION
+BOOK:WAVETM_BOUNDARY_AND_INITIAL_CONDITIONS
+NUMBER: 49 CONDITION: WAVETM_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: TypeCnd:#CB#(Initial,Fixed_p,Fixed_un,NRBC,Impedance)
+VALUE: Initial
+QUESTION: Value_Pressure:
+VALUE: 0.0
+QUESTION: Value_Velocity_x:
+VALUE: 0.0
+QUESTION: Value_Velocity_y:
+VALUE: 0.0
+QUESTION: Value_Velocity_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 50 CONDITION: WAVETM_Boundary_2D
+CONDTYPE: over lines
+CONDMESHTYPE: over face elements
+QUESTION: TypeCnd:#CB#(Fixed_p,Fixed_un,NRBC,Impedance)
+VALUE: Fixed_p
+QUESTION: Value_Pressure:
+VALUE: 0.0
+QUESTION: Value_Velocity_x:
+VALUE: 0.0
+QUESTION: Value_Velocity_y:
+VALUE: 0.0
+QUESTION: Value_Velocity_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 51 CONDITION: WAVETM_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: TypeCnd:#CB#(Initial,Fixed_p,Fixed_un,NRBC,Impedance)
+VALUE: Initial
+QUESTION: Value_Pressure:
+VALUE: 0.0
+QUESTION: Value_Velocity_x:
+VALUE: 0.0
+QUESTION: Value_Velocity_y:
+VALUE: 0.0
+QUESTION: Value_Velocity_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 52 CONDITION: WAVETM_Boundary_3D
+CONDTYPE: over surfaces
+CONDMESHTYPE: over face elements
+QUESTION: TypeCnd:#CB#(Fixed_p,Fixed_un,NRBC,Impedance)
+VALUE: Fixed_p
+QUESTION: Value_pressure:
+VALUE: 0.0
+QUESTION: Value_velocity_x:
+VALUE: 0.0
+QUESTION: Value_velocity_y:
+VALUE: 0.0
+QUESTION: Value_velocity_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 53 CONDITION: WAVETM_surface
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: TypeCnd:#CB#(Initial,Fixed_p,Fixed_un,NRBC,Impedance)
+VALUE: Initial
+QUESTION: Value_Pressure:
+VALUE: 0.0
+QUESTION: Value_Velocity_x:
+VALUE: 0.0
+QUESTION: Value_Velocity_y:
+VALUE: 0.0
+QUESTION: Value_Velocity_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 54 CONDITION: WAVETM_volume
+CONDTYPE: over volumes
+CONDMESHTYPE: over nodes
+QUESTION: TypeCnd:#CB#(Initial,Fixed_p,Fixed_un,NRBC,Impedance)
+VALUE: Initial
+QUESTION: Value_Pressure:
+VALUE: 0.0
+QUESTION: Value_Velocity_x:
+VALUE: 0.0
+QUESTION: Value_Velocity_y:
+VALUE: 0.0
+QUESTION: Value_Velocity_z:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+END CONDITION
+BOOK:INTERP_BOUNDARY_CONDITIONS
+NUMBER: 55 CONDITION: INTERP_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Body=
+VALUE: 1
+END CONDITION
+NUMBER: 56 CONDITION: INTERP_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Body=
+VALUE: 1
+END CONDITION
+NUMBER: 57 CONDITION: INTERP_surface
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Body=
+VALUE: 1
+END CONDITION
+BOOK:VISCOELASTIC_BOUNDARY_CONDITIONS
+NUMBER: 58 CONDITION: STRESS_VELOCITY_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Type_xx:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_yy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_xy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_ux:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_uy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Value_xx:
+VALUE: 0.0
+QUESTION: Value_yy:
+VALUE: 0.0
+QUESTION: Value_xy:
+VALUE: 0.0
+QUESTION: Value_ux:
+VALUE: 0.0
+QUESTION: Value_uy:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 59 CONDITION: STRESS_VELOCITY_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Type_xx:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_yy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_xy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_ux:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_uy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Value_xx:
+VALUE: 0.0
+QUESTION: Value_yy:
+VALUE: 0.0
+QUESTION: Value_xy:
+VALUE: 0.0
+QUESTION: Value_ux:
+VALUE: 0.0
+QUESTION: Value_uy:
+VALUE: 0.0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 60 CONDITION: STRESS_VELOCITY_surface
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Type_xx:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_yy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_xy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_ux:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_uy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Value_xx:
+VALUE: 0.0
+QUESTION: Value_yy:
+VALUE: 0.0
+QUESTION: Value_xy:
+VALUE: 0.0
+QUESTION: Value_ux:
+VALUE: 0.0
+QUESTION: Value_uy:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 61 CONDITION: STRESS_VELOCITY_point_3D
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Type_xx:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_yy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_zz:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_yz:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_xz:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_xy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_ux:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_uy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_uz:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Value_xx:
+VALUE: 0.0
+QUESTION: Value_yy:
+VALUE: 0.0
+QUESTION: Value_zz:
+VALUE: 0.0
+QUESTION: Value_yz:
+VALUE: 0.0
+QUESTION: Value_xz:
+VALUE: 0.0
+QUESTION: Value_xy:
+VALUE: 0.0
+QUESTION: Value_ux:
+VALUE: 0.0
+QUESTION: Value_uy:
+VALUE: 0.0
+QUESTION: Value_uz:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 62 CONDITION: STRESS_VELOCITY_line_3D
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Type_xx:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_yy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_zz:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_yz:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_xz:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_xy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_ux:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_uy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_uz:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Value_xx:
+VALUE: 0.0
+QUESTION: Value_yy:
+VALUE: 0.0
+QUESTION: Value_zz:
+VALUE: 0.0
+QUESTION: Value_yz:
+VALUE: 0.0
+QUESTION: Value_xz:
+VALUE: 0.0
+QUESTION: Value_xy:
+VALUE: 0.0
+QUESTION: Value_ux:
+VALUE: 0.0
+QUESTION: Value_uy:
+VALUE: 0.0
+QUESTION: Value_uz:
+VALUE: 0.0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+NUMBER: 63 CONDITION: STRESS_VELOCITY_surface_3D
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Type_xx:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_yy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_zz:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_yz:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_xz:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_xy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_ux:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_uy:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Type_uz:#CB#(Free_or_initial,Fixed,Temporarily_free)
+VALUE: Fixed
+QUESTION: Value_xx:
+VALUE: 0.0
+QUESTION: Value_yy:
+VALUE: 0.0
+QUESTION: Value_zz:
+VALUE: 0.0
+QUESTION: Value_yz:
+VALUE: 0.0
+QUESTION: Value_xz:
+VALUE: 0.0
+QUESTION: Value_xy:
+VALUE: 0.0
+QUESTION: Value_ux:
+VALUE: 0.0
+QUESTION: Value_uy:
+VALUE: 0.0
+QUESTION: Value_uz:
+VALUE: 0.0
+QUESTION: Time_function:#CB#(0,1,2,3,4,5,6,7,8,9,10)
+VALUE: 0
+QUESTION: Type_of_axis:#CB#(GLOBAL,LOCAL-Femuss,LOCAL-GID)
+VALUE: GLOBAL
+DEPENDENCIES: (#DEFAULT#,HIDE,Type_of_GiD_axis,#CURRENT#)
+DEPENDENCIES: (LOCAL-GID,RESTORE,Type_of_GiD_axis,#CURRENT#)
+QUESTION: Type_of_GiD_axis:#LA#(GLOBAL,Automatic)
+VALUE: GLOBAL
+END CONDITION
+BOOK:LEVSET_BOUNDARY_CONDITIONS
+NUMBER: 64 CONDITION: LEVELSET_point
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Type:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value:
+VALUE: 0.0
+END CONDITION
+NUMBER: 65 CONDITION: LEVELSET_line
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Type:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value:
+VALUE: 0.0
+END CONDITION
+NUMBER: 66 CONDITION: LEVELSET_surface
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Type:#CB#(Free_or_initial,Fixed)
+VALUE: Fixed
+QUESTION: Value:
+VALUE: 0.0
+END CONDITION
+NUMBER: 67 CONDITION: LEVELSET_volume
+CONDTYPE: over volumes
+CONDMESHTYPE: over nodes
+QUESTION: Type:#CB#(Free_or_initial,Fixed)
+VALUE: Free_or_initial
+QUESTION: Value:
+VALUE: 0.0
+END CONDITION

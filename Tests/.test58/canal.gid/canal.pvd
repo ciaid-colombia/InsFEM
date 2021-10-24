@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+<Collection>
+<DataSet timestep="0.1" group="" part="0" file=".//canal_0.pvtu"/>
+<DataSet timestep="0.15" group="" part="1" file=".//canal_1.pvtu"/>
+<DataSet timestep="0.2" group="" part="2" file=".//canal_2.pvtu"/>
+<DataSet timestep="0.25" group="" part="3" file=".//canal_3.pvtu"/>
+<DataSet timestep="0.25" group="" part="4" file=".//canal_4.pvtu"/>
+</Collection>
+</VTKFile>

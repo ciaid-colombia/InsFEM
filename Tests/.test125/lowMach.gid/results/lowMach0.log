@@ -1,0 +1,181 @@
+
+
+
+     *******
+     Yet another finite element software: 
+     *******
+
+          CURRENT TIME STEP dt = 0.800000E-01
+
+     >>>  TIME STEP NUMBER:     1     STARTED AT t = 0.800000E-01
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.832335E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.460E+00  0.427E+00  0.000E+00  0.346E-04  0.319E-01  0.586E-02  0.787E-03  0.468E-02  0.457E-03  0.000E+00  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.800000E-01
+
+     >>>  TIME STEP NUMBER:     2     STARTED AT t = 0.160000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.872182E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.499E+00  0.427E+00  0.000E+00  0.534E-04  0.709E-01  0.382E-01  0.140E-02  0.104E-01  0.889E-03  0.174E-03  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.800000E-01
+
+     >>>  TIME STEP NUMBER:     3     STARTED AT t = 0.240000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.905538E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.511E+00  0.427E+00  0.000E+00  0.741E-04  0.825E-01  0.443E-01  0.201E-02  0.147E-01  0.123E-02  0.213E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.800000E-01
+
+     >>>  TIME STEP NUMBER:     4     STARTED AT t = 0.320000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.935241E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.539E+00  0.427E+00  0.000E+00  0.927E-04  0.110E+00  0.662E-01  0.262E-02  0.192E-01  0.162E-02  0.231E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.800000E-01
+
+     >>>  TIME STEP NUMBER:     5     STARTED AT t = 0.400000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.983857E+00
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.585E+00  0.427E+00  0.000E+00  0.112E-03  0.156E+00  0.977E-01  0.324E-02  0.329E-01  0.197E-02  0.250E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.800000E-01
+
+     >>>  TIME STEP NUMBER:     6     STARTED AT t = 0.480000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.102563E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.625E+00  0.427E+00  0.000E+00  0.131E-03  0.195E+00  0.103E+00  0.387E-02  0.655E-01  0.236E-02  0.268E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.800000E-01
+
+     >>>  TIME STEP NUMBER:     7     STARTED AT t = 0.560000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.106580E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.663E+00  0.427E+00  0.000E+00  0.150E-03  0.233E+00  0.136E+00  0.444E-02  0.697E-01  0.270E-02  0.287E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.800000E-01
+
+     >>>  TIME STEP NUMBER:     8     STARTED AT t = 0.640000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.109905E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.686E+00  0.427E+00  0.000E+00  0.169E-03  0.256E+00  0.142E+00  0.502E-02  0.740E-01  0.309E-02  0.388E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.800000E-01
+
+     >>>  TIME STEP NUMBER:     9     STARTED AT t = 0.720000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.113956E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.725E+00  0.427E+00  0.000E+00  0.190E-03  0.294E+00  0.167E+00  0.565E-02  0.862E-01  0.345E-02  0.407E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+          CURRENT TIME STEP dt = 0.800000E-01
+
+     >>>  TIME STEP NUMBER:    10     STARTED AT t = 0.800000E+00
+          LMACHN:
+          - Critical Time step dtc: 0.601347-153
+          - Ratio dt/dtc:           0.000000E+00
+
+          GLOBAL ITERATION NUMBER:     1
+          CURRENT CPU TIME:        0.118176E+01
+
+          Module     Total      Turnon     Getste     Begste     Doiter    LinBuild   LinSolve    Endite     Endste    Output     Turnof     Restar     Refine     Projec 
+          LMACHN:  0.748E+00  0.427E+00  0.000E+00  0.211E-03  0.317E+00  0.185E+00  0.630E-02  0.904E-01  0.379E-02  0.591E-01  0.000E+00  0.000E+00  0.000E+00  0.000E+00
+
+
+     **************************
+     SUMMARY OF REQUIRED MEMORY
+     **************************
+
+
+          MEMORY REQUIRED:
+
+          TOTAL MEMORY:                 47.71 Mbytes
+          CONSTRUCTION OF THE DOMAIN:   47.71 Mbytes (100.00 %)
+          PODRO  MODULE:                 0.00 Mbytes (  0.00 %)
+
+          MAXIMUM MEMORY REQUIRED:      47.77 Mbytes
+
+
+
+          MAXIMUM MEMORY PAR. LIB.:    110.14 Mbytes
+
+
+
+
+     **************************
+     SUMMARY OF COMPUTING TIMES
+     **************************
+
+          TOTAL CPU TIME              :        1.22
+          STARTING OPERATIONS         :        0.39 ( 32.09 % )
+               Initialize MPI         :           0.00 ( 29.89 % )
+               Reapro                 :           0.03 ( 29.89 % )
+               Initialize Par. Lib.   :           0.00 ( 29.89 % )
+               Domain Operations      :           0.36 ( 29.89 % )
+               Output Domain          :           0.00 (  0.03 % )
+          PODRO  MODULE               :        0.00 (  0.00 % )
+               Turnon                 :           0.43 ( 57.02 % )
+               Getste                 :           0.00 (  0.00 % )
+               Begste                 :           0.00 (  0.03 % )
+               Doiter                 :           0.32 ( 42.30 % )
+                 Build Linear System  :               0.18 ( 24.68 % )
+                 Solve Linear System  :               0.01 (  0.84 % )
+                 Endite               :               0.09 ( 12.06 % )
+               Endste                 :           0.00 (  0.51 % )
+               Output                 :           0.07 (  9.88 % )
+               Turnof                 :           0.00 (  0.11 % )
+               Restar                 :           0.00 (  0.00 % )
+               Refine                 :           0.00 (  0.00 % )
+               Project between meshes :           0.00 (  0.00 % )
+          MESH PROJECTIONS            :        0.00 (  0.00 % )
+          TURNOF OPERATIONS           :        0.00 (  0.28 % )
+          OTHER OPERATIONS            :        0.82 ( 67.66 % )
+
+
+     * * * END OF ANALYSIS * * *
+

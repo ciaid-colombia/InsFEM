@@ -1,0 +1,7 @@
+$        Time     Global       Current  Module residuals -->
+$        step  iteration          time   PODRO   
+            1          1  0.500000E-01    0.100000E+01  
+            2          1  0.100000E+00    0.315089E-01  
+            3          1  0.150000E+00    0.283836E-01  
+            4          1  0.200000E+00    0.272329E-01  
+

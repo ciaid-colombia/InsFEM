@@ -1,0 +1,7 @@
+#!/bin/bash
+cd Cavity-DD
+../../../Executables/Unix/InspiraFEM.sh Cavity -cases 2 data/Cavi1 data/Cavi2 -np 3 -nomerge
+cd ..
+#cd Cavity-DD-SGS
+#../../../Executables/Unix/InspiraFEM.sh Cavity -cases 2 data/Cavi1 data/Cavi2 -np 3 -nomerge
+#cd ..

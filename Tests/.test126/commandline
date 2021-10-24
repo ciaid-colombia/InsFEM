@@ -1,0 +1,14 @@
+#!/bin/bash
+if [ "$COMPILER" == "MPIGNU" ]
+then
+   #cd channel_3d_test.gid
+   #../../../Executables/Unix/InspiraFEM.sh channel_3d_test -nomerge
+   cp -r ../test126/channel_3d_test.gid .
+   echo "Test not run, Turbulence not working"
+   touch testnotrun
+elif [ "$COMPILER" == "MPINTEL" ]
+then
+   cp -r ../test126/channel_3d_test.gid .
+   echo "Test not run, Turbulence not working"
+   touch testnotrun
+fi

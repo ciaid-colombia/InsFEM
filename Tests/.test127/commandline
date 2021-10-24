@@ -1,0 +1,3 @@
+cd cavityWLF.gid
+../../../Executables/Unix/InspiraFEM.sh cavityWLF -nomerge
+

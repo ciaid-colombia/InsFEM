@@ -1,0 +1,1029 @@
+#!/usr/bin/perl
+use File::Basename;
+use Getopt::Long;
+use Digest::MD5 qw(md5 md5_hex md5_base64);
+use File::Basename;
+use Cwd;
+use File::Copy::Recursive qw(fcopy rcopy dircopy fmove rmove dirmove);
+use constant SUCESS => 0;        # Code for succesful execution.
+use constant ERROR => 1;        # Code for error in execution.
+use Term::ANSIColor;
+use File::Path qw(make_path remove_tree);
+#use Archive::Tar;
+use Time::HiRes;
+use Scalar::Util qw(looks_like_number);
+use Sort::Naturally;
+#use Sort::Key::Natural qw( natsort );
+use File::Find::Rule;
+use Parallel::ForkManager;
+
+
+
+
+
+
+
+$time1 = Time::HiRes::time;
+
+use constant comparison_tolerance => 1e-5;
+use constant abs_comparison_tolerance => 1e-9;
+$working_comparison_tolerance = comparison_tolerance;
+$working_abs_comparison_tolerance = abs_comparison_tolerance;
+
+
+#Current directory
+my $dir = getcwd;
+opendir(DIR, $dir);
+@tests = readdir(DIR);
+closedir DIR;
+@tests = sort { lc($a) cmp lc($b) } @tests;
+#@tests = natsort(@tests);
+@tests = nsort(@tests);
+
+
+
+#./Test.prep prepare $sudostring allows to reprepare all the tests. Do not do this.
+my $sudostring = "I want to reprepare all the tests. I know this must never be done. I will get pain and suffering if my code is wrong and this goes up to the repository";
+my $sudoflag = 0;
+
+if ($ARGV[0] eq "prepare") {
+   undef(@array);
+   if ($ARGV[1] eq "$sudostring") {
+      $sudoflag = "1";
+   }
+   if ($sudoflag eq "0") {
+      @tests = ($ARGV[1]);
+   }
+}   
+
+if ($ARGV[0] eq "test") {
+my $count_args = $#ARGV + 1;
+   if ($count_args == 2) {
+      @tests = ($ARGV[1]);
+   }
+}
+
+my $Gnmemoryleaks = 0;
+my $Gnfail = 0;
+my $Gnnotrun = 0;
+my $Gnotrunmessage = "";
+my $Gfailmessage = "";
+my $Gfirstfaileddir = "";
+
+$time2 = Time::HiRes::time;
+$time2 = $time2 - $time1;
+
+# print "Initializations: $time2 s\n"; 
+
+#my $tar = Archive::Tar->new;
+#$tar->read('tests.tar');
+#@testlist = $tar->list_files();
+#foreach $mytests (@testlist) {
+#   if (-d $mytests) {
+#      print "$mytests\n";
+#   }
+#}
+my $time1;
+my $time2;
+$time1 = Time::HiRes::time;
+
+my $svnremovecondition=0;
+#check if there was an update or a commit since the last time tests were copied, if there was, copy the tests
+$svnversion = `svnversion`;
+$svnversion =~ s/\D//g;
+open (MYFILE, '.TestsSvnVersion');
+my $oldsvnversion = <MYFILE>; 
+close MYFILE;
+if ($svnversion ne $oldsvnversion) {
+   open (MYFILE, '>.TestsSvnVersion');
+   print MYFILE $svnversion;
+   close(MYFILE);
+   $svnremovecondition=1;
+}   
+#print "$svnremovecondition \n";
+
+my @CASE_COMPILER_DIRECTIVES = split / /, $ENV{"CASE_COMPILER_DIRECTIVES"};
+
+#do not take into account everything that is not a test
+for my $index (reverse 0..$#tests) {
+    $word = substr @tests[$index], 0, 4;
+    if ( "test" eq $word  ) {
+    } else {
+        splice(@tests, $index, 1, ());
+    }
+}
+
+
+
+
+
+
+#group in parallel and non-parallel tests
+my @paralleltests;
+my @serialtests=0;
+foreach $testdir (@tests) {
+   local(*FILE, $/);
+   open(FILE, "$testdir/commandline");
+   $_ = <FILE>;
+   close(FILE);
+   if ($_ =~ /-np/) {
+      push(@paralleltests, $testdir);
+   }
+   else {
+      push(@serialtests, $testdir);
+   }
+}
+
+
+
+#serial tests should be heavily parallelized, while parallel ones should not
+chomp(my $cpu_count = `grep -c -P '^processor\\s+:' /proc/cpuinfo`);
+#my $manager = new ParallelForkManager($cpu_count+1);
+my $manager = new Parallel::ForkManager($#serialtests);
+$manager -> run_on_finish( \&run_on_finish_sub);
+testloop(\@serialtests,"parallel");
+$manager->wait_all_children;
+
+
+$manager = new Parallel::ForkManager($cpu_count);
+$manager -> run_on_finish( \&run_on_finish_sub);
+testloop(\@paralleltests,"parallel");   
+$manager->wait_all_children;
+
+
+
+
+sub testloop {
+
+   @testarray = @{$_[0]};
+   $testtype = $_[1];
+
+   
+   foreach $testdir (@testarray)
+   {
+      if ($testtype eq "parallel") {
+         $manager->start and next;
+      }
+      
+      my $nmemoryleaks = 0;
+      my $nfail = 0;
+      my $nnotrun = 0;
+      my $notrunmessage = "";
+      my $failmessage = "";
+      my $firstfaileddir = "";
+      
+      #$testdir = $_; 
+      
+      if ($testdir =~/^\./) {}
+      elsif (-d $testdir){                  # is this a directory?
+      
+         my $renext = 0;
+         #chmod 0700, $testdir;
+         #chmod 0700, "$testdir/.$testdir.md5";
+         #change permissions
+         system("find $testdir -type f | xargs chmod 700");
+         #system("find $testdir -type f | xargs chmod u+rwx");
+         #chdir $testdir;
+         #allpermissionsfilesindir();
+         #chdir $dir;
+         
+         #if test, check if the test is prepared, and copy 
+         #the test to the temporary directory if necessary
+         if ($ARGV[0] eq "test") {
+            $filename = "$testdir/.$testdir.alreadyprepared";
+            if (-e $filename) {}
+            else {
+               print color 'bold red';
+               print "Error: ";
+               print color 'reset';
+               print "$testdir needs to be prepared before testing \n";
+               print "If you are ";
+               print color 'bold red';
+               print "responsible";
+               print color 'reset';
+               print " for the test: ";
+               print color 'bold blue';
+               print "run ";
+               print color 'bold greenz';
+               print "./Tester.prep prepare $testdir";
+               print color 'bold blue';
+               print " in the ";
+               print color 'bold green';
+               print "Tests/ ";
+               print color 'bold blue';
+               print "directory to prepare the test\n";
+               print color 'reset';
+               $renext = 1;
+            }
+            
+            #check if the required modules are compiled or not
+            if ($renext == 0 and grep { "MODULE_SELECTION_ON"  eq $_ } @CASE_COMPILER_DIRECTIVES) {
+               $filename = "$testdir/requiredmodules";
+               if (-e $filename) {
+                  open my $handle, '<', $filename;
+                  chomp(my @requiredmodules = <$handle>);
+                  close $handle;
+                  
+                  my $requiredmodules_available = 1;
+                  
+                  foreach $module (@requiredmodules) {
+                     if (grep { "SELECT_MODULE_$module"  eq $_ } @CASE_COMPILER_DIRECTIVES) {
+
+                     } else {
+                        $requiredmodules_available = 0;
+                     }
+                  }
+                  
+                  if ($requiredmodules_available eq 0) {
+                        open errfile, "<$testdir/errormessage";
+                        $errormessage = <errfile>;
+                        chomp($errormessage);
+                        close errfile;
+                        #print "$testdir: ";
+                        #print color 'bold blue';
+                        #print "Not run due to missing module \n";
+                        #print color 'reset';
+                        
+                        $notrunstring = "$testdir: $errormessage \n";
+                        $notrunmessage .= $notrunstring;
+                        $nnotrun = $nnotrun+1;
+                        $renext = 1;
+                  }
+               } 
+            }
+            if ($renext == 0) {   
+               $temptestdir = ".$testdir";
+               if ($svnremovecondition==1) {
+                  remove_tree($temptestdir);
+                  dircopy($testdir,$temptestdir);
+                  
+               }
+               elsif (-d $temptestdir){
+               }
+               else {
+                  dircopy($testdir,$temptestdir);
+               }
+            }
+         }
+         #if prepare, check if the test is already prepared, and remove the temporary
+         # directory if it exists
+         elsif ($ARGV[0] eq "prepare") {
+            $temptestdir = $testdir;
+            if ($sudoflag eq 0) {
+               $filename = "$testdir/.$testdir.alreadyprepared";
+               $tarcond = "";
+               #$tarcond = $tar->contains_file("$testdir/")
+               if (-e $filename || $tarcond) {
+                  print color 'bold red';
+                  print "This test has already been prepared, do not overwrite it! \n";
+                  print color 'bold blue';
+                  print "If you are sure the test is wrong, you can overwrite it by \n";
+                  print "first deleting the hidden ";
+                  print color 'bold green';
+                  print "$testdir/.$testdir.alreadyprepared ";
+                  print color 'bold blue';
+                  print "file \n";
+                  print color 'reset';
+                  
+                  #change permissions
+                  chdir $testdir;
+                  readonlyfilesindir();
+                  chdir $dir;
+                  
+                  exit;
+               }
+            }
+            $auxtestdir =  "\.$testdir";  
+            remove_tree($auxtestdir);
+         }
+         
+         if ($renext == 0) {
+            
+            #Change directory to the test case directory
+            chdir $temptestdir;
+            
+            #remove files in the results, rst and post folder
+            opendir(DIR, "$dir/$temptestdir");
+            @tempdirs = readdir(DIR);
+            #print "tempdirs @tempdirs \n";
+            #print "dir: $dir \n";
+            closedir DIR;
+            
+            #Only delete files if there is now old directory
+            my $thereisold = 0;
+            foreach $mytempdirs (@tempdirs) {
+               if ($mytempdirs =~ "_old" ) {
+                  $thereisold = 1;
+               } 
+            }
+            if ($thereisold == 0) {
+               foreach $mytempdirs (@tempdirs) {
+                  #opendir D, "."; while ($n = readdir D) { unlink $n }'
+                  #print "postdir : $dir/$temptestdir/$mytempdirs/post/ \n";
+                  if (-d "$dir/$temptestdir/$mytempdirs/post/") {
+                     system("find $dir/$temptestdir/$mytempdirs/post/ ! -type d -exec rm '{}' \\;");
+                  };
+                  if ( -d "$dir/$temptestdir/$mytempdirs/results/" ) {  
+                     system("find $dir/$temptestdir/$mytempdirs/results/ ! -type d -exec rm '{}' \\;");
+                  };   
+               }
+            }
+
+            #We clean before run
+            $testnotrun = "$dir/$temptestdir/testnotrun";
+            if (-e $testnotrun) {
+                unlink $testnotrun;
+            } 
+
+            
+            #Run the test case
+            system("./commandline > ../.$testdir.out");
+            chdir $dir;
+                       
+            #If prepare, Compute the md5sum and compress to a tar file     
+            if ($ARGV[0] eq "prepare") {
+      #          $mysum = "";
+      #          $mysum = processfiles($testdir,$mysum);
+      #          unlink("$testdir/.$testdir.md5");
+      #          open (md5file, ">>$testdir/.$testdir.md5");
+      #          print md5file "$mysum";
+      #          close (md5file);
+               my @postfile = getpostfiles(abs_path($testdir));
+               my $testbinary = 0;
+               foreach (@postfile)
+               {
+                     if (-z $_) {
+                     }
+                     elsif (-B $_) {
+                        print "$_ \n";
+                        $testbinary = 1;
+                     }
+               }
+               if ($testbinary == 1) {
+                  print "$testdir: ";
+                  print color 'bold red';
+                  print "Error, Postprocess file is binary\n";
+                  print color 'reset';
+                  die;
+               }
+               open (alreadyprepared, ">>$testdir/.$testdir.alreadyprepared");
+               close (alreadyprepared);
+               
+               
+               #system("tar -rpf tests.tar $testdir/");
+               
+               print "$testdir: ";
+               print color 'bold green';
+               print "Done \n";
+               print color 'reset';
+            }
+            
+            #If test, compute the md5sum and compare it to the test one
+            elsif ($ARGV[0] eq "test") {
+      #          open (md5file, "<$testdir/.$testdir.md5");
+      #          $mysum = <md5file>;
+      #          close (md5file);
+      #          $mysum2 = "";
+      #          $mysum2 = processfiles($temptestdir,$mysum2);
+
+               #temporarily change the comparison tolerance
+               
+
+               my @postfile = getpostfiles(abs_path($testdir));
+               my $testbinary = 0;
+               foreach (@postfile)
+               {
+                     if (-z $_) {
+                     }
+                     elsif (-B $_) {
+                        print "$_ \n";
+                        $testbinary = 1;
+                     }
+               }
+               if ($testbinary == 1) {
+                  print "$testdir: Error, Postprocess file is binary\n";
+                  $failstring = "$testdir: Error, Postprocess file is binary \n";
+                  print "$testdir: ";
+                  print color 'bold red';
+                  print "Error, Postprocess file is binary \n";
+                  print color 'reset';
+                  $failmessage .= $failstring;
+                  $nfail = $nfail + 1;
+                  if ($nfail eq 1) {
+                     $firstfaileddir = $testdir;
+                  }
+               }
+               else {
+                  $tolfile = abs_path($testdir)."/tol";
+                  
+                  $working_comparison_tolerance = comparison_tolerance;
+                  $working_abs_comparison_tolerance = abs_comparison_tolerance;
+
+                  if (-e $tolfile) {
+                     open my $file, '<', $tolfile; 
+                     $working_comparison_tolerance = <$file>; 
+                     $working_abs_comparison_tolerance = <$file>; 
+                     close $file;
+                  }   
+
+                  #For ROM cases, the cvg can be very different between compilers, 
+                  #so we avoid it
+                  $nocvgfile = abs_path($testdir)."/nocvg";
+                  
+                  $passed = comparepostprocessfiles($testdir,$temptestdir);
+                  
+                  $working_comparison_tolerance = comparison_tolerance;
+                  $working_abs_comparison_tolerance = abs_comparison_tolerance;
+
+                  if ($passed == 1){
+                     print "$testdir: ";
+                     print color 'bold green';
+                     print "Passed ";
+                     print color 'reset';
+                     open errfile, "<$testdir/errormessage";
+                     $errormessage = <errfile>;
+                     chomp($errormessage);
+                     close errfile;
+                     print "$errormessage ";
+
+                     if (-e $testnotrun) {
+                         print color 'bold blue';
+                         print "<- Warning test not run, missing dependencies";
+                         print color 'reset';
+                     }
+
+                     #Finally test for memory leaks
+                     $memcheckfile = abs_path($testdir)."/nomemcheck";
+                     
+                     if (-e $memcheckfile) {
+                     }
+                     else {
+                        my $aretherememoryleaks = 0;
+                        @logfilesArray = GetLogFiles($temptestdir);
+                        
+                        foreach my $logfile (@logfilesArray) { 
+                           open(FILE,$logfile);
+                           if (grep{/LEAK/} <FILE>){
+                              $aretherememoryleaks = 1;
+                           }
+                           close FILE;
+                        }
+                        
+                        if ($aretherememoryleaks == 1) {
+                           print color 'bold yellow';
+                           print "Warning memory leaks ";
+                           print color 'reset';
+                           $nmemoryleaks = $nmemoryleaks + 1;
+                        }
+                     }
+                     print "\n";
+                  }
+                  else {
+                     open errfile, "<$testdir/errormessage";
+                     $errormessage = <errfile>;
+                     chomp($errormessage);
+                     close errfile;
+                     $failstring = "$testdir: $errormessage \n";
+                     print "$testdir: ";
+                     print color 'bold red';
+                     print "Failed \n";
+                     print color 'reset';
+                     $failmessage .= $failstring;
+                     $nfail = $nfail + 1;
+                     if ($nfail eq 1) {
+                        $firstfaileddir = $testdir;
+                     }   
+                  }
+                  
+                 
+                  
+                  
+                  
+               }   
+            }   
+            
+            #change permissions
+            system("find $testdir -type f | xargs chmod 400");
+            #system("find $testdir -type f | xargs chmod ugo-w");
+            #chdir $testdir;
+            #readonlyfilesindir();
+            #chdir $dir;
+            
+            #chmod 0400, $testdir;
+            #chmod 0400, "$testdir/.$testdir.md5";
+         }
+      };
+    
+      
+      my @returnarray;
+      
+      push(@returnarray, $nmemoryleaks, $nfail, $nnotrun, $notrunmessage, $failmessage, $firstfaileddir);
+      
+      if ($testtype eq "parallel") {
+         $manager->finish(0, \@returnarray);
+      }  elsif ($testtype eq "serial" ) {
+         run_on_finish_sub(0,0,0,0,0,\@returnarray);
+      }
+      
+   };
+};
+
+sub run_on_finish_sub {
+   my ($pid, $exit_code, $ident, $exit_signal, $core_dump,$returnarrayref) = @_;
+   @returnarray = @$returnarrayref;
+   
+   #print "@returnarray \n";
+   
+   ($this_nmemoryleaks, $this_nfail, $this_nnotrun, $this_notrunmessage, $this_failmessage, $this_firstfaileddir) = @returnarray;
+   $Gnmemoryleaks += $this_nmemoryleaks;
+   $Gnfail += $this_nfail;
+   $Gnnotrun+= $this_nnotrun;
+   $Gnotrunmessage .= $this_notrunmessage;
+   $Gfailmessage .= $this_failmessage;
+   if ($this_nfail == 1 and $Gnfail == 1) {
+      $Gfirstfaileddir =  $this_firstfaileddir;
+   };
+
+};
+
+   
+
+
+
+
+
+
+
+if ($Gnnotrun != 0) {
+   print color 'bold blue';
+   print "There were $Gnnotrun not run tests due to unselected modules \n";
+   print color 'reset';
+   #print "$notrunmessage";
+   #print color 'bold blue';
+   #print "Some tests were not run \n";
+   #print color 'reset';
+}
+
+
+if ($Gnfail != 0) {
+   print color 'bold red';
+   print "There were $Gnfail failed tests: \n";
+   print color 'reset';
+   print "$Gfailmessage";
+   print color 'bold red';
+   print "Some tests were not passed \n";
+   print color 'reset';
+   print color 'bold blue';
+   print "If you need to debug the tests you can do it in the ";
+   print color 'bold green';
+   print ".testXXX/ ";
+   print color 'bold blue';
+   print "folders, under the ";
+   print color 'bold green';
+   print "Tests/ ";
+   print color 'bold blue';
+   print "directory\n";
+   print color 'bold red';
+   print "DO NOT CHANGE THE TEST PERMISSIONS\n";
+   print color 'reset';
+   print color 'bold blue';
+   print "Do you want to launch Meld for ";
+   print color 'bold green';
+   print "$Gfirstfaileddir";
+   print color 'bold blue';
+   print "? \[y/n\] (Default y): ";
+   print color 'reset';
+   $userinput =  ask_data();
+   if ($userinput!~/n/i) {
+      system("meld $Gfirstfaileddir .$Gfirstfaileddir &");
+   }
+}
+elsif ($ARGV[0] eq "test") {
+   print color 'bold green';
+   print "All tests passed \n";
+   print color 'reset';
+}   
+if ($Gnmemoryleaks != 0) {
+   print color 'bold yellow';
+   print "There were some tests with memory leaks \n";
+   print color 'reset';
+}
+   
+ $time2 = Time::HiRes::time;
+my $runtime=$time2-$time1;
+  
+
+print "Runtime: $runtime \n";
+
+
+
+
+
+
+#--------------------------------------------------------------
+# SUBROUTINES
+
+
+
+
+
+
+
+
+sub ask_data {
+    my $answer;
+ 
+    eval {
+        local $SIG{ALRM} = sub { die "timeout reading from keyboardn" };
+        alarm 5;
+        $answer = <STDIN>;
+        alarm 0;
+        chomp $answer;
+    };
+    if ($@) {
+        #die $@ if $@ ne "timeout reading from keyboardn";
+        print "\n";
+        $answer = 'n';
+    }
+    return $answer;
+}
+
+sub comparepostprocessfiles
+{
+
+   my $testdir = abs_path($_[0]);
+   my @postfile = getpostfiles($testdir);
+
+   my $temptestdir = abs_path($_[1]);
+   my @temppostfile = getpostfiles($temptestdir);
+
+   #print "@temppostfile \n";
+   #print "files: @postfile\n";
+
+   my $numpostfiles = @postfile;
+   for ($count = 0; $count < $numpostfiles; $count++) {
+      my $file1 = $postfile[$count];
+      my $file2 = $file1;
+      $file2 =~ s/$testdir/$temptestdir/g;
+      #my $file2 = $temppostfile[$count];
+      my $ipassed = pfilecompare($file1,$file2);
+      if ($ipassed != 1) {
+         return 0;
+      }
+   }
+   return 1;
+}
+
+
+sub pfilecompare
+{
+   my $file1 = $_[0];
+   my $file2 = $_[1];
+   open (FILE1, $file1) or return"0";
+   unless (open (FILE2, $file2)) {
+      print "file not found \n";
+      print "file1: $file1 \n";
+      print "file2: $file2 \n"; 
+      return"0";
+   };
+   
+   while (my $line1 = <FILE1>) {
+      $line2 = <FILE2> or return"0";
+      @words1 = split(' ',$line1);
+      @words2 = split(' ',$line2);
+      $numwords = @words1;
+      for (my $count = 0; $count < $numwords; $count++) {
+         my $iword1 = $words1[$count];
+         my $iword2 = $words2[$count];
+         if (looks_like_number($iword1)) {
+            my $passed = comparenumbers($iword1,$iword2);
+            if ($passed != 1) {
+              close(FILE1);
+              close(FILE2);
+              print "$file1 $file2 $iword1 $iword2 \n";
+              return 0; 
+            }
+         }
+      }   
+   }
+   close(FILE1);
+   close(FILE2);
+   return 1;
+}
+
+sub comparenumbers
+{
+   my $iword1 = $_[0];
+   my $iword2 = $_[1];
+   my $iwordmax;
+   my $iwordmin;
+   if ( abs($iword1) < $working_abs_comparison_tolerance and abs($iword2) < $working_abs_comparison_tolerance) {
+      $iwordmax = $working_abs_comparison_tolerance;
+      $iwordmin = -$working_abs_comparison_tolerance;
+   }
+   else {
+      $iwordmax = $iword1*(1 + $working_comparison_tolerance);
+      $iwordmin = $iword1*(1 - $working_comparison_tolerance);
+   }   
+   if ($iwordmin > $iwordmax) {
+      my $aux = $iwordmax;
+      $iwordmax = $iwordmin;
+      $iwordmin = $aux;
+   }
+   if ($iword2 > $iwordmax or $iword2 < $iwordmin) {
+      return 0;
+   }
+   return 1;
+}
+
+
+
+
+sub getpostfiles
+{
+   my $count = 0;
+   my @postfile;
+   my $testdir = $_[0];
+   chomp ($testdir);
+   opendir(DIR, $testdir);
+   my @tempdirs = readdir(DIR);
+   closedir DIR;
+   my $mytempdirs;
+   foreach $mytempdirs (@tempdirs) {
+      #print "$testdir/$mytempdirs\n";
+      
+      if (($mytempdirs eq ".") or ($mytempdirs eq "..")) {
+      } else {
+         if (-d "$testdir/$mytempdirs") {
+            opendir(DIR, "$testdir/$mytempdirs");
+            @tempdirs2 = readdir(DIR);
+            closedir DIR;
+            my $mytempdirs2;
+            foreach $mytempdirs2 (@tempdirs2) {
+                #print "$testdir/$mytempdirs/$mytempdirs2 \n";
+                #if ("$testdir/$mytempdirs/$mytempdirs2"=~/.post.res/ or "$testdir/$mytempdirs/$mytempdirs2"=~/.cvg/ or "$testdir/$mytempdirs/$mytempdirs2"=~/.opt.res/ or "$testdir/$mytempdirs/$mytempdirs2"=~/.pvtu/ or "$testdir/$mytempdirs/$mytempdirs2"=~/.vtu/ or "$testdir/$mytempdirs/$mytempdirs2"=~/..frc/ ) {
+                if ("$testdir/$mytempdirs/$mytempdirs2"=~/.post.res/ or "$testdir/$mytempdirs/$mytempdirs2"=~/.opt.res/ or "$testdir/$mytempdirs/$mytempdirs2"=~/.pvtu/ or "$testdir/$mytempdirs/$mytempdirs2"=~/.vtu/ or "$testdir/$mytempdirs/$mytempdirs2"=~/..frc/ ) {
+                    #if ("$testdir/$mytempdirs/$mytempdirs2"=~/.post.res/) {
+                    $postfile[$count] = "$testdir/$mytempdirs/$mytempdirs2";
+                    $count = $count +1;
+                }   
+                #
+                #In FSI-ROM intel gives .cvg file very different, we ignore it
+                if (-e $nocvgfile) {
+                }
+                else {
+                    if ("$testdir/$mytempdirs/$mytempdirs2"=~/.cvg/) {
+                        $postfile[$count] = "$testdir/$mytempdirs/$mytempdirs2";
+                        $count = $count +1;
+                    }   
+                }
+            }
+        }
+        #print "temdirs: $testdir/$mytempdirs\n";
+        if (-d "$testdir/$mytempdirs/post") {
+            my @postfiles2 = getpostfiles("$testdir/$mytempdirs");
+            push @postfile, @postfiles2;
+            $count = @postfile;
+            my @postfiles2 = getpostfiles("$testdir/$mytempdirs/post");
+            push @postfile, @postfiles2;
+            $count = @postfile;
+        }
+        if (-d "$testdir/$mytempdirs/results") {
+            my @postfiles2 = getpostfiles("$testdir/$mytempdirs");
+            push @postfile, @postfiles2;
+            $count = @postfile;
+            my @postfiles2 = getpostfiles("$testdir/$mytempdirs/results");
+            push @postfile, @postfiles2;
+            $count = @postfile;
+        }
+     }   
+
+ }
+ return @postfile;
+}
+
+
+sub deletefilesindir
+{
+   opendir (DIR,".");
+   @files = readdir (DIR);
+   closedir (DIR);
+   foreach $file (@files)
+   {
+      unlink $file;
+   } 
+   return 0;
+}
+
+sub readonlyfilesindir
+{
+   opendir (DIR,".");
+   @files = readdir (DIR);
+   closedir (DIR);
+   foreach $file (@files)
+   {
+      
+      if ($file eq "." || $file eq "..") {}
+      elsif (-f $file) {
+         chmod 0400, $file
+         #system("chmod ugo-w $file");
+      }
+      elsif (-d $file && $file!~/.svn/) {
+         $prevdir = getcwd();
+         chdir $file;
+         readonlyfilesindir();
+         chdir $prevdir;
+      }   
+   } 
+   return 0;
+}
+
+sub allpermissionsfilesindir
+{
+   opendir (DIR,".");
+   @files = readdir (DIR);
+   closedir (DIR);
+   foreach $file (@files)
+   {
+      if ($file eq "." || $file eq "..") {}
+      elsif (-f $file) {
+         chmod 0700, $file
+         #system("chmod ugo-w $file");
+      }
+      elsif (-d $file && $file!~/.svn/) {
+         $prevdir = getcwd();
+         chdir $file;
+         allpermissionsfilesindir();
+         chdir $prevdir;
+      }   
+   } 
+   return 0;
+}
+
+
+
+
+
+sub processfiles
+{
+    use Cwd 'abs_path';
+    #my $dirname = $_[0];
+    my $mysum = $_[1];
+    my $dirname = abs_path($_[0]);
+    chomp ($dirname);
+    opendir(DIRH, $dirname);
+
+    #
+    # Read all the files and directories execluding the current
+    # '.' and parent directory '..'  
+    #
+   
+    my @files = sort (grep { !/^\.|\.\.}$/ } readdir (DIRH));
+    closedir(DIRH);
+    my $file;
+    foreach $file (@files) {
+    my $fullpath = $dirname . "/" . $file;
+    if (-d "$fullpath" && $fullpath!~/.svn/) {
+        $mysum = processfiles($fullpath,$mysum);
+    } else {
+        if ($fullpath !~ /.log/ && $fullpath !~ /.md5/ && $fullpath !~ /.alreadyprepared/ && $fullpath !~ /\~/ && $fullpath !~ /.vv/ && $fullpath !~ /.rst/) {
+        $md5sum = getmd5checksum($fullpath);
+        $mysum = $mysum . $md5sum;
+        #print "$fullpath $md5sum \n";
+        }
+    }
+    }
+    return $mysum;
+}
+
+#
+# getmd5checksum:
+#     Generate a 64 bit Hex MD5 checksum for file contents
+#     and string [userid] [groupid] [permission] [inode]
+#   
+#    parametrs: string file: file of which MD5 check sum need
+#                to calculated.
+#    return type: MD5 checksum of the contents of the file
+#             with conceptual string
+#
+
+sub getmd5checksum
+{
+    my $digest = Digest::MD5->new;  
+    my $file = shift;
+    if (! -r $file) {
+    return "Not readable";
+    } else {
+    open (FILE, $file) or return"";
+    $digest->reset();
+    $digest->addfile(*FILE);
+    close (FILE);
+    return $digest->b64digest;
+    }
+}
+
+#
+# getfileinfo:
+#    Returns formated string for entered file as
+#     [uid] [gid] [mode] [ino]
+#   
+#    parameters:
+#        string filename: filename of which we need to
+#                  find the conceptual string.
+#    return type: string: return conceptual string in
+#                  format [uid] [gid] [permission] [ino]
+#
+
+sub getfileinfo
+{
+    my $file = shift;
+    my (undef, $ino, $mode, undef, $uid, $gid) = stat($file);
+    my $oct = sprintf("%o", $mode & 07777);
+    return $uid . " " . $gid . " " . $oct . " " . $ino;
+}
+
+#
+# trimall:
+#    used to trim leading and trailing white space characters
+#    from string.
+#    parameters:
+#        string str: input string from which spaces needs
+#        to be removed.
+#    return type : string
+#        trimed string.
+#
+
+sub trimall
+{
+    my $arg = shift;
+    $arg =~ s/^\s+|\s+$//g;
+    return $arg;
+}
+    
+    
+sub GetLogFiles {
+   
+    # File find rule
+    
+    my $includeFiles = File::Find::Rule->file
+                             ->name('*.log'); # search by file extensions
+
+    my @files = File::Find::Rule->or( $includeFiles )
+                                ->in($_[0]);
+
+    return @files
+}    
+    
+    
+
+sub mkkey_natural {
+    my $nat = @_ ? shift : $_;
+    my @parts = do {
+        if ((caller 0)[8] & $locale::hint_bits) {
+            use locale;
+            $nat =~ /\d+|\p{IsAlpha}+/g;
+        }
+        else {
+            $nat =~ /\d+|\p{IsAlpha}+/g;
+        }
+    };
+    for (@parts) {
+   if (/^\d/) {
+       s/^0+//;
+       my $len = length;
+       my $nines = int ($len / 9);
+       my $rest = $len - 9 * $nines;
+       $_ = ('9' x $nines) . $rest . $_;
+   }
+    }
+    return join("\0", @parts);
+}
+
+sub getLine {
+    my ($fileH, $filename, $word) = @_;
+    my @words,@lineword;
+
+    my $i = 0;
+    @dat=<$fileH>;
+    foreach (@dat){ 
+        $stringaux = $_;
+        $stringaux =~ s/^\s+//; 
+        @words = (split(/ {1,}/, $stringaux )) ;
+        if (exists($words[0])) {
+            if ($words[0]=~/$word/i) {
+
+                push @linenum , $.;
+                push @lineword, $_;
+
+                ++$i;
+            }     
+        }
+
+    }
+    undef $words;
+    return @lineword;
+
+}
+sub  trim { my $s = shift; $s =~ s/^\s+|\s+$//g; return $s }
+
+

@@ -1,0 +1,31 @@
+Mescape Postprocess
+      Mescape files add 
+      { post/Test5_Plate0.post.res }
+      Mescape files saveall binMeshesSets
+      m0.bin
+            Mescape files new
+            Yes
+            Mescape files add { post/Test5_Plate_mesh1_0.post.res}
+            Mescape files saveall binMeshesSets
+            m1.bin
+            Mescape files new
+            Yes
+            Mescape files add { post/Test5_Plate_mesh2_0.post.res}
+            Mescape files saveall binMeshesSets
+            m2.bin
+            Mescape files new
+            Yes
+            Mescape files add { post/Test5_Plate_mesh3_0.post.res}
+            Mescape files saveall binMeshesSets
+            m3.bin
+            Mescape files new
+            Yes
+            Mescape files add { post/Test5_Plate_mesh4_0.post.res}
+            Mescape files saveall binMeshesSets
+            m4.bin
+         Mescape files new
+         Yes
+         Mescape files ReadMultiple { m0.bin m1.bin m2.bin m3.bin m4.bin}
+          Mescape files saveall binMeshesSets
+          Test5_Plate.post.res
+      Quit

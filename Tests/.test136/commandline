@@ -1,0 +1,2 @@
+cd michell.gid
+../../../Executables/Unix/InspiraFEM.sh michell -np 14 -multicomm 7 -nomerge

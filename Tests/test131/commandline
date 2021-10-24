@@ -1,0 +1,23 @@
+#!/bin/bash
+if [ -z ${SLEPC_DIR+x} ]
+then
+	cp -rf ../test131/natural.gid .
+	cp -rf ../test131/naturalI.gid .
+	echo "Test not run"
+	touch testnotrun
+else
+	if [ -z ${HDF5+x} ]
+	then
+		cp -rf ../test131/natural.gid .
+		cp -rf ../test131/naturalI.gid .
+		echo "Test not run"
+		touch testnotrun
+	else
+		cp -rf ../test131/natural.gid .
+		#cd natural.gid
+		#../../../Executables/Unix/InspiraFEM.sh natural  -np 2 -nomerge
+		#cd ..
+		cd naturalI.gid
+		../../../Executables/Unix/InspiraFEM.sh naturalI -olddatafolder ../natural.gid/data -oldrestarfolder ../natural.gid/rst -np 2 -nomerge
+	fi
+fi

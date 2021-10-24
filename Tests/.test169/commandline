@@ -1,0 +1,21 @@
+#!/bin/bash
+if [ -z ${SLEPC_DIR+x} ]
+then
+	cp -rf ../test140/beam_dyn_rom.gid .
+	echo "Test not run"
+	touch testnotrun
+else
+	if [ -z ${HDF5+x} ]
+	then
+		cp -rf ../test140/beam_dyn_rom.gid .
+		echo "Test not run"
+		touch testnotrun
+	else
+		cd beam_dyn_rom.gid
+      rm rst/beam_dyn_rom.rom.bas
+		cp data/beam_dyn_romFOM.sld.rom.dat data/beam_dyn_rom.sld.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh beam_dyn_rom -np 2 -nomerge
+		cp data/beam_dyn_romROM.sld.rom.dat data/beam_dyn_rom.sld.rom.dat
+		../../../Executables/Unix/InspiraFEM.sh beam_dyn_rom -np 2 -nomerge
+	fi
+fi

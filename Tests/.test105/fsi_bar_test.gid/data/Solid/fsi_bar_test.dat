@@ -1,0 +1,45 @@
+$-------------------------------------------------------------------
+RUN_DATA
+Femuss:                 name
+MEMCHECK:                   Off
+OUTPUT_FORMAT:              VTK
+OUTPUT_COMPRESSION:         ASCII
+IO_FORMAT:                  PETSc
+CUSTOMER:                   Universal
+COMMUNICATOR_LIBRARY:       PETSc
+ORDERING_LIBRARY:           PETSc
+REBALANCE_NUMBERING:        Zoltan
+MPICommunicationsType:      NonBlocking
+FLUSH_TO_DISK:              On
+POSTPROCESS:
+START_POSTPROCESS_AT:        1
+PROCESSOR_POSTPROCESS_EVERY: 0
+END_POSTPROCESS
+END_RUN_DATA
+$-------------------------------------------------------------------
+PROBLEM_DATA
+TIME_COUPLING:          Global, Prescribed
+TIME_INTERVAL=          0.0, 1.5
+TIME_STEP_SIZE=         0.5  
+INTERPOLATOR_TOLERANCE:    1e-6
+CP_CONVERGENCE=    yes
+$PODROM_SOLIDS_PROBLEM:         On MODNAME: podsl
+$DELAY_STEPS:          0
+$RESTART:              Off $Initial, Interpolated
+$PHYSICAL_PROBLEM:     Solids
+ SOLIDS_PROBLEM:         On MODNAME: podsl
+  DELAY_STEPS:          0
+  PRELIMINARY_RUN:      Off FREQUENCY=1
+  RESTART:              Initial $Initial, Interpolated
+  GROUP:          Solid
+  ALGORITHM:            DISPLACEMENT
+  CONVERGENCE_REQUIRED: Yes
+  EXTERNAL_FLUID:       Nstinc CASE: Fluid MODNAME: podns
+ END_SOLIDS_PROBLEM
+$END_PODROM_SOLIDS_PROBLEM
+END_PROBLEM_DATA
+$-------------------------------------------------------------------
+$-------------------------------------------------------------------
+INTERPOLATE_DATA
+ FROM_CASE: Fluid  BOUNDARY  1 ORIGINAL
+ END_INTERPOLATE_DATA

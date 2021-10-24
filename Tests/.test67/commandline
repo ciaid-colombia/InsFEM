@@ -1,0 +1,3 @@
+cd cubo.gid
+../../../Executables/Unix/InspiraFEM.sh cubo -postprocessfolder . -restartfolder data
+

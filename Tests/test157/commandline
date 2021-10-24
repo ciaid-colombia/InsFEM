@@ -1,0 +1,8 @@
+cd OSS_LCRdyn.gid
+../../../Executables/Unix/InspiraFEM.sh OSS_LCRdyn -nomerge
+cd ..
+cd SOSS_LCRdyn.gid
+../../../Executables/Unix/InspiraFEM.sh SOSS_LCRdyn -nomerge
+
+
+

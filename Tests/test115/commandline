@@ -1,0 +1,3 @@
+cd initial_refinement.gid
+../../../Executables/Unix/InspiraFEM.sh initial_refinement -nomerge
+

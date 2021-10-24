@@ -1,0 +1,11 @@
+Mescape Postprocess
+      Mescape files add 
+      { post/natural0.post.res  post/natural1.post.res }
+      Mescape files saveall binMeshesSets
+      m0.bin
+         Mescape files new
+         Yes
+         Mescape files ReadMultiple { m0.bin}
+          Mescape files saveall binMeshesSets
+          natural.post.res
+      Quit
